@@ -34,7 +34,9 @@ if torch.cuda.is_available():
     print(f'Device count: {torch.cuda.device_count()}')
     for i in range(torch.cuda.device_count()):
         print(f'  Device {i}: {torch.cuda.get_device_name(i)}')
-        print(f'  Memory: {torch.cuda.get_device_properties(i).total_mem / 1e9:.1f} GB')
+        props = torch.cuda.get_device_properties(i)
+        mem_bytes = getattr(props, 'total_memory', None) or getattr(props, 'total_mem', 0)
+        print(f'  Memory: {mem_bytes / 1e9:.1f} GB')
         cap = torch.cuda.get_device_capability(i)
         print(f'  Compute capability: {cap[0]}.{cap[1]}')
     # bf16 支持测试
@@ -90,7 +92,7 @@ if device == 'cpu':
 
 # 尝试加载模型到 GPU
 try:
-    model = VGGT.from_pretrained()
+    model = VGGT.from_pretrained('facebook/VGGT-1B')
     model = model.to(device)
     print(f'Model loaded to {device}: OK')
     print(f'Model parameters: {sum(p.numel() for p in model.parameters()) / 1e9:.2f}B')
@@ -130,7 +132,7 @@ if device == 'cpu':
 
 from vggt.models.vggt import VGGT
 
-model = VGGT.from_pretrained()
+model = VGGT.from_pretrained('facebook/VGGT-1B')
 model = model.to(device)
 model.train()
 
