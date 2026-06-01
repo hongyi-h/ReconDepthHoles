@@ -21,7 +21,7 @@ cd "$VGGT_DIR"
 echo "=== Step 1: GPU 基本信息 ==="
 # 如果是 MACA/MUSA 环境，可能没有 nvidia-smi
 # 尝试多种方式获取 GPU 信息
-nvidia-smi 2>/dev/null || mxsmi 2>/dev/null || echo "Neither nvidia-smi nor mxsmi found"
+nvidia-smi 2>/dev/null || mx-smi 2>/dev/null || echo "Neither nvidia-smi nor mx-smi found"
 
 echo ""
 echo "=== Step 2: PyTorch + CUDA/MACA 兼容性 ==="
