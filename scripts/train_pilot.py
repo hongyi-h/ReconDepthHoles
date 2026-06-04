@@ -78,20 +78,36 @@ class LayeredVGGT(nn.Module):
 
         # NEW: Secondary-path pointmap head (same architecture as point_head)
         embed_dim = 1024  # VGGT-1B embed_dim
-        self.secondary_point_head = DPTHead(
-            dim_in=2 * embed_dim,
-            output_dim=4,  # 3 for XYZ + 1 for confidence
-            activation="inv_log",
-            conf_activation="expp1",
-        )
+        try:
+            self.secondary_point_head = DPTHead(
+                dim_in=2 * embed_dim,
+                output_dim=4,  # 3 for XYZ + 1 for confidence
+                activation="inv_log",
+                conf_activation="expp1",
+            )
+        except TypeError:
+            # Older VGGT version without conf_activation param
+            self.secondary_point_head = DPTHead(
+                dim_in=2 * embed_dim,
+                output_dim=4,
+                activation="inv_log",
+            )
 
         # NEW: Material mask head (binary: Lambertian vs non-Lambertian)
-        self.mask_head = DPTHead(
-            dim_in=2 * embed_dim,
-            output_dim=1,  # single channel -> sigmoid -> probability
-            activation="sigmoid",
-            conf_activation="expp1",
-        )
+        # output_dim=2: 1 channel for mask + 1 for confidence (DPTHead splits last as conf)
+        try:
+            self.mask_head = DPTHead(
+                dim_in=2 * embed_dim,
+                output_dim=2,
+                activation="sigmoid",
+                conf_activation="expp1",
+            )
+        except TypeError:
+            self.mask_head = DPTHead(
+                dim_in=2 * embed_dim,
+                output_dim=2,
+                activation="sigmoid",
+            )
 
         self._print_param_stats()
 
@@ -142,11 +158,12 @@ class LayeredVGGT(nn.Module):
             predictions["secondary_points_conf"] = secondary_conf
 
             # NEW: Material mask head (trainable)
-            mask_raw, _ = self.mask_head(
+            mask_pred, mask_conf = self.mask_head(
                 aggregated_tokens_list, images=images, patch_start_idx=patch_start_idx
             )
-            # mask_raw shape: (B, S, H, W, 1) after DPT — squeeze last dim
-            predictions["mask_pred"] = mask_raw.squeeze(-1)
+            # mask_pred shape: (B, S, H, W, 1) — squeeze to (B, S, H, W)
+            predictions["mask_pred"] = mask_pred.squeeze(-1)
+            predictions["mask_conf"] = mask_conf
 
         return predictions
 
