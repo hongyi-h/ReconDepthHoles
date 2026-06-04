@@ -176,7 +176,7 @@ class MirrorSceneDataset(Dataset):
         return batch
 
     def _load_exr_depth(self, path, H, W):
-        """Load depth from EXR file. Falls back to zeros if not available."""
+        """Load depth from EXR file. Auto-detects channel names and EXR dimensions."""
         try:
             import OpenEXR
             import Imath
@@ -187,24 +187,41 @@ class MirrorSceneDataset(Dataset):
             exr_w = dw.max.x - dw.min.x + 1
             exr_h = dw.max.y - dw.min.y + 1
 
-            # Try to read Z channel (depth pass)
+            # Auto-detect depth channel name
+            channels = list(header["channels"].keys())
             float_type = Imath.PixelType(Imath.PixelType.FLOAT)
-            channels = header["channels"]
 
-            if "View Layer.Depth.Z" in channels:
-                z_str = exr_file.channel("View Layer.Depth.Z", float_type)
-            elif "Z" in channels:
-                z_str = exr_file.channel("Z", float_type)
-            elif "depth" in channels:
-                z_str = exr_file.channel("depth", float_type)
-            else:
-                # Fall back: use first available channel
-                ch_name = list(channels.keys())[0]
-                z_str = exr_file.channel(ch_name, float_type)
+            # Priority order for depth channel detection
+            depth_channel_candidates = [
+                "View Layer.Depth.Z",
+                "Depth.Z",
+                "Z",
+                "depth",
+                "ViewLayer.Depth.Z",
+            ]
+            # Also try any channel containing "depth" or "Z" (case-insensitive)
+            for ch in channels:
+                if "depth" in ch.lower() or ch == "Z":
+                    if ch not in depth_channel_candidates:
+                        depth_channel_candidates.append(ch)
 
+            depth_channel = None
+            for candidate in depth_channel_candidates:
+                if candidate in channels:
+                    depth_channel = candidate
+                    break
+
+            if depth_channel is None:
+                # Last resort: use first channel (likely R/G/B/A — not ideal but won't crash)
+                # For Blender EXR without compositor, depth may not be embedded
+                # In that case, return zeros
+                print(f"WARNING: No depth channel found in {path}. Channels: {channels}")
+                return np.zeros((H, W), dtype=np.float32)
+
+            z_str = exr_file.channel(depth_channel, float_type)
             depth = np.frombuffer(z_str, dtype=np.float32).reshape(exr_h, exr_w)
 
-            # Resize if needed
+            # Resize to target H×W if different
             if (exr_h, exr_w) != (H, W):
                 from PIL import Image as PILImage
                 depth_img = PILImage.fromarray(depth, mode='F')
@@ -214,7 +231,6 @@ class MirrorSceneDataset(Dataset):
             return depth
 
         except ImportError:
-            # OpenEXR not available — return zeros
             print(f"WARNING: OpenEXR not installed, cannot load {path}")
             return np.zeros((H, W), dtype=np.float32)
         except Exception as e:
