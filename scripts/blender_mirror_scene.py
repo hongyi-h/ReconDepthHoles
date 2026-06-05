@@ -340,6 +340,42 @@ def reflect_matrix_about_plane(normal, d):
     return R
 
 
+def _get_depth_from_raycast(scene, cam_obj, resolution):
+    """Get per-pixel depth via scene.ray_cast (C++ accelerated, ~2s for 480x640).
+
+    Returns depth as distance from camera origin to hit point (euclidean, not Z-buffer).
+    """
+    H, W = resolution
+    depsgraph = bpy.context.evaluated_depsgraph_get()
+
+    cam_matrix = cam_obj.matrix_world
+    cam_loc = cam_matrix.translation
+    cam_rot = cam_matrix.to_3x3()
+
+    focal = cam_obj.data.lens
+    sensor_w = cam_obj.data.sensor_width
+    fx = focal * W / sensor_w
+    fy = fx  # square pixels assumption (close enough for pilot)
+    cx, cy = W / 2.0, H / 2.0
+
+    depth = np.zeros((H, W), dtype=np.float32)
+
+    for v in range(H):
+        for u in range(W):
+            dx = (u - cx) / fx
+            dy = -(v - cy) / fy  # image Y is down, camera Y is up
+            direction = cam_rot @ mathutils.Vector((dx, dy, -1.0))
+            direction.normalize()
+
+            result, location, normal, index, obj, matrix = scene.ray_cast(
+                depsgraph, cam_loc, direction
+            )
+            if result:
+                depth[v, u] = (location - cam_loc).length
+
+    return depth
+
+
 def render_scene(output_dir, camera_poses, mirror_planes, resolution):
     """Render all views and save outputs including secondary-path GT."""
     scene = bpy.context.scene
@@ -365,73 +401,52 @@ def render_scene(output_dir, camera_poses, mirror_planes, resolution):
         # Get camera matrices
         K, extrinsic = get_camera_matrices(cam_obj, scene)
 
-        # --- First-surface render (normal) ---
-        scene.render.image_settings.file_format = 'OPEN_EXR'
-        scene.render.image_settings.color_depth = '32'
-        scene.render.filepath = os.path.join(output_dir, f"render_{view_id:03d}")
-        bpy.ops.render.render(write_still=True)
-
-        # PNG for visual inspection
+        # --- First-surface render ---
         scene.render.image_settings.file_format = 'PNG'
         scene.render.filepath = os.path.join(output_dir, f"rgb_{view_id:03d}")
         bpy.ops.render.render(write_still=True)
 
-        # --- Material mask render (object index pass) ---
-        # Render object index pass to identify mirror pixels
-        scene.render.image_settings.file_format = 'OPEN_EXR'
-        # Object index is already in the EXR via use_pass_object_index
+        # Get first-surface depth via ray casting
+        depth_first = _get_depth_from_raycast(scene, cam_obj, resolution)
+        np.save(os.path.join(output_dir, f"depth_first_{view_id:03d}.npy"), depth_first)
 
-        # --- Secondary-path render (virtual camera) ---
-        # For each mirror plane, reflect camera and render without mirror objects
+        # --- Secondary-path depth (virtual camera + raycast) ---
         for plane_id, plane_params in enumerate(mirror_planes):
             normal = plane_params[:3]
             d = plane_params[3]
 
-            # Compute virtual camera position and orientation via reflection
+            # Reflect camera position and orientation
             cam_world = np.array(cam_obj.matrix_world)
             reflect_mat = reflect_matrix_about_plane(normal, d)
-
-            # Reflect camera position
             cam_pos = np.array(cam_obj.location)
             virtual_pos = (reflect_mat @ np.append(cam_pos, 1.0))[:3]
 
-            # Reflect camera forward (-Z in Blender) and up (Y in Blender)
-            cam_forward = -np.array(cam_world[:3, 2])  # -Z column = forward
-            cam_up = np.array(cam_world[:3, 1])  # Y column = up
-
-            # Reflect directions (only linear part, no translation)
+            cam_forward = -np.array(cam_world[:3, 2])
+            cam_up = np.array(cam_world[:3, 1])
             reflect_linear = reflect_mat[:3, :3]
             virtual_forward = reflect_linear @ cam_forward
             virtual_up = reflect_linear @ cam_up
 
-            # Construct look-at rotation for virtual camera
-            # Blender camera: -Z = forward, Y = up, X = right
             virtual_forward_norm = virtual_forward / np.linalg.norm(virtual_forward)
             virtual_up_norm = virtual_up / np.linalg.norm(virtual_up)
             virtual_right = np.cross(virtual_forward_norm, virtual_up_norm)
             virtual_right /= np.linalg.norm(virtual_right)
-            # Recompute up to ensure orthogonality
             virtual_up_norm = np.cross(virtual_right, virtual_forward_norm)
 
-            # Build rotation matrix (columns = right, up, -forward in Blender)
             rot_mat = np.eye(3)
             rot_mat[:, 0] = virtual_right
             rot_mat[:, 1] = virtual_up_norm
-            rot_mat[:, 2] = -virtual_forward_norm  # Blender Z-axis points backward
+            rot_mat[:, 2] = -virtual_forward_norm
 
-            # Store original camera state
+            # Set virtual camera for raycast
             orig_matrix = cam_obj.matrix_world.copy()
-
-            # Set virtual camera (ONLY use matrix_world, not location/rotation separately)
             virtual_world = np.eye(4)
             virtual_world[:3, :3] = rot_mat
             virtual_world[:3, 3] = virtual_pos
             cam_obj.matrix_world = mathutils.Matrix(virtual_world.tolist())
             bpy.context.view_layer.update()
 
-            # Hide mirror objects AND ALL room structure (walls + floor)
-            # Virtual camera is outside the room, so all room surfaces would block the view.
-            # We only want to render the interior objects as seen "through" the mirror.
+            # Hide mirror + room for raycast (virtual cam is outside room)
             room_parts = ["Floor", "BackWall", "LeftWall", "RightWall"]
             for m_obj in mirror_objs:
                 m_obj.hide_render = True
@@ -440,14 +455,14 @@ def render_scene(output_dir, camera_poses, mirror_planes, resolution):
                 if part_obj:
                     part_obj.hide_render = True
 
-            # Render secondary-path depth
-            scene.render.image_settings.file_format = 'OPEN_EXR'
-            scene.render.filepath = os.path.join(
-                output_dir, f"secondary_{view_id:03d}_mirror{plane_id:02d}"
+            # Raycast depth from virtual camera
+            depth_secondary = _get_depth_from_raycast(scene, cam_obj, resolution)
+            np.save(
+                os.path.join(output_dir, f"depth_secondary_{view_id:03d}_mirror{plane_id:02d}.npy"),
+                depth_secondary,
             )
-            bpy.ops.render.render(write_still=True)
 
-            # Restore all visibility
+            # Restore visibility
             for m_obj in mirror_objs:
                 m_obj.hide_render = False
             for part_name in room_parts:
@@ -455,7 +470,7 @@ def render_scene(output_dir, camera_poses, mirror_planes, resolution):
                 if part_obj:
                     part_obj.hide_render = False
 
-            # Restore original camera
+            # Restore camera
             cam_obj.matrix_world = orig_matrix
             bpy.context.view_layer.update()
 
