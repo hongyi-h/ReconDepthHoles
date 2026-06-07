@@ -308,7 +308,7 @@ def train(args):
     # Setup distributed if multi-GPU
     distributed = args.gpus > 1
     if distributed:
-        dist.init_process_group("gloo")  # MetaX C500 uses MACA, not NCCL
+        dist.init_process_group("nccl")  # MetaX C500 uses MACA, not NCCL
         local_rank = int(os.environ["LOCAL_RANK"])
         device = torch.device(f"cuda:{local_rank}")
         torch.cuda.set_device(device)
