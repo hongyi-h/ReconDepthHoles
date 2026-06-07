@@ -29,6 +29,9 @@ import time
 import json
 from pathlib import Path
 
+# Disable torch dynamo/compile (incompatible with MetaX PyTorch build)
+os.environ["TORCHDYNAMO_DISABLE"] = "1"
+
 import numpy as np
 import torch
 import torch.nn as nn
