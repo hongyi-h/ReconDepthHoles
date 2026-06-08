@@ -6,5 +6,6 @@
 __pycache__
 
 /references/
-
 /data/
+/checkpoints/
+/logs/
