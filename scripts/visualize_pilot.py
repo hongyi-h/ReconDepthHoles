@@ -125,7 +125,7 @@ def run_sanity_check(args):
     model = LayeredVGGT(pretrained_name="facebook/VGGT-1B", freeze_encoder=True).to(device)
 
     if os.path.isfile(args.checkpoint):
-        ckpt = torch.load(args.checkpoint, map_location=device)
+        ckpt = torch.load(args.checkpoint, map_location=device, weights_only=False)
         model_state = ckpt.get("model", ckpt)
         model.load_state_dict(model_state, strict=False)
         print(f"Loaded checkpoint: {args.checkpoint}")
