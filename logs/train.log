@@ -1,0 +1,607 @@
+W0608 10:10:38.548000 4023414 site-packages/torch/distributed/run.py:774] 
+W0608 10:10:38.548000 4023414 site-packages/torch/distributed/run.py:774] *****************************************
+W0608 10:10:38.548000 4023414 site-packages/torch/distributed/run.py:774] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0608 10:10:38.548000 4023414 site-packages/torch/distributed/run.py:774] *****************************************
+[MirrorSceneDataset] Found 1000 scenes in data/synthetic/train
+[MirrorSceneDataset] Found 1000 scenes in data/synthetic/train
+[MirrorSceneDataset] Found 1000 scenes in data/synthetic/train
+[MirrorSceneDataset] Found 1000 scenes in data/synthetic/train
+[MirrorSceneDataset] Found 200 scenes in data/synthetic/val
+[MirrorSceneDataset] Found 200 scenes in data/synthetic/val
+[MirrorSceneDataset] Found 200 scenes in data/synthetic/val
+[MirrorSceneDataset] Found 200 scenes in data/synthetic/val
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+
+============================================================
+Starting Pilot Training
+  Epochs: 20
+  Batch size: 1 × 4 GPUs
+  LR: 0.0001
+  Train scenes: 1000
+  Val scenes: 200
+============================================================
+
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+  [Epoch 1/20] Step 10/250 | Loss: 3.8108 | L_sec: 2.7177 | L_mask: 0.7280 | LR: 1.00e-04
+  [Epoch 1/20] Step 20/250 | Loss: 2.6994 | L_sec: 2.5436 | L_mask: 0.3796 | LR: 1.00e-04
+  [Epoch 1/20] Step 30/250 | Loss: 2.4762 | L_sec: 1.9169 | L_mask: 0.4927 | LR: 1.00e-04
+  [Epoch 1/20] Step 40/250 | Loss: 2.4252 | L_sec: 3.2683 | L_mask: 0.1077 | LR: 1.00e-04
+  [Epoch 1/20] Step 50/250 | Loss: 2.4764 | L_sec: 1.9557 | L_mask: 0.4153 | LR: 1.00e-04
+  [Epoch 1/20] Step 60/250 | Loss: 2.4518 | L_sec: 2.1664 | L_mask: 0.4224 | LR: 1.00e-04
+  [Epoch 1/20] Step 70/250 | Loss: 2.6157 | L_sec: 2.1121 | L_mask: 0.1498 | LR: 1.00e-04
+  [Epoch 1/20] Step 80/250 | Loss: 2.6982 | L_sec: 1.9243 | L_mask: 0.1987 | LR: 9.99e-05
+  [Epoch 1/20] Step 90/250 | Loss: 2.4269 | L_sec: 2.0793 | L_mask: 0.1495 | LR: 9.99e-05
+  [Epoch 1/20] Step 100/250 | Loss: 2.2582 | L_sec: 1.9439 | L_mask: 0.1292 | LR: 9.99e-05
+  [Epoch 1/20] Step 110/250 | Loss: 2.2245 | L_sec: 2.5162 | L_mask: 0.1492 | LR: 9.99e-05
+  [Epoch 1/20] Step 120/250 | Loss: 2.2798 | L_sec: 2.1192 | L_mask: 0.3472 | LR: 9.99e-05
+  [Epoch 1/20] Step 130/250 | Loss: 2.2126 | L_sec: 2.3126 | L_mask: 0.1940 | LR: 9.98e-05
+  [Epoch 1/20] Step 140/250 | Loss: 2.2876 | L_sec: 2.9555 | L_mask: 0.0627 | LR: 9.98e-05
+  [Epoch 1/20] Step 150/250 | Loss: 2.4147 | L_sec: 3.5073 | L_mask: 0.0989 | LR: 9.98e-05
+  [Epoch 1/20] Step 160/250 | Loss: 2.3422 | L_sec: 2.4456 | L_mask: 0.2213 | LR: 9.98e-05
+  [Epoch 1/20] Step 170/250 | Loss: 2.3594 | L_sec: 2.2477 | L_mask: 0.1308 | LR: 9.97e-05
+  [Epoch 1/20] Step 180/250 | Loss: 2.1754 | L_sec: 1.4295 | L_mask: 0.1058 | LR: 9.97e-05
+  [Epoch 1/20] Step 190/250 | Loss: 2.2899 | L_sec: 2.6915 | L_mask: 0.0196 | LR: 9.96e-05
+  [Epoch 1/20] Step 200/250 | Loss: 2.2083 | L_sec: 2.5301 | L_mask: 0.0671 | LR: 9.96e-05
+  [Epoch 1/20] Step 210/250 | Loss: 1.9534 | L_sec: 2.2151 | L_mask: 0.0828 | LR: 9.96e-05
+  [Epoch 1/20] Step 220/250 | Loss: 1.9515 | L_sec: 1.3610 | L_mask: 0.0746 | LR: 9.95e-05
+  [Epoch 1/20] Step 230/250 | Loss: 1.7651 | L_sec: 2.3598 | L_mask: 0.0980 | LR: 9.95e-05
+  [Epoch 1/20] Step 240/250 | Loss: 2.1954 | L_sec: 2.9923 | L_mask: 0.1023 | LR: 9.94e-05
+  [Epoch 1/20] Step 250/250 | Loss: 1.9865 | L_sec: 1.3314 | L_mask: 0.0475 | LR: 9.94e-05
+
+  Epoch 1 done in 569s | Avg loss: 2.3594
+  [Epoch 2/20] Step 10/250 | Loss: 2.1106 | L_sec: 2.1208 | L_mask: 0.1114 | LR: 9.93e-05
+  [Epoch 2/20] Step 20/250 | Loss: 1.9096 | L_sec: 2.1635 | L_mask: 0.0831 | LR: 9.93e-05
+  [Epoch 2/20] Step 30/250 | Loss: 1.9888 | L_sec: 1.0990 | L_mask: 0.0712 | LR: 9.92e-05
+  [Epoch 2/20] Step 40/250 | Loss: 2.1053 | L_sec: 2.5413 | L_mask: 0.0123 | LR: 9.92e-05
+  [Epoch 2/20] Step 50/250 | Loss: 2.0936 | L_sec: 3.6252 | L_mask: 0.3070 | LR: 9.91e-05
+  [Epoch 2/20] Step 60/250 | Loss: 1.7421 | L_sec: 1.0304 | L_mask: 0.0555 | LR: 9.91e-05
+  [Epoch 2/20] Step 70/250 | Loss: 1.5815 | L_sec: 1.3823 | L_mask: 0.3754 | LR: 9.90e-05
+  [Epoch 2/20] Step 80/250 | Loss: 1.9116 | L_sec: 1.7818 | L_mask: 0.0496 | LR: 9.89e-05
+  [Epoch 2/20] Step 90/250 | Loss: 1.5246 | L_sec: 1.3961 | L_mask: 0.1124 | LR: 9.89e-05
+  [Epoch 2/20] Step 100/250 | Loss: 2.2272 | L_sec: 2.4936 | L_mask: 0.0609 | LR: 9.88e-05
+  [Epoch 2/20] Step 110/250 | Loss: 2.0025 | L_sec: 1.8969 | L_mask: 0.0447 | LR: 9.87e-05
+  [Epoch 2/20] Step 120/250 | Loss: 1.6065 | L_sec: 1.1373 | L_mask: 0.0997 | LR: 9.87e-05
+  [Epoch 2/20] Step 130/250 | Loss: 1.9742 | L_sec: 1.1843 | L_mask: 0.0645 | LR: 9.86e-05
+  [Epoch 2/20] Step 140/250 | Loss: 1.7411 | L_sec: 2.0275 | L_mask: 0.1764 | LR: 9.85e-05
+  [Epoch 2/20] Step 150/250 | Loss: 2.0953 | L_sec: 2.3659 | L_mask: 0.0701 | LR: 9.84e-05
+  [Epoch 2/20] Step 160/250 | Loss: 1.4745 | L_sec: 1.0263 | L_mask: 0.1085 | LR: 9.84e-05
+  [Epoch 2/20] Step 170/250 | Loss: 1.9054 | L_sec: 2.1677 | L_mask: 0.1255 | LR: 9.83e-05
+  [Epoch 2/20] Step 180/250 | Loss: 1.8235 | L_sec: 1.2373 | L_mask: 0.1772 | LR: 9.82e-05
+  [Epoch 2/20] Step 190/250 | Loss: 1.7994 | L_sec: 1.9298 | L_mask: 0.1258 | LR: 9.81e-05
+  [Epoch 2/20] Step 200/250 | Loss: 1.6585 | L_sec: 0.9516 | L_mask: 0.0698 | LR: 9.80e-05
+  [Epoch 2/20] Step 210/250 | Loss: 1.8210 | L_sec: 1.7020 | L_mask: 0.1593 | LR: 9.79e-05
+  [Epoch 2/20] Step 220/250 | Loss: 1.9373 | L_sec: 0.9118 | L_mask: 0.0464 | LR: 9.79e-05
+  [Epoch 2/20] Step 230/250 | Loss: 1.7814 | L_sec: 3.7460 | L_mask: 0.0113 | LR: 9.78e-05
+  [Epoch 2/20] Step 240/250 | Loss: 2.2444 | L_sec: 2.8470 | L_mask: 0.1645 | LR: 9.77e-05
+  [Epoch 2/20] Step 250/250 | Loss: 1.8841 | L_sec: 2.0834 | L_mask: 0.1454 | LR: 9.76e-05
+
+  Epoch 2 done in 562s | Avg loss: 1.8778
+  VAL | Chamfer-NL: 4.1697 | Chamfer-L: 4.8749 | Mask-Acc: 0.962
+  [Epoch 3/20] Step 10/250 | Loss: 1.9012 | L_sec: 1.0926 | L_mask: 0.0476 | LR: 9.75e-05
+  [Epoch 3/20] Step 20/250 | Loss: 1.8824 | L_sec: 2.0110 | L_mask: 0.1143 | LR: 9.74e-05
+  [Epoch 3/20] Step 30/250 | Loss: 1.5806 | L_sec: 1.0064 | L_mask: 0.0886 | LR: 9.73e-05
+  [Epoch 3/20] Step 40/250 | Loss: 1.9151 | L_sec: 2.8452 | L_mask: 0.0103 | LR: 9.72e-05
+  [Epoch 3/20] Step 50/250 | Loss: 2.1080 | L_sec: 1.0396 | L_mask: 0.1433 | LR: 9.71e-05
+  [Epoch 3/20] Step 60/250 | Loss: 1.6981 | L_sec: 0.9502 | L_mask: 0.2097 | LR: 9.70e-05
+  [Epoch 3/20] Step 70/250 | Loss: 1.5341 | L_sec: 1.8786 | L_mask: 0.1560 | LR: 9.69e-05
+  [Epoch 3/20] Step 80/250 | Loss: 1.7862 | L_sec: 2.3078 | L_mask: 0.0382 | LR: 9.67e-05
+  [Epoch 3/20] Step 90/250 | Loss: 2.0001 | L_sec: 1.8349 | L_mask: 0.0853 | LR: 9.66e-05
+  [Epoch 3/20] Step 100/250 | Loss: 1.9965 | L_sec: 1.6405 | L_mask: 0.1229 | LR: 9.65e-05
+  [Epoch 3/20] Step 110/250 | Loss: 1.7109 | L_sec: 2.0436 | L_mask: 0.1554 | LR: 9.64e-05
+  [Epoch 3/20] Step 120/250 | Loss: 1.8609 | L_sec: 2.1088 | L_mask: 0.1805 | LR: 9.63e-05
+  [Epoch 3/20] Step 130/250 | Loss: 1.9140 | L_sec: 2.5198 | L_mask: 0.0857 | LR: 9.62e-05
+  [Epoch 3/20] Step 140/250 | Loss: 1.2391 | L_sec: 1.1266 | L_mask: 0.0716 | LR: 9.61e-05
+  [Epoch 3/20] Step 150/250 | Loss: 1.6031 | L_sec: 1.8102 | L_mask: 0.1241 | LR: 9.59e-05
+  [Epoch 3/20] Step 160/250 | Loss: 1.9459 | L_sec: 1.9965 | L_mask: 0.1505 | LR: 9.58e-05
+  [Epoch 3/20] Step 170/250 | Loss: 2.0253 | L_sec: 1.9525 | L_mask: 0.0841 | LR: 9.57e-05
+  [Epoch 3/20] Step 180/250 | Loss: 1.5581 | L_sec: 1.0403 | L_mask: 0.1098 | LR: 9.56e-05
+  [Epoch 3/20] Step 190/250 | Loss: 1.6081 | L_sec: 1.2160 | L_mask: 0.2365 | LR: 9.54e-05
+  [Epoch 3/20] Step 200/250 | Loss: 1.4008 | L_sec: 1.7486 | L_mask: 0.0688 | LR: 9.53e-05
+  [Epoch 3/20] Step 210/250 | Loss: 1.8239 | L_sec: 1.2966 | L_mask: 0.0757 | LR: 9.52e-05
+  [Epoch 3/20] Step 220/250 | Loss: 1.9791 | L_sec: 2.3761 | L_mask: 0.0076 | LR: 9.50e-05
+  [Epoch 3/20] Step 230/250 | Loss: 1.6424 | L_sec: 1.6293 | L_mask: 0.1073 | LR: 9.49e-05
+  [Epoch 3/20] Step 240/250 | Loss: 1.4256 | L_sec: 0.9954 | L_mask: 0.0488 | LR: 9.47e-05
+  [Epoch 3/20] Step 250/250 | Loss: 1.7232 | L_sec: 1.2137 | L_mask: 0.1218 | LR: 9.46e-05
+
+  Epoch 3 done in 561s | Avg loss: 1.7545
+  [Epoch 4/20] Step 10/250 | Loss: 1.4955 | L_sec: 1.8027 | L_mask: 0.0561 | LR: 9.45e-05
+  [Epoch 4/20] Step 20/250 | Loss: 1.2800 | L_sec: 1.8026 | L_mask: 0.0588 | LR: 9.43e-05
+  [Epoch 4/20] Step 30/250 | Loss: 0.9993 | L_sec: 1.2753 | L_mask: 0.0402 | LR: 9.42e-05
+  [Epoch 4/20] Step 40/250 | Loss: 1.1230 | L_sec: 0.9856 | L_mask: 0.0961 | LR: 9.40e-05
+  [Epoch 4/20] Step 50/250 | Loss: 1.1322 | L_sec: 1.6773 | L_mask: 0.0507 | LR: 9.39e-05
+  [Epoch 4/20] Step 60/250 | Loss: 1.3789 | L_sec: 1.1454 | L_mask: 0.1129 | LR: 9.37e-05
+  [Epoch 4/20] Step 70/250 | Loss: 1.1187 | L_sec: 0.9892 | L_mask: 0.0020 | LR: 9.36e-05
+  [Epoch 4/20] Step 80/250 | Loss: 1.0745 | L_sec: 0.8138 | L_mask: 0.0926 | LR: 9.34e-05
+  [Epoch 4/20] Step 90/250 | Loss: 1.0776 | L_sec: 0.9933 | L_mask: 0.1089 | LR: 9.33e-05
+  [Epoch 4/20] Step 100/250 | Loss: 0.9659 | L_sec: 1.1672 | L_mask: 0.0201 | LR: 9.31e-05
+  [Epoch 4/20] Step 110/250 | Loss: 1.1884 | L_sec: 0.4890 | L_mask: 0.0991 | LR: 9.29e-05
+  [Epoch 4/20] Step 120/250 | Loss: 1.3696 | L_sec: 0.6211 | L_mask: 0.0736 | LR: 9.28e-05
+  [Epoch 4/20] Step 130/250 | Loss: 0.9957 | L_sec: 1.3411 | L_mask: 0.0423 | LR: 9.26e-05
+  [Epoch 4/20] Step 140/250 | Loss: 1.0456 | L_sec: 0.9152 | L_mask: 0.0161 | LR: 9.25e-05
+  [Epoch 4/20] Step 150/250 | Loss: 1.1968 | L_sec: 0.8398 | L_mask: 0.1080 | LR: 9.23e-05
+  [Epoch 4/20] Step 160/250 | Loss: 1.2247 | L_sec: 1.2413 | L_mask: 0.0367 | LR: 9.21e-05
+  [Epoch 4/20] Step 170/250 | Loss: 1.0874 | L_sec: 1.4179 | L_mask: 0.0270 | LR: 9.20e-05
+  [Epoch 4/20] Step 180/250 | Loss: 0.8040 | L_sec: 1.2667 | L_mask: 0.0328 | LR: 9.18e-05
+  [Epoch 4/20] Step 190/250 | Loss: 0.8732 | L_sec: 0.7012 | L_mask: 0.0839 | LR: 9.16e-05
+  [Epoch 4/20] Step 200/250 | Loss: 0.8251 | L_sec: 0.5669 | L_mask: 0.0927 | LR: 9.14e-05
+  [Epoch 4/20] Step 210/250 | Loss: 0.8246 | L_sec: 0.7873 | L_mask: 0.0468 | LR: 9.13e-05
+  [Epoch 4/20] Step 220/250 | Loss: 0.8887 | L_sec: 0.8806 | L_mask: 0.0307 | LR: 9.11e-05
+  [Epoch 4/20] Step 230/250 | Loss: 0.8116 | L_sec: 1.3852 | L_mask: 0.0415 | LR: 9.09e-05
+  [Epoch 4/20] Step 240/250 | Loss: 0.9762 | L_sec: 1.0436 | L_mask: 0.0231 | LR: 9.07e-05
+  [Epoch 4/20] Step 250/250 | Loss: 0.8666 | L_sec: 0.7142 | L_mask: 0.0953 | LR: 9.05e-05
+
+  Epoch 4 done in 562s | Avg loss: 1.0650
+  VAL | Chamfer-NL: 2.0406 | Chamfer-L: 4.8758 | Mask-Acc: 0.966
+  [Epoch 5/20] Step 10/250 | Loss: 0.8304 | L_sec: 0.8735 | L_mask: 0.1483 | LR: 9.04e-05
+  [Epoch 5/20] Step 20/250 | Loss: 1.0172 | L_sec: 1.8436 | L_mask: 0.0885 | LR: 9.02e-05
+  [Epoch 5/20] Step 30/250 | Loss: 0.8025 | L_sec: 0.5851 | L_mask: 0.0311 | LR: 9.00e-05
+  [Epoch 5/20] Step 40/250 | Loss: 0.9681 | L_sec: 1.0451 | L_mask: 0.1542 | LR: 8.98e-05
+  [Epoch 5/20] Step 50/250 | Loss: 0.8982 | L_sec: 0.5646 | L_mask: 0.0336 | LR: 8.96e-05
+  [Epoch 5/20] Step 60/250 | Loss: 1.2340 | L_sec: 0.5475 | L_mask: 0.0657 | LR: 8.94e-05
+  [Epoch 5/20] Step 70/250 | Loss: 0.6772 | L_sec: 0.5196 | L_mask: 0.0152 | LR: 8.92e-05
+  [Epoch 5/20] Step 80/250 | Loss: 0.6720 | L_sec: 0.5555 | L_mask: 0.0857 | LR: 8.90e-05
+  [Epoch 5/20] Step 90/250 | Loss: 0.8672 | L_sec: 0.6623 | L_mask: 0.1157 | LR: 8.88e-05
+  [Epoch 5/20] Step 100/250 | Loss: 0.7126 | L_sec: 1.1296 | L_mask: 0.1025 | LR: 8.86e-05
+  [Epoch 5/20] Step 110/250 | Loss: 0.8030 | L_sec: 0.9086 | L_mask: 0.2014 | LR: 8.84e-05
+  [Epoch 5/20] Step 120/250 | Loss: 0.7005 | L_sec: 0.5012 | L_mask: 0.0510 | LR: 8.82e-05
+  [Epoch 5/20] Step 130/250 | Loss: 0.7969 | L_sec: 1.9318 | L_mask: 0.1926 | LR: 8.80e-05
+  [Epoch 5/20] Step 140/250 | Loss: 1.0693 | L_sec: 0.5754 | L_mask: 0.1094 | LR: 8.78e-05
+  [Epoch 5/20] Step 150/250 | Loss: 0.7472 | L_sec: 1.2594 | L_mask: 0.2341 | LR: 8.76e-05
+  [Epoch 5/20] Step 160/250 | Loss: 1.0966 | L_sec: 1.6801 | L_mask: 0.0845 | LR: 8.74e-05
+  [Epoch 5/20] Step 170/250 | Loss: 0.7023 | L_sec: 1.0768 | L_mask: 0.1073 | LR: 8.72e-05
+  [Epoch 5/20] Step 180/250 | Loss: 0.8250 | L_sec: 0.8690 | L_mask: 0.1200 | LR: 8.70e-05
+  [Epoch 5/20] Step 190/250 | Loss: 0.7423 | L_sec: 1.4873 | L_mask: 0.2042 | LR: 8.68e-05
+  [Epoch 5/20] Step 200/250 | Loss: 0.5010 | L_sec: 0.7749 | L_mask: 0.1266 | LR: 8.66e-05
+  [Epoch 5/20] Step 210/250 | Loss: 0.8247 | L_sec: 0.7108 | L_mask: 0.0357 | LR: 8.64e-05
+  [Epoch 5/20] Step 220/250 | Loss: 0.7162 | L_sec: 0.4408 | L_mask: 0.1124 | LR: 8.62e-05
+  [Epoch 5/20] Step 230/250 | Loss: 0.6034 | L_sec: 0.5776 | L_mask: 0.0695 | LR: 8.59e-05
+  [Epoch 5/20] Step 240/250 | Loss: 0.8740 | L_sec: 0.8269 | L_mask: 0.0810 | LR: 8.57e-05
+  [Epoch 5/20] Step 250/250 | Loss: 0.8990 | L_sec: 1.9970 | L_mask: 0.0714 | LR: 8.55e-05
+
+  Epoch 5 done in 562s | Avg loss: 0.8232
+  Saved checkpoint: /mnt/afs/zhengmingkai/hhy/ReconDepthHoles/checkpoints/pilot_epoch005.pt
+  [Epoch 6/20] Step 10/250 | Loss: 0.8496 | L_sec: 0.6189 | L_mask: 0.0303 | LR: 8.53e-05
+  [Epoch 6/20] Step 20/250 | Loss: 1.0045 | L_sec: 0.5759 | L_mask: 0.0327 | LR: 8.51e-05
+  [Epoch 6/20] Step 30/250 | Loss: 0.8366 | L_sec: 0.4232 | L_mask: 0.0758 | LR: 8.48e-05
+  [Epoch 6/20] Step 40/250 | Loss: 0.5682 | L_sec: 0.4404 | L_mask: 0.0528 | LR: 8.46e-05
+  [Epoch 6/20] Step 50/250 | Loss: 0.6321 | L_sec: 0.8013 | L_mask: 0.0267 | LR: 8.44e-05
+  [Epoch 6/20] Step 60/250 | Loss: 0.7843 | L_sec: 0.5833 | L_mask: 0.0263 | LR: 8.42e-05
+  [Epoch 6/20] Step 70/250 | Loss: 0.8327 | L_sec: 0.8750 | L_mask: 0.3290 | LR: 8.39e-05
+  [Epoch 6/20] Step 80/250 | Loss: 0.8754 | L_sec: 1.0839 | L_mask: 0.2167 | LR: 8.37e-05
+  [Epoch 6/20] Step 90/250 | Loss: 0.5174 | L_sec: 0.4848 | L_mask: 0.0609 | LR: 8.35e-05
+  [Epoch 6/20] Step 100/250 | Loss: 1.0781 | L_sec: 0.3270 | L_mask: 0.1012 | LR: 8.32e-05
+  [Epoch 6/20] Step 110/250 | Loss: 0.7786 | L_sec: 0.9170 | L_mask: 0.0826 | LR: 8.30e-05
+  [Epoch 6/20] Step 120/250 | Loss: 0.5920 | L_sec: 0.5043 | L_mask: 0.0415 | LR: 8.28e-05
+  [Epoch 6/20] Step 130/250 | Loss: 0.6071 | L_sec: 0.7038 | L_mask: 0.0521 | LR: 8.25e-05
+  [Epoch 6/20] Step 140/250 | Loss: 0.6223 | L_sec: 0.4494 | L_mask: 0.0577 | LR: 8.23e-05
+  [Epoch 6/20] Step 150/250 | Loss: 0.4915 | L_sec: 0.3826 | L_mask: 0.0890 | LR: 8.21e-05
+  [Epoch 6/20] Step 160/250 | Loss: 0.5457 | L_sec: 0.9979 | L_mask: 0.0286 | LR: 8.18e-05
+  [Epoch 6/20] Step 170/250 | Loss: 0.6313 | L_sec: 1.7667 | L_mask: 0.0356 | LR: 8.16e-05
+  [Epoch 6/20] Step 180/250 | Loss: 0.6545 | L_sec: 1.0527 | L_mask: 0.1002 | LR: 8.13e-05
+  [Epoch 6/20] Step 190/250 | Loss: 0.4477 | L_sec: 0.3670 | L_mask: 0.0565 | LR: 8.11e-05
+  [Epoch 6/20] Step 200/250 | Loss: 0.4603 | L_sec: 0.3460 | L_mask: 0.0731 | LR: 8.08e-05
+  [Epoch 6/20] Step 210/250 | Loss: 0.5132 | L_sec: 0.7371 | L_mask: 0.1702 | LR: 8.06e-05
+  [Epoch 6/20] Step 220/250 | Loss: 0.5858 | L_sec: 0.6201 | L_mask: 0.0448 | LR: 8.03e-05
+  [Epoch 6/20] Step 230/250 | Loss: 0.6000 | L_sec: 0.4676 | L_mask: 0.0826 | LR: 8.01e-05
+  [Epoch 6/20] Step 240/250 | Loss: 0.6215 | L_sec: 1.0930 | L_mask: 0.0226 | LR: 7.98e-05
+  [Epoch 6/20] Step 250/250 | Loss: 0.5459 | L_sec: 0.3899 | L_mask: 0.0328 | LR: 7.96e-05
+
+  Epoch 6 done in 562s | Avg loss: 0.6671
+  VAL | Chamfer-NL: 1.0058 | Chamfer-L: 4.9098 | Mask-Acc: 0.975
+  [Epoch 7/20] Step 10/250 | Loss: 0.5135 | L_sec: 0.5517 | L_mask: 0.0235 | LR: 7.93e-05
+  [Epoch 7/20] Step 20/250 | Loss: 0.6640 | L_sec: 0.4860 | L_mask: 0.0422 | LR: 7.91e-05
+  [Epoch 7/20] Step 30/250 | Loss: 0.6225 | L_sec: 0.4303 | L_mask: 0.0595 | LR: 7.88e-05
+  [Epoch 7/20] Step 40/250 | Loss: 0.5223 | L_sec: 0.3119 | L_mask: 0.0528 | LR: 7.86e-05
+  [Epoch 7/20] Step 50/250 | Loss: 0.5724 | L_sec: 0.4987 | L_mask: 0.1027 | LR: 7.83e-05
+  [Epoch 7/20] Step 60/250 | Loss: 0.6042 | L_sec: 0.3141 | L_mask: 0.0375 | LR: 7.81e-05
+  [Epoch 7/20] Step 70/250 | Loss: 0.7624 | L_sec: 0.3509 | L_mask: 0.0132 | LR: 7.78e-05
+  [Epoch 7/20] Step 80/250 | Loss: 0.8199 | L_sec: 0.3000 | L_mask: 0.0056 | LR: 7.75e-05
+  [Epoch 7/20] Step 90/250 | Loss: 0.5153 | L_sec: 0.5787 | L_mask: 0.0322 | LR: 7.73e-05
+  [Epoch 7/20] Step 100/250 | Loss: 0.7678 | L_sec: 2.7199 | L_mask: 0.0611 | LR: 7.70e-05
+  [Epoch 7/20] Step 110/250 | Loss: 0.5274 | L_sec: 0.3214 | L_mask: 0.0230 | LR: 7.68e-05
+  [Epoch 7/20] Step 120/250 | Loss: 0.6066 | L_sec: 1.9106 | L_mask: 0.0619 | LR: 7.65e-05
+  [Epoch 7/20] Step 130/250 | Loss: 0.3941 | L_sec: 0.3816 | L_mask: 0.0530 | LR: 7.62e-05
+  [Epoch 7/20] Step 140/250 | Loss: 0.6931 | L_sec: 0.7547 | L_mask: 0.1618 | LR: 7.60e-05
+  [Epoch 7/20] Step 150/250 | Loss: 0.4840 | L_sec: 0.2663 | L_mask: 0.0628 | LR: 7.57e-05
+  [Epoch 7/20] Step 160/250 | Loss: 0.6015 | L_sec: 0.3956 | L_mask: 0.0016 | LR: 7.54e-05
+  [Epoch 7/20] Step 170/250 | Loss: 0.5328 | L_sec: 0.2772 | L_mask: 0.0315 | LR: 7.52e-05
+  [Epoch 7/20] Step 180/250 | Loss: 0.5676 | L_sec: 0.4453 | L_mask: 0.0605 | LR: 7.49e-05
+  [Epoch 7/20] Step 190/250 | Loss: 0.5706 | L_sec: 0.2963 | L_mask: 0.0701 | LR: 7.46e-05
+  [Epoch 7/20] Step 200/250 | Loss: 0.7727 | L_sec: 1.4586 | L_mask: 0.1156 | LR: 7.43e-05
+  [Epoch 7/20] Step 210/250 | Loss: 0.6033 | L_sec: 0.7069 | L_mask: 0.1782 | LR: 7.41e-05
+  [Epoch 7/20] Step 220/250 | Loss: 0.6192 | L_sec: 0.2323 | L_mask: 0.0337 | LR: 7.38e-05
+  [Epoch 7/20] Step 230/250 | Loss: 0.4538 | L_sec: 0.4094 | L_mask: 0.0087 | LR: 7.35e-05
+  [Epoch 7/20] Step 240/250 | Loss: 0.4976 | L_sec: 0.4599 | L_mask: 0.0343 | LR: 7.32e-05
+  [Epoch 7/20] Step 250/250 | Loss: 0.5260 | L_sec: 0.4548 | L_mask: 0.0324 | LR: 7.30e-05
+
+  Epoch 7 done in 563s | Avg loss: 0.5926
+  [Epoch 8/20] Step 10/250 | Loss: 0.4549 | L_sec: 0.4500 | L_mask: 0.0183 | LR: 7.27e-05
+  [Epoch 8/20] Step 20/250 | Loss: 0.4712 | L_sec: 0.4034 | L_mask: 0.0685 | LR: 7.24e-05
+  [Epoch 8/20] Step 30/250 | Loss: 0.5894 | L_sec: 0.4010 | L_mask: 0.0553 | LR: 7.21e-05
+  [Epoch 8/20] Step 40/250 | Loss: 0.6086 | L_sec: 0.5630 | L_mask: 0.0561 | LR: 7.19e-05
+  [Epoch 8/20] Step 50/250 | Loss: 0.7164 | L_sec: 0.5411 | L_mask: 0.0785 | LR: 7.16e-05
+  [Epoch 8/20] Step 60/250 | Loss: 0.7518 | L_sec: 0.9003 | L_mask: 0.1421 | LR: 7.13e-05
+  [Epoch 8/20] Step 70/250 | Loss: 0.5615 | L_sec: 0.4373 | L_mask: 0.0858 | LR: 7.10e-05
+  [Epoch 8/20] Step 80/250 | Loss: 0.4365 | L_sec: 0.3361 | L_mask: 0.0844 | LR: 7.07e-05
+  [Epoch 8/20] Step 90/250 | Loss: 0.5328 | L_sec: 0.2275 | L_mask: 0.0386 | LR: 7.04e-05
+  [Epoch 8/20] Step 100/250 | Loss: 0.4775 | L_sec: 0.2269 | L_mask: 0.0531 | LR: 7.02e-05
+  [Epoch 8/20] Step 110/250 | Loss: 0.6166 | L_sec: 0.9700 | L_mask: 0.0353 | LR: 6.99e-05
+  [Epoch 8/20] Step 120/250 | Loss: 0.6001 | L_sec: 0.2310 | L_mask: 0.0496 | LR: 6.96e-05
+  [Epoch 8/20] Step 130/250 | Loss: 0.5123 | L_sec: 1.1572 | L_mask: 0.1334 | LR: 6.93e-05
+  [Epoch 8/20] Step 140/250 | Loss: 0.3980 | L_sec: 0.2214 | L_mask: 0.0445 | LR: 6.90e-05
+  [Epoch 8/20] Step 150/250 | Loss: 0.4958 | L_sec: 0.3060 | L_mask: 0.0195 | LR: 6.87e-05
+  [Epoch 8/20] Step 160/250 | Loss: 0.4731 | L_sec: 0.7905 | L_mask: 0.1383 | LR: 6.84e-05
+  [Epoch 8/20] Step 170/250 | Loss: 0.5582 | L_sec: 0.3638 | L_mask: 0.0435 | LR: 6.81e-05
+  [Epoch 8/20] Step 180/250 | Loss: 0.4307 | L_sec: 0.2858 | L_mask: 0.0177 | LR: 6.79e-05
+  [Epoch 8/20] Step 190/250 | Loss: 0.5657 | L_sec: 0.3802 | L_mask: 0.0459 | LR: 6.76e-05
+  [Epoch 8/20] Step 200/250 | Loss: 0.3758 | L_sec: 0.4209 | L_mask: 0.0715 | LR: 6.73e-05
+  [Epoch 8/20] Step 210/250 | Loss: 0.4910 | L_sec: 0.8690 | L_mask: 0.0532 | LR: 6.70e-05
+  [Epoch 8/20] Step 220/250 | Loss: 0.4847 | L_sec: 0.4958 | L_mask: 0.1060 | LR: 6.67e-05
+  [Epoch 8/20] Step 230/250 | Loss: 0.4174 | L_sec: 0.4998 | L_mask: 0.0674 | LR: 6.64e-05
+  [Epoch 8/20] Step 240/250 | Loss: 0.6175 | L_sec: 0.5492 | L_mask: 0.1024 | LR: 6.61e-05
+  [Epoch 8/20] Step 250/250 | Loss: 0.4325 | L_sec: 0.3380 | L_mask: 0.0574 | LR: 6.58e-05
+
+  Epoch 8 done in 590s | Avg loss: 0.5228
+  VAL | Chamfer-NL: 0.7950 | Chamfer-L: 4.9019 | Mask-Acc: 0.977
+  [Epoch 9/20] Step 10/250 | Loss: 0.4776 | L_sec: 0.3690 | L_mask: 0.0639 | LR: 6.55e-05
+  [Epoch 9/20] Step 20/250 | Loss: 0.3904 | L_sec: 0.4517 | L_mask: 0.0511 | LR: 6.52e-05
+  [Epoch 9/20] Step 30/250 | Loss: 0.4101 | L_sec: 0.5250 | L_mask: 0.0376 | LR: 6.49e-05
+  [Epoch 9/20] Step 40/250 | Loss: 0.5275 | L_sec: 0.4924 | L_mask: 0.1177 | LR: 6.46e-05
+  [Epoch 9/20] Step 50/250 | Loss: 0.3865 | L_sec: 0.3971 | L_mask: 0.0501 | LR: 6.43e-05
+  [Epoch 9/20] Step 60/250 | Loss: 0.4954 | L_sec: 0.3634 | L_mask: 0.0786 | LR: 6.40e-05
+  [Epoch 9/20] Step 70/250 | Loss: 0.5203 | L_sec: 0.2806 | L_mask: 0.0358 | LR: 6.37e-05
+  [Epoch 9/20] Step 80/250 | Loss: 0.5621 | L_sec: 1.7845 | L_mask: 0.0551 | LR: 6.34e-05
+  [Epoch 9/20] Step 90/250 | Loss: 0.4300 | L_sec: 0.2802 | L_mask: 0.0398 | LR: 6.31e-05
+  [Epoch 9/20] Step 100/250 | Loss: 0.4485 | L_sec: 0.2956 | L_mask: 0.0202 | LR: 6.28e-05
+  [Epoch 9/20] Step 110/250 | Loss: 0.3564 | L_sec: 0.2243 | L_mask: 0.0787 | LR: 6.25e-05
+  [Epoch 9/20] Step 120/250 | Loss: 0.5112 | L_sec: 0.3129 | L_mask: 0.0376 | LR: 6.22e-05
+  [Epoch 9/20] Step 130/250 | Loss: 0.4410 | L_sec: 0.3378 | L_mask: 0.0215 | LR: 6.19e-05
+  [Epoch 9/20] Step 140/250 | Loss: 0.3874 | L_sec: 0.3906 | L_mask: 0.0485 | LR: 6.16e-05
+  [Epoch 9/20] Step 150/250 | Loss: 0.3029 | L_sec: 0.2703 | L_mask: 0.0651 | LR: 6.13e-05
+  [Epoch 9/20] Step 160/250 | Loss: 0.3610 | L_sec: 0.2734 | L_mask: 0.0766 | LR: 6.10e-05
+  [Epoch 9/20] Step 170/250 | Loss: 0.3814 | L_sec: 0.3759 | L_mask: 0.0053 | LR: 6.07e-05
+  [Epoch 9/20] Step 180/250 | Loss: 0.5127 | L_sec: 0.4969 | L_mask: 0.0661 | LR: 6.04e-05
+  [Epoch 9/20] Step 190/250 | Loss: 0.4373 | L_sec: 0.4400 | L_mask: 0.0395 | LR: 6.01e-05
+  [Epoch 9/20] Step 200/250 | Loss: 0.5002 | L_sec: 0.2299 | L_mask: 0.0609 | LR: 5.98e-05
+  [Epoch 9/20] Step 210/250 | Loss: 0.5222 | L_sec: 0.3888 | L_mask: 0.0232 | LR: 5.95e-05
+  [Epoch 9/20] Step 220/250 | Loss: 0.3638 | L_sec: 0.5155 | L_mask: 0.0321 | LR: 5.92e-05
+  [Epoch 9/20] Step 230/250 | Loss: 0.4190 | L_sec: 0.5329 | L_mask: 0.1721 | LR: 5.89e-05
+  [Epoch 9/20] Step 240/250 | Loss: 0.3872 | L_sec: 1.2449 | L_mask: 0.1586 | LR: 5.86e-05
+  [Epoch 9/20] Step 250/250 | Loss: 0.4813 | L_sec: 1.1768 | L_mask: 0.1219 | LR: 5.82e-05
+
+  Epoch 9 done in 578s | Avg loss: 0.4405
+  [Epoch 10/20] Step 10/250 | Loss: 0.2890 | L_sec: 0.3344 | L_mask: 0.0374 | LR: 5.79e-05
+  [Epoch 10/20] Step 20/250 | Loss: 0.5251 | L_sec: 1.0027 | L_mask: 0.0674 | LR: 5.76e-05
+  [Epoch 10/20] Step 30/250 | Loss: 0.5484 | L_sec: 0.3409 | L_mask: 0.0977 | LR: 5.73e-05
+  [Epoch 10/20] Step 40/250 | Loss: 0.4430 | L_sec: 0.2285 | L_mask: 0.0151 | LR: 5.70e-05
+  [Epoch 10/20] Step 50/250 | Loss: 0.4806 | L_sec: 0.2926 | L_mask: 0.0459 | LR: 5.67e-05
+  [Epoch 10/20] Step 60/250 | Loss: 0.4189 | L_sec: 0.2781 | L_mask: 0.0598 | LR: 5.64e-05
+  [Epoch 10/20] Step 70/250 | Loss: 0.3653 | L_sec: 0.2156 | L_mask: 0.0122 | LR: 5.61e-05
+  [Epoch 10/20] Step 80/250 | Loss: 0.4382 | L_sec: 0.1893 | L_mask: 0.0188 | LR: 5.58e-05
+  [Epoch 10/20] Step 90/250 | Loss: 0.4867 | L_sec: 0.5042 | L_mask: 0.0049 | LR: 5.55e-05
+  [Epoch 10/20] Step 100/250 | Loss: 0.4641 | L_sec: 0.4608 | L_mask: 0.0373 | LR: 5.52e-05
+  [Epoch 10/20] Step 110/250 | Loss: 0.3762 | L_sec: 0.2787 | L_mask: 0.0408 | LR: 5.48e-05
+  [Epoch 10/20] Step 120/250 | Loss: 0.3831 | L_sec: 1.0614 | L_mask: 0.2047 | LR: 5.45e-05
+  [Epoch 10/20] Step 130/250 | Loss: 0.3223 | L_sec: 0.1862 | L_mask: 0.0282 | LR: 5.42e-05
+  [Epoch 10/20] Step 140/250 | Loss: 0.5279 | L_sec: 0.3725 | L_mask: 0.0347 | LR: 5.39e-05
+  [Epoch 10/20] Step 150/250 | Loss: 0.3233 | L_sec: 0.2370 | L_mask: 0.0710 | LR: 5.36e-05
+  [Epoch 10/20] Step 160/250 | Loss: 0.2672 | L_sec: 0.2390 | L_mask: 0.0550 | LR: 5.33e-05
+  [Epoch 10/20] Step 170/250 | Loss: 0.4494 | L_sec: 0.8319 | L_mask: 0.0543 | LR: 5.30e-05
+  [Epoch 10/20] Step 180/250 | Loss: 0.3150 | L_sec: 0.2593 | L_mask: 0.0454 | LR: 5.27e-05
+  [Epoch 10/20] Step 190/250 | Loss: 0.5573 | L_sec: 0.2480 | L_mask: 0.0377 | LR: 5.24e-05
+  [Epoch 10/20] Step 200/250 | Loss: 0.3422 | L_sec: 0.3179 | L_mask: 0.0159 | LR: 5.21e-05
+  [Epoch 10/20] Step 210/250 | Loss: 0.2959 | L_sec: 0.3027 | L_mask: 0.0591 | LR: 5.17e-05
+  [Epoch 10/20] Step 220/250 | Loss: 0.4838 | L_sec: 0.3481 | L_mask: 0.0116 | LR: 5.14e-05
+  [Epoch 10/20] Step 230/250 | Loss: 0.4602 | L_sec: 0.3832 | L_mask: 0.0642 | LR: 5.11e-05
+  [Epoch 10/20] Step 240/250 | Loss: 0.3208 | L_sec: 0.1858 | L_mask: 0.0020 | LR: 5.08e-05
+  [Epoch 10/20] Step 250/250 | Loss: 0.3763 | L_sec: 0.3957 | L_mask: 0.0501 | LR: 5.05e-05
+
+  Epoch 10 done in 584s | Avg loss: 0.4104
+  VAL | Chamfer-NL: 0.8202 | Chamfer-L: 4.8883 | Mask-Acc: 0.981
+  Saved checkpoint: /mnt/afs/zhengmingkai/hhy/ReconDepthHoles/checkpoints/pilot_epoch010.pt
+  [Epoch 11/20] Step 10/250 | Loss: 0.4130 | L_sec: 0.5877 | L_mask: 0.0532 | LR: 5.02e-05
+  [Epoch 11/20] Step 20/250 | Loss: 0.2860 | L_sec: 0.3188 | L_mask: 0.0197 | LR: 4.99e-05
+  [Epoch 11/20] Step 30/250 | Loss: 0.3703 | L_sec: 0.2520 | L_mask: 0.0222 | LR: 4.96e-05
+  [Epoch 11/20] Step 40/250 | Loss: 0.4484 | L_sec: 0.5142 | L_mask: 0.0503 | LR: 4.93e-05
+  [Epoch 11/20] Step 50/250 | Loss: 0.4258 | L_sec: 0.5238 | L_mask: 0.1729 | LR: 4.89e-05
+  [Epoch 11/20] Step 60/250 | Loss: 0.3343 | L_sec: 0.2833 | L_mask: 0.0479 | LR: 4.86e-05
+  [Epoch 11/20] Step 70/250 | Loss: 0.3745 | L_sec: 0.2993 | L_mask: 0.0305 | LR: 4.83e-05
+  [Epoch 11/20] Step 80/250 | Loss: 0.5661 | L_sec: 1.6726 | L_mask: 0.0585 | LR: 4.80e-05
+  [Epoch 11/20] Step 90/250 | Loss: 0.3472 | L_sec: 0.1892 | L_mask: 0.0233 | LR: 4.77e-05
+  [Epoch 11/20] Step 100/250 | Loss: 0.3637 | L_sec: 0.5459 | L_mask: 0.0678 | LR: 4.74e-05
+  [Epoch 11/20] Step 110/250 | Loss: 0.4178 | L_sec: 0.2435 | L_mask: 0.0046 | LR: 4.71e-05
+  [Epoch 11/20] Step 120/250 | Loss: 0.2652 | L_sec: 0.2167 | L_mask: 0.0414 | LR: 4.68e-05
+  [Epoch 11/20] Step 130/250 | Loss: 0.4045 | L_sec: 0.3659 | L_mask: 0.0381 | LR: 4.65e-05
+  [Epoch 11/20] Step 140/250 | Loss: 0.3371 | L_sec: 0.7541 | L_mask: 0.0659 | LR: 4.62e-05
+  [Epoch 11/20] Step 150/250 | Loss: 0.3502 | L_sec: 0.3544 | L_mask: 0.0103 | LR: 4.58e-05
+  [Epoch 11/20] Step 160/250 | Loss: 0.3391 | L_sec: 0.8369 | L_mask: 0.0919 | LR: 4.55e-05
+  [Epoch 11/20] Step 170/250 | Loss: 0.3997 | L_sec: 0.7573 | L_mask: 0.1585 | LR: 4.52e-05
+  [Epoch 11/20] Step 180/250 | Loss: 0.3259 | L_sec: 0.2339 | L_mask: 0.0171 | LR: 4.49e-05
+  [Epoch 11/20] Step 190/250 | Loss: 0.3158 | L_sec: 0.2529 | L_mask: 0.0701 | LR: 4.46e-05
+  [Epoch 11/20] Step 200/250 | Loss: 0.4173 | L_sec: 0.2267 | L_mask: 0.0128 | LR: 4.43e-05
+  [Epoch 11/20] Step 210/250 | Loss: 0.2994 | L_sec: 0.2721 | L_mask: 0.0299 | LR: 4.40e-05
+  [Epoch 11/20] Step 220/250 | Loss: 0.2764 | L_sec: 0.2003 | L_mask: 0.0445 | LR: 4.37e-05
+  [Epoch 11/20] Step 230/250 | Loss: 0.3124 | L_sec: 0.1904 | L_mask: 0.0275 | LR: 4.34e-05
+  [Epoch 11/20] Step 240/250 | Loss: 0.2956 | L_sec: 0.5242 | L_mask: 0.0899 | LR: 4.31e-05
+  [Epoch 11/20] Step 250/250 | Loss: 0.5099 | L_sec: 0.2459 | L_mask: 0.0205 | LR: 4.28e-05
+
+  Epoch 11 done in 624s | Avg loss: 0.3678
+  [Epoch 12/20] Step 10/250 | Loss: 0.3953 | L_sec: 0.2670 | L_mask: 0.0444 | LR: 4.24e-05
+  [Epoch 12/20] Step 20/250 | Loss: 0.3975 | L_sec: 0.6100 | L_mask: 0.1067 | LR: 4.21e-05
+  [Epoch 12/20] Step 30/250 | Loss: 0.2847 | L_sec: 0.3245 | L_mask: 0.0111 | LR: 4.18e-05
+  [Epoch 12/20] Step 40/250 | Loss: 0.4545 | L_sec: 0.2001 | L_mask: 0.0403 | LR: 4.15e-05
+  [Epoch 12/20] Step 50/250 | Loss: 0.3397 | L_sec: 0.2914 | L_mask: 0.0511 | LR: 4.12e-05
+  [Epoch 12/20] Step 60/250 | Loss: 0.3626 | L_sec: 0.2067 | L_mask: 0.0024 | LR: 4.09e-05
+  [Epoch 12/20] Step 70/250 | Loss: 0.2996 | L_sec: 0.2097 | L_mask: 0.0380 | LR: 4.06e-05
+  [Epoch 12/20] Step 80/250 | Loss: 0.3548 | L_sec: 0.2822 | L_mask: 0.0481 | LR: 4.03e-05
+  [Epoch 12/20] Step 90/250 | Loss: 0.3255 | L_sec: 0.2601 | L_mask: 0.0504 | LR: 4.00e-05
+  [Epoch 12/20] Step 100/250 | Loss: 0.4155 | L_sec: 0.3191 | L_mask: 0.0070 | LR: 3.97e-05
+  [Epoch 12/20] Step 110/250 | Loss: 0.3155 | L_sec: 0.5286 | L_mask: 0.0339 | LR: 3.94e-05
+  [Epoch 12/20] Step 120/250 | Loss: 0.3654 | L_sec: 0.2655 | L_mask: 0.0064 | LR: 3.91e-05
+  [Epoch 12/20] Step 130/250 | Loss: 0.4912 | L_sec: 0.2548 | L_mask: 0.0190 | LR: 3.88e-05
+  [Epoch 12/20] Step 140/250 | Loss: 0.2496 | L_sec: 0.2667 | L_mask: 0.0356 | LR: 3.85e-05
+  [Epoch 12/20] Step 150/250 | Loss: 0.5055 | L_sec: 0.2269 | L_mask: 0.0802 | LR: 3.82e-05
+  [Epoch 12/20] Step 160/250 | Loss: 0.3929 | L_sec: 0.2287 | L_mask: 0.0543 | LR: 3.79e-05
+  [Epoch 12/20] Step 170/250 | Loss: 0.3385 | L_sec: 0.1636 | L_mask: 0.0329 | LR: 3.76e-05
+  [Epoch 12/20] Step 180/250 | Loss: 0.4314 | L_sec: 0.2160 | L_mask: 0.0267 | LR: 3.73e-05
+  [Epoch 12/20] Step 190/250 | Loss: 0.4137 | L_sec: 0.3383 | L_mask: 0.0059 | LR: 3.70e-05
+  [Epoch 12/20] Step 200/250 | Loss: 0.2663 | L_sec: 0.3027 | L_mask: 0.0705 | LR: 3.67e-05
+  [Epoch 12/20] Step 210/250 | Loss: 0.2855 | L_sec: 0.2572 | L_mask: 0.0664 | LR: 3.64e-05
+  [Epoch 12/20] Step 220/250 | Loss: 0.3470 | L_sec: 0.4097 | L_mask: 0.0396 | LR: 3.61e-05
+  [Epoch 12/20] Step 230/250 | Loss: 0.2840 | L_sec: 0.2736 | L_mask: 0.0369 | LR: 3.58e-05
+  [Epoch 12/20] Step 240/250 | Loss: 0.2677 | L_sec: 0.2193 | L_mask: 0.0024 | LR: 3.55e-05
+  [Epoch 12/20] Step 250/250 | Loss: 0.3282 | L_sec: 0.2391 | L_mask: 0.0503 | LR: 3.52e-05
+
+  Epoch 12 done in 619s | Avg loss: 0.3565
+  VAL | Chamfer-NL: 0.5593 | Chamfer-L: 4.9231 | Mask-Acc: 0.982
+  [Epoch 13/20] Step 10/250 | Loss: 0.4092 | L_sec: 0.3081 | L_mask: 0.0466 | LR: 3.49e-05
+  [Epoch 13/20] Step 20/250 | Loss: 0.3706 | L_sec: 0.2702 | L_mask: 0.0086 | LR: 3.46e-05
+  [Epoch 13/20] Step 30/250 | Loss: 0.3641 | L_sec: 0.2119 | L_mask: 0.0380 | LR: 3.43e-05
+  [Epoch 13/20] Step 40/250 | Loss: 0.2625 | L_sec: 0.3185 | L_mask: 0.0338 | LR: 3.40e-05
+  [Epoch 13/20] Step 50/250 | Loss: 0.2833 | L_sec: 0.2583 | L_mask: 0.0513 | LR: 3.37e-05
+  [Epoch 13/20] Step 60/250 | Loss: 0.2547 | L_sec: 0.1687 | L_mask: 0.0309 | LR: 3.34e-05
+  [Epoch 13/20] Step 70/250 | Loss: 0.2876 | L_sec: 0.1779 | L_mask: 0.0360 | LR: 3.31e-05
+  [Epoch 13/20] Step 80/250 | Loss: 0.2855 | L_sec: 0.4380 | L_mask: 0.0178 | LR: 3.29e-05
+  [Epoch 13/20] Step 90/250 | Loss: 0.3296 | L_sec: 1.0215 | L_mask: 0.0259 | LR: 3.26e-05
+  [Epoch 13/20] Step 100/250 | Loss: 0.3085 | L_sec: 0.1786 | L_mask: 0.0453 | LR: 3.23e-05
+  [Epoch 13/20] Step 110/250 | Loss: 0.3785 | L_sec: 0.2113 | L_mask: 0.0550 | LR: 3.20e-05
+  [Epoch 13/20] Step 120/250 | Loss: 0.3506 | L_sec: 0.2061 | L_mask: 0.0388 | LR: 3.17e-05
+  [Epoch 13/20] Step 130/250 | Loss: 0.3043 | L_sec: 0.4208 | L_mask: 0.0853 | LR: 3.14e-05
+  [Epoch 13/20] Step 140/250 | Loss: 0.2336 | L_sec: 0.1588 | L_mask: 0.0096 | LR: 3.11e-05
+  [Epoch 13/20] Step 150/250 | Loss: 0.2811 | L_sec: 0.2731 | L_mask: 0.0891 | LR: 3.08e-05
+  [Epoch 13/20] Step 160/250 | Loss: 0.2658 | L_sec: 0.1623 | L_mask: 0.0491 | LR: 3.06e-05
+  [Epoch 13/20] Step 170/250 | Loss: 0.2728 | L_sec: 0.2503 | L_mask: 0.0308 | LR: 3.03e-05
+  [Epoch 13/20] Step 180/250 | Loss: 0.4559 | L_sec: 0.1977 | L_mask: 0.0530 | LR: 3.00e-05
+  [Epoch 13/20] Step 190/250 | Loss: 0.2662 | L_sec: 0.2354 | L_mask: 0.0239 | LR: 2.97e-05
+  [Epoch 13/20] Step 200/250 | Loss: 0.2943 | L_sec: 0.4535 | L_mask: 0.1439 | LR: 2.94e-05
+  [Epoch 13/20] Step 210/250 | Loss: 0.2849 | L_sec: 0.2745 | L_mask: 0.0789 | LR: 2.91e-05
+  [Epoch 13/20] Step 220/250 | Loss: 0.3842 | L_sec: 0.2859 | L_mask: 0.0488 | LR: 2.89e-05
+  [Epoch 13/20] Step 230/250 | Loss: 0.3644 | L_sec: 0.4361 | L_mask: 0.0814 | LR: 2.86e-05
+  [Epoch 13/20] Step 240/250 | Loss: 0.2451 | L_sec: 0.2209 | L_mask: 0.0121 | LR: 2.83e-05
+  [Epoch 13/20] Step 250/250 | Loss: 0.2469 | L_sec: 0.2744 | L_mask: 0.0135 | LR: 2.80e-05
+
+  Epoch 13 done in 576s | Avg loss: 0.3114
+  [Epoch 14/20] Step 10/250 | Loss: 0.3909 | L_sec: 0.3498 | L_mask: 0.0684 | LR: 2.78e-05
+  [Epoch 14/20] Step 20/250 | Loss: 0.2843 | L_sec: 0.1823 | L_mask: 0.0455 | LR: 2.75e-05
+  [Epoch 14/20] Step 30/250 | Loss: 0.2593 | L_sec: 0.1985 | L_mask: 0.0859 | LR: 2.72e-05
+  [Epoch 14/20] Step 40/250 | Loss: 0.2144 | L_sec: 0.1811 | L_mask: 0.0372 | LR: 2.69e-05
+  [Epoch 14/20] Step 50/250 | Loss: 0.2592 | L_sec: 0.1490 | L_mask: 0.0098 | LR: 2.67e-05
+  [Epoch 14/20] Step 60/250 | Loss: 0.2170 | L_sec: 0.2291 | L_mask: 0.0216 | LR: 2.64e-05
+  [Epoch 14/20] Step 70/250 | Loss: 0.2650 | L_sec: 0.1797 | L_mask: 0.0024 | LR: 2.61e-05
+  [Epoch 14/20] Step 80/250 | Loss: 0.2193 | L_sec: 0.2176 | L_mask: 0.0527 | LR: 2.58e-05
+  [Epoch 14/20] Step 90/250 | Loss: 0.2199 | L_sec: 0.2539 | L_mask: 0.0665 | LR: 2.56e-05
+  [Epoch 14/20] Step 100/250 | Loss: 0.2525 | L_sec: 0.2433 | L_mask: 0.0428 | LR: 2.53e-05
+  [Epoch 14/20] Step 110/250 | Loss: 0.2643 | L_sec: 0.2338 | L_mask: 0.0057 | LR: 2.50e-05
+  [Epoch 14/20] Step 120/250 | Loss: 0.3616 | L_sec: 0.2741 | L_mask: 0.0419 | LR: 2.48e-05
+  [Epoch 14/20] Step 130/250 | Loss: 0.2905 | L_sec: 0.2794 | L_mask: 0.0195 | LR: 2.45e-05
+  [Epoch 14/20] Step 140/250 | Loss: 0.3137 | L_sec: 0.1665 | L_mask: 0.0273 | LR: 2.42e-05
+  [Epoch 14/20] Step 150/250 | Loss: 0.2274 | L_sec: 0.4303 | L_mask: 0.0806 | LR: 2.40e-05
+  [Epoch 14/20] Step 160/250 | Loss: 0.1975 | L_sec: 0.1546 | L_mask: 0.0211 | LR: 2.37e-05
+  [Epoch 14/20] Step 170/250 | Loss: 0.2884 | L_sec: 0.1894 | L_mask: 0.0474 | LR: 2.35e-05
+  [Epoch 14/20] Step 180/250 | Loss: 0.3292 | L_sec: 0.2562 | L_mask: 0.0320 | LR: 2.32e-05
+  [Epoch 14/20] Step 190/250 | Loss: 0.2885 | L_sec: 0.4294 | L_mask: 0.0336 | LR: 2.29e-05
+  [Epoch 14/20] Step 200/250 | Loss: 0.2286 | L_sec: 0.2607 | L_mask: 0.0687 | LR: 2.27e-05
+  [Epoch 14/20] Step 210/250 | Loss: 0.2813 | L_sec: 0.4436 | L_mask: 0.0821 | LR: 2.24e-05
+  [Epoch 14/20] Step 220/250 | Loss: 0.3441 | L_sec: 1.1005 | L_mask: 0.0957 | LR: 2.22e-05
+  [Epoch 14/20] Step 230/250 | Loss: 0.2859 | L_sec: 0.2351 | L_mask: 0.0186 | LR: 2.19e-05
+  [Epoch 14/20] Step 240/250 | Loss: 0.2811 | L_sec: 0.4209 | L_mask: 0.1420 | LR: 2.17e-05
+  [Epoch 14/20] Step 250/250 | Loss: 0.2494 | L_sec: 0.2224 | L_mask: 0.0744 | LR: 2.14e-05
+
+  Epoch 14 done in 586s | Avg loss: 0.2725
+  VAL | Chamfer-NL: 0.5110 | Chamfer-L: 4.8825 | Mask-Acc: 0.983
+  [Epoch 15/20] Step 10/250 | Loss: 0.3602 | L_sec: 0.2403 | L_mask: 0.0414 | LR: 2.12e-05
+  [Epoch 15/20] Step 20/250 | Loss: 0.2323 | L_sec: 0.3587 | L_mask: 0.0037 | LR: 2.09e-05
+  [Epoch 15/20] Step 30/250 | Loss: 0.2311 | L_sec: 0.1723 | L_mask: 0.0109 | LR: 2.07e-05
+  [Epoch 15/20] Step 40/250 | Loss: 0.2488 | L_sec: 0.1457 | L_mask: 0.0339 | LR: 2.04e-05
+  [Epoch 15/20] Step 50/250 | Loss: 0.2644 | L_sec: 0.2073 | L_mask: 0.0153 | LR: 2.02e-05
+  [Epoch 15/20] Step 60/250 | Loss: 0.2653 | L_sec: 0.2369 | L_mask: 0.0368 | LR: 1.99e-05
+  [Epoch 15/20] Step 70/250 | Loss: 0.2274 | L_sec: 0.2004 | L_mask: 0.0244 | LR: 1.97e-05
+  [Epoch 15/20] Step 80/250 | Loss: 0.2252 | L_sec: 0.1865 | L_mask: 0.0503 | LR: 1.94e-05
+  [Epoch 15/20] Step 90/250 | Loss: 0.2993 | L_sec: 0.6265 | L_mask: 0.0270 | LR: 1.92e-05
+  [Epoch 15/20] Step 100/250 | Loss: 0.2501 | L_sec: 0.1900 | L_mask: 0.0482 | LR: 1.89e-05
+  [Epoch 15/20] Step 110/250 | Loss: 0.3158 | L_sec: 0.1789 | L_mask: 0.0297 | LR: 1.87e-05
+  [Epoch 15/20] Step 120/250 | Loss: 0.3316 | L_sec: 0.2346 | L_mask: 0.0587 | LR: 1.85e-05
+  [Epoch 15/20] Step 130/250 | Loss: 0.2560 | L_sec: 0.1354 | L_mask: 0.0083 | LR: 1.82e-05
+  [Epoch 15/20] Step 140/250 | Loss: 0.2491 | L_sec: 0.1569 | L_mask: 0.0365 | LR: 1.80e-05
+  [Epoch 15/20] Step 150/250 | Loss: 0.2039 | L_sec: 0.2422 | L_mask: 0.0381 | LR: 1.78e-05
+  [Epoch 15/20] Step 160/250 | Loss: 0.2574 | L_sec: 0.1485 | L_mask: 0.0119 | LR: 1.75e-05
+  [Epoch 15/20] Step 170/250 | Loss: 0.3809 | L_sec: 0.4813 | L_mask: 0.0331 | LR: 1.73e-05
+  [Epoch 15/20] Step 180/250 | Loss: 0.3026 | L_sec: 0.2836 | L_mask: 0.0494 | LR: 1.71e-05
+  [Epoch 15/20] Step 190/250 | Loss: 0.2459 | L_sec: 0.4834 | L_mask: 0.1191 | LR: 1.68e-05
+  [Epoch 15/20] Step 200/250 | Loss: 0.2542 | L_sec: 0.2298 | L_mask: 0.0305 | LR: 1.66e-05
+  [Epoch 15/20] Step 210/250 | Loss: 0.2627 | L_sec: 0.2457 | L_mask: 0.0262 | LR: 1.64e-05
+  [Epoch 15/20] Step 220/250 | Loss: 0.2254 | L_sec: 0.1949 | L_mask: 0.0439 | LR: 1.62e-05
+  [Epoch 15/20] Step 230/250 | Loss: 0.2499 | L_sec: 0.2395 | L_mask: 0.0590 | LR: 1.59e-05
+  [Epoch 15/20] Step 240/250 | Loss: 0.3088 | L_sec: 0.1624 | L_mask: 0.0205 | LR: 1.57e-05
+  [Epoch 15/20] Step 250/250 | Loss: 0.2872 | L_sec: 0.2029 | L_mask: 0.0267 | LR: 1.55e-05
+
+  Epoch 15 done in 575s | Avg loss: 0.2694
+  Saved checkpoint: /mnt/afs/zhengmingkai/hhy/ReconDepthHoles/checkpoints/pilot_epoch015.pt
+  [Epoch 16/20] Step 10/250 | Loss: 0.2359 | L_sec: 0.1773 | L_mask: 0.0311 | LR: 1.53e-05
+  [Epoch 16/20] Step 20/250 | Loss: 0.2115 | L_sec: 0.1724 | L_mask: 0.0025 | LR: 1.51e-05
+  [Epoch 16/20] Step 30/250 | Loss: 0.2061 | L_sec: 0.1776 | L_mask: 0.0464 | LR: 1.48e-05
+  [Epoch 16/20] Step 40/250 | Loss: 0.2790 | L_sec: 0.1872 | L_mask: 0.0298 | LR: 1.46e-05
+  [Epoch 16/20] Step 50/250 | Loss: 0.2946 | L_sec: 0.1992 | L_mask: 0.0544 | LR: 1.44e-05
+  [Epoch 16/20] Step 60/250 | Loss: 0.2218 | L_sec: 0.4639 | L_mask: 0.1679 | LR: 1.42e-05
+  [Epoch 16/20] Step 70/250 | Loss: 0.2686 | L_sec: 0.2017 | L_mask: 0.0402 | LR: 1.40e-05
+  [Epoch 16/20] Step 80/250 | Loss: 0.3002 | L_sec: 0.2696 | L_mask: 0.1031 | LR: 1.38e-05
+  [Epoch 16/20] Step 90/250 | Loss: 0.3133 | L_sec: 0.1464 | L_mask: 0.0348 | LR: 1.36e-05
+  [Epoch 16/20] Step 100/250 | Loss: 0.2137 | L_sec: 0.1832 | L_mask: 0.0642 | LR: 1.34e-05
+  [Epoch 16/20] Step 110/250 | Loss: 0.2332 | L_sec: 0.1898 | L_mask: 0.0201 | LR: 1.32e-05
+  [Epoch 16/20] Step 120/250 | Loss: 0.2196 | L_sec: 0.1889 | L_mask: 0.0096 | LR: 1.30e-05
+  [Epoch 16/20] Step 130/250 | Loss: 0.2352 | L_sec: 0.4564 | L_mask: 0.0794 | LR: 1.28e-05
+  [Epoch 16/20] Step 140/250 | Loss: 0.2971 | L_sec: 0.2060 | L_mask: 0.0164 | LR: 1.26e-05
+  [Epoch 16/20] Step 150/250 | Loss: 0.2286 | L_sec: 0.1758 | L_mask: 0.0435 | LR: 1.24e-05
+  [Epoch 16/20] Step 160/250 | Loss: 0.2105 | L_sec: 0.1494 | L_mask: 0.0430 | LR: 1.22e-05
+  [Epoch 16/20] Step 170/250 | Loss: 0.2113 | L_sec: 0.1638 | L_mask: 0.0603 | LR: 1.20e-05
+  [Epoch 16/20] Step 180/250 | Loss: 0.2239 | L_sec: 0.1425 | L_mask: 0.0018 | LR: 1.18e-05
+  [Epoch 16/20] Step 190/250 | Loss: 0.3108 | L_sec: 0.2111 | L_mask: 0.0107 | LR: 1.16e-05
+  [Epoch 16/20] Step 200/250 | Loss: 0.3441 | L_sec: 0.1515 | L_mask: 0.0269 | LR: 1.14e-05
+  [Epoch 16/20] Step 210/250 | Loss: 0.2614 | L_sec: 0.1908 | L_mask: 0.0539 | LR: 1.12e-05
+  [Epoch 16/20] Step 220/250 | Loss: 0.2033 | L_sec: 0.1237 | L_mask: 0.0177 | LR: 1.10e-05
+  [Epoch 16/20] Step 230/250 | Loss: 0.3038 | L_sec: 0.4028 | L_mask: 0.0887 | LR: 1.08e-05
+  [Epoch 16/20] Step 240/250 | Loss: 0.2098 | L_sec: 0.2809 | L_mask: 0.0426 | LR: 1.06e-05
+  [Epoch 16/20] Step 250/250 | Loss: 0.2269 | L_sec: 0.3884 | L_mask: 0.0412 | LR: 1.05e-05
+
+  Epoch 16 done in 577s | Avg loss: 0.2506
+  VAL | Chamfer-NL: 0.4759 | Chamfer-L: 4.9095 | Mask-Acc: 0.985
+  [Epoch 17/20] Step 10/250 | Loss: 0.2813 | L_sec: 0.2806 | L_mask: 0.0467 | LR: 1.03e-05
+  [Epoch 17/20] Step 20/250 | Loss: 0.1701 | L_sec: 0.1324 | L_mask: 0.0208 | LR: 1.01e-05
+  [Epoch 17/20] Step 30/250 | Loss: 0.2208 | L_sec: 0.2447 | L_mask: 0.0743 | LR: 9.91e-06
+  [Epoch 17/20] Step 40/250 | Loss: 0.4100 | L_sec: 0.4514 | L_mask: 0.1984 | LR: 9.74e-06
+  [Epoch 17/20] Step 50/250 | Loss: 0.2393 | L_sec: 0.1596 | L_mask: 0.0372 | LR: 9.56e-06
+  [Epoch 17/20] Step 60/250 | Loss: 0.3061 | L_sec: 0.3590 | L_mask: 0.0622 | LR: 9.39e-06
+  [Epoch 17/20] Step 70/250 | Loss: 0.2342 | L_sec: 0.2937 | L_mask: 0.0125 | LR: 9.21e-06
+  [Epoch 17/20] Step 80/250 | Loss: 0.2294 | L_sec: 0.2243 | L_mask: 0.0308 | LR: 9.04e-06
+  [Epoch 17/20] Step 90/250 | Loss: 0.2240 | L_sec: 0.1612 | L_mask: 0.0028 | LR: 8.87e-06
+  [Epoch 17/20] Step 100/250 | Loss: 0.2193 | L_sec: 0.2120 | L_mask: 0.0029 | LR: 8.71e-06
+  [Epoch 17/20] Step 110/250 | Loss: 0.2741 | L_sec: 0.2620 | L_mask: 0.0378 | LR: 8.54e-06
+  [Epoch 17/20] Step 120/250 | Loss: 0.1504 | L_sec: 0.1282 | L_mask: 0.0122 | LR: 8.38e-06
+  [Epoch 17/20] Step 130/250 | Loss: 0.2628 | L_sec: 0.1886 | L_mask: 0.0295 | LR: 8.21e-06
+  [Epoch 17/20] Step 140/250 | Loss: 0.2523 | L_sec: 0.3181 | L_mask: 0.0018 | LR: 8.05e-06
+  [Epoch 17/20] Step 150/250 | Loss: 0.1693 | L_sec: 0.1262 | L_mask: 0.0081 | LR: 7.89e-06
+  [Epoch 17/20] Step 160/250 | Loss: 0.2547 | L_sec: 0.2366 | L_mask: 0.0096 | LR: 7.74e-06
+  [Epoch 17/20] Step 170/250 | Loss: 0.2878 | L_sec: 0.1652 | L_mask: 0.0151 | LR: 7.58e-06
+  [Epoch 17/20] Step 180/250 | Loss: 0.2814 | L_sec: 0.3942 | L_mask: 0.0720 | LR: 7.43e-06
+  [Epoch 17/20] Step 190/250 | Loss: 0.3112 | L_sec: 0.1786 | L_mask: 0.0286 | LR: 7.27e-06
+  [Epoch 17/20] Step 200/250 | Loss: 0.2001 | L_sec: 0.2268 | L_mask: 0.0143 | LR: 7.12e-06
+  [Epoch 17/20] Step 210/250 | Loss: 0.2002 | L_sec: 0.1941 | L_mask: 0.0143 | LR: 6.97e-06
+  [Epoch 17/20] Step 220/250 | Loss: 0.2147 | L_sec: 0.1808 | L_mask: 0.0271 | LR: 6.83e-06
+  [Epoch 17/20] Step 230/250 | Loss: 0.2696 | L_sec: 0.1509 | L_mask: 0.0413 | LR: 6.68e-06
+  [Epoch 17/20] Step 240/250 | Loss: 0.2466 | L_sec: 0.1203 | L_mask: 0.0111 | LR: 6.54e-06
+  [Epoch 17/20] Step 250/250 | Loss: 0.2008 | L_sec: 0.1355 | L_mask: 0.0242 | LR: 6.40e-06
+
+  Epoch 17 done in 589s | Avg loss: 0.2444
+  [Epoch 18/20] Step 10/250 | Loss: 0.2460 | L_sec: 0.1744 | L_mask: 0.0369 | LR: 6.25e-06
+  [Epoch 18/20] Step 20/250 | Loss: 0.2538 | L_sec: 0.1360 | L_mask: 0.0308 | LR: 6.12e-06
+  [Epoch 18/20] Step 30/250 | Loss: 0.1959 | L_sec: 0.1365 | L_mask: 0.0158 | LR: 5.98e-06
+  [Epoch 18/20] Step 40/250 | Loss: 0.2116 | L_sec: 0.2885 | L_mask: 0.0386 | LR: 5.84e-06
+  [Epoch 18/20] Step 50/250 | Loss: 0.2154 | L_sec: 0.1416 | L_mask: 0.0194 | LR: 5.71e-06
+  [Epoch 18/20] Step 60/250 | Loss: 0.1926 | L_sec: 0.1577 | L_mask: 0.0423 | LR: 5.58e-06
+  [Epoch 18/20] Step 70/250 | Loss: 0.2416 | L_sec: 0.1701 | L_mask: 0.0348 | LR: 5.45e-06
+  [Epoch 18/20] Step 80/250 | Loss: 0.1809 | L_sec: 0.1509 | L_mask: 0.0452 | LR: 5.32e-06
+  [Epoch 18/20] Step 90/250 | Loss: 0.2166 | L_sec: 0.1268 | L_mask: 0.0188 | LR: 5.20e-06
+  [Epoch 18/20] Step 100/250 | Loss: 0.1851 | L_sec: 0.2547 | L_mask: 0.0220 | LR: 5.07e-06
+  [Epoch 18/20] Step 110/250 | Loss: 0.2555 | L_sec: 0.1598 | L_mask: 0.0407 | LR: 4.95e-06
+  [Epoch 18/20] Step 120/250 | Loss: 0.2078 | L_sec: 0.1668 | L_mask: 0.0057 | LR: 4.83e-06
+  [Epoch 18/20] Step 130/250 | Loss: 0.2762 | L_sec: 0.1429 | L_mask: 0.0059 | LR: 4.71e-06
+  [Epoch 18/20] Step 140/250 | Loss: 0.2048 | L_sec: 0.1590 | L_mask: 0.0321 | LR: 4.59e-06
+  [Epoch 18/20] Step 150/250 | Loss: 0.1768 | L_sec: 0.1499 | L_mask: 0.0246 | LR: 4.48e-06
+  [Epoch 18/20] Step 160/250 | Loss: 0.2678 | L_sec: 0.2293 | L_mask: 0.0514 | LR: 4.36e-06
+  [Epoch 18/20] Step 170/250 | Loss: 0.2009 | L_sec: 0.2260 | L_mask: 0.0459 | LR: 4.25e-06
+  [Epoch 18/20] Step 180/250 | Loss: 0.1930 | L_sec: 0.1797 | L_mask: 0.0517 | LR: 4.14e-06
+  [Epoch 18/20] Step 190/250 | Loss: 0.2205 | L_sec: 0.3917 | L_mask: 0.0512 | LR: 4.03e-06
+  [Epoch 18/20] Step 200/250 | Loss: 0.2075 | L_sec: 0.1204 | L_mask: 0.0220 | LR: 3.93e-06
+  [Epoch 18/20] Step 210/250 | Loss: 0.2440 | L_sec: 0.1892 | L_mask: 0.0539 | LR: 3.82e-06
+  [Epoch 18/20] Step 220/250 | Loss: 0.2061 | L_sec: 0.1202 | L_mask: 0.0249 | LR: 3.72e-06
+  [Epoch 18/20] Step 230/250 | Loss: 0.1673 | L_sec: 0.1809 | L_mask: 0.0487 | LR: 3.62e-06
+  [Epoch 18/20] Step 240/250 | Loss: 0.2393 | L_sec: 0.1414 | L_mask: 0.0290 | LR: 3.52e-06
+  [Epoch 18/20] Step 250/250 | Loss: 0.2021 | L_sec: 0.1485 | L_mask: 0.0277 | LR: 3.42e-06
+
+  Epoch 18 done in 586s | Avg loss: 0.2164
+  VAL | Chamfer-NL: 0.3956 | Chamfer-L: 4.8933 | Mask-Acc: 0.986
+  [Epoch 19/20] Step 10/250 | Loss: 0.1967 | L_sec: 0.1843 | L_mask: 0.0594 | LR: 3.33e-06
+  [Epoch 19/20] Step 20/250 | Loss: 0.2025 | L_sec: 0.2522 | L_mask: 0.0522 | LR: 3.23e-06
+  [Epoch 19/20] Step 30/250 | Loss: 0.2500 | L_sec: 0.1919 | L_mask: 0.0438 | LR: 3.14e-06
+  [Epoch 19/20] Step 40/250 | Loss: 0.2358 | L_sec: 0.6112 | L_mask: 0.0342 | LR: 3.05e-06
+  [Epoch 19/20] Step 50/250 | Loss: 0.2178 | L_sec: 0.3413 | L_mask: 0.0343 | LR: 2.97e-06
+  [Epoch 19/20] Step 60/250 | Loss: 0.1972 | L_sec: 0.1184 | L_mask: 0.0195 | LR: 2.88e-06
+  [Epoch 19/20] Step 70/250 | Loss: 0.2086 | L_sec: 0.1262 | L_mask: 0.0260 | LR: 2.80e-06
+  [Epoch 19/20] Step 80/250 | Loss: 0.2091 | L_sec: 0.1654 | L_mask: 0.0290 | LR: 2.71e-06
+  [Epoch 19/20] Step 90/250 | Loss: 0.1899 | L_sec: 0.1704 | L_mask: 0.0374 | LR: 2.63e-06
+  [Epoch 19/20] Step 100/250 | Loss: 0.1925 | L_sec: 0.3444 | L_mask: 0.0756 | LR: 2.56e-06
+  [Epoch 19/20] Step 110/250 | Loss: 0.2203 | L_sec: 0.2970 | L_mask: 0.0591 | LR: 2.48e-06
+  [Epoch 19/20] Step 120/250 | Loss: 0.1794 | L_sec: 0.2731 | L_mask: 0.0372 | LR: 2.40e-06
+  [Epoch 19/20] Step 130/250 | Loss: 0.2918 | L_sec: 0.1461 | L_mask: 0.0013 | LR: 2.33e-06
+  [Epoch 19/20] Step 140/250 | Loss: 0.1820 | L_sec: 0.2346 | L_mask: 0.0304 | LR: 2.26e-06
+  [Epoch 19/20] Step 150/250 | Loss: 0.2155 | L_sec: 0.1676 | L_mask: 0.0609 | LR: 2.19e-06
+  [Epoch 19/20] Step 160/250 | Loss: 0.3204 | L_sec: 0.1909 | L_mask: 0.0196 | LR: 2.13e-06
+  [Epoch 19/20] Step 170/250 | Loss: 0.2518 | L_sec: 0.2099 | L_mask: 0.0091 | LR: 2.06e-06
+  [Epoch 19/20] Step 180/250 | Loss: 0.1946 | L_sec: 0.3930 | L_mask: 0.0681 | LR: 2.00e-06
+  [Epoch 19/20] Step 190/250 | Loss: 0.2169 | L_sec: 0.1597 | L_mask: 0.0180 | LR: 1.94e-06
+  [Epoch 19/20] Step 200/250 | Loss: 0.2470 | L_sec: 0.1082 | L_mask: 0.0318 | LR: 1.88e-06
+  [Epoch 19/20] Step 210/250 | Loss: 0.1885 | L_sec: 0.1318 | L_mask: 0.0301 | LR: 1.82e-06
+  [Epoch 19/20] Step 220/250 | Loss: 0.1747 | L_sec: 0.1951 | L_mask: 0.0479 | LR: 1.76e-06
+  [Epoch 19/20] Step 230/250 | Loss: 0.1991 | L_sec: 0.1419 | L_mask: 0.0107 | LR: 1.71e-06
+  [Epoch 19/20] Step 240/250 | Loss: 0.2708 | L_sec: 0.1750 | L_mask: 0.0427 | LR: 1.66e-06
+  [Epoch 19/20] Step 250/250 | Loss: 0.2043 | L_sec: 0.2191 | L_mask: 0.0347 | LR: 1.61e-06
+
+  Epoch 19 done in 580s | Avg loss: 0.2183
+  [Epoch 20/20] Step 10/250 | Loss: 0.1892 | L_sec: 0.2254 | L_mask: 0.0609 | LR: 1.56e-06
+  [Epoch 20/20] Step 20/250 | Loss: 0.2034 | L_sec: 0.1202 | L_mask: 0.0414 | LR: 1.52e-06
+  [Epoch 20/20] Step 30/250 | Loss: 0.1952 | L_sec: 0.1178 | L_mask: 0.0352 | LR: 1.47e-06
+  [Epoch 20/20] Step 40/250 | Loss: 0.2011 | L_sec: 0.1204 | L_mask: 0.0122 | LR: 1.43e-06
+  [Epoch 20/20] Step 50/250 | Loss: 0.1631 | L_sec: 0.1579 | L_mask: 0.0179 | LR: 1.39e-06
+  [Epoch 20/20] Step 60/250 | Loss: 0.2206 | L_sec: 0.1767 | L_mask: 0.0278 | LR: 1.35e-06
+  [Epoch 20/20] Step 70/250 | Loss: 0.2151 | L_sec: 0.1209 | L_mask: 0.0014 | LR: 1.32e-06
+  [Epoch 20/20] Step 80/250 | Loss: 0.1888 | L_sec: 0.1993 | L_mask: 0.0155 | LR: 1.28e-06
+  [Epoch 20/20] Step 90/250 | Loss: 0.1968 | L_sec: 0.1280 | L_mask: 0.0116 | LR: 1.25e-06
+  [Epoch 20/20] Step 100/250 | Loss: 0.1883 | L_sec: 0.1843 | L_mask: 0.0157 | LR: 1.22e-06
+  [Epoch 20/20] Step 110/250 | Loss: 0.1820 | L_sec: 0.2123 | L_mask: 0.0627 | LR: 1.19e-06
+  [Epoch 20/20] Step 120/250 | Loss: 0.1838 | L_sec: 0.1338 | L_mask: 0.0340 | LR: 1.17e-06
+  [Epoch 20/20] Step 130/250 | Loss: 0.2054 | L_sec: 0.4343 | L_mask: 0.1461 | LR: 1.14e-06
+  [Epoch 20/20] Step 140/250 | Loss: 0.1802 | L_sec: 0.1052 | L_mask: 0.0056 | LR: 1.12e-06
+  [Epoch 20/20] Step 150/250 | Loss: 0.1893 | L_sec: 0.2062 | L_mask: 0.0512 | LR: 1.10e-06
+  [Epoch 20/20] Step 160/250 | Loss: 0.2146 | L_sec: 0.5033 | L_mask: 0.0500 | LR: 1.08e-06
+  [Epoch 20/20] Step 170/250 | Loss: 0.1865 | L_sec: 0.2237 | L_mask: 0.0305 | LR: 1.06e-06
+  [Epoch 20/20] Step 180/250 | Loss: 0.1526 | L_sec: 0.1398 | L_mask: 0.0048 | LR: 1.05e-06
+  [Epoch 20/20] Step 190/250 | Loss: 0.1857 | L_sec: 0.2134 | L_mask: 0.0157 | LR: 1.04e-06
+  [Epoch 20/20] Step 200/250 | Loss: 0.1859 | L_sec: 0.1617 | L_mask: 0.0349 | LR: 1.02e-06
+  [Epoch 20/20] Step 210/250 | Loss: 0.1729 | L_sec: 0.1588 | L_mask: 0.0387 | LR: 1.02e-06
+  [Epoch 20/20] Step 220/250 | Loss: 0.2846 | L_sec: 0.1620 | L_mask: 0.0185 | LR: 1.01e-06
+  [Epoch 20/20] Step 230/250 | Loss: 0.1958 | L_sec: 0.1430 | L_mask: 0.0197 | LR: 1.00e-06
+  [Epoch 20/20] Step 240/250 | Loss: 0.1962 | L_sec: 0.1346 | L_mask: 0.0182 | LR: 1.00e-06
+  [Epoch 20/20] Step 250/250 | Loss: 0.1940 | L_sec: 0.1467 | L_mask: 0.0258 | LR: 1.00e-06
+
+  Epoch 20 done in 640s | Avg loss: 0.1948
+  VAL | Chamfer-NL: 0.4061 | Chamfer-L: 4.8859 | Mask-Acc: 0.986
+  Saved checkpoint: /mnt/afs/zhengmingkai/hhy/ReconDepthHoles/checkpoints/pilot_epoch020.pt
+
+============================================================
+FINAL RESULTS
+  Chamfer-NL (secondary path): 0.4220
+  Chamfer-L (first surface): 4.9118
+  Mask Accuracy: 0.987
+============================================================

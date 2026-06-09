@@ -1,0 +1,190 @@
+[MirrorSceneDataset] Found 5 scenes in data/synthetic/val
+Loaded 5 scenes
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+Loaded checkpoint: checkpoints/pilot_epoch020.pt
+
+========================================
+Scene 0: scene_00000
+========================================
+
+[CHECK 1] Data sanity...
+  First depth: [0.61, 9.24] m, coverage: 195804/195804
+  Secondary depth: [6.80, 9.22] m, coverage: 141944/195804
+  Depth difference (where both valid): mean=2.242, max=8.029
+
+[CHECK 2] Model predictions...
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+  Pred secondary range: [-9.15, 6.08]
+  Pred mask range: [0.000, 1.000]
+  GT world_first range: [-6.31, 5.70]
+  Error on NL region (secondary head): mean=0.670
+  Error on L region (first head, frozen): mean=3.777
+
+  *** KEY COMPARISON ***
+  VGGT first-surface on NL region: 5.912
+  Our secondary head on NL region: 0.670
+  Improvement: 88.7%
+
+[CHECK 3] Geometric consistency...
+  Mirror plane: normal=[0. 1. 0.], d=4.99
+  First-surface signed dist: mean=1.604
+  Secondary signed dist: mean=0.266
+  Same side fraction: 0.483 (should be LOW for correct data)
+  Predicted secondary signed dist: mean=0.402
+  Pred same-side as first: 0.526
+
+[CHECK 4] Depth-to-3D reprojection check...
+  Reprojection error (depth->3D vs GT world_points): 0.000000
+  ✓ Consistent (< 1cm)
+
+========================================
+Scene 1: scene_00001
+========================================
+
+[CHECK 1] Data sanity...
+  First depth: [4.45, 8.77] m, coverage: 195804/195804
+  Secondary depth: [6.41, 8.76] m, coverage: 158924/195804
+  Depth difference (where both valid): mean=0.872, max=2.095
+
+[CHECK 2] Model predictions...
+  Pred secondary range: [-3.34, 8.92]
+  Pred mask range: [0.000, 1.000]
+  GT world_first range: [-4.20, 6.19]
+  Error on NL region (secondary head): mean=0.360
+  Error on L region (first head, frozen): mean=4.806
+
+  *** KEY COMPARISON ***
+  VGGT first-surface on NL region: 5.946
+  Our secondary head on NL region: 0.360
+  Improvement: 93.9%
+
+[CHECK 3] Geometric consistency...
+  Mirror plane: normal=[-1.  0.  0.], d=4.99
+  First-surface signed dist: mean=-0.345
+  Secondary signed dist: mean=-0.411
+  Same side fraction: 0.550 (should be LOW for correct data)
+  Predicted secondary signed dist: mean=-0.465
+  Pred same-side as first: 0.584
+
+[CHECK 4] Depth-to-3D reprojection check...
+  Reprojection error (depth->3D vs GT world_points): 0.000000
+  ✓ Consistent (< 1cm)
+
+========================================
+Scene 2: scene_00002
+========================================
+
+[CHECK 1] Data sanity...
+  First depth: [1.72, 9.93] m, coverage: 195804/195804
+  Secondary depth: [7.89, 9.92] m, coverage: 123977/195804
+  Depth difference (where both valid): mean=2.427, max=6.812
+
+[CHECK 2] Model predictions...
+  Pred secondary range: [-8.69, 5.10]
+  Pred mask range: [0.000, 1.000]
+  GT world_first range: [-6.49, 4.77]
+  Error on NL region (secondary head): mean=0.404
+  Error on L region (first head, frozen): mean=3.182
+
+  *** KEY COMPARISON ***
+  VGGT first-surface on NL region: 4.727
+  Our secondary head on NL region: 0.404
+  Improvement: 91.5%
+
+[CHECK 3] Geometric consistency...
+  Mirror plane: normal=[0. 1. 0.], d=4.99
+  First-surface signed dist: mean=1.662
+  Secondary signed dist: mean=-0.211
+  Same side fraction: 0.442 (should be LOW for correct data)
+  Predicted secondary signed dist: mean=-0.142
+  Pred same-side as first: 0.439
+
+[CHECK 4] Depth-to-3D reprojection check...
+  Reprojection error (depth->3D vs GT world_points): 0.000000
+  ✓ Consistent (< 1cm)
+
+========================================
+Scene 3: scene_00003
+========================================
+
+[CHECK 1] Data sanity...
+  First depth: [0.47, 5.34] m, coverage: 195804/195804
+  Secondary depth: [4.59, 5.63] m, coverage: 176709/195804
+  Depth difference (where both valid): mean=2.778, max=4.854
+
+[CHECK 2] Model predictions...
+  Pred secondary range: [-6.47, 4.30]
+  Pred mask range: [0.000, 1.000]
+  GT world_first range: [-5.87, 3.26]
+  Error on NL region (secondary head): mean=0.638
+  Error on L region (first head, frozen): mean=3.478
+
+  *** KEY COMPARISON ***
+  VGGT first-surface on NL region: 3.173
+  Our secondary head on NL region: 0.638
+  Improvement: 79.9%
+
+[CHECK 3] Geometric consistency...
+  Mirror plane: normal=[1. 0. 0.], d=4.99
+  First-surface signed dist: mean=2.470
+  Secondary signed dist: mean=-0.277
+  Same side fraction: 0.404 (should be LOW for correct data)
+  Predicted secondary signed dist: mean=0.117
+  Pred same-side as first: 0.792
+
+[CHECK 4] Depth-to-3D reprojection check...
+  Reprojection error (depth->3D vs GT world_points): 0.000000
+  ✓ Consistent (< 1cm)
+
+========================================
+Scene 4: scene_00004
+========================================
+
+[CHECK 1] Data sanity...
+  First depth: [0.89, 6.08] m, coverage: 195804/195804
+  Secondary depth: [5.00, 6.36] m, coverage: 166015/195804
+  Depth difference (where both valid): mean=1.111, max=4.795
+
+[CHECK 2] Model predictions...
+  Pred secondary range: [-7.01, 4.00]
+  Pred mask range: [0.000, 1.000]
+  GT world_first range: [-5.92, 3.31]
+  Error on NL region (secondary head): mean=0.356
+  Error on L region (first head, frozen): mean=4.936
+
+  *** KEY COMPARISON ***
+  VGGT first-surface on NL region: 4.831
+  Our secondary head on NL region: 0.356
+  Improvement: 92.6%
+
+[CHECK 3] Geometric consistency...
+  Mirror plane: normal=[1. 0. 0.], d=4.99
+  First-surface signed dist: mean=0.652
+  Secondary signed dist: mean=-0.296
+  Same side fraction: 0.762 (should be LOW for correct data)
+  Predicted secondary signed dist: mean=-0.381
+  Pred same-side as first: 0.791
+
+[CHECK 4] Depth-to-3D reprojection check...
+  Reprojection error (depth->3D vs GT world_points): 0.000000
+  ✓ Consistent (< 1cm)
+
+============================================================
+All visualizations saved to: visualizations/pilot_sanity
+============================================================
+
+Files to inspect:
+  scene00_01_data.png
+  scene00_02_predictions.png
+  scene01_01_data.png
+  scene01_02_predictions.png
+  scene02_01_data.png
+  scene02_02_predictions.png
+  scene03_01_data.png
+  scene03_02_predictions.png
+  scene04_01_data.png
+  scene04_02_predictions.png
