@@ -2,7 +2,7 @@
 tags: [project, overview, cvpr, non-lambertian, pointmap, layered-reconstruction]
 created: 2026-05-31
 updated: 2026-05-31
-status: repositioned-post-novelty-check
+status: phase-0-result-to-claim-no-paper-claims
 ambiguity: 0.098
 idea_evaluator_verdict: Strong Accept (conditional on pilot ≥15%)
 ---
@@ -57,7 +57,9 @@ idea_evaluator_verdict: Strong Accept (conditional on pilot ≥15%)
 - [[../10-Literature/Novelty-Check-2026-05-31]] — Novelty-check 报告 + 重定位建议
 - [[../20-Experiments/Experiment-Plan]] — 实验计划
 
-## 当前阶段：Pilot → Experiment Plan
+## 当前阶段：Phase 0.5 Evidence Gate
+
+`2026-06-09 result-to-claim` 判定：Phase 0 pilot **不能支撑 C1-C6 论文级 claim**，只能支撑 “frozen VGGT + layered heads 在 in-domain synthetic mirror 上可学习 secondary-path signal” 这个窄 feasibility claim。进入 Phase 1 full training 前，必须先补公平 VGGT NL baseline、single-head fine-tuned baseline、oracle-free vs oracle、以及一个 cross-domain smoke test。详见 `findings.md`。
 
 ### Phase 0: Pilot (1-2 周) — GATE
 - [ ] 从 3DReflecNet reflective subset 抽 1k-2k 场景
