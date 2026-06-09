@@ -1,0 +1,45 @@
+[MirrorSceneDataset] Found 200 scenes in data/synthetic/val
+[LayeredVGGT] Total params: 1321.8M
+[LayeredVGGT] Trainable params: 131.3M
+[LayeredVGGT] Frozen params: 1190.6M
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+{
+  "created": "2026-06-09T23:28:17",
+  "data_dir": "data/synthetic/val",
+  "num_scenes": 200,
+  "num_views": 8,
+  "batch_size": 1,
+  "device": "cuda",
+  "pretrained_name": "facebook/VGGT-1B",
+  "layered_checkpoint": "checkpoints/pilot_epoch020.pt",
+  "checkpoint_load": {
+    "missing": 0,
+    "unexpected": 0
+  },
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.604586977974332,
+    "vggt_primary_vs_first_nl": 5.622627356562269,
+    "vggt_primary_vs_secondary_nl": 5.887548142811694,
+    "gt_first_vs_secondary_nl": 1.4261612747842214,
+    "layered_primary_vs_first_l": 4.604586977974332,
+    "layered_primary_vs_first_nl": 5.622627356562269,
+    "layered_secondary_vs_secondary_nl": 0.407244486130558,
+    "layered_secondary_vs_first_nl": 1.4933717530973227,
+    "layered_mask_acc_valid_first": 0.9843736830331911
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59859052,
+    "vggt_primary_vs_first_nl": 252375943,
+    "vggt_primary_vs_secondary_nl": 252375943,
+    "gt_first_vs_secondary_nl": 252375943,
+    "layered_primary_vs_first_l": 59859052,
+    "layered_primary_vs_first_nl": 252375943,
+    "layered_secondary_vs_secondary_nl": 252375943,
+    "layered_secondary_vs_first_nl": 252375943,
+    "layered_mask_acc_valid_first": 312234995
+  },
+  "derived": {
+    "secondary_nl_reduction_vs_vggt_primary_to_secondary": 0.930829527631502
+  }
+}
