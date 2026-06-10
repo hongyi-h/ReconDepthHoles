@@ -62,3 +62,52 @@ Do not move to Phase 1 full training until this command produces a fair baseline
 
 If `layered_secondary_vs_secondary_nl` is not clearly below `vggt_primary_vs_secondary_nl`, the layered-head claim must be revised or the method debugged before adding more data.
 
+## Gate 1 Result
+
+Gate 1 passed on C500:
+
+- Frozen VGGT primary vs secondary GT on NL pixels: `5.887548`
+- Layered secondary head vs secondary GT on NL pixels: `0.407244`
+- Relative reduction: `93.083%`
+
+See:
+
+- [[Phase-0.5-Fair-Baseline-C500]]
+- `phase05_fair_baseline_c500.json`
+- `../../logs/evaluate_phase05.log`
+
+## Gate 2: Single-Head Composite Baseline
+
+Prepared script:
+
+- `scripts/train_single_head_baseline.py`
+
+Purpose:
+
+> Test whether a non-layered corrected pointmap head can match the layered secondary head when trained with comparable supervision.
+
+Target definition:
+
+- Lambertian pixels: first-surface GT
+- Non-Lambertian pixels with secondary GT: secondary-path GT
+
+C500 command:
+
+```bash
+cd /mnt/afs/zhengmingkai/hhy/ReconDepthHoles
+python scripts/train_single_head_baseline.py \
+  --data_dir data/synthetic/train \
+  --val_dir data/synthetic/val \
+  --num_views 8 \
+  --batch_size 1 \
+  --num_workers 4 \
+  --epochs 20 \
+  --output_json notes/20-Experiments/phase05_single_head_baseline.json \
+  --output_note notes/20-Experiments/Phase-0.5-Single-Head-Baseline.md \
+  > logs/train_single_head_baseline.log 2>&1
+```
+
+Decision rule:
+
+- If `single_corrected_vs_secondary_nl` is close to `0.407244` and `single_corrected_vs_first_l` remains close to the frozen VGGT Lambertian error, the current evidence does not prove layered representation is necessary.
+- If the single-head baseline is much worse on NL or damages Lambertian pixels, the layered path becomes materially stronger.

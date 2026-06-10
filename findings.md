@@ -64,3 +64,50 @@ Run the smallest experiments that can decide whether the project should scale:
 4. Add one zero-shot real or cross-domain smoke test.
 5. Re-run `result-to-claim` before Phase 1.
 
+## 2026-06-09 — Phase 0.5 Gate 1: Fair Frozen-VGGT Baseline
+
+### Verdict
+
+**Gate 1 passed** on the in-domain synthetic mirror validation split.
+
+### Evidence
+
+Source files:
+
+- `notes/20-Experiments/Phase-0.5-Fair-Baseline-C500.md`
+- `notes/20-Experiments/phase05_fair_baseline_c500.json`
+- `logs/evaluate_phase05.log`
+
+Setup:
+
+- Data: `data/synthetic/val`
+- Scenes: `200`
+- Views per scene: `8`
+- Device: `cuda`
+- Layered checkpoint: `checkpoints/pilot_epoch020.pt`
+- Checkpoint load: `missing=0`, `unexpected=0`
+
+Key metrics:
+
+- Frozen VGGT primary vs secondary GT on NL pixels: `5.887548`
+- Layered secondary head vs secondary GT on NL pixels: `0.407244`
+- Relative reduction: `93.083%`
+- Layered mask accuracy on valid first-surface pixels: `98.437%`
+- Pixel count for NL metrics: `252,375,943`
+
+### Supported Claim After Gate 1
+
+> On in-domain synthetic mirror validation data, the trained layered secondary head predicts secondary-path geometry far more accurately than frozen VGGT's primary pointmap on the same non-Lambertian pixels.
+
+### Still Unsupported
+
+- Layered head vs single-head fine-tuning.
+- Trainable Lambertian non-degradation.
+- Oracle-free vs oracle parity.
+- Cross-domain / real-data generalization.
+- Reflect3r comparison.
+- General glass / glossy metal / wet-floor handling.
+
+### Next Gate
+
+Run the **single-head fine-tuned baseline** on the same synthetic train/val split. This is now the most important confound: the current result proves that the added secondary head beats frozen VGGT, but not that a layered representation is necessary versus a non-layered model trained with comparable supervision.
