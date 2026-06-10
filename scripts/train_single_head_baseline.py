@@ -23,6 +23,12 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+# MetaX C500 PyTorch builds can trip over torch._dynamo -> triton backend
+# discovery when optimizer code imports torch._compile. Disable compile/dynamo
+# before importing torch; this baseline does not rely on graph compilation.
+os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
+os.environ.setdefault("TORCH_COMPILE_DISABLE", "1")
+
 import numpy as np
 import torch
 import torch.nn as nn

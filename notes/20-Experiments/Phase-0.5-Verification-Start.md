@@ -111,3 +111,20 @@ Decision rule:
 
 - If `single_corrected_vs_secondary_nl` is close to `0.407244` and `single_corrected_vs_first_l` remains close to the frozen VGGT Lambertian error, the current evidence does not prove layered representation is necessary.
 - If the single-head baseline is much worse on NL or damages Lambertian pixels, the layered path becomes materially stronger.
+
+### Gate 2 First Launch Failure
+
+`logs/train_single_head_baseline.log` showed the first Gate 2 launch failed before training started:
+
+- Dataset discovery succeeded: `1000` train scenes and `200` val scenes.
+- Model construction succeeded: `1321.8M` total params, `131.3M` trainable params.
+- Failure occurred during `torch.optim.AdamW(...)` construction.
+- Root cause: PyTorch Dynamo/Triton backend discovery imported the MetaX Triton backend with `MACA_HOME=None`, causing `TypeError: expected str, bytes or os.PathLike object, not NoneType`.
+
+This is a C500 software-environment compatibility issue, not a negative experiment result.
+
+Patch applied:
+
+- `scripts/train_single_head_baseline.py` now sets `TORCHDYNAMO_DISABLE=1` and `TORCH_COMPILE_DISABLE=1` before importing `torch`.
+
+Re-run the same Gate 2 command after syncing the patched script.
