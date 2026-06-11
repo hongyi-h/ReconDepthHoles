@@ -128,3 +128,58 @@ Patch applied:
 - `scripts/train_single_head_baseline.py` now sets `TORCHDYNAMO_DISABLE=1` and `TORCH_COMPILE_DISABLE=1` before importing `torch`.
 
 Re-run the same Gate 2 command after syncing the patched script.
+
+## Gate 2 Result
+
+Gate 2 completed on C500:
+
+- Single-head corrected pointmap vs secondary GT on NL pixels: `0.370457`
+- Layered secondary head vs secondary GT on NL pixels: `0.407244`
+- Single-head corrected pointmap vs first GT on Lambertian pixels: `0.544384`
+- Single-head mask accuracy: `98.546%`
+
+Decision:
+
+> The current secondary-only metric does **not** prove layered representation is necessary. A single corrected pointmap trained with comparable supervision matches or beats the existing layered pilot on synthetic mirror secondary-path prediction.
+
+Updated interpretation:
+
+> The layered contribution must be evaluated as simultaneous recovery of first-surface and secondary-path geometry at non-Lambertian pixels, not merely corrected/secondary geometry prediction.
+
+## Gate 3: True Dual-Head Layered Baseline
+
+Prepared script:
+
+- `scripts/train_dual_head_baseline.py`
+
+Purpose:
+
+> Train a true dual-head model with separate trainable first-surface and secondary-path heads. This is the first experiment that can support the real layered claim.
+
+Targets:
+
+- Primary head: first-surface GT on all valid first-surface pixels.
+- Secondary head: secondary-path GT on NL pixels.
+- Mask head: NL mask.
+
+C500 command:
+
+```bash
+cd /mnt/afs/zhengmingkai/hhy/ReconDepthHoles
+python scripts/train_dual_head_baseline.py \
+  --data_dir data/synthetic/train \
+  --val_dir data/synthetic/val \
+  --num_views 8 \
+  --batch_size 1 \
+  --num_workers 4 \
+  --epochs 20 \
+  --output_json notes/20-Experiments/phase05_dual_head_baseline.json \
+  --output_note notes/20-Experiments/Phase-0.5-Dual-Head-Baseline.md \
+  > logs/train_dual_head_baseline.log 2>&1
+```
+
+Decision rule:
+
+- Compare `dual_secondary_vs_secondary_nl` against single-head `0.370457`.
+- Compare `dual_primary_vs_first_nl` against single-head `single_corrected_vs_first_nl = 1.436062`.
+- The layered route is justified only if the dual-head model recovers both layers: low primary first-surface NL error and low secondary-path NL error.

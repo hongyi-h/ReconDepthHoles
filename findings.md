@@ -111,3 +111,58 @@ Key metrics:
 ### Next Gate
 
 Run the **single-head fine-tuned baseline** on the same synthetic train/val split. This is now the most important confound: the current result proves that the added secondary head beats frozen VGGT, but not that a layered representation is necessary versus a non-layered model trained with comparable supervision.
+
+## 2026-06-11 — Phase 0.5 Gate 2: Single-Head Composite Baseline
+
+### Verdict
+
+**Gate 2 does not support layered-necessity under the current secondary-only metric.**
+
+### Evidence
+
+Source files:
+
+- `notes/20-Experiments/Phase-0.5-Single-Head-Baseline.md`
+- `notes/20-Experiments/phase05_single_head_baseline.json`
+- `logs/train_single_head_baseline.log`
+
+Setup:
+
+- Train data: `data/synthetic/train`
+- Val data: `data/synthetic/val`
+- Train scenes: `1000`
+- Val scenes: `200`
+- Views per scene: `8`
+- Epochs: `20`
+- Device: `cuda`
+
+Key comparison:
+
+- Layered secondary head vs secondary GT on NL pixels: `0.407244`
+- Single-head corrected pointmap vs secondary GT on NL pixels: `0.370457`
+- Single-head relative reduction vs frozen VGGT primary-to-secondary: `93.705%`
+- Single-head mask accuracy: `98.546%`
+- Single-head Lambertian first-surface error: `0.544384`
+
+### Interpretation
+
+The single-head composite baseline matches or beats the current layered pilot for the secondary-path metric. Therefore, the existing evidence does not justify claiming that layered representation is necessary for correcting synthetic mirror-region geometry.
+
+This does **not** kill the project. It changes the required claim:
+
+> The layered contribution must be about simultaneous recovery of first-surface and secondary-path geometry, not merely corrected secondary geometry on non-Lambertian pixels.
+
+### Next Gate
+
+Train and evaluate a **true dual-head model**:
+
+1. Primary trainable head predicts first-surface GT on all valid pixels.
+2. Secondary trainable head predicts secondary-path GT on NL pixels.
+3. Mask head predicts NL mask.
+4. Compare against the single-head baseline on a two-layer metric:
+   - primary/first-surface NL error,
+   - secondary-path NL error,
+   - Lambertian first-surface error,
+   - combined two-layer score.
+
+If the dual-head model cannot beat the single-head baseline on the two-layer objective, the method should pivot toward "material-aware corrected pointmap" rather than "layered pointmap."
