@@ -1,0 +1,29 @@
+{
+  "created": "2026-06-11T01:47:46",
+  "train_dir": "data/synthetic/train",
+  "val_dir": "data/synthetic/val",
+  "train_scenes": 1000,
+  "val_scenes": 200,
+  "num_views": 8,
+  "epochs": 20,
+  "device": "cuda",
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6149545269780265,
+    "vggt_primary_vs_secondary_nl": 5.884770962666642,
+    "single_corrected_vs_first_l": 0.5443836013279482,
+    "single_corrected_vs_secondary_nl": 0.3704574211216922,
+    "single_corrected_vs_first_nl": 1.4360615698200878,
+    "single_mask_acc_valid_first": 0.9854560268495209
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59860596,
+    "vggt_primary_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_l": 59860596,
+    "single_corrected_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_nl": 252326724,
+    "single_mask_acc_valid_first": 312187320
+  },
+  "derived": {
+    "single_head_reduction_vs_vggt_primary_to_secondary": 0.937048115640881
+  }
+}

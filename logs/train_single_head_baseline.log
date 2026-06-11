@@ -1,63 +1,2248 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 [MirrorSceneDataset] Found 1000 scenes in data/synthetic/train
 [MirrorSceneDataset] Found 200 scenes in data/synthetic/val
 [SingleHeadVGGT] Total params: 1321.8M
 [SingleHeadVGGT] Trainable params: 131.3M
 [SingleHeadVGGT] Frozen params: 1190.6M
-Traceback (most recent call last):
-  File "/mnt/afs/zhengmingkai/hhy/ReconDepthHoles/scripts/train_single_head_baseline.py", line 455, in <module>
-    train(parse_args())
-  File "/mnt/afs/zhengmingkai/hhy/ReconDepthHoles/scripts/train_single_head_baseline.py", line 273, in train
-    optimizer = torch.optim.AdamW(
-                ^^^^^^^^^^^^^^^^^^
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/optim/adamw.py", line 37, in __init__
-    super().__init__(
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/optim/adam.py", line 101, in __init__
-    super().__init__(params, defaults)
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/optim/optimizer.py", line 400, in __init__
-    self.add_param_group(cast(dict, param_group))
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_compile.py", line 46, in inner
-    import torch._dynamo
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_dynamo/__init__.py", line 13, in <module>
-    from . import config, convert_frame, eval_frame, resume_execution
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 53, in <module>
-    from torch._dynamo.symbolic_convert import TensorifyState
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 52, in <module>
-    from torch._dynamo.exc import TensorifyScalarRestartAnalysis
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_dynamo/exc.py", line 41, in <module>
-    from .utils import counters
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 2341, in <module>
-    if has_triton_package():
-       ^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/utils/_triton.py", line 9, in has_triton_package
-    from triton.compiler.compiler import triton_key
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/__init__.py", line 8, in <module>
-    from .runtime import (
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/runtime/__init__.py", line 1, in <module>
-    from .autotuner import (Autotuner, Config, Heuristics, autotune, heuristics)
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/runtime/autotuner.py", line 13, in <module>
-    from ..testing import do_bench, do_bench_cudagraph
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/testing.py", line 7, in <module>
-    from . import language as tl
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/language/__init__.py", line 4, in <module>
-    from . import math
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/language/math.py", line 1, in <module>
-    from . import core
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/language/core.py", line 10, in <module>
-    from ..runtime.jit import jit
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/runtime/jit.py", line 12, in <module>
-    from ..runtime.driver import driver
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/runtime/driver.py", line 1, in <module>
-    from ..backends import backends
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/backends/__init__.py", line 50, in <module>
-    backends = _discover_backends()
-               ^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/backends/__init__.py", line 44, in _discover_backends
-    driver = _load_module(name, os.path.join(root, name, 'driver.py'))
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/backends/__init__.py", line 12, in _load_module
-    spec.loader.exec_module(module)
-  File "/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/triton/backends/metax/driver.py", line 30, in <module>
-    maca_include_dir = [os.path.join(maca_home_dirs(), "include")]
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen posixpath>", line 76, in join
-TypeError: expected str, bytes or os.PathLike object, not NoneType
+============================================================
+Starting Single-Head Composite Baseline
+  Train scenes: 1000
+  Val scenes: 200
+  Epochs: 20
+  Device: cuda
+============================================================
+/mnt/afs/zhengmingkai/miniconda3/envs/rdh/lib/python3.12/site-packages/torch/nn/functional.py:6001: UserWarning: 1Torch was not compiled with memory efficient attention. (Triggered internally at /workspace/framework/mcPytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:738.)
+  return _scaled_dot_product_attention(query, key, value, attn_mask, dropout_p, is_causal, scale = scale, enable_gqa = enable_gqa)
+[Epoch 1/20] Step 10/1000 | Loss: 2.6633 | L_point: 2.0856 | L_mask: 0.4773
+[Epoch 1/20] Step 20/1000 | Loss: 3.5852 | L_point: 3.1060 | L_mask: 0.4900
+[Epoch 1/20] Step 30/1000 | Loss: 2.7482 | L_point: 2.1840 | L_mask: 0.1949
+[Epoch 1/20] Step 40/1000 | Loss: 2.8421 | L_point: 2.4697 | L_mask: 0.1591
+[Epoch 1/20] Step 50/1000 | Loss: 2.6766 | L_point: 2.6599 | L_mask: 0.1111
+[Epoch 1/20] Step 60/1000 | Loss: 2.5603 | L_point: 2.4422 | L_mask: 0.3088
+[Epoch 1/20] Step 70/1000 | Loss: 2.4904 | L_point: 2.5742 | L_mask: 0.2505
+[Epoch 1/20] Step 80/1000 | Loss: 2.2588 | L_point: 2.0682 | L_mask: 0.0864
+[Epoch 1/20] Step 90/1000 | Loss: 2.3698 | L_point: 2.0762 | L_mask: 0.2383
+[Epoch 1/20] Step 100/1000 | Loss: 2.2483 | L_point: 1.6652 | L_mask: 0.1162
+[Epoch 1/20] Step 110/1000 | Loss: 2.8304 | L_point: 2.1626 | L_mask: 0.4183
+[Epoch 1/20] Step 120/1000 | Loss: 2.5038 | L_point: 2.2863 | L_mask: 0.1719
+[Epoch 1/20] Step 130/1000 | Loss: 2.5193 | L_point: 1.9365 | L_mask: 0.2800
+[Epoch 1/20] Step 140/1000 | Loss: 2.2065 | L_point: 2.3665 | L_mask: 0.1169
+[Epoch 1/20] Step 150/1000 | Loss: 2.3811 | L_point: 1.9608 | L_mask: 0.1330
+[Epoch 1/20] Step 160/1000 | Loss: 2.3173 | L_point: 3.0876 | L_mask: 0.0743
+[Epoch 1/20] Step 170/1000 | Loss: 2.3172 | L_point: 1.9265 | L_mask: 0.1355
+[Epoch 1/20] Step 180/1000 | Loss: 2.2715 | L_point: 2.2489 | L_mask: 0.2357
+[Epoch 1/20] Step 190/1000 | Loss: 2.0965 | L_point: 2.8311 | L_mask: 0.1027
+[Epoch 1/20] Step 200/1000 | Loss: 2.5059 | L_point: 3.0214 | L_mask: 0.2056
+[Epoch 1/20] Step 210/1000 | Loss: 2.3004 | L_point: 2.4117 | L_mask: 0.1844
+[Epoch 1/20] Step 220/1000 | Loss: 2.1695 | L_point: 3.1873 | L_mask: 0.2235
+[Epoch 1/20] Step 230/1000 | Loss: 2.1704 | L_point: 2.2195 | L_mask: 0.2272
+[Epoch 1/20] Step 240/1000 | Loss: 2.1974 | L_point: 1.8173 | L_mask: 0.1940
+[Epoch 1/20] Step 250/1000 | Loss: 2.1863 | L_point: 1.4477 | L_mask: 0.3099
+[Epoch 1/20] Step 260/1000 | Loss: 2.2928 | L_point: 1.9698 | L_mask: 0.2674
+[Epoch 1/20] Step 270/1000 | Loss: 2.0407 | L_point: 2.4809 | L_mask: 0.1909
+[Epoch 1/20] Step 280/1000 | Loss: 2.4432 | L_point: 2.1486 | L_mask: 0.2612
+[Epoch 1/20] Step 290/1000 | Loss: 2.2323 | L_point: 1.5366 | L_mask: 0.1735
+[Epoch 1/20] Step 300/1000 | Loss: 2.1480 | L_point: 1.7546 | L_mask: 0.1853
+[Epoch 1/20] Step 310/1000 | Loss: 2.0597 | L_point: 1.4416 | L_mask: 0.0727
+[Epoch 1/20] Step 320/1000 | Loss: 2.1632 | L_point: 1.4971 | L_mask: 0.1148
+[Epoch 1/20] Step 330/1000 | Loss: 2.2259 | L_point: 2.3692 | L_mask: 0.0377
+[Epoch 1/20] Step 340/1000 | Loss: 2.2293 | L_point: 1.3109 | L_mask: 0.0590
+[Epoch 1/20] Step 350/1000 | Loss: 2.2942 | L_point: 1.6202 | L_mask: 0.0614
+[Epoch 1/20] Step 360/1000 | Loss: 2.2615 | L_point: 2.2745 | L_mask: 0.1298
+[Epoch 1/20] Step 370/1000 | Loss: 2.0617 | L_point: 2.4637 | L_mask: 0.0694
+[Epoch 1/20] Step 380/1000 | Loss: 2.2474 | L_point: 1.9925 | L_mask: 0.3832
+[Epoch 1/20] Step 390/1000 | Loss: 2.0121 | L_point: 1.1811 | L_mask: 0.0898
+[Epoch 1/20] Step 400/1000 | Loss: 1.9492 | L_point: 2.2216 | L_mask: 0.1758
+[Epoch 1/20] Step 410/1000 | Loss: 2.0028 | L_point: 1.3496 | L_mask: 0.1043
+[Epoch 1/20] Step 420/1000 | Loss: 2.2128 | L_point: 2.1968 | L_mask: 0.2482
+[Epoch 1/20] Step 430/1000 | Loss: 2.3521 | L_point: 2.2039 | L_mask: 0.1790
+[Epoch 1/20] Step 440/1000 | Loss: 2.1663 | L_point: 2.4165 | L_mask: 0.2309
+[Epoch 1/20] Step 450/1000 | Loss: 2.1203 | L_point: 2.2332 | L_mask: 0.2240
+[Epoch 1/20] Step 460/1000 | Loss: 2.2020 | L_point: 2.0666 | L_mask: 0.1266
+[Epoch 1/20] Step 470/1000 | Loss: 1.9810 | L_point: 1.5748 | L_mask: 0.0569
+[Epoch 1/20] Step 480/1000 | Loss: 2.2078 | L_point: 2.0207 | L_mask: 0.2063
+[Epoch 1/20] Step 490/1000 | Loss: 2.1799 | L_point: 2.0985 | L_mask: 0.1173
+[Epoch 1/20] Step 500/1000 | Loss: 1.9849 | L_point: 1.0798 | L_mask: 0.1005
+[Epoch 1/20] Step 510/1000 | Loss: 2.1769 | L_point: 1.9312 | L_mask: 0.1066
+[Epoch 1/20] Step 520/1000 | Loss: 1.9565 | L_point: 2.2921 | L_mask: 0.0679
+[Epoch 1/20] Step 530/1000 | Loss: 1.8466 | L_point: 1.9892 | L_mask: 0.2691
+[Epoch 1/20] Step 540/1000 | Loss: 1.7985 | L_point: 1.4625 | L_mask: 0.1509
+[Epoch 1/20] Step 550/1000 | Loss: 2.0756 | L_point: 1.3965 | L_mask: 0.3550
+[Epoch 1/20] Step 560/1000 | Loss: 2.2528 | L_point: 2.6154 | L_mask: 0.1031
+[Epoch 1/20] Step 570/1000 | Loss: 2.2258 | L_point: 2.2028 | L_mask: 0.1444
+[Epoch 1/20] Step 580/1000 | Loss: 1.9847 | L_point: 1.8205 | L_mask: 0.1721
+[Epoch 1/20] Step 590/1000 | Loss: 2.1156 | L_point: 1.8789 | L_mask: 0.2262
+[Epoch 1/20] Step 600/1000 | Loss: 2.4439 | L_point: 3.6662 | L_mask: 0.3143
+[Epoch 1/20] Step 610/1000 | Loss: 1.8836 | L_point: 1.3679 | L_mask: 0.1963
+[Epoch 1/20] Step 620/1000 | Loss: 2.0212 | L_point: 2.0966 | L_mask: 0.0092
+[Epoch 1/20] Step 630/1000 | Loss: 1.8823 | L_point: 1.9653 | L_mask: 0.2425
+[Epoch 1/20] Step 640/1000 | Loss: 2.0356 | L_point: 3.0007 | L_mask: 0.0749
+[Epoch 1/20] Step 650/1000 | Loss: 2.3050 | L_point: 1.9494 | L_mask: 0.4112
+[Epoch 1/20] Step 660/1000 | Loss: 2.0665 | L_point: 2.3523 | L_mask: 0.0426
+[Epoch 1/20] Step 670/1000 | Loss: 1.8659 | L_point: 2.0563 | L_mask: 0.1492
+[Epoch 1/20] Step 680/1000 | Loss: 2.1193 | L_point: 1.8384 | L_mask: 0.1110
+[Epoch 1/20] Step 690/1000 | Loss: 2.0850 | L_point: 1.7818 | L_mask: 0.1577
+[Epoch 1/20] Step 700/1000 | Loss: 2.0028 | L_point: 2.1717 | L_mask: 0.3133
+[Epoch 1/20] Step 710/1000 | Loss: 2.0688 | L_point: 1.5374 | L_mask: 0.3736
+[Epoch 1/20] Step 720/1000 | Loss: 1.8889 | L_point: 1.9602 | L_mask: 0.0700
+[Epoch 1/20] Step 730/1000 | Loss: 1.7919 | L_point: 1.5349 | L_mask: 0.1748
+[Epoch 1/20] Step 740/1000 | Loss: 2.2934 | L_point: 2.7642 | L_mask: 0.1171
+[Epoch 1/20] Step 750/1000 | Loss: 1.8394 | L_point: 1.6637 | L_mask: 0.0553
+[Epoch 1/20] Step 760/1000 | Loss: 2.0956 | L_point: 2.5957 | L_mask: 0.0421
+[Epoch 1/20] Step 770/1000 | Loss: 1.9476 | L_point: 1.9792 | L_mask: 0.0680
+[Epoch 1/20] Step 780/1000 | Loss: 1.7839 | L_point: 1.5519 | L_mask: 0.0930
+[Epoch 1/20] Step 790/1000 | Loss: 2.0443 | L_point: 2.4443 | L_mask: 0.0300
+[Epoch 1/20] Step 800/1000 | Loss: 2.0093 | L_point: 2.2668 | L_mask: 0.0525
+[Epoch 1/20] Step 810/1000 | Loss: 2.2563 | L_point: 1.3296 | L_mask: 0.0909
+[Epoch 1/20] Step 820/1000 | Loss: 1.8422 | L_point: 1.1145 | L_mask: 0.2567
+[Epoch 1/20] Step 830/1000 | Loss: 2.0897 | L_point: 1.4809 | L_mask: 0.0322
+[Epoch 1/20] Step 840/1000 | Loss: 1.9528 | L_point: 1.6024 | L_mask: 0.2545
+[Epoch 1/20] Step 850/1000 | Loss: 2.2042 | L_point: 2.0324 | L_mask: 0.1582
+[Epoch 1/20] Step 860/1000 | Loss: 1.7187 | L_point: 1.7547 | L_mask: 0.0392
+[Epoch 1/20] Step 870/1000 | Loss: 1.8306 | L_point: 1.7027 | L_mask: 0.1318
+[Epoch 1/20] Step 880/1000 | Loss: 2.1712 | L_point: 2.4733 | L_mask: 0.1122
+[Epoch 1/20] Step 890/1000 | Loss: 1.9865 | L_point: 2.0267 | L_mask: 0.1112
+[Epoch 1/20] Step 900/1000 | Loss: 1.9540 | L_point: 1.0982 | L_mask: 0.1015
+[Epoch 1/20] Step 910/1000 | Loss: 1.9927 | L_point: 2.4468 | L_mask: 0.1038
+[Epoch 1/20] Step 920/1000 | Loss: 2.7230 | L_point: 9.8877 | L_mask: 0.0017
+[Epoch 1/20] Step 930/1000 | Loss: 1.7716 | L_point: 2.1854 | L_mask: 0.0246
+[Epoch 1/20] Step 940/1000 | Loss: 1.6515 | L_point: 2.6081 | L_mask: 0.3271
+[Epoch 1/20] Step 950/1000 | Loss: 1.7731 | L_point: 2.0551 | L_mask: 0.2455
+[Epoch 1/20] Step 960/1000 | Loss: 1.7423 | L_point: 1.3809 | L_mask: 0.0834
+[Epoch 1/20] Step 970/1000 | Loss: 2.0976 | L_point: 2.2639 | L_mask: 0.1573
+[Epoch 1/20] Step 980/1000 | Loss: 1.6683 | L_point: 1.7267 | L_mask: 0.0182
+[Epoch 1/20] Step 990/1000 | Loss: 1.9521 | L_point: 1.5840 | L_mask: 0.1176
+[Epoch 1/20] Step 1000/1000 | Loss: 1.9032 | L_point: 1.4784 | L_mask: 0.0407
+Epoch 1 done in 2206s | Avg loss: 2.1568
+[Epoch 2/20] Step 10/1000 | Loss: 1.7607 | L_point: 2.1099 | L_mask: 0.0291
+[Epoch 2/20] Step 20/1000 | Loss: 2.0169 | L_point: 2.6473 | L_mask: 0.0077
+[Epoch 2/20] Step 30/1000 | Loss: 1.8895 | L_point: 1.7020 | L_mask: 0.0354
+[Epoch 2/20] Step 40/1000 | Loss: 1.9029 | L_point: 1.6447 | L_mask: 0.0238
+[Epoch 2/20] Step 50/1000 | Loss: 1.7599 | L_point: 1.7298 | L_mask: 0.1008
+[Epoch 2/20] Step 60/1000 | Loss: 1.8480 | L_point: 1.9522 | L_mask: 0.0959
+[Epoch 2/20] Step 70/1000 | Loss: 1.5605 | L_point: 1.4457 | L_mask: 0.1813
+[Epoch 2/20] Step 80/1000 | Loss: 1.6755 | L_point: 1.6329 | L_mask: 0.0739
+[Epoch 2/20] Step 90/1000 | Loss: 1.8434 | L_point: 1.6988 | L_mask: 0.1118
+[Epoch 2/20] Step 100/1000 | Loss: 1.4723 | L_point: 1.6377 | L_mask: 0.0915
+[Epoch 2/20] Step 110/1000 | Loss: 1.5251 | L_point: 1.6076 | L_mask: 0.2785
+[Epoch 2/20] Step 120/1000 | Loss: 1.4675 | L_point: 2.1587 | L_mask: 0.0290
+[Epoch 2/20] Step 130/1000 | Loss: 1.9520 | L_point: 1.1598 | L_mask: 0.1176
+[Epoch 2/20] Step 140/1000 | Loss: 1.9155 | L_point: 2.1255 | L_mask: 0.0051
+[Epoch 2/20] Step 150/1000 | Loss: 1.9142 | L_point: 2.5649 | L_mask: 0.1409
+[Epoch 2/20] Step 160/1000 | Loss: 1.5940 | L_point: 1.8204 | L_mask: 0.1173
+[Epoch 2/20] Step 170/1000 | Loss: 1.6067 | L_point: 1.9338 | L_mask: 0.1005
+[Epoch 2/20] Step 180/1000 | Loss: 1.5510 | L_point: 2.1549 | L_mask: 0.0462
+[Epoch 2/20] Step 190/1000 | Loss: 1.7734 | L_point: 1.1146 | L_mask: 0.0543
+[Epoch 2/20] Step 200/1000 | Loss: 1.8579 | L_point: 2.0831 | L_mask: 0.0680
+[Epoch 2/20] Step 210/1000 | Loss: 1.7243 | L_point: 1.8658 | L_mask: 0.0409
+[Epoch 2/20] Step 220/1000 | Loss: 1.4458 | L_point: 1.3670 | L_mask: 0.0309
+[Epoch 2/20] Step 230/1000 | Loss: 1.7339 | L_point: 1.5689 | L_mask: 0.1016
+[Epoch 2/20] Step 240/1000 | Loss: 1.5348 | L_point: 1.7118 | L_mask: 0.1988
+[Epoch 2/20] Step 250/1000 | Loss: 1.6016 | L_point: 1.3935 | L_mask: 0.1655
+[Epoch 2/20] Step 260/1000 | Loss: 1.7337 | L_point: 2.4952 | L_mask: 0.0202
+[Epoch 2/20] Step 270/1000 | Loss: 1.7746 | L_point: 2.1013 | L_mask: 0.0611
+[Epoch 2/20] Step 280/1000 | Loss: 1.8927 | L_point: 2.1543 | L_mask: 0.0936
+[Epoch 2/20] Step 290/1000 | Loss: 1.4838 | L_point: 1.2895 | L_mask: 0.0409
+[Epoch 2/20] Step 300/1000 | Loss: 1.7121 | L_point: 1.5365 | L_mask: 0.1668
+[Epoch 2/20] Step 310/1000 | Loss: 1.4519 | L_point: 1.1764 | L_mask: 0.1082
+[Epoch 2/20] Step 320/1000 | Loss: 1.6118 | L_point: 1.0944 | L_mask: 0.0897
+[Epoch 2/20] Step 330/1000 | Loss: 1.4104 | L_point: 2.3599 | L_mask: 0.0982
+[Epoch 2/20] Step 340/1000 | Loss: 1.6664 | L_point: 2.7345 | L_mask: 0.0457
+[Epoch 2/20] Step 350/1000 | Loss: 1.5823 | L_point: 1.7804 | L_mask: 0.1558
+[Epoch 2/20] Step 360/1000 | Loss: 1.7286 | L_point: 1.6022 | L_mask: 0.0010
+[Epoch 2/20] Step 370/1000 | Loss: 1.3919 | L_point: 1.2248 | L_mask: 0.1710
+[Epoch 2/20] Step 380/1000 | Loss: 1.6900 | L_point: 1.5136 | L_mask: 0.1478
+[Epoch 2/20] Step 390/1000 | Loss: 1.5697 | L_point: 1.8273 | L_mask: 0.1562
+[Epoch 2/20] Step 400/1000 | Loss: 1.4130 | L_point: 1.3917 | L_mask: 0.1551
+[Epoch 2/20] Step 410/1000 | Loss: 1.4125 | L_point: 0.9042 | L_mask: 0.0298
+[Epoch 2/20] Step 420/1000 | Loss: 1.6166 | L_point: 1.6406 | L_mask: 0.0053
+[Epoch 2/20] Step 430/1000 | Loss: 1.5126 | L_point: 1.3766 | L_mask: 0.0363
+[Epoch 2/20] Step 440/1000 | Loss: 1.5244 | L_point: 1.9298 | L_mask: 0.3841
+[Epoch 2/20] Step 450/1000 | Loss: 1.4327 | L_point: 1.4163 | L_mask: 0.1301
+[Epoch 2/20] Step 460/1000 | Loss: 1.4361 | L_point: 1.0912 | L_mask: 0.1128
+[Epoch 2/20] Step 470/1000 | Loss: 1.5622 | L_point: 1.9788 | L_mask: 0.0440
+[Epoch 2/20] Step 480/1000 | Loss: 1.4523 | L_point: 1.1932 | L_mask: 0.0714
+[Epoch 2/20] Step 490/1000 | Loss: 1.7714 | L_point: 1.0588 | L_mask: 0.0363
+[Epoch 2/20] Step 500/1000 | Loss: 1.7734 | L_point: 1.4268 | L_mask: 0.0694
+[Epoch 2/20] Step 510/1000 | Loss: 1.4860 | L_point: 1.2150 | L_mask: 0.0768
+[Epoch 2/20] Step 520/1000 | Loss: 1.1673 | L_point: 1.2348 | L_mask: 0.0728
+[Epoch 2/20] Step 530/1000 | Loss: 1.6031 | L_point: 1.1518 | L_mask: 0.0725
+[Epoch 2/20] Step 540/1000 | Loss: 1.6636 | L_point: 2.2036 | L_mask: 0.0612
+[Epoch 2/20] Step 550/1000 | Loss: 1.4010 | L_point: 0.9195 | L_mask: 0.1133
+[Epoch 2/20] Step 560/1000 | Loss: 1.2480 | L_point: 0.7597 | L_mask: 0.1178
+[Epoch 2/20] Step 570/1000 | Loss: 1.3734 | L_point: 1.5947 | L_mask: 0.0501
+[Epoch 2/20] Step 580/1000 | Loss: 1.2967 | L_point: 1.4362 | L_mask: 0.0905
+[Epoch 2/20] Step 590/1000 | Loss: 1.4157 | L_point: 1.0531 | L_mask: 0.0102
+[Epoch 2/20] Step 600/1000 | Loss: 1.5947 | L_point: 0.8216 | L_mask: 0.0254
+[Epoch 2/20] Step 610/1000 | Loss: 1.1432 | L_point: 0.6992 | L_mask: 0.0822
+[Epoch 2/20] Step 620/1000 | Loss: 1.6433 | L_point: 1.6409 | L_mask: 0.1354
+[Epoch 2/20] Step 630/1000 | Loss: 1.3467 | L_point: 1.3859 | L_mask: 0.1559
+[Epoch 2/20] Step 640/1000 | Loss: 1.5757 | L_point: 2.0550 | L_mask: 0.3302
+[Epoch 2/20] Step 650/1000 | Loss: 1.3472 | L_point: 2.1426 | L_mask: 0.1111
+[Epoch 2/20] Step 660/1000 | Loss: 1.4390 | L_point: 1.8999 | L_mask: 0.1095
+[Epoch 2/20] Step 670/1000 | Loss: 1.4381 | L_point: 1.3900 | L_mask: 0.0868
+[Epoch 2/20] Step 680/1000 | Loss: 1.1343 | L_point: 1.5242 | L_mask: 0.0785
+[Epoch 2/20] Step 690/1000 | Loss: 1.3566 | L_point: 1.0872 | L_mask: 0.1056
+[Epoch 2/20] Step 700/1000 | Loss: 1.5710 | L_point: 2.0180 | L_mask: 0.1972
+[Epoch 2/20] Step 710/1000 | Loss: 1.3224 | L_point: 0.9435 | L_mask: 0.1080
+[Epoch 2/20] Step 720/1000 | Loss: 1.1791 | L_point: 0.8923 | L_mask: 0.0456
+[Epoch 2/20] Step 730/1000 | Loss: 1.2991 | L_point: 1.9717 | L_mask: 0.0878
+[Epoch 2/20] Step 740/1000 | Loss: 1.3895 | L_point: 1.7614 | L_mask: 0.1165
+[Epoch 2/20] Step 750/1000 | Loss: 1.3880 | L_point: 1.1712 | L_mask: 0.0824
+[Epoch 2/20] Step 760/1000 | Loss: 1.2849 | L_point: 1.3190 | L_mask: 0.0153
+[Epoch 2/20] Step 770/1000 | Loss: 1.2713 | L_point: 0.7464 | L_mask: 0.1592
+[Epoch 2/20] Step 780/1000 | Loss: 1.3508 | L_point: 1.3656 | L_mask: 0.2765
+[Epoch 2/20] Step 790/1000 | Loss: 1.3901 | L_point: 2.4712 | L_mask: 0.1241
+[Epoch 2/20] Step 800/1000 | Loss: 1.4253 | L_point: 1.0775 | L_mask: 0.1581
+[Epoch 2/20] Step 810/1000 | Loss: 1.3087 | L_point: 1.2879 | L_mask: 0.1784
+[Epoch 2/20] Step 820/1000 | Loss: 1.3860 | L_point: 1.1457 | L_mask: 0.1137
+[Epoch 2/20] Step 830/1000 | Loss: 1.7443 | L_point: 1.1788 | L_mask: 0.1439
+[Epoch 2/20] Step 840/1000 | Loss: 1.2873 | L_point: 1.2877 | L_mask: 0.0486
+[Epoch 2/20] Step 850/1000 | Loss: 1.1538 | L_point: 0.6995 | L_mask: 0.0811
+[Epoch 2/20] Step 860/1000 | Loss: 1.7570 | L_point: 1.1234 | L_mask: 0.0638
+[Epoch 2/20] Step 870/1000 | Loss: 1.2865 | L_point: 0.9378 | L_mask: 0.2051
+[Epoch 2/20] Step 880/1000 | Loss: 1.1733 | L_point: 0.8916 | L_mask: 0.0560
+[Epoch 2/20] Step 890/1000 | Loss: 1.1901 | L_point: 0.8064 | L_mask: 0.1243
+[Epoch 2/20] Step 900/1000 | Loss: 1.1121 | L_point: 1.0316 | L_mask: 0.0580
+[Epoch 2/20] Step 910/1000 | Loss: 1.3162 | L_point: 1.7108 | L_mask: 0.0039
+[Epoch 2/20] Step 920/1000 | Loss: 1.3905 | L_point: 2.2354 | L_mask: 0.1700
+[Epoch 2/20] Step 930/1000 | Loss: 1.2644 | L_point: 1.1511 | L_mask: 0.3373
+[Epoch 2/20] Step 940/1000 | Loss: 1.5081 | L_point: 3.3972 | L_mask: 0.1416
+[Epoch 2/20] Step 950/1000 | Loss: 1.2332 | L_point: 0.6024 | L_mask: 0.0722
+[Epoch 2/20] Step 960/1000 | Loss: 1.1688 | L_point: 0.8804 | L_mask: 0.0984
+[Epoch 2/20] Step 970/1000 | Loss: 1.1519 | L_point: 0.6697 | L_mask: 0.0920
+[Epoch 2/20] Step 980/1000 | Loss: 0.9826 | L_point: 0.5701 | L_mask: 0.0603
+[Epoch 2/20] Step 990/1000 | Loss: 1.4205 | L_point: 1.0444 | L_mask: 0.2034
+[Epoch 2/20] Step 1000/1000 | Loss: 1.4038 | L_point: 0.6701 | L_mask: 0.1825
+Epoch 2 done in 2194s | Avg loss: 1.5032
+{
+  "epoch": 2,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.623029473491929,
+    "vggt_primary_vs_secondary_nl": 5.887444830074203,
+    "single_corrected_vs_first_l": 1.967811950120554,
+    "single_corrected_vs_secondary_nl": 2.514261022357651,
+    "single_corrected_vs_first_nl": 2.7334005327610797,
+    "single_mask_acc_valid_first": 0.9610956971826584
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59552018,
+    "vggt_primary_vs_secondary_nl": 252719662,
+    "single_corrected_vs_first_l": 59552018,
+    "single_corrected_vs_secondary_nl": 252719662,
+    "single_corrected_vs_first_nl": 252719662,
+    "single_mask_acc_valid_first": 312271680
+  }
+}
+[Epoch 3/20] Step 10/1000 | Loss: 1.0389 | L_point: 0.9857 | L_mask: 0.0614
+[Epoch 3/20] Step 20/1000 | Loss: 1.0884 | L_point: 1.3734 | L_mask: 0.1257
+[Epoch 3/20] Step 30/1000 | Loss: 1.4588 | L_point: 1.1865 | L_mask: 0.0185
+[Epoch 3/20] Step 40/1000 | Loss: 1.1005 | L_point: 1.4495 | L_mask: 0.0518
+[Epoch 3/20] Step 50/1000 | Loss: 1.0451 | L_point: 0.6841 | L_mask: 0.1009
+[Epoch 3/20] Step 60/1000 | Loss: 1.1769 | L_point: 1.9922 | L_mask: 0.1007
+[Epoch 3/20] Step 70/1000 | Loss: 0.9723 | L_point: 1.5323 | L_mask: 0.0712
+[Epoch 3/20] Step 80/1000 | Loss: 0.9658 | L_point: 0.7274 | L_mask: 0.0385
+[Epoch 3/20] Step 90/1000 | Loss: 0.9516 | L_point: 1.5857 | L_mask: 0.2357
+[Epoch 3/20] Step 100/1000 | Loss: 0.8311 | L_point: 0.9192 | L_mask: 0.0298
+[Epoch 3/20] Step 110/1000 | Loss: 1.1367 | L_point: 1.2008 | L_mask: 0.2041
+[Epoch 3/20] Step 120/1000 | Loss: 1.2796 | L_point: 0.9500 | L_mask: 0.0660
+[Epoch 3/20] Step 130/1000 | Loss: 0.9259 | L_point: 0.8926 | L_mask: 0.0765
+[Epoch 3/20] Step 140/1000 | Loss: 1.0955 | L_point: 0.7711 | L_mask: 0.0790
+[Epoch 3/20] Step 150/1000 | Loss: 1.0577 | L_point: 1.4682 | L_mask: 0.2088
+[Epoch 3/20] Step 160/1000 | Loss: 0.9854 | L_point: 0.8916 | L_mask: 0.1358
+[Epoch 3/20] Step 170/1000 | Loss: 1.0392 | L_point: 1.1379 | L_mask: 0.1121
+[Epoch 3/20] Step 180/1000 | Loss: 1.0914 | L_point: 2.5353 | L_mask: 0.2971
+[Epoch 3/20] Step 190/1000 | Loss: 0.9531 | L_point: 0.9391 | L_mask: 0.0247
+[Epoch 3/20] Step 200/1000 | Loss: 0.8612 | L_point: 0.8579 | L_mask: 0.0868
+[Epoch 3/20] Step 210/1000 | Loss: 1.1117 | L_point: 1.3515 | L_mask: 0.0279
+[Epoch 3/20] Step 220/1000 | Loss: 1.3194 | L_point: 1.2133 | L_mask: 0.0837
+[Epoch 3/20] Step 230/1000 | Loss: 1.0225 | L_point: 1.1375 | L_mask: 0.2467
+[Epoch 3/20] Step 240/1000 | Loss: 1.1506 | L_point: 0.8833 | L_mask: 0.1293
+[Epoch 3/20] Step 250/1000 | Loss: 1.0268 | L_point: 1.2014 | L_mask: 0.0023
+[Epoch 3/20] Step 260/1000 | Loss: 0.8854 | L_point: 0.4801 | L_mask: 0.0098
+[Epoch 3/20] Step 270/1000 | Loss: 1.0420 | L_point: 0.8351 | L_mask: 0.0641
+[Epoch 3/20] Step 280/1000 | Loss: 1.0086 | L_point: 1.0866 | L_mask: 0.0319
+[Epoch 3/20] Step 290/1000 | Loss: 0.8719 | L_point: 0.5904 | L_mask: 0.0383
+[Epoch 3/20] Step 300/1000 | Loss: 1.2696 | L_point: 0.6751 | L_mask: 0.0440
+[Epoch 3/20] Step 310/1000 | Loss: 1.0191 | L_point: 0.8790 | L_mask: 0.0991
+[Epoch 3/20] Step 320/1000 | Loss: 1.1270 | L_point: 1.2012 | L_mask: 0.0720
+[Epoch 3/20] Step 330/1000 | Loss: 0.8856 | L_point: 0.9358 | L_mask: 0.0904
+[Epoch 3/20] Step 340/1000 | Loss: 0.9331 | L_point: 1.1548 | L_mask: 0.0771
+[Epoch 3/20] Step 350/1000 | Loss: 0.9393 | L_point: 1.1349 | L_mask: 0.0837
+[Epoch 3/20] Step 360/1000 | Loss: 1.1479 | L_point: 1.1149 | L_mask: 0.0706
+[Epoch 3/20] Step 370/1000 | Loss: 1.1985 | L_point: 1.0005 | L_mask: 0.0861
+[Epoch 3/20] Step 380/1000 | Loss: 0.8921 | L_point: 1.2026 | L_mask: 0.2112
+[Epoch 3/20] Step 390/1000 | Loss: 0.9084 | L_point: 0.4927 | L_mask: 0.0437
+[Epoch 3/20] Step 400/1000 | Loss: 0.9038 | L_point: 0.7512 | L_mask: 0.1272
+[Epoch 3/20] Step 410/1000 | Loss: 0.8858 | L_point: 0.8416 | L_mask: 0.0902
+[Epoch 3/20] Step 420/1000 | Loss: 1.0321 | L_point: 0.9349 | L_mask: 0.0857
+[Epoch 3/20] Step 430/1000 | Loss: 0.9762 | L_point: 1.7863 | L_mask: 0.1283
+[Epoch 3/20] Step 440/1000 | Loss: 1.0402 | L_point: 1.4559 | L_mask: 0.0623
+[Epoch 3/20] Step 450/1000 | Loss: 1.0089 | L_point: 1.5559 | L_mask: 0.1500
+[Epoch 3/20] Step 460/1000 | Loss: 0.8533 | L_point: 0.5399 | L_mask: 0.0188
+[Epoch 3/20] Step 470/1000 | Loss: 0.9167 | L_point: 0.9218 | L_mask: 0.0423
+[Epoch 3/20] Step 480/1000 | Loss: 1.1004 | L_point: 0.9541 | L_mask: 0.1131
+[Epoch 3/20] Step 490/1000 | Loss: 1.0213 | L_point: 1.0428 | L_mask: 0.1089
+[Epoch 3/20] Step 500/1000 | Loss: 0.7814 | L_point: 0.6611 | L_mask: 0.0817
+[Epoch 3/20] Step 510/1000 | Loss: 0.9906 | L_point: 0.5291 | L_mask: 0.1803
+[Epoch 3/20] Step 520/1000 | Loss: 0.8880 | L_point: 0.8178 | L_mask: 0.0049
+[Epoch 3/20] Step 530/1000 | Loss: 0.7545 | L_point: 0.5688 | L_mask: 0.1041
+[Epoch 3/20] Step 540/1000 | Loss: 1.1336 | L_point: 1.2943 | L_mask: 0.0719
+[Epoch 3/20] Step 550/1000 | Loss: 0.7564 | L_point: 0.9313 | L_mask: 0.1448
+[Epoch 3/20] Step 560/1000 | Loss: 0.9690 | L_point: 1.0540 | L_mask: 0.0496
+[Epoch 3/20] Step 570/1000 | Loss: 0.8220 | L_point: 0.7197 | L_mask: 0.1419
+[Epoch 3/20] Step 580/1000 | Loss: 1.0855 | L_point: 0.8427 | L_mask: 0.0946
+[Epoch 3/20] Step 590/1000 | Loss: 1.0022 | L_point: 0.7230 | L_mask: 0.1167
+[Epoch 3/20] Step 600/1000 | Loss: 0.7170 | L_point: 0.4362 | L_mask: 0.0314
+[Epoch 3/20] Step 610/1000 | Loss: 0.9521 | L_point: 1.0673 | L_mask: 0.0171
+[Epoch 3/20] Step 620/1000 | Loss: 0.8870 | L_point: 1.0045 | L_mask: 0.0424
+[Epoch 3/20] Step 630/1000 | Loss: 0.7007 | L_point: 0.7914 | L_mask: 0.0633
+[Epoch 3/20] Step 640/1000 | Loss: 1.0523 | L_point: 0.5877 | L_mask: 0.1108
+[Epoch 3/20] Step 650/1000 | Loss: 0.8202 | L_point: 1.3039 | L_mask: 0.0296
+[Epoch 3/20] Step 660/1000 | Loss: 0.9523 | L_point: 0.9294 | L_mask: 0.0577
+[Epoch 3/20] Step 670/1000 | Loss: 0.8310 | L_point: 0.5828 | L_mask: 0.0119
+[Epoch 3/20] Step 680/1000 | Loss: 1.0479 | L_point: 0.5353 | L_mask: 0.0095
+[Epoch 3/20] Step 690/1000 | Loss: 0.8616 | L_point: 0.9308 | L_mask: 0.0891
+[Epoch 3/20] Step 700/1000 | Loss: 0.8582 | L_point: 1.0954 | L_mask: 0.2311
+[Epoch 3/20] Step 710/1000 | Loss: 0.7989 | L_point: 0.6007 | L_mask: 0.0345
+[Epoch 3/20] Step 720/1000 | Loss: 0.8701 | L_point: 1.1789 | L_mask: 0.0800
+[Epoch 3/20] Step 730/1000 | Loss: 0.8395 | L_point: 0.5439 | L_mask: 0.1813
+[Epoch 3/20] Step 740/1000 | Loss: 1.1174 | L_point: 0.9748 | L_mask: 0.0873
+[Epoch 3/20] Step 750/1000 | Loss: 1.0389 | L_point: 1.4992 | L_mask: 0.2418
+[Epoch 3/20] Step 760/1000 | Loss: 1.0141 | L_point: 1.8691 | L_mask: 0.6128
+[Epoch 3/20] Step 770/1000 | Loss: 1.1221 | L_point: 1.9634 | L_mask: 0.0949
+[Epoch 3/20] Step 780/1000 | Loss: 0.7478 | L_point: 0.5368 | L_mask: 0.0878
+[Epoch 3/20] Step 790/1000 | Loss: 0.9847 | L_point: 0.6138 | L_mask: 0.0367
+[Epoch 3/20] Step 800/1000 | Loss: 1.2617 | L_point: 0.5511 | L_mask: 0.0310
+[Epoch 3/20] Step 810/1000 | Loss: 0.7874 | L_point: 0.9294 | L_mask: 0.0311
+[Epoch 3/20] Step 820/1000 | Loss: 0.9282 | L_point: 1.2574 | L_mask: 0.0883
+[Epoch 3/20] Step 830/1000 | Loss: 0.8974 | L_point: 0.7748 | L_mask: 0.0989
+[Epoch 3/20] Step 840/1000 | Loss: 1.0917 | L_point: 1.9239 | L_mask: 0.0264
+[Epoch 3/20] Step 850/1000 | Loss: 0.7673 | L_point: 0.6795 | L_mask: 0.0282
+[Epoch 3/20] Step 860/1000 | Loss: 0.7825 | L_point: 0.4467 | L_mask: 0.0859
+[Epoch 3/20] Step 870/1000 | Loss: 1.3856 | L_point: 0.9247 | L_mask: 0.1591
+[Epoch 3/20] Step 880/1000 | Loss: 1.0750 | L_point: 0.8505 | L_mask: 0.0497
+[Epoch 3/20] Step 890/1000 | Loss: 0.6856 | L_point: 0.4749 | L_mask: 0.0769
+[Epoch 3/20] Step 900/1000 | Loss: 1.1859 | L_point: 0.7673 | L_mask: 0.0597
+[Epoch 3/20] Step 910/1000 | Loss: 0.9634 | L_point: 1.5863 | L_mask: 0.1390
+[Epoch 3/20] Step 920/1000 | Loss: 1.1803 | L_point: 0.8346 | L_mask: 0.0020
+[Epoch 3/20] Step 930/1000 | Loss: 0.7252 | L_point: 0.7545 | L_mask: 0.1216
+[Epoch 3/20] Step 940/1000 | Loss: 0.9065 | L_point: 0.9872 | L_mask: 0.0063
+[Epoch 3/20] Step 950/1000 | Loss: 1.0124 | L_point: 0.7306 | L_mask: 0.0925
+[Epoch 3/20] Step 960/1000 | Loss: 0.8449 | L_point: 0.9650 | L_mask: 0.2949
+[Epoch 3/20] Step 970/1000 | Loss: 0.8518 | L_point: 0.8450 | L_mask: 0.0655
+[Epoch 3/20] Step 980/1000 | Loss: 0.7614 | L_point: 0.7414 | L_mask: 0.0866
+[Epoch 3/20] Step 990/1000 | Loss: 0.8778 | L_point: 0.7307 | L_mask: 0.1168
+[Epoch 3/20] Step 1000/1000 | Loss: 0.7207 | L_point: 0.6025 | L_mask: 0.0442
+Epoch 3 done in 2195s | Avg loss: 0.9764
+[Epoch 4/20] Step 10/1000 | Loss: 0.9903 | L_point: 0.5104 | L_mask: 0.0874
+[Epoch 4/20] Step 20/1000 | Loss: 0.9324 | L_point: 0.6709 | L_mask: 0.0383
+[Epoch 4/20] Step 30/1000 | Loss: 0.8049 | L_point: 1.2766 | L_mask: 0.0816
+[Epoch 4/20] Step 40/1000 | Loss: 1.0171 | L_point: 0.5609 | L_mask: 0.1769
+[Epoch 4/20] Step 50/1000 | Loss: 0.8033 | L_point: 0.8804 | L_mask: 0.0638
+[Epoch 4/20] Step 60/1000 | Loss: 0.6567 | L_point: 1.0138 | L_mask: 0.0945
+[Epoch 4/20] Step 70/1000 | Loss: 0.6902 | L_point: 0.7910 | L_mask: 0.1124
+[Epoch 4/20] Step 80/1000 | Loss: 0.9076 | L_point: 2.5912 | L_mask: 0.1417
+[Epoch 4/20] Step 90/1000 | Loss: 0.7956 | L_point: 0.6881 | L_mask: 0.0997
+[Epoch 4/20] Step 100/1000 | Loss: 0.8678 | L_point: 0.9530 | L_mask: 0.0375
+[Epoch 4/20] Step 110/1000 | Loss: 0.9095 | L_point: 0.7507 | L_mask: 0.0847
+[Epoch 4/20] Step 120/1000 | Loss: 0.8162 | L_point: 0.6210 | L_mask: 0.1048
+[Epoch 4/20] Step 130/1000 | Loss: 0.8043 | L_point: 0.6415 | L_mask: 0.0941
+[Epoch 4/20] Step 140/1000 | Loss: 0.8956 | L_point: 1.1693 | L_mask: 0.1191
+[Epoch 4/20] Step 150/1000 | Loss: 0.7410 | L_point: 0.5224 | L_mask: 0.0163
+[Epoch 4/20] Step 160/1000 | Loss: 1.0601 | L_point: 0.5527 | L_mask: 0.1053
+[Epoch 4/20] Step 170/1000 | Loss: 0.8798 | L_point: 1.0682 | L_mask: 0.1033
+[Epoch 4/20] Step 180/1000 | Loss: 0.8511 | L_point: 0.4985 | L_mask: 0.0347
+[Epoch 4/20] Step 190/1000 | Loss: 0.8612 | L_point: 0.4144 | L_mask: 0.0569
+[Epoch 4/20] Step 200/1000 | Loss: 1.1905 | L_point: 1.0367 | L_mask: 0.1956
+[Epoch 4/20] Step 210/1000 | Loss: 1.0203 | L_point: 0.8531 | L_mask: 0.1036
+[Epoch 4/20] Step 220/1000 | Loss: 0.8256 | L_point: 0.3771 | L_mask: 0.0332
+[Epoch 4/20] Step 230/1000 | Loss: 1.0822 | L_point: 0.8243 | L_mask: 0.0919
+[Epoch 4/20] Step 240/1000 | Loss: 0.8319 | L_point: 0.8889 | L_mask: 0.0293
+[Epoch 4/20] Step 250/1000 | Loss: 0.7920 | L_point: 1.8188 | L_mask: 0.0610
+[Epoch 4/20] Step 260/1000 | Loss: 1.0543 | L_point: 0.3911 | L_mask: 0.0847
+[Epoch 4/20] Step 270/1000 | Loss: 0.6707 | L_point: 0.7423 | L_mask: 0.0415
+[Epoch 4/20] Step 280/1000 | Loss: 0.8271 | L_point: 0.7415 | L_mask: 0.1115
+[Epoch 4/20] Step 290/1000 | Loss: 1.2093 | L_point: 1.0336 | L_mask: 0.0361
+[Epoch 4/20] Step 300/1000 | Loss: 1.0465 | L_point: 1.4951 | L_mask: 0.2342
+[Epoch 4/20] Step 310/1000 | Loss: 0.7877 | L_point: 0.3265 | L_mask: 0.0200
+[Epoch 4/20] Step 320/1000 | Loss: 0.6727 | L_point: 0.6645 | L_mask: 0.1357
+[Epoch 4/20] Step 330/1000 | Loss: 0.6361 | L_point: 0.7381 | L_mask: 0.0696
+[Epoch 4/20] Step 340/1000 | Loss: 0.9001 | L_point: 0.9004 | L_mask: 0.1119
+[Epoch 4/20] Step 350/1000 | Loss: 0.5599 | L_point: 0.6582 | L_mask: 0.0923
+[Epoch 4/20] Step 360/1000 | Loss: 0.6788 | L_point: 1.0738 | L_mask: 0.0564
+[Epoch 4/20] Step 370/1000 | Loss: 0.7257 | L_point: 0.5408 | L_mask: 0.1562
+[Epoch 4/20] Step 380/1000 | Loss: 0.9297 | L_point: 0.8884 | L_mask: 0.4784
+[Epoch 4/20] Step 390/1000 | Loss: 0.6409 | L_point: 0.5628 | L_mask: 0.0225
+[Epoch 4/20] Step 400/1000 | Loss: 0.9095 | L_point: 0.5908 | L_mask: 0.0252
+[Epoch 4/20] Step 410/1000 | Loss: 1.0622 | L_point: 0.8799 | L_mask: 0.0651
+[Epoch 4/20] Step 420/1000 | Loss: 0.8175 | L_point: 0.8912 | L_mask: 0.1543
+[Epoch 4/20] Step 430/1000 | Loss: 0.7290 | L_point: 0.4275 | L_mask: 0.0279
+[Epoch 4/20] Step 440/1000 | Loss: 0.7929 | L_point: 0.7999 | L_mask: 0.1151
+[Epoch 4/20] Step 450/1000 | Loss: 0.6730 | L_point: 0.4711 | L_mask: 0.0338
+[Epoch 4/20] Step 460/1000 | Loss: 0.8865 | L_point: 0.8454 | L_mask: 0.1459
+[Epoch 4/20] Step 470/1000 | Loss: 0.6280 | L_point: 0.4188 | L_mask: 0.0189
+[Epoch 4/20] Step 480/1000 | Loss: 0.6232 | L_point: 0.7129 | L_mask: 0.0800
+[Epoch 4/20] Step 490/1000 | Loss: 0.7764 | L_point: 0.5912 | L_mask: 0.0447
+[Epoch 4/20] Step 500/1000 | Loss: 0.7007 | L_point: 0.4167 | L_mask: 0.0710
+[Epoch 4/20] Step 510/1000 | Loss: 0.8654 | L_point: 0.4746 | L_mask: 0.0750
+[Epoch 4/20] Step 520/1000 | Loss: 0.6551 | L_point: 0.7403 | L_mask: 0.0419
+[Epoch 4/20] Step 530/1000 | Loss: 0.6210 | L_point: 0.4607 | L_mask: 0.0439
+[Epoch 4/20] Step 540/1000 | Loss: 0.8519 | L_point: 0.7999 | L_mask: 0.0524
+[Epoch 4/20] Step 550/1000 | Loss: 0.6848 | L_point: 1.1282 | L_mask: 0.0774
+[Epoch 4/20] Step 560/1000 | Loss: 0.5728 | L_point: 0.7318 | L_mask: 0.1195
+[Epoch 4/20] Step 570/1000 | Loss: 0.6626 | L_point: 0.8333 | L_mask: 0.1338
+[Epoch 4/20] Step 580/1000 | Loss: 0.6924 | L_point: 0.5616 | L_mask: 0.0888
+[Epoch 4/20] Step 590/1000 | Loss: 0.8943 | L_point: 0.6605 | L_mask: 0.0957
+[Epoch 4/20] Step 600/1000 | Loss: 0.6297 | L_point: 0.4217 | L_mask: 0.1351
+[Epoch 4/20] Step 610/1000 | Loss: 0.4995 | L_point: 0.5157 | L_mask: 0.0369
+[Epoch 4/20] Step 620/1000 | Loss: 0.8099 | L_point: 0.8721 | L_mask: 0.0578
+[Epoch 4/20] Step 630/1000 | Loss: 0.8695 | L_point: 0.3747 | L_mask: 0.1867
+[Epoch 4/20] Step 640/1000 | Loss: 0.5524 | L_point: 0.3949 | L_mask: 0.0096
+[Epoch 4/20] Step 650/1000 | Loss: 0.7151 | L_point: 1.5046 | L_mask: 0.0324
+[Epoch 4/20] Step 660/1000 | Loss: 0.7224 | L_point: 1.4176 | L_mask: 0.2431
+[Epoch 4/20] Step 670/1000 | Loss: 0.6041 | L_point: 0.6588 | L_mask: 0.0685
+[Epoch 4/20] Step 680/1000 | Loss: 0.7267 | L_point: 0.7964 | L_mask: 0.1154
+[Epoch 4/20] Step 690/1000 | Loss: 0.6405 | L_point: 0.7030 | L_mask: 0.0918
+[Epoch 4/20] Step 700/1000 | Loss: 0.7487 | L_point: 0.5341 | L_mask: 0.0760
+[Epoch 4/20] Step 710/1000 | Loss: 0.5803 | L_point: 0.6135 | L_mask: 0.1836
+[Epoch 4/20] Step 720/1000 | Loss: 0.7546 | L_point: 0.3347 | L_mask: 0.0382
+[Epoch 4/20] Step 730/1000 | Loss: 0.6491 | L_point: 0.6992 | L_mask: 0.0320
+[Epoch 4/20] Step 740/1000 | Loss: 0.5737 | L_point: 0.4254 | L_mask: 0.0296
+[Epoch 4/20] Step 750/1000 | Loss: 0.7379 | L_point: 0.5535 | L_mask: 0.0752
+[Epoch 4/20] Step 760/1000 | Loss: 0.7663 | L_point: 1.0501 | L_mask: 0.1927
+[Epoch 4/20] Step 770/1000 | Loss: 0.7203 | L_point: 0.4211 | L_mask: 0.0392
+[Epoch 4/20] Step 780/1000 | Loss: 0.6239 | L_point: 0.4013 | L_mask: 0.0718
+[Epoch 4/20] Step 790/1000 | Loss: 1.0501 | L_point: 2.3925 | L_mask: 0.0337
+[Epoch 4/20] Step 800/1000 | Loss: 0.9158 | L_point: 0.5013 | L_mask: 0.1051
+[Epoch 4/20] Step 810/1000 | Loss: 0.7022 | L_point: 0.7474 | L_mask: 0.0366
+[Epoch 4/20] Step 820/1000 | Loss: 0.8704 | L_point: 0.5471 | L_mask: 0.1416
+[Epoch 4/20] Step 830/1000 | Loss: 0.7618 | L_point: 1.2709 | L_mask: 0.2745
+[Epoch 4/20] Step 840/1000 | Loss: 0.6597 | L_point: 0.3148 | L_mask: 0.0159
+[Epoch 4/20] Step 850/1000 | Loss: 0.6083 | L_point: 0.5010 | L_mask: 0.1075
+[Epoch 4/20] Step 860/1000 | Loss: 0.6065 | L_point: 0.7071 | L_mask: 0.1200
+[Epoch 4/20] Step 870/1000 | Loss: 0.6722 | L_point: 0.3933 | L_mask: 0.1142
+[Epoch 4/20] Step 880/1000 | Loss: 0.9500 | L_point: 0.5475 | L_mask: 0.1034
+[Epoch 4/20] Step 890/1000 | Loss: 0.8535 | L_point: 0.5533 | L_mask: 0.0210
+[Epoch 4/20] Step 900/1000 | Loss: 0.9761 | L_point: 1.4627 | L_mask: 0.1713
+[Epoch 4/20] Step 910/1000 | Loss: 0.7539 | L_point: 0.7589 | L_mask: 0.0832
+[Epoch 4/20] Step 920/1000 | Loss: 0.8192 | L_point: 0.5472 | L_mask: 0.0886
+[Epoch 4/20] Step 930/1000 | Loss: 0.5356 | L_point: 0.4327 | L_mask: 0.0622
+[Epoch 4/20] Step 940/1000 | Loss: 0.8414 | L_point: 0.4432 | L_mask: 0.0630
+[Epoch 4/20] Step 950/1000 | Loss: 0.7210 | L_point: 1.0325 | L_mask: 0.0890
+[Epoch 4/20] Step 960/1000 | Loss: 0.7978 | L_point: 0.5999 | L_mask: 0.0841
+[Epoch 4/20] Step 970/1000 | Loss: 0.6212 | L_point: 0.5610 | L_mask: 0.0905
+[Epoch 4/20] Step 980/1000 | Loss: 0.7040 | L_point: 0.3485 | L_mask: 0.0157
+[Epoch 4/20] Step 990/1000 | Loss: 0.8466 | L_point: 0.9877 | L_mask: 0.0174
+[Epoch 4/20] Step 1000/1000 | Loss: 0.8689 | L_point: 0.4083 | L_mask: 0.0432
+Epoch 4 done in 2192s | Avg loss: 0.7853
+{
+  "epoch": 4,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.607070117171059,
+    "vggt_primary_vs_secondary_nl": 5.886444217372718,
+    "single_corrected_vs_first_l": 1.246565723749185,
+    "single_corrected_vs_secondary_nl": 1.4442855721834902,
+    "single_corrected_vs_first_nl": 1.8591741384448452,
+    "single_mask_acc_valid_first": 0.9632894334388575
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 60525905,
+    "vggt_primary_vs_secondary_nl": 251612127,
+    "single_corrected_vs_first_l": 60525905,
+    "single_corrected_vs_secondary_nl": 251612127,
+    "single_corrected_vs_first_nl": 251612127,
+    "single_mask_acc_valid_first": 312138032
+  }
+}
+[Epoch 5/20] Step 10/1000 | Loss: 0.9050 | L_point: 0.8114 | L_mask: 0.0938
+[Epoch 5/20] Step 20/1000 | Loss: 0.5900 | L_point: 0.4720 | L_mask: 0.1135
+[Epoch 5/20] Step 30/1000 | Loss: 0.7505 | L_point: 0.6629 | L_mask: 0.0757
+[Epoch 5/20] Step 40/1000 | Loss: 0.7216 | L_point: 0.4574 | L_mask: 0.0384
+[Epoch 5/20] Step 50/1000 | Loss: 0.6013 | L_point: 0.7044 | L_mask: 0.1016
+[Epoch 5/20] Step 60/1000 | Loss: 0.5989 | L_point: 1.1125 | L_mask: 0.2315
+[Epoch 5/20] Step 70/1000 | Loss: 0.7738 | L_point: 1.6555 | L_mask: 0.0463
+[Epoch 5/20] Step 80/1000 | Loss: 0.6471 | L_point: 0.7453 | L_mask: 0.1192
+[Epoch 5/20] Step 90/1000 | Loss: 0.6872 | L_point: 0.7267 | L_mask: 0.0778
+[Epoch 5/20] Step 100/1000 | Loss: 0.7943 | L_point: 0.4356 | L_mask: 0.0277
+[Epoch 5/20] Step 110/1000 | Loss: 0.8031 | L_point: 0.4092 | L_mask: 0.0419
+[Epoch 5/20] Step 120/1000 | Loss: 0.7772 | L_point: 0.8197 | L_mask: 0.0570
+[Epoch 5/20] Step 130/1000 | Loss: 0.8399 | L_point: 0.6342 | L_mask: 0.0606
+[Epoch 5/20] Step 140/1000 | Loss: 0.7439 | L_point: 0.5144 | L_mask: 0.0208
+[Epoch 5/20] Step 150/1000 | Loss: 0.6745 | L_point: 0.3812 | L_mask: 0.0526
+[Epoch 5/20] Step 160/1000 | Loss: 0.6022 | L_point: 0.7115 | L_mask: 0.1233
+[Epoch 5/20] Step 170/1000 | Loss: 0.8144 | L_point: 0.7757 | L_mask: 0.0866
+[Epoch 5/20] Step 180/1000 | Loss: 0.5381 | L_point: 0.3740 | L_mask: 0.0072
+[Epoch 5/20] Step 190/1000 | Loss: 0.7529 | L_point: 1.3073 | L_mask: 0.1544
+[Epoch 5/20] Step 200/1000 | Loss: 0.9668 | L_point: 0.5692 | L_mask: 0.0745
+[Epoch 5/20] Step 210/1000 | Loss: 0.7548 | L_point: 0.5433 | L_mask: 0.0895
+[Epoch 5/20] Step 220/1000 | Loss: 0.6485 | L_point: 0.7312 | L_mask: 0.0101
+[Epoch 5/20] Step 230/1000 | Loss: 0.6533 | L_point: 0.5272 | L_mask: 0.0655
+[Epoch 5/20] Step 240/1000 | Loss: 0.5454 | L_point: 0.5069 | L_mask: 0.0945
+[Epoch 5/20] Step 250/1000 | Loss: 0.6867 | L_point: 0.5624 | L_mask: 0.0942
+[Epoch 5/20] Step 260/1000 | Loss: 0.5813 | L_point: 0.4556 | L_mask: 0.1021
+[Epoch 5/20] Step 270/1000 | Loss: 0.5224 | L_point: 0.8672 | L_mask: 0.0421
+[Epoch 5/20] Step 280/1000 | Loss: 0.8099 | L_point: 0.9145 | L_mask: 0.0312
+[Epoch 5/20] Step 290/1000 | Loss: 0.8014 | L_point: 0.5565 | L_mask: 0.1285
+[Epoch 5/20] Step 300/1000 | Loss: 0.5421 | L_point: 0.3021 | L_mask: 0.1748
+[Epoch 5/20] Step 310/1000 | Loss: 0.6673 | L_point: 0.7082 | L_mask: 0.1033
+[Epoch 5/20] Step 320/1000 | Loss: 0.6824 | L_point: 0.8858 | L_mask: 0.1770
+[Epoch 5/20] Step 330/1000 | Loss: 0.5570 | L_point: 0.3895 | L_mask: 0.0331
+[Epoch 5/20] Step 340/1000 | Loss: 0.5528 | L_point: 0.3931 | L_mask: 0.0160
+[Epoch 5/20] Step 350/1000 | Loss: 0.4665 | L_point: 0.3545 | L_mask: 0.0708
+[Epoch 5/20] Step 360/1000 | Loss: 0.7318 | L_point: 0.5893 | L_mask: 0.0300
+[Epoch 5/20] Step 370/1000 | Loss: 0.6306 | L_point: 1.0683 | L_mask: 0.0489
+[Epoch 5/20] Step 380/1000 | Loss: 0.5766 | L_point: 0.6179 | L_mask: 0.0655
+[Epoch 5/20] Step 390/1000 | Loss: 0.7307 | L_point: 0.7826 | L_mask: 0.0125
+[Epoch 5/20] Step 400/1000 | Loss: 0.6208 | L_point: 0.4674 | L_mask: 0.0286
+[Epoch 5/20] Step 410/1000 | Loss: 0.7552 | L_point: 0.9929 | L_mask: 0.1785
+[Epoch 5/20] Step 420/1000 | Loss: 0.6469 | L_point: 0.5789 | L_mask: 0.0854
+[Epoch 5/20] Step 430/1000 | Loss: 0.5103 | L_point: 0.4846 | L_mask: 0.0670
+[Epoch 5/20] Step 440/1000 | Loss: 0.7233 | L_point: 0.4001 | L_mask: 0.1049
+[Epoch 5/20] Step 450/1000 | Loss: 0.6039 | L_point: 0.8124 | L_mask: 0.0299
+[Epoch 5/20] Step 460/1000 | Loss: 0.7536 | L_point: 0.4676 | L_mask: 0.0069
+[Epoch 5/20] Step 470/1000 | Loss: 0.6827 | L_point: 0.5501 | L_mask: 0.0106
+[Epoch 5/20] Step 480/1000 | Loss: 0.7649 | L_point: 0.5080 | L_mask: 0.0294
+[Epoch 5/20] Step 490/1000 | Loss: 0.7404 | L_point: 0.4687 | L_mask: 0.0558
+[Epoch 5/20] Step 500/1000 | Loss: 0.6256 | L_point: 0.5680 | L_mask: 0.0287
+[Epoch 5/20] Step 510/1000 | Loss: 0.6680 | L_point: 0.5201 | L_mask: 0.0524
+[Epoch 5/20] Step 520/1000 | Loss: 0.5709 | L_point: 0.3802 | L_mask: 0.0457
+[Epoch 5/20] Step 530/1000 | Loss: 0.5799 | L_point: 0.3203 | L_mask: 0.0631
+[Epoch 5/20] Step 540/1000 | Loss: 0.4953 | L_point: 0.6039 | L_mask: 0.0190
+[Epoch 5/20] Step 550/1000 | Loss: 0.8660 | L_point: 0.4732 | L_mask: 0.0073
+[Epoch 5/20] Step 560/1000 | Loss: 0.6964 | L_point: 0.3605 | L_mask: 0.0469
+[Epoch 5/20] Step 570/1000 | Loss: 0.6927 | L_point: 0.4204 | L_mask: 0.0015
+[Epoch 5/20] Step 580/1000 | Loss: 0.6016 | L_point: 0.6208 | L_mask: 0.0689
+[Epoch 5/20] Step 590/1000 | Loss: 0.6901 | L_point: 0.8908 | L_mask: 0.1949
+[Epoch 5/20] Step 600/1000 | Loss: 0.8299 | L_point: 0.4404 | L_mask: 0.1329
+[Epoch 5/20] Step 610/1000 | Loss: 0.6202 | L_point: 0.4379 | L_mask: 0.0848
+[Epoch 5/20] Step 620/1000 | Loss: 0.7752 | L_point: 0.6395 | L_mask: 0.0448
+[Epoch 5/20] Step 630/1000 | Loss: 0.6142 | L_point: 0.8209 | L_mask: 0.1218
+[Epoch 5/20] Step 640/1000 | Loss: 0.6974 | L_point: 0.4668 | L_mask: 0.0892
+[Epoch 5/20] Step 650/1000 | Loss: 0.9821 | L_point: 0.9447 | L_mask: 0.2186
+[Epoch 5/20] Step 660/1000 | Loss: 0.5134 | L_point: 0.3353 | L_mask: 0.0806
+[Epoch 5/20] Step 670/1000 | Loss: 0.7596 | L_point: 0.3905 | L_mask: 0.1230
+[Epoch 5/20] Step 680/1000 | Loss: 0.7832 | L_point: 1.2159 | L_mask: 0.1285
+[Epoch 5/20] Step 690/1000 | Loss: 0.6267 | L_point: 0.4683 | L_mask: 0.0586
+[Epoch 5/20] Step 700/1000 | Loss: 0.6425 | L_point: 0.4652 | L_mask: 0.0627
+[Epoch 5/20] Step 710/1000 | Loss: 0.7207 | L_point: 0.4642 | L_mask: 0.0668
+[Epoch 5/20] Step 720/1000 | Loss: 0.6420 | L_point: 0.3291 | L_mask: 0.0361
+[Epoch 5/20] Step 730/1000 | Loss: 0.7512 | L_point: 0.4348 | L_mask: 0.0473
+[Epoch 5/20] Step 740/1000 | Loss: 0.6494 | L_point: 0.7097 | L_mask: 0.0801
+[Epoch 5/20] Step 750/1000 | Loss: 0.6191 | L_point: 0.6396 | L_mask: 0.1132
+[Epoch 5/20] Step 760/1000 | Loss: 0.7944 | L_point: 0.7492 | L_mask: 0.1007
+[Epoch 5/20] Step 770/1000 | Loss: 0.9488 | L_point: 0.6563 | L_mask: 0.1461
+[Epoch 5/20] Step 780/1000 | Loss: 0.7600 | L_point: 0.4718 | L_mask: 0.0385
+[Epoch 5/20] Step 790/1000 | Loss: 0.5163 | L_point: 0.6643 | L_mask: 0.0288
+[Epoch 5/20] Step 800/1000 | Loss: 0.8046 | L_point: 1.1297 | L_mask: 0.0762
+[Epoch 5/20] Step 810/1000 | Loss: 0.6996 | L_point: 0.9414 | L_mask: 0.0114
+[Epoch 5/20] Step 820/1000 | Loss: 0.6948 | L_point: 0.4409 | L_mask: 0.0677
+[Epoch 5/20] Step 830/1000 | Loss: 0.6170 | L_point: 0.7590 | L_mask: 0.1061
+[Epoch 5/20] Step 840/1000 | Loss: 0.7165 | L_point: 0.3794 | L_mask: 0.0332
+[Epoch 5/20] Step 850/1000 | Loss: 0.5257 | L_point: 0.5244 | L_mask: 0.0882
+[Epoch 5/20] Step 860/1000 | Loss: 0.4997 | L_point: 0.4044 | L_mask: 0.0420
+[Epoch 5/20] Step 870/1000 | Loss: 0.9087 | L_point: 2.3099 | L_mask: 0.1428
+[Epoch 5/20] Step 880/1000 | Loss: 0.8962 | L_point: 0.7837 | L_mask: 0.2066
+[Epoch 5/20] Step 890/1000 | Loss: 0.7398 | L_point: 0.2411 | L_mask: 0.0387
+[Epoch 5/20] Step 900/1000 | Loss: 0.6219 | L_point: 0.3942 | L_mask: 0.1088
+[Epoch 5/20] Step 910/1000 | Loss: 0.5164 | L_point: 0.3644 | L_mask: 0.0462
+[Epoch 5/20] Step 920/1000 | Loss: 0.5419 | L_point: 0.4287 | L_mask: 0.0563
+[Epoch 5/20] Step 930/1000 | Loss: 0.6363 | L_point: 0.8293 | L_mask: 0.0709
+[Epoch 5/20] Step 940/1000 | Loss: 0.5078 | L_point: 0.2514 | L_mask: 0.0317
+[Epoch 5/20] Step 950/1000 | Loss: 0.6599 | L_point: 1.1920 | L_mask: 0.1458
+[Epoch 5/20] Step 960/1000 | Loss: 0.6092 | L_point: 0.4771 | L_mask: 0.0443
+[Epoch 5/20] Step 970/1000 | Loss: 0.7893 | L_point: 0.3695 | L_mask: 0.1368
+[Epoch 5/20] Step 980/1000 | Loss: 0.5674 | L_point: 0.4450 | L_mask: 0.1237
+[Epoch 5/20] Step 990/1000 | Loss: 0.6979 | L_point: 1.2329 | L_mask: 0.2260
+[Epoch 5/20] Step 1000/1000 | Loss: 0.7232 | L_point: 0.4435 | L_mask: 0.1176
+Epoch 5 done in 2194s | Avg loss: 0.6823
+Saved checkpoint: checkpoints/phase05_single_head/single_head_epoch005.pt
+[Epoch 6/20] Step 10/1000 | Loss: 0.3983 | L_point: 0.3284 | L_mask: 0.0503
+[Epoch 6/20] Step 20/1000 | Loss: 0.5341 | L_point: 0.4079 | L_mask: 0.0621
+[Epoch 6/20] Step 30/1000 | Loss: 0.4790 | L_point: 0.4740 | L_mask: 0.0998
+[Epoch 6/20] Step 40/1000 | Loss: 0.6204 | L_point: 0.5642 | L_mask: 0.0174
+[Epoch 6/20] Step 50/1000 | Loss: 0.6178 | L_point: 0.4357 | L_mask: 0.0495
+[Epoch 6/20] Step 60/1000 | Loss: 0.4707 | L_point: 0.4694 | L_mask: 0.0191
+[Epoch 6/20] Step 70/1000 | Loss: 0.6263 | L_point: 0.3684 | L_mask: 0.0721
+[Epoch 6/20] Step 80/1000 | Loss: 0.5661 | L_point: 0.5181 | L_mask: 0.1216
+[Epoch 6/20] Step 90/1000 | Loss: 0.5396 | L_point: 0.5661 | L_mask: 0.1597
+[Epoch 6/20] Step 100/1000 | Loss: 0.4479 | L_point: 0.4652 | L_mask: 0.0901
+[Epoch 6/20] Step 110/1000 | Loss: 0.8130 | L_point: 0.7320 | L_mask: 0.1778
+[Epoch 6/20] Step 120/1000 | Loss: 0.5342 | L_point: 0.4256 | L_mask: 0.0829
+[Epoch 6/20] Step 130/1000 | Loss: 0.5290 | L_point: 0.3717 | L_mask: 0.0186
+[Epoch 6/20] Step 140/1000 | Loss: 0.5011 | L_point: 0.4434 | L_mask: 0.0698
+[Epoch 6/20] Step 150/1000 | Loss: 0.5188 | L_point: 0.4860 | L_mask: 0.1021
+[Epoch 6/20] Step 160/1000 | Loss: 0.4835 | L_point: 0.4934 | L_mask: 0.1333
+[Epoch 6/20] Step 170/1000 | Loss: 0.4806 | L_point: 0.3601 | L_mask: 0.0623
+[Epoch 6/20] Step 180/1000 | Loss: 0.5123 | L_point: 0.8073 | L_mask: 0.0605
+[Epoch 6/20] Step 190/1000 | Loss: 0.8381 | L_point: 1.6026 | L_mask: 0.1422
+[Epoch 6/20] Step 200/1000 | Loss: 0.7098 | L_point: 0.5349 | L_mask: 0.0751
+[Epoch 6/20] Step 210/1000 | Loss: 0.8102 | L_point: 0.8253 | L_mask: 0.0312
+[Epoch 6/20] Step 220/1000 | Loss: 0.7191 | L_point: 1.8274 | L_mask: 0.2224
+[Epoch 6/20] Step 230/1000 | Loss: 0.4970 | L_point: 0.8063 | L_mask: 0.2151
+[Epoch 6/20] Step 240/1000 | Loss: 0.7856 | L_point: 0.9850 | L_mask: 0.0929
+[Epoch 6/20] Step 250/1000 | Loss: 0.6407 | L_point: 0.3467 | L_mask: 0.0271
+[Epoch 6/20] Step 260/1000 | Loss: 0.6152 | L_point: 0.4469 | L_mask: 0.1146
+[Epoch 6/20] Step 270/1000 | Loss: 0.5120 | L_point: 0.5333 | L_mask: 0.0223
+[Epoch 6/20] Step 280/1000 | Loss: 0.4306 | L_point: 0.4503 | L_mask: 0.0769
+[Epoch 6/20] Step 290/1000 | Loss: 0.7534 | L_point: 0.5453 | L_mask: 0.1121
+[Epoch 6/20] Step 300/1000 | Loss: 0.7780 | L_point: 0.8336 | L_mask: 0.1197
+[Epoch 6/20] Step 310/1000 | Loss: 0.6987 | L_point: 0.4424 | L_mask: 0.0702
+[Epoch 6/20] Step 320/1000 | Loss: 0.6126 | L_point: 1.2330 | L_mask: 0.1238
+[Epoch 6/20] Step 330/1000 | Loss: 0.6863 | L_point: 0.7664 | L_mask: 0.1865
+[Epoch 6/20] Step 340/1000 | Loss: 0.6676 | L_point: 0.5394 | L_mask: 0.0364
+[Epoch 6/20] Step 350/1000 | Loss: 0.4921 | L_point: 0.5486 | L_mask: 0.0486
+[Epoch 6/20] Step 360/1000 | Loss: 0.6090 | L_point: 0.6268 | L_mask: 0.0829
+[Epoch 6/20] Step 370/1000 | Loss: 0.6841 | L_point: 0.8840 | L_mask: 0.0501
+[Epoch 6/20] Step 380/1000 | Loss: 0.7060 | L_point: 0.3581 | L_mask: 0.0593
+[Epoch 6/20] Step 390/1000 | Loss: 0.6057 | L_point: 0.3351 | L_mask: 0.1660
+[Epoch 6/20] Step 400/1000 | Loss: 0.5543 | L_point: 1.4295 | L_mask: 0.0148
+[Epoch 6/20] Step 410/1000 | Loss: 0.6157 | L_point: 0.5977 | L_mask: 0.1013
+[Epoch 6/20] Step 420/1000 | Loss: 0.6087 | L_point: 0.4868 | L_mask: 0.0476
+[Epoch 6/20] Step 430/1000 | Loss: 0.6657 | L_point: 0.6315 | L_mask: 0.0763
+[Epoch 6/20] Step 440/1000 | Loss: 0.5171 | L_point: 0.3676 | L_mask: 0.0449
+[Epoch 6/20] Step 450/1000 | Loss: 0.5931 | L_point: 0.8776 | L_mask: 0.0906
+[Epoch 6/20] Step 460/1000 | Loss: 0.4639 | L_point: 0.3103 | L_mask: 0.0301
+[Epoch 6/20] Step 470/1000 | Loss: 0.6017 | L_point: 0.3400 | L_mask: 0.0468
+[Epoch 6/20] Step 480/1000 | Loss: 0.5709 | L_point: 1.1024 | L_mask: 0.0365
+[Epoch 6/20] Step 490/1000 | Loss: 0.7597 | L_point: 0.9552 | L_mask: 0.1457
+[Epoch 6/20] Step 500/1000 | Loss: 0.7161 | L_point: 0.5069 | L_mask: 0.1037
+[Epoch 6/20] Step 510/1000 | Loss: 0.7253 | L_point: 0.5535 | L_mask: 0.0521
+[Epoch 6/20] Step 520/1000 | Loss: 0.7602 | L_point: 0.8166 | L_mask: 0.1577
+[Epoch 6/20] Step 530/1000 | Loss: 0.6763 | L_point: 0.5383 | L_mask: 0.1133
+[Epoch 6/20] Step 540/1000 | Loss: 0.7876 | L_point: 0.7598 | L_mask: 0.0221
+[Epoch 6/20] Step 550/1000 | Loss: 0.6466 | L_point: 0.4847 | L_mask: 0.0468
+[Epoch 6/20] Step 560/1000 | Loss: 0.6157 | L_point: 0.4666 | L_mask: 0.0861
+[Epoch 6/20] Step 570/1000 | Loss: 0.5599 | L_point: 0.5312 | L_mask: 0.0190
+[Epoch 6/20] Step 580/1000 | Loss: 0.6596 | L_point: 0.3240 | L_mask: 0.1451
+[Epoch 6/20] Step 590/1000 | Loss: 0.7636 | L_point: 0.5705 | L_mask: 0.1122
+[Epoch 6/20] Step 600/1000 | Loss: 0.4624 | L_point: 0.3199 | L_mask: 0.0758
+[Epoch 6/20] Step 610/1000 | Loss: 0.4211 | L_point: 0.5070 | L_mask: 0.0922
+[Epoch 6/20] Step 620/1000 | Loss: 0.6671 | L_point: 0.2867 | L_mask: 0.0442
+[Epoch 6/20] Step 630/1000 | Loss: 0.6435 | L_point: 1.0735 | L_mask: 0.1533
+[Epoch 6/20] Step 640/1000 | Loss: 0.4734 | L_point: 0.4145 | L_mask: 0.0921
+[Epoch 6/20] Step 650/1000 | Loss: 0.5863 | L_point: 0.3957 | L_mask: 0.0680
+[Epoch 6/20] Step 660/1000 | Loss: 0.9701 | L_point: 0.9243 | L_mask: 0.1349
+[Epoch 6/20] Step 670/1000 | Loss: 0.6110 | L_point: 0.7498 | L_mask: 0.0478
+[Epoch 6/20] Step 680/1000 | Loss: 0.5811 | L_point: 0.6987 | L_mask: 0.0948
+[Epoch 6/20] Step 690/1000 | Loss: 0.4253 | L_point: 0.2873 | L_mask: 0.0006
+[Epoch 6/20] Step 700/1000 | Loss: 0.5257 | L_point: 0.6309 | L_mask: 0.1037
+[Epoch 6/20] Step 710/1000 | Loss: 0.7495 | L_point: 0.7390 | L_mask: 0.0820
+[Epoch 6/20] Step 720/1000 | Loss: 0.7917 | L_point: 1.6655 | L_mask: 0.2168
+[Epoch 6/20] Step 730/1000 | Loss: 0.4659 | L_point: 0.6394 | L_mask: 0.0717
+[Epoch 6/20] Step 740/1000 | Loss: 0.5699 | L_point: 0.4696 | L_mask: 0.1002
+[Epoch 6/20] Step 750/1000 | Loss: 0.5275 | L_point: 0.4498 | L_mask: 0.0435
+[Epoch 6/20] Step 760/1000 | Loss: 0.5077 | L_point: 0.3582 | L_mask: 0.0645
+[Epoch 6/20] Step 770/1000 | Loss: 0.6096 | L_point: 0.4552 | L_mask: 0.0593
+[Epoch 6/20] Step 780/1000 | Loss: 0.7350 | L_point: 0.3703 | L_mask: 0.0087
+[Epoch 6/20] Step 790/1000 | Loss: 0.6380 | L_point: 2.7581 | L_mask: 0.0734
+[Epoch 6/20] Step 800/1000 | Loss: 0.5097 | L_point: 0.5407 | L_mask: 0.0577
+[Epoch 6/20] Step 810/1000 | Loss: 0.8138 | L_point: 0.4833 | L_mask: 0.0781
+[Epoch 6/20] Step 820/1000 | Loss: 0.7669 | L_point: 0.4916 | L_mask: 0.1195
+[Epoch 6/20] Step 830/1000 | Loss: 0.7151 | L_point: 0.3650 | L_mask: 0.0886
+[Epoch 6/20] Step 840/1000 | Loss: 0.5901 | L_point: 0.4433 | L_mask: 0.0812
+[Epoch 6/20] Step 850/1000 | Loss: 0.5433 | L_point: 0.7199 | L_mask: 0.1138
+[Epoch 6/20] Step 860/1000 | Loss: 0.6321 | L_point: 0.3341 | L_mask: 0.1056
+[Epoch 6/20] Step 870/1000 | Loss: 0.7595 | L_point: 0.3223 | L_mask: 0.0528
+[Epoch 6/20] Step 880/1000 | Loss: 0.4377 | L_point: 0.2974 | L_mask: 0.0725
+[Epoch 6/20] Step 890/1000 | Loss: 0.8087 | L_point: 0.4064 | L_mask: 0.0477
+[Epoch 6/20] Step 900/1000 | Loss: 0.5741 | L_point: 0.2800 | L_mask: 0.0331
+[Epoch 6/20] Step 910/1000 | Loss: 0.5494 | L_point: 0.2421 | L_mask: 0.0590
+[Epoch 6/20] Step 920/1000 | Loss: 0.5054 | L_point: 0.4225 | L_mask: 0.0665
+[Epoch 6/20] Step 930/1000 | Loss: 0.5491 | L_point: 0.4943 | L_mask: 0.0522
+[Epoch 6/20] Step 940/1000 | Loss: 0.5210 | L_point: 0.6187 | L_mask: 0.0150
+[Epoch 6/20] Step 950/1000 | Loss: 0.7166 | L_point: 0.6606 | L_mask: 0.0716
+[Epoch 6/20] Step 960/1000 | Loss: 0.6116 | L_point: 0.3227 | L_mask: 0.0203
+[Epoch 6/20] Step 970/1000 | Loss: 0.5387 | L_point: 0.3142 | L_mask: 0.0462
+[Epoch 6/20] Step 980/1000 | Loss: 0.6465 | L_point: 0.2539 | L_mask: 0.0482
+[Epoch 6/20] Step 990/1000 | Loss: 0.6852 | L_point: 0.4422 | L_mask: 0.0366
+[Epoch 6/20] Step 1000/1000 | Loss: 0.5242 | L_point: 0.4267 | L_mask: 0.0207
+Epoch 6 done in 2198s | Avg loss: 0.6135
+{
+  "epoch": 6,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.630224291703834,
+    "vggt_primary_vs_secondary_nl": 5.885922582466093,
+    "single_corrected_vs_first_l": 1.1133019922326535,
+    "single_corrected_vs_secondary_nl": 1.040054121898989,
+    "single_corrected_vs_first_nl": 1.6521510536940913,
+    "single_mask_acc_valid_first": 0.9628671202274643
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59961369,
+    "vggt_primary_vs_secondary_nl": 252192740,
+    "single_corrected_vs_first_l": 59961369,
+    "single_corrected_vs_secondary_nl": 252192740,
+    "single_corrected_vs_first_nl": 252192740,
+    "single_mask_acc_valid_first": 312154109
+  }
+}
+[Epoch 7/20] Step 10/1000 | Loss: 0.6184 | L_point: 1.8668 | L_mask: 0.3749
+[Epoch 7/20] Step 20/1000 | Loss: 0.6809 | L_point: 0.5347 | L_mask: 0.0506
+[Epoch 7/20] Step 30/1000 | Loss: 0.4485 | L_point: 0.6410 | L_mask: 0.0425
+[Epoch 7/20] Step 40/1000 | Loss: 0.7309 | L_point: 0.5184 | L_mask: 0.0789
+[Epoch 7/20] Step 50/1000 | Loss: 0.6625 | L_point: 0.7899 | L_mask: 0.0946
+[Epoch 7/20] Step 60/1000 | Loss: 0.4884 | L_point: 0.4598 | L_mask: 0.1493
+[Epoch 7/20] Step 70/1000 | Loss: 0.5923 | L_point: 1.0259 | L_mask: 0.0710
+[Epoch 7/20] Step 80/1000 | Loss: 0.5025 | L_point: 0.3365 | L_mask: 0.0651
+[Epoch 7/20] Step 90/1000 | Loss: 0.4289 | L_point: 0.3127 | L_mask: 0.0625
+[Epoch 7/20] Step 100/1000 | Loss: 0.7733 | L_point: 0.4387 | L_mask: 0.0742
+[Epoch 7/20] Step 110/1000 | Loss: 0.5885 | L_point: 0.3703 | L_mask: 0.0839
+[Epoch 7/20] Step 120/1000 | Loss: 0.5637 | L_point: 0.6669 | L_mask: 0.1204
+[Epoch 7/20] Step 130/1000 | Loss: 0.4638 | L_point: 0.4484 | L_mask: 0.0219
+[Epoch 7/20] Step 140/1000 | Loss: 0.4483 | L_point: 0.2867 | L_mask: 0.0189
+[Epoch 7/20] Step 150/1000 | Loss: 0.4060 | L_point: 0.3268 | L_mask: 0.0433
+[Epoch 7/20] Step 160/1000 | Loss: 0.4994 | L_point: 0.2551 | L_mask: 0.0248
+[Epoch 7/20] Step 170/1000 | Loss: 0.5144 | L_point: 0.3455 | L_mask: 0.0319
+[Epoch 7/20] Step 180/1000 | Loss: 0.7423 | L_point: 0.4292 | L_mask: 0.0213
+[Epoch 7/20] Step 190/1000 | Loss: 0.4499 | L_point: 0.4407 | L_mask: 0.1060
+[Epoch 7/20] Step 200/1000 | Loss: 0.5335 | L_point: 0.7498 | L_mask: 0.1264
+[Epoch 7/20] Step 210/1000 | Loss: 0.4640 | L_point: 0.4256 | L_mask: 0.0690
+[Epoch 7/20] Step 220/1000 | Loss: 0.7071 | L_point: 0.7007 | L_mask: 0.1792
+[Epoch 7/20] Step 230/1000 | Loss: 0.4533 | L_point: 0.5216 | L_mask: 0.0269
+[Epoch 7/20] Step 240/1000 | Loss: 0.5348 | L_point: 0.3619 | L_mask: 0.0030
+[Epoch 7/20] Step 250/1000 | Loss: 0.4785 | L_point: 0.3860 | L_mask: 0.0812
+[Epoch 7/20] Step 260/1000 | Loss: 0.5572 | L_point: 0.3336 | L_mask: 0.1311
+[Epoch 7/20] Step 270/1000 | Loss: 0.5298 | L_point: 0.3499 | L_mask: 0.0423
+[Epoch 7/20] Step 280/1000 | Loss: 0.7254 | L_point: 0.3349 | L_mask: 0.1137
+[Epoch 7/20] Step 290/1000 | Loss: 0.4963 | L_point: 0.3063 | L_mask: 0.0811
+[Epoch 7/20] Step 300/1000 | Loss: 0.7025 | L_point: 0.4912 | L_mask: 0.1538
+[Epoch 7/20] Step 310/1000 | Loss: 0.7412 | L_point: 0.4705 | L_mask: 0.1615
+[Epoch 7/20] Step 320/1000 | Loss: 0.9557 | L_point: 0.5678 | L_mask: 0.0613
+[Epoch 7/20] Step 330/1000 | Loss: 0.4915 | L_point: 0.3781 | L_mask: 0.0740
+[Epoch 7/20] Step 340/1000 | Loss: 0.4892 | L_point: 0.3717 | L_mask: 0.0765
+[Epoch 7/20] Step 350/1000 | Loss: 0.5041 | L_point: 0.7073 | L_mask: 0.0264
+[Epoch 7/20] Step 360/1000 | Loss: 0.4957 | L_point: 0.3922 | L_mask: 0.0695
+[Epoch 7/20] Step 370/1000 | Loss: 0.6875 | L_point: 0.6848 | L_mask: 0.0173
+[Epoch 7/20] Step 380/1000 | Loss: 0.7707 | L_point: 0.4422 | L_mask: 0.0379
+[Epoch 7/20] Step 390/1000 | Loss: 0.5934 | L_point: 0.4164 | L_mask: 0.1052
+[Epoch 7/20] Step 400/1000 | Loss: 0.5124 | L_point: 0.2962 | L_mask: 0.0409
+[Epoch 7/20] Step 410/1000 | Loss: 0.4232 | L_point: 0.4001 | L_mask: 0.1081
+[Epoch 7/20] Step 420/1000 | Loss: 0.5307 | L_point: 0.4595 | L_mask: 0.0603
+[Epoch 7/20] Step 430/1000 | Loss: 0.6321 | L_point: 1.2147 | L_mask: 0.1755
+[Epoch 7/20] Step 440/1000 | Loss: 0.5142 | L_point: 0.5919 | L_mask: 0.0091
+[Epoch 7/20] Step 450/1000 | Loss: 0.4393 | L_point: 0.5533 | L_mask: 0.0210
+[Epoch 7/20] Step 460/1000 | Loss: 0.5069 | L_point: 0.4875 | L_mask: 0.0552
+[Epoch 7/20] Step 470/1000 | Loss: 0.4838 | L_point: 0.4344 | L_mask: 0.0366
+[Epoch 7/20] Step 480/1000 | Loss: 0.5038 | L_point: 0.2619 | L_mask: 0.0297
+[Epoch 7/20] Step 490/1000 | Loss: 0.4443 | L_point: 0.9962 | L_mask: 0.2855
+[Epoch 7/20] Step 500/1000 | Loss: 0.5057 | L_point: 0.3541 | L_mask: 0.0299
+[Epoch 7/20] Step 510/1000 | Loss: 0.7093 | L_point: 0.8626 | L_mask: 0.0553
+[Epoch 7/20] Step 520/1000 | Loss: 0.4971 | L_point: 0.2863 | L_mask: 0.0443
+[Epoch 7/20] Step 530/1000 | Loss: 0.5194 | L_point: 0.3315 | L_mask: 0.0360
+[Epoch 7/20] Step 540/1000 | Loss: 0.5705 | L_point: 0.4250 | L_mask: 0.0153
+[Epoch 7/20] Step 550/1000 | Loss: 0.5895 | L_point: 0.4684 | L_mask: 0.0581
+[Epoch 7/20] Step 560/1000 | Loss: 0.5917 | L_point: 0.7005 | L_mask: 0.0493
+[Epoch 7/20] Step 570/1000 | Loss: 0.5228 | L_point: 0.3449 | L_mask: 0.0486
+[Epoch 7/20] Step 580/1000 | Loss: 0.5511 | L_point: 0.6763 | L_mask: 0.1216
+[Epoch 7/20] Step 590/1000 | Loss: 0.6051 | L_point: 0.8806 | L_mask: 0.1404
+[Epoch 7/20] Step 600/1000 | Loss: 0.3931 | L_point: 0.4292 | L_mask: 0.0080
+[Epoch 7/20] Step 610/1000 | Loss: 0.4487 | L_point: 0.3669 | L_mask: 0.0885
+[Epoch 7/20] Step 620/1000 | Loss: 0.5840 | L_point: 0.4274 | L_mask: 0.0457
+[Epoch 7/20] Step 630/1000 | Loss: 0.4875 | L_point: 0.4949 | L_mask: 0.0544
+[Epoch 7/20] Step 640/1000 | Loss: 0.5226 | L_point: 0.2872 | L_mask: 0.0438
+[Epoch 7/20] Step 650/1000 | Loss: 0.3608 | L_point: 0.2525 | L_mask: 0.0193
+[Epoch 7/20] Step 660/1000 | Loss: 0.4050 | L_point: 0.5295 | L_mask: 0.1276
+[Epoch 7/20] Step 670/1000 | Loss: 0.4609 | L_point: 0.4317 | L_mask: 0.0695
+[Epoch 7/20] Step 680/1000 | Loss: 0.8475 | L_point: 0.8979 | L_mask: 0.0099
+[Epoch 7/20] Step 690/1000 | Loss: 0.4478 | L_point: 0.3031 | L_mask: 0.0245
+[Epoch 7/20] Step 700/1000 | Loss: 0.5284 | L_point: 0.4866 | L_mask: 0.1239
+[Epoch 7/20] Step 710/1000 | Loss: 0.4145 | L_point: 0.3789 | L_mask: 0.0168
+[Epoch 7/20] Step 720/1000 | Loss: 0.4284 | L_point: 0.2152 | L_mask: 0.0329
+[Epoch 7/20] Step 730/1000 | Loss: 0.4440 | L_point: 0.4047 | L_mask: 0.0187
+[Epoch 7/20] Step 740/1000 | Loss: 0.5429 | L_point: 0.3428 | L_mask: 0.0764
+[Epoch 7/20] Step 750/1000 | Loss: 0.5758 | L_point: 0.7389 | L_mask: 0.0815
+[Epoch 7/20] Step 760/1000 | Loss: 0.5543 | L_point: 0.5769 | L_mask: 0.0228
+[Epoch 7/20] Step 770/1000 | Loss: 0.5481 | L_point: 0.7560 | L_mask: 0.0468
+[Epoch 7/20] Step 780/1000 | Loss: 0.5421 | L_point: 0.7320 | L_mask: 0.0432
+[Epoch 7/20] Step 790/1000 | Loss: 0.7751 | L_point: 0.3943 | L_mask: 0.0368
+[Epoch 7/20] Step 800/1000 | Loss: 0.4698 | L_point: 0.4825 | L_mask: 0.0475
+[Epoch 7/20] Step 810/1000 | Loss: 0.4577 | L_point: 0.5703 | L_mask: 0.0201
+[Epoch 7/20] Step 820/1000 | Loss: 0.4685 | L_point: 0.7021 | L_mask: 0.0614
+[Epoch 7/20] Step 830/1000 | Loss: 0.4918 | L_point: 0.3408 | L_mask: 0.0573
+[Epoch 7/20] Step 840/1000 | Loss: 0.4270 | L_point: 0.4913 | L_mask: 0.0231
+[Epoch 7/20] Step 850/1000 | Loss: 0.4378 | L_point: 0.3744 | L_mask: 0.0629
+[Epoch 7/20] Step 860/1000 | Loss: 0.7495 | L_point: 0.9163 | L_mask: 0.0514
+[Epoch 7/20] Step 870/1000 | Loss: 0.5589 | L_point: 0.6220 | L_mask: 0.0202
+[Epoch 7/20] Step 880/1000 | Loss: 0.5465 | L_point: 0.6141 | L_mask: 0.1011
+[Epoch 7/20] Step 890/1000 | Loss: 0.6863 | L_point: 0.5603 | L_mask: 0.0681
+[Epoch 7/20] Step 900/1000 | Loss: 0.5724 | L_point: 0.3787 | L_mask: 0.0484
+[Epoch 7/20] Step 910/1000 | Loss: 0.6798 | L_point: 0.3492 | L_mask: 0.0399
+[Epoch 7/20] Step 920/1000 | Loss: 0.4858 | L_point: 0.7878 | L_mask: 0.0975
+[Epoch 7/20] Step 930/1000 | Loss: 0.5435 | L_point: 0.3912 | L_mask: 0.0841
+[Epoch 7/20] Step 940/1000 | Loss: 0.4613 | L_point: 0.2782 | L_mask: 0.0493
+[Epoch 7/20] Step 950/1000 | Loss: 0.4940 | L_point: 0.3283 | L_mask: 0.0342
+[Epoch 7/20] Step 960/1000 | Loss: 0.4310 | L_point: 0.5011 | L_mask: 0.0359
+[Epoch 7/20] Step 970/1000 | Loss: 0.5011 | L_point: 0.4428 | L_mask: 0.0529
+[Epoch 7/20] Step 980/1000 | Loss: 0.4228 | L_point: 0.4992 | L_mask: 0.0483
+[Epoch 7/20] Step 990/1000 | Loss: 0.4563 | L_point: 0.5804 | L_mask: 0.1648
+[Epoch 7/20] Step 1000/1000 | Loss: 0.6198 | L_point: 0.5181 | L_mask: 0.0924
+Epoch 7 done in 2205s | Avg loss: 0.5444
+[Epoch 8/20] Step 10/1000 | Loss: 0.3953 | L_point: 0.3977 | L_mask: 0.0171
+[Epoch 8/20] Step 20/1000 | Loss: 0.8331 | L_point: 0.7135 | L_mask: 0.0933
+[Epoch 8/20] Step 30/1000 | Loss: 0.6514 | L_point: 0.7095 | L_mask: 0.1195
+[Epoch 8/20] Step 40/1000 | Loss: 0.5246 | L_point: 0.7267 | L_mask: 0.0263
+[Epoch 8/20] Step 50/1000 | Loss: 0.5009 | L_point: 0.5860 | L_mask: 0.0073
+[Epoch 8/20] Step 60/1000 | Loss: 0.4140 | L_point: 0.4869 | L_mask: 0.0661
+[Epoch 8/20] Step 70/1000 | Loss: 0.3314 | L_point: 0.5354 | L_mask: 0.2297
+[Epoch 8/20] Step 80/1000 | Loss: 0.5623 | L_point: 0.3453 | L_mask: 0.0476
+[Epoch 8/20] Step 90/1000 | Loss: 0.3315 | L_point: 0.2830 | L_mask: 0.0923
+[Epoch 8/20] Step 100/1000 | Loss: 0.5294 | L_point: 0.4736 | L_mask: 0.0060
+[Epoch 8/20] Step 110/1000 | Loss: 0.4258 | L_point: 0.4563 | L_mask: 0.0803
+[Epoch 8/20] Step 120/1000 | Loss: 0.5953 | L_point: 0.6916 | L_mask: 0.1614
+[Epoch 8/20] Step 130/1000 | Loss: 0.3714 | L_point: 0.2567 | L_mask: 0.0329
+[Epoch 8/20] Step 140/1000 | Loss: 0.4714 | L_point: 0.7073 | L_mask: 0.0636
+[Epoch 8/20] Step 150/1000 | Loss: 0.4623 | L_point: 0.3840 | L_mask: 0.0015
+[Epoch 8/20] Step 160/1000 | Loss: 0.4892 | L_point: 0.3036 | L_mask: 0.0808
+[Epoch 8/20] Step 170/1000 | Loss: 0.5062 | L_point: 0.4811 | L_mask: 0.0295
+[Epoch 8/20] Step 180/1000 | Loss: 0.4557 | L_point: 0.4214 | L_mask: 0.0103
+[Epoch 8/20] Step 190/1000 | Loss: 0.4479 | L_point: 0.6197 | L_mask: 0.1119
+[Epoch 8/20] Step 200/1000 | Loss: 0.6888 | L_point: 0.4901 | L_mask: 0.0665
+[Epoch 8/20] Step 210/1000 | Loss: 0.4211 | L_point: 0.4232 | L_mask: 0.0406
+[Epoch 8/20] Step 220/1000 | Loss: 0.3993 | L_point: 0.4696 | L_mask: 0.0842
+[Epoch 8/20] Step 230/1000 | Loss: 0.6036 | L_point: 0.3915 | L_mask: 0.0696
+[Epoch 8/20] Step 240/1000 | Loss: 0.4272 | L_point: 0.4970 | L_mask: 0.0208
+[Epoch 8/20] Step 250/1000 | Loss: 0.4934 | L_point: 0.3877 | L_mask: 0.0701
+[Epoch 8/20] Step 260/1000 | Loss: 0.4132 | L_point: 0.2920 | L_mask: 0.0218
+[Epoch 8/20] Step 270/1000 | Loss: 0.4569 | L_point: 0.6130 | L_mask: 0.0859
+[Epoch 8/20] Step 280/1000 | Loss: 0.4017 | L_point: 0.3674 | L_mask: 0.0809
+[Epoch 8/20] Step 290/1000 | Loss: 0.6398 | L_point: 0.9198 | L_mask: 0.1653
+[Epoch 8/20] Step 300/1000 | Loss: 0.4503 | L_point: 0.2869 | L_mask: 0.0662
+[Epoch 8/20] Step 310/1000 | Loss: 0.5808 | L_point: 0.2298 | L_mask: 0.0388
+[Epoch 8/20] Step 320/1000 | Loss: 0.6033 | L_point: 0.8140 | L_mask: 0.1191
+[Epoch 8/20] Step 330/1000 | Loss: 0.4955 | L_point: 0.5813 | L_mask: 0.0862
+[Epoch 8/20] Step 340/1000 | Loss: 0.5176 | L_point: 0.4083 | L_mask: 0.0652
+[Epoch 8/20] Step 350/1000 | Loss: 0.4217 | L_point: 0.2418 | L_mask: 0.0240
+[Epoch 8/20] Step 360/1000 | Loss: 0.4702 | L_point: 0.4108 | L_mask: 0.1356
+[Epoch 8/20] Step 370/1000 | Loss: 0.4014 | L_point: 0.4066 | L_mask: 0.0483
+[Epoch 8/20] Step 380/1000 | Loss: 0.4959 | L_point: 0.7768 | L_mask: 0.2270
+[Epoch 8/20] Step 390/1000 | Loss: 0.5277 | L_point: 0.4372 | L_mask: 0.0052
+[Epoch 8/20] Step 400/1000 | Loss: 0.5297 | L_point: 1.7401 | L_mask: 0.2153
+[Epoch 8/20] Step 410/1000 | Loss: 0.5204 | L_point: 0.4438 | L_mask: 0.0082
+[Epoch 8/20] Step 420/1000 | Loss: 0.3875 | L_point: 0.2710 | L_mask: 0.0339
+[Epoch 8/20] Step 430/1000 | Loss: 0.3461 | L_point: 0.3077 | L_mask: 0.0202
+[Epoch 8/20] Step 440/1000 | Loss: 0.3993 | L_point: 0.2893 | L_mask: 0.0606
+[Epoch 8/20] Step 450/1000 | Loss: 0.3929 | L_point: 0.2573 | L_mask: 0.0146
+[Epoch 8/20] Step 460/1000 | Loss: 0.5939 | L_point: 0.6154 | L_mask: 0.0675
+[Epoch 8/20] Step 470/1000 | Loss: 0.4953 | L_point: 0.2829 | L_mask: 0.0208
+[Epoch 8/20] Step 480/1000 | Loss: 0.3917 | L_point: 0.3293 | L_mask: 0.0560
+[Epoch 8/20] Step 490/1000 | Loss: 0.5394 | L_point: 0.5808 | L_mask: 0.1225
+[Epoch 8/20] Step 500/1000 | Loss: 0.4579 | L_point: 0.3673 | L_mask: 0.0128
+[Epoch 8/20] Step 510/1000 | Loss: 0.3812 | L_point: 0.6167 | L_mask: 0.1865
+[Epoch 8/20] Step 520/1000 | Loss: 0.5299 | L_point: 0.4911 | L_mask: 0.0900
+[Epoch 8/20] Step 530/1000 | Loss: 0.4982 | L_point: 0.5567 | L_mask: 0.0551
+[Epoch 8/20] Step 540/1000 | Loss: 0.4652 | L_point: 0.4216 | L_mask: 0.0407
+[Epoch 8/20] Step 550/1000 | Loss: 0.5036 | L_point: 0.5410 | L_mask: 0.0968
+[Epoch 8/20] Step 560/1000 | Loss: 0.3784 | L_point: 0.3473 | L_mask: 0.0232
+[Epoch 8/20] Step 570/1000 | Loss: 0.6287 | L_point: 0.2570 | L_mask: 0.0452
+[Epoch 8/20] Step 580/1000 | Loss: 0.3992 | L_point: 0.1982 | L_mask: 0.0243
+[Epoch 8/20] Step 590/1000 | Loss: 0.4375 | L_point: 0.5380 | L_mask: 0.0660
+[Epoch 8/20] Step 600/1000 | Loss: 0.6704 | L_point: 0.7023 | L_mask: 0.0683
+[Epoch 8/20] Step 610/1000 | Loss: 0.5735 | L_point: 0.4802 | L_mask: 0.0507
+[Epoch 8/20] Step 620/1000 | Loss: 0.4703 | L_point: 0.5747 | L_mask: 0.1222
+[Epoch 8/20] Step 630/1000 | Loss: 0.4121 | L_point: 0.5394 | L_mask: 0.0013
+[Epoch 8/20] Step 640/1000 | Loss: 0.4078 | L_point: 0.2639 | L_mask: 0.0276
+[Epoch 8/20] Step 650/1000 | Loss: 0.5177 | L_point: 0.3287 | L_mask: 0.0790
+[Epoch 8/20] Step 660/1000 | Loss: 0.4830 | L_point: 1.1889 | L_mask: 0.0620
+[Epoch 8/20] Step 670/1000 | Loss: 0.6294 | L_point: 0.5100 | L_mask: 0.0925
+[Epoch 8/20] Step 680/1000 | Loss: 0.5327 | L_point: 0.4756 | L_mask: 0.0019
+[Epoch 8/20] Step 690/1000 | Loss: 0.7471 | L_point: 0.5135 | L_mask: 0.0910
+[Epoch 8/20] Step 700/1000 | Loss: 0.5141 | L_point: 0.9676 | L_mask: 0.1333
+[Epoch 8/20] Step 710/1000 | Loss: 0.5377 | L_point: 0.2691 | L_mask: 0.1081
+[Epoch 8/20] Step 720/1000 | Loss: 0.3988 | L_point: 0.2834 | L_mask: 0.0294
+[Epoch 8/20] Step 730/1000 | Loss: 0.5130 | L_point: 0.2582 | L_mask: 0.0040
+[Epoch 8/20] Step 740/1000 | Loss: 0.3420 | L_point: 0.2516 | L_mask: 0.0012
+[Epoch 8/20] Step 750/1000 | Loss: 0.4342 | L_point: 0.3435 | L_mask: 0.0612
+[Epoch 8/20] Step 760/1000 | Loss: 0.3793 | L_point: 0.2315 | L_mask: 0.0690
+[Epoch 8/20] Step 770/1000 | Loss: 0.3347 | L_point: 0.3202 | L_mask: 0.0533
+[Epoch 8/20] Step 780/1000 | Loss: 0.4038 | L_point: 0.2761 | L_mask: 0.0195
+[Epoch 8/20] Step 790/1000 | Loss: 0.4947 | L_point: 0.3371 | L_mask: 0.1045
+[Epoch 8/20] Step 800/1000 | Loss: 0.4056 | L_point: 0.3066 | L_mask: 0.0143
+[Epoch 8/20] Step 810/1000 | Loss: 0.4887 | L_point: 0.2908 | L_mask: 0.0629
+[Epoch 8/20] Step 820/1000 | Loss: 0.4716 | L_point: 0.5096 | L_mask: 0.0661
+[Epoch 8/20] Step 830/1000 | Loss: 0.7100 | L_point: 0.6526 | L_mask: 0.2801
+[Epoch 8/20] Step 840/1000 | Loss: 0.4301 | L_point: 0.3091 | L_mask: 0.0134
+[Epoch 8/20] Step 850/1000 | Loss: 0.4678 | L_point: 0.3773 | L_mask: 0.0652
+[Epoch 8/20] Step 860/1000 | Loss: 0.3517 | L_point: 0.2239 | L_mask: 0.0297
+[Epoch 8/20] Step 870/1000 | Loss: 0.4525 | L_point: 0.3202 | L_mask: 0.0345
+[Epoch 8/20] Step 880/1000 | Loss: 0.5650 | L_point: 0.4081 | L_mask: 0.0239
+[Epoch 8/20] Step 890/1000 | Loss: 0.3856 | L_point: 0.3673 | L_mask: 0.0255
+[Epoch 8/20] Step 900/1000 | Loss: 0.5001 | L_point: 0.5187 | L_mask: 0.0604
+[Epoch 8/20] Step 910/1000 | Loss: 0.4645 | L_point: 0.5055 | L_mask: 0.0086
+[Epoch 8/20] Step 920/1000 | Loss: 0.4438 | L_point: 0.2949 | L_mask: 0.0265
+[Epoch 8/20] Step 930/1000 | Loss: 0.5566 | L_point: 0.3900 | L_mask: 0.0537
+[Epoch 8/20] Step 940/1000 | Loss: 0.6484 | L_point: 1.2334 | L_mask: 0.0692
+[Epoch 8/20] Step 950/1000 | Loss: 0.4981 | L_point: 0.3164 | L_mask: 0.0118
+[Epoch 8/20] Step 960/1000 | Loss: 0.5074 | L_point: 0.4143 | L_mask: 0.1216
+[Epoch 8/20] Step 970/1000 | Loss: 0.6451 | L_point: 1.8350 | L_mask: 0.0994
+[Epoch 8/20] Step 980/1000 | Loss: 0.5826 | L_point: 0.4096 | L_mask: 0.0166
+[Epoch 8/20] Step 990/1000 | Loss: 0.4105 | L_point: 0.2802 | L_mask: 0.0105
+[Epoch 8/20] Step 1000/1000 | Loss: 0.4513 | L_point: 0.4272 | L_mask: 0.0402
+Epoch 8 done in 2197s | Avg loss: 0.4872
+{
+  "epoch": 8,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.603002989425458,
+    "vggt_primary_vs_secondary_nl": 5.884836332996716,
+    "single_corrected_vs_first_l": 1.0630327199398688,
+    "single_corrected_vs_secondary_nl": 0.937761050292619,
+    "single_corrected_vs_first_nl": 1.5990000020940363,
+    "single_mask_acc_valid_first": 0.9756992505264948
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59679588,
+    "vggt_primary_vs_secondary_nl": 252622179,
+    "single_corrected_vs_first_l": 59679588,
+    "single_corrected_vs_secondary_nl": 252622179,
+    "single_corrected_vs_first_nl": 252622179,
+    "single_mask_acc_valid_first": 312301767
+  }
+}
+[Epoch 9/20] Step 10/1000 | Loss: 0.5798 | L_point: 0.3120 | L_mask: 0.0440
+[Epoch 9/20] Step 20/1000 | Loss: 0.5589 | L_point: 0.3987 | L_mask: 0.0226
+[Epoch 9/20] Step 30/1000 | Loss: 0.4615 | L_point: 0.4702 | L_mask: 0.0272
+[Epoch 9/20] Step 40/1000 | Loss: 0.4597 | L_point: 0.3436 | L_mask: 0.0544
+[Epoch 9/20] Step 50/1000 | Loss: 0.3374 | L_point: 0.2440 | L_mask: 0.0045
+[Epoch 9/20] Step 60/1000 | Loss: 0.5106 | L_point: 0.8824 | L_mask: 0.0548
+[Epoch 9/20] Step 70/1000 | Loss: 0.4163 | L_point: 0.2617 | L_mask: 0.0054
+[Epoch 9/20] Step 80/1000 | Loss: 0.3777 | L_point: 0.2589 | L_mask: 0.0079
+[Epoch 9/20] Step 90/1000 | Loss: 0.4474 | L_point: 0.4397 | L_mask: 0.0650
+[Epoch 9/20] Step 100/1000 | Loss: 0.3439 | L_point: 0.2285 | L_mask: 0.0142
+[Epoch 9/20] Step 110/1000 | Loss: 0.4625 | L_point: 0.2849 | L_mask: 0.0228
+[Epoch 9/20] Step 120/1000 | Loss: 0.4200 | L_point: 0.4982 | L_mask: 0.0803
+[Epoch 9/20] Step 130/1000 | Loss: 0.4530 | L_point: 0.2200 | L_mask: 0.0573
+[Epoch 9/20] Step 140/1000 | Loss: 0.3924 | L_point: 0.2354 | L_mask: 0.0222
+[Epoch 9/20] Step 150/1000 | Loss: 0.4879 | L_point: 0.3324 | L_mask: 0.0730
+[Epoch 9/20] Step 160/1000 | Loss: 0.4497 | L_point: 0.6125 | L_mask: 0.0645
+[Epoch 9/20] Step 170/1000 | Loss: 0.3393 | L_point: 0.2126 | L_mask: 0.0108
+[Epoch 9/20] Step 180/1000 | Loss: 0.3437 | L_point: 0.3068 | L_mask: 0.0380
+[Epoch 9/20] Step 190/1000 | Loss: 0.5875 | L_point: 0.2905 | L_mask: 0.0302
+[Epoch 9/20] Step 200/1000 | Loss: 0.4454 | L_point: 0.4254 | L_mask: 0.0210
+[Epoch 9/20] Step 210/1000 | Loss: 0.4110 | L_point: 0.3273 | L_mask: 0.0234
+[Epoch 9/20] Step 220/1000 | Loss: 0.6224 | L_point: 0.5704 | L_mask: 0.0558
+[Epoch 9/20] Step 230/1000 | Loss: 0.5584 | L_point: 0.6646 | L_mask: 0.1556
+[Epoch 9/20] Step 240/1000 | Loss: 0.3996 | L_point: 0.3317 | L_mask: 0.0074
+[Epoch 9/20] Step 250/1000 | Loss: 0.4321 | L_point: 0.2603 | L_mask: 0.0423
+[Epoch 9/20] Step 260/1000 | Loss: 0.3897 | L_point: 0.2546 | L_mask: 0.0697
+[Epoch 9/20] Step 270/1000 | Loss: 0.3978 | L_point: 0.4722 | L_mask: 0.1827
+[Epoch 9/20] Step 280/1000 | Loss: 0.3222 | L_point: 0.2094 | L_mask: 0.0920
+[Epoch 9/20] Step 290/1000 | Loss: 0.3111 | L_point: 0.2218 | L_mask: 0.0212
+[Epoch 9/20] Step 300/1000 | Loss: 0.5880 | L_point: 0.3667 | L_mask: 0.1109
+[Epoch 9/20] Step 310/1000 | Loss: 0.6745 | L_point: 0.5652 | L_mask: 0.0519
+[Epoch 9/20] Step 320/1000 | Loss: 0.3381 | L_point: 0.5606 | L_mask: 0.0274
+[Epoch 9/20] Step 330/1000 | Loss: 0.4877 | L_point: 0.3243 | L_mask: 0.0582
+[Epoch 9/20] Step 340/1000 | Loss: 0.4549 | L_point: 0.3489 | L_mask: 0.0150
+[Epoch 9/20] Step 350/1000 | Loss: 0.4229 | L_point: 0.3698 | L_mask: 0.0221
+[Epoch 9/20] Step 360/1000 | Loss: 0.4105 | L_point: 0.7540 | L_mask: 0.1416
+[Epoch 9/20] Step 370/1000 | Loss: 0.4990 | L_point: 0.2829 | L_mask: 0.0261
+[Epoch 9/20] Step 380/1000 | Loss: 0.5678 | L_point: 0.7859 | L_mask: 0.0236
+[Epoch 9/20] Step 390/1000 | Loss: 0.4995 | L_point: 0.3912 | L_mask: 0.1014
+[Epoch 9/20] Step 400/1000 | Loss: 0.4175 | L_point: 0.3138 | L_mask: 0.0765
+[Epoch 9/20] Step 410/1000 | Loss: 0.4314 | L_point: 0.4281 | L_mask: 0.1058
+[Epoch 9/20] Step 420/1000 | Loss: 0.3541 | L_point: 0.3062 | L_mask: 0.0234
+[Epoch 9/20] Step 430/1000 | Loss: 0.3642 | L_point: 0.2324 | L_mask: 0.0487
+[Epoch 9/20] Step 440/1000 | Loss: 0.4358 | L_point: 0.2889 | L_mask: 0.0214
+[Epoch 9/20] Step 450/1000 | Loss: 0.5592 | L_point: 0.2309 | L_mask: 0.0300
+[Epoch 9/20] Step 460/1000 | Loss: 0.4213 | L_point: 0.2180 | L_mask: 0.0066
+[Epoch 9/20] Step 470/1000 | Loss: 0.3834 | L_point: 0.4462 | L_mask: 0.0440
+[Epoch 9/20] Step 480/1000 | Loss: 0.5288 | L_point: 0.8302 | L_mask: 0.1174
+[Epoch 9/20] Step 490/1000 | Loss: 0.4465 | L_point: 0.3037 | L_mask: 0.0974
+[Epoch 9/20] Step 500/1000 | Loss: 0.4477 | L_point: 0.3330 | L_mask: 0.0170
+[Epoch 9/20] Step 510/1000 | Loss: 0.3792 | L_point: 0.5442 | L_mask: 0.0856
+[Epoch 9/20] Step 520/1000 | Loss: 0.4038 | L_point: 0.3186 | L_mask: 0.0086
+[Epoch 9/20] Step 530/1000 | Loss: 0.3791 | L_point: 0.2690 | L_mask: 0.0535
+[Epoch 9/20] Step 540/1000 | Loss: 0.4087 | L_point: 0.3874 | L_mask: 0.1087
+[Epoch 9/20] Step 550/1000 | Loss: 0.4106 | L_point: 0.2488 | L_mask: 0.0255
+[Epoch 9/20] Step 560/1000 | Loss: 0.4690 | L_point: 0.4216 | L_mask: 0.0149
+[Epoch 9/20] Step 570/1000 | Loss: 0.4119 | L_point: 0.3780 | L_mask: 0.0423
+[Epoch 9/20] Step 580/1000 | Loss: 0.3740 | L_point: 0.5287 | L_mask: 0.0594
+[Epoch 9/20] Step 590/1000 | Loss: 0.3884 | L_point: 0.4317 | L_mask: 0.0582
+[Epoch 9/20] Step 600/1000 | Loss: 0.3586 | L_point: 0.5718 | L_mask: 0.0843
+[Epoch 9/20] Step 610/1000 | Loss: 0.4142 | L_point: 0.8225 | L_mask: 0.0921
+[Epoch 9/20] Step 620/1000 | Loss: 0.4459 | L_point: 0.3553 | L_mask: 0.0205
+[Epoch 9/20] Step 630/1000 | Loss: 0.6852 | L_point: 0.8377 | L_mask: 0.0219
+[Epoch 9/20] Step 640/1000 | Loss: 0.3994 | L_point: 0.2331 | L_mask: 0.0375
+[Epoch 9/20] Step 650/1000 | Loss: 0.4259 | L_point: 0.3153 | L_mask: 0.0432
+[Epoch 9/20] Step 660/1000 | Loss: 0.4398 | L_point: 0.3448 | L_mask: 0.0132
+[Epoch 9/20] Step 670/1000 | Loss: 0.3397 | L_point: 0.3036 | L_mask: 0.0705
+[Epoch 9/20] Step 680/1000 | Loss: 0.5611 | L_point: 0.2766 | L_mask: 0.0110
+[Epoch 9/20] Step 690/1000 | Loss: 0.4384 | L_point: 0.3384 | L_mask: 0.0580
+[Epoch 9/20] Step 700/1000 | Loss: 0.2819 | L_point: 0.2483 | L_mask: 0.0287
+[Epoch 9/20] Step 710/1000 | Loss: 0.4759 | L_point: 0.3020 | L_mask: 0.0339
+[Epoch 9/20] Step 720/1000 | Loss: 0.4089 | L_point: 0.4375 | L_mask: 0.0419
+[Epoch 9/20] Step 730/1000 | Loss: 0.4343 | L_point: 0.4410 | L_mask: 0.1385
+[Epoch 9/20] Step 740/1000 | Loss: 0.4589 | L_point: 0.6892 | L_mask: 0.0216
+[Epoch 9/20] Step 750/1000 | Loss: 0.5187 | L_point: 0.5842 | L_mask: 0.0762
+[Epoch 9/20] Step 760/1000 | Loss: 0.5131 | L_point: 0.9110 | L_mask: 0.0217
+[Epoch 9/20] Step 770/1000 | Loss: 0.4407 | L_point: 0.2871 | L_mask: 0.0085
+[Epoch 9/20] Step 780/1000 | Loss: 0.5055 | L_point: 0.4213 | L_mask: 0.0619
+[Epoch 9/20] Step 790/1000 | Loss: 0.4118 | L_point: 0.3907 | L_mask: 0.0862
+[Epoch 9/20] Step 800/1000 | Loss: 0.4362 | L_point: 0.4846 | L_mask: 0.0450
+[Epoch 9/20] Step 810/1000 | Loss: 0.3794 | L_point: 0.2626 | L_mask: 0.0251
+[Epoch 9/20] Step 820/1000 | Loss: 0.6191 | L_point: 0.4779 | L_mask: 0.0779
+[Epoch 9/20] Step 830/1000 | Loss: 0.5076 | L_point: 0.3194 | L_mask: 0.0361
+[Epoch 9/20] Step 840/1000 | Loss: 0.4335 | L_point: 0.3517 | L_mask: 0.0091
+[Epoch 9/20] Step 850/1000 | Loss: 0.3749 | L_point: 0.5567 | L_mask: 0.0779
+[Epoch 9/20] Step 860/1000 | Loss: 0.4033 | L_point: 0.3369 | L_mask: 0.0564
+[Epoch 9/20] Step 870/1000 | Loss: 0.5221 | L_point: 0.5211 | L_mask: 0.0353
+[Epoch 9/20] Step 880/1000 | Loss: 0.4767 | L_point: 0.7915 | L_mask: 0.1833
+[Epoch 9/20] Step 890/1000 | Loss: 0.3485 | L_point: 0.2544 | L_mask: 0.0407
+[Epoch 9/20] Step 900/1000 | Loss: 0.5250 | L_point: 0.3254 | L_mask: 0.0285
+[Epoch 9/20] Step 910/1000 | Loss: 0.4579 | L_point: 0.5795 | L_mask: 0.0154
+[Epoch 9/20] Step 920/1000 | Loss: 0.3596 | L_point: 0.3233 | L_mask: 0.0467
+[Epoch 9/20] Step 930/1000 | Loss: 0.3671 | L_point: 0.2806 | L_mask: 0.1319
+[Epoch 9/20] Step 940/1000 | Loss: 0.2845 | L_point: 0.2916 | L_mask: 0.0386
+[Epoch 9/20] Step 950/1000 | Loss: 0.3546 | L_point: 0.3410 | L_mask: 0.0622
+[Epoch 9/20] Step 960/1000 | Loss: 0.3868 | L_point: 0.2518 | L_mask: 0.0618
+[Epoch 9/20] Step 970/1000 | Loss: 0.6219 | L_point: 0.4887 | L_mask: 0.0524
+[Epoch 9/20] Step 980/1000 | Loss: 0.4048 | L_point: 0.2322 | L_mask: 0.0474
+[Epoch 9/20] Step 990/1000 | Loss: 0.4228 | L_point: 0.3416 | L_mask: 0.0283
+[Epoch 9/20] Step 1000/1000 | Loss: 0.6385 | L_point: 0.3023 | L_mask: 0.0065
+Epoch 9 done in 2201s | Avg loss: 0.4436
+[Epoch 10/20] Step 10/1000 | Loss: 0.4019 | L_point: 0.2691 | L_mask: 0.0304
+[Epoch 10/20] Step 20/1000 | Loss: 0.3695 | L_point: 0.4619 | L_mask: 0.0083
+[Epoch 10/20] Step 30/1000 | Loss: 0.3508 | L_point: 0.2536 | L_mask: 0.0217
+[Epoch 10/20] Step 40/1000 | Loss: 0.3226 | L_point: 0.2385 | L_mask: 0.0499
+[Epoch 10/20] Step 50/1000 | Loss: 0.4495 | L_point: 0.3211 | L_mask: 0.0645
+[Epoch 10/20] Step 60/1000 | Loss: 0.5617 | L_point: 0.3404 | L_mask: 0.0504
+[Epoch 10/20] Step 70/1000 | Loss: 0.4568 | L_point: 0.2456 | L_mask: 0.0326
+[Epoch 10/20] Step 80/1000 | Loss: 0.4988 | L_point: 1.3338 | L_mask: 0.1011
+[Epoch 10/20] Step 90/1000 | Loss: 0.4390 | L_point: 0.3321 | L_mask: 0.0394
+[Epoch 10/20] Step 100/1000 | Loss: 0.4610 | L_point: 0.4624 | L_mask: 0.0599
+[Epoch 10/20] Step 110/1000 | Loss: 0.3841 | L_point: 0.2140 | L_mask: 0.0440
+[Epoch 10/20] Step 120/1000 | Loss: 0.4291 | L_point: 0.2935 | L_mask: 0.0477
+[Epoch 10/20] Step 130/1000 | Loss: 0.4146 | L_point: 0.6670 | L_mask: 0.1232
+[Epoch 10/20] Step 140/1000 | Loss: 0.2881 | L_point: 0.3877 | L_mask: 0.0484
+[Epoch 10/20] Step 150/1000 | Loss: 0.4744 | L_point: 0.3452 | L_mask: 0.0310
+[Epoch 10/20] Step 160/1000 | Loss: 0.4117 | L_point: 0.2789 | L_mask: 0.0821
+[Epoch 10/20] Step 170/1000 | Loss: 0.4125 | L_point: 0.2552 | L_mask: 0.0296
+[Epoch 10/20] Step 180/1000 | Loss: 0.4446 | L_point: 0.1785 | L_mask: 0.0115
+[Epoch 10/20] Step 190/1000 | Loss: 0.3541 | L_point: 0.2636 | L_mask: 0.0612
+[Epoch 10/20] Step 200/1000 | Loss: 0.3709 | L_point: 0.5708 | L_mask: 0.0941
+[Epoch 10/20] Step 210/1000 | Loss: 0.5007 | L_point: 0.3329 | L_mask: 0.0209
+[Epoch 10/20] Step 220/1000 | Loss: 0.3538 | L_point: 0.4317 | L_mask: 0.0060
+[Epoch 10/20] Step 230/1000 | Loss: 0.3520 | L_point: 0.2859 | L_mask: 0.0580
+[Epoch 10/20] Step 240/1000 | Loss: 0.4403 | L_point: 0.8326 | L_mask: 0.1018
+[Epoch 10/20] Step 250/1000 | Loss: 0.3347 | L_point: 0.4871 | L_mask: 0.0547
+[Epoch 10/20] Step 260/1000 | Loss: 0.4186 | L_point: 0.2893 | L_mask: 0.0830
+[Epoch 10/20] Step 270/1000 | Loss: 0.3606 | L_point: 0.3830 | L_mask: 0.0531
+[Epoch 10/20] Step 280/1000 | Loss: 0.3283 | L_point: 0.2164 | L_mask: 0.0362
+[Epoch 10/20] Step 290/1000 | Loss: 0.4944 | L_point: 0.5369 | L_mask: 0.0072
+[Epoch 10/20] Step 300/1000 | Loss: 0.3427 | L_point: 0.2824 | L_mask: 0.0042
+[Epoch 10/20] Step 310/1000 | Loss: 0.3515 | L_point: 0.3913 | L_mask: 0.0499
+[Epoch 10/20] Step 320/1000 | Loss: 0.4929 | L_point: 0.2816 | L_mask: 0.0214
+[Epoch 10/20] Step 330/1000 | Loss: 0.6621 | L_point: 0.6455 | L_mask: 0.0347
+[Epoch 10/20] Step 340/1000 | Loss: 0.3893 | L_point: 0.2948 | L_mask: 0.0248
+[Epoch 10/20] Step 350/1000 | Loss: 0.3702 | L_point: 0.2556 | L_mask: 0.0893
+[Epoch 10/20] Step 360/1000 | Loss: 0.4384 | L_point: 0.3132 | L_mask: 0.1046
+[Epoch 10/20] Step 370/1000 | Loss: 0.3581 | L_point: 0.6632 | L_mask: 0.0228
+[Epoch 10/20] Step 380/1000 | Loss: 0.5374 | L_point: 0.2822 | L_mask: 0.0339
+[Epoch 10/20] Step 390/1000 | Loss: 0.3475 | L_point: 0.2949 | L_mask: 0.0315
+[Epoch 10/20] Step 400/1000 | Loss: 0.3795 | L_point: 0.3119 | L_mask: 0.0672
+[Epoch 10/20] Step 410/1000 | Loss: 0.3205 | L_point: 0.2306 | L_mask: 0.0395
+[Epoch 10/20] Step 420/1000 | Loss: 0.4298 | L_point: 0.4040 | L_mask: 0.0510
+[Epoch 10/20] Step 430/1000 | Loss: 0.3625 | L_point: 0.4082 | L_mask: 0.0521
+[Epoch 10/20] Step 440/1000 | Loss: 0.4816 | L_point: 0.2176 | L_mask: 0.0464
+[Epoch 10/20] Step 450/1000 | Loss: 0.4069 | L_point: 0.4608 | L_mask: 0.0620
+[Epoch 10/20] Step 460/1000 | Loss: 0.4371 | L_point: 0.7461 | L_mask: 0.0068
+[Epoch 10/20] Step 470/1000 | Loss: 0.5190 | L_point: 0.3990 | L_mask: 0.0027
+[Epoch 10/20] Step 480/1000 | Loss: 0.3680 | L_point: 0.4494 | L_mask: 0.0590
+[Epoch 10/20] Step 490/1000 | Loss: 0.3667 | L_point: 0.3528 | L_mask: 0.0429
+[Epoch 10/20] Step 500/1000 | Loss: 0.3158 | L_point: 0.2894 | L_mask: 0.0484
+[Epoch 10/20] Step 510/1000 | Loss: 0.3764 | L_point: 0.2193 | L_mask: 0.0346
+[Epoch 10/20] Step 520/1000 | Loss: 0.3251 | L_point: 0.2697 | L_mask: 0.0730
+[Epoch 10/20] Step 530/1000 | Loss: 0.4469 | L_point: 0.2103 | L_mask: 0.0401
+[Epoch 10/20] Step 540/1000 | Loss: 0.3401 | L_point: 0.2972 | L_mask: 0.0565
+[Epoch 10/20] Step 550/1000 | Loss: 0.4168 | L_point: 0.1914 | L_mask: 0.0091
+[Epoch 10/20] Step 560/1000 | Loss: 0.3469 | L_point: 0.4174 | L_mask: 0.0669
+[Epoch 10/20] Step 570/1000 | Loss: 0.4334 | L_point: 0.2060 | L_mask: 0.0410
+[Epoch 10/20] Step 580/1000 | Loss: 0.4473 | L_point: 0.2142 | L_mask: 0.0483
+[Epoch 10/20] Step 590/1000 | Loss: 0.2973 | L_point: 0.2859 | L_mask: 0.0508
+[Epoch 10/20] Step 600/1000 | Loss: 0.3770 | L_point: 0.3333 | L_mask: 0.0088
+[Epoch 10/20] Step 610/1000 | Loss: 0.3203 | L_point: 0.5321 | L_mask: 0.1191
+[Epoch 10/20] Step 620/1000 | Loss: 0.3098 | L_point: 0.3778 | L_mask: 0.0399
+[Epoch 10/20] Step 630/1000 | Loss: 0.4337 | L_point: 0.4720 | L_mask: 0.0610
+[Epoch 10/20] Step 640/1000 | Loss: 0.6145 | L_point: 2.6757 | L_mask: 0.1036
+[Epoch 10/20] Step 650/1000 | Loss: 0.4513 | L_point: 0.2618 | L_mask: 0.0248
+[Epoch 10/20] Step 660/1000 | Loss: 0.5786 | L_point: 0.3196 | L_mask: 0.0294
+[Epoch 10/20] Step 670/1000 | Loss: 0.4323 | L_point: 0.3591 | L_mask: 0.0656
+[Epoch 10/20] Step 680/1000 | Loss: 0.3743 | L_point: 0.2090 | L_mask: 0.0215
+[Epoch 10/20] Step 690/1000 | Loss: 0.3466 | L_point: 0.4185 | L_mask: 0.0478
+[Epoch 10/20] Step 700/1000 | Loss: 0.2693 | L_point: 0.4418 | L_mask: 0.0191
+[Epoch 10/20] Step 710/1000 | Loss: 0.3921 | L_point: 0.3014 | L_mask: 0.0347
+[Epoch 10/20] Step 720/1000 | Loss: 0.3605 | L_point: 0.3231 | L_mask: 0.0411
+[Epoch 10/20] Step 730/1000 | Loss: 0.3507 | L_point: 0.3619 | L_mask: 0.0028
+[Epoch 10/20] Step 740/1000 | Loss: 0.3131 | L_point: 0.2961 | L_mask: 0.0480
+[Epoch 10/20] Step 750/1000 | Loss: 0.3417 | L_point: 0.2723 | L_mask: 0.0539
+[Epoch 10/20] Step 760/1000 | Loss: 0.3267 | L_point: 0.2397 | L_mask: 0.0530
+[Epoch 10/20] Step 770/1000 | Loss: 0.3835 | L_point: 0.4141 | L_mask: 0.0225
+[Epoch 10/20] Step 780/1000 | Loss: 0.5152 | L_point: 0.6865 | L_mask: 0.0202
+[Epoch 10/20] Step 790/1000 | Loss: 0.4053 | L_point: 0.2810 | L_mask: 0.0363
+[Epoch 10/20] Step 800/1000 | Loss: 0.3959 | L_point: 0.3292 | L_mask: 0.0851
+[Epoch 10/20] Step 810/1000 | Loss: 0.3117 | L_point: 0.2422 | L_mask: 0.0367
+[Epoch 10/20] Step 820/1000 | Loss: 0.3860 | L_point: 0.3097 | L_mask: 0.0334
+[Epoch 10/20] Step 830/1000 | Loss: 0.3837 | L_point: 0.2427 | L_mask: 0.0223
+[Epoch 10/20] Step 840/1000 | Loss: 0.5613 | L_point: 0.4430 | L_mask: 0.1070
+[Epoch 10/20] Step 850/1000 | Loss: 0.4469 | L_point: 0.2934 | L_mask: 0.0282
+[Epoch 10/20] Step 860/1000 | Loss: 0.3665 | L_point: 0.3248 | L_mask: 0.0247
+[Epoch 10/20] Step 870/1000 | Loss: 0.3433 | L_point: 0.3274 | L_mask: 0.1176
+[Epoch 10/20] Step 880/1000 | Loss: 0.3221 | L_point: 0.2255 | L_mask: 0.0736
+[Epoch 10/20] Step 890/1000 | Loss: 0.5109 | L_point: 0.3038 | L_mask: 0.0583
+[Epoch 10/20] Step 900/1000 | Loss: 0.4602 | L_point: 0.2533 | L_mask: 0.0286
+[Epoch 10/20] Step 910/1000 | Loss: 0.3230 | L_point: 0.3063 | L_mask: 0.0353
+[Epoch 10/20] Step 920/1000 | Loss: 0.3790 | L_point: 0.2689 | L_mask: 0.0163
+[Epoch 10/20] Step 930/1000 | Loss: 0.4959 | L_point: 0.6144 | L_mask: 0.1193
+[Epoch 10/20] Step 940/1000 | Loss: 0.4708 | L_point: 0.3281 | L_mask: 0.0659
+[Epoch 10/20] Step 950/1000 | Loss: 0.3476 | L_point: 0.4347 | L_mask: 0.0924
+[Epoch 10/20] Step 960/1000 | Loss: 0.4355 | L_point: 0.5649 | L_mask: 0.0759
+[Epoch 10/20] Step 970/1000 | Loss: 0.4522 | L_point: 0.3787 | L_mask: 0.0724
+[Epoch 10/20] Step 980/1000 | Loss: 0.4182 | L_point: 0.2121 | L_mask: 0.0141
+[Epoch 10/20] Step 990/1000 | Loss: 0.3645 | L_point: 0.5085 | L_mask: 0.0754
+[Epoch 10/20] Step 1000/1000 | Loss: 0.3062 | L_point: 0.1715 | L_mask: 0.0308
+Epoch 10 done in 2195s | Avg loss: 0.4036
+{
+  "epoch": 10,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6194743955603315,
+    "vggt_primary_vs_secondary_nl": 5.884721537379242,
+    "single_corrected_vs_first_l": 0.8404960714573189,
+    "single_corrected_vs_secondary_nl": 0.6820085766368515,
+    "single_corrected_vs_first_nl": 1.4285756189260104,
+    "single_mask_acc_valid_first": 0.9774088873520925
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59553620,
+    "vggt_primary_vs_secondary_nl": 252616706,
+    "single_corrected_vs_first_l": 59553620,
+    "single_corrected_vs_secondary_nl": 252616706,
+    "single_corrected_vs_first_nl": 252616706,
+    "single_mask_acc_valid_first": 312170326
+  }
+}
+Saved checkpoint: checkpoints/phase05_single_head/single_head_epoch010.pt
+[Epoch 11/20] Step 10/1000 | Loss: 0.3298 | L_point: 0.3392 | L_mask: 0.0821
+[Epoch 11/20] Step 20/1000 | Loss: 0.3412 | L_point: 0.2131 | L_mask: 0.0395
+[Epoch 11/20] Step 30/1000 | Loss: 0.2989 | L_point: 0.3011 | L_mask: 0.0636
+[Epoch 11/20] Step 40/1000 | Loss: 0.4024 | L_point: 0.4403 | L_mask: 0.0712
+[Epoch 11/20] Step 50/1000 | Loss: 0.4798 | L_point: 0.7058 | L_mask: 0.0775
+[Epoch 11/20] Step 60/1000 | Loss: 0.3378 | L_point: 0.5967 | L_mask: 0.1803
+[Epoch 11/20] Step 70/1000 | Loss: 0.3284 | L_point: 0.1953 | L_mask: 0.0061
+[Epoch 11/20] Step 80/1000 | Loss: 0.3807 | L_point: 0.4497 | L_mask: 0.0705
+[Epoch 11/20] Step 90/1000 | Loss: 0.3415 | L_point: 0.2763 | L_mask: 0.0613
+[Epoch 11/20] Step 100/1000 | Loss: 0.4882 | L_point: 0.2853 | L_mask: 0.0631
+[Epoch 11/20] Step 110/1000 | Loss: 0.4154 | L_point: 0.2015 | L_mask: 0.0301
+[Epoch 11/20] Step 120/1000 | Loss: 0.3894 | L_point: 0.1632 | L_mask: 0.0312
+[Epoch 11/20] Step 130/1000 | Loss: 0.4403 | L_point: 0.7658 | L_mask: 0.0459
+[Epoch 11/20] Step 140/1000 | Loss: 0.3141 | L_point: 0.3167 | L_mask: 0.0217
+[Epoch 11/20] Step 150/1000 | Loss: 0.5691 | L_point: 0.4087 | L_mask: 0.0034
+[Epoch 11/20] Step 160/1000 | Loss: 0.4387 | L_point: 0.5263 | L_mask: 0.1052
+[Epoch 11/20] Step 170/1000 | Loss: 0.4926 | L_point: 0.7714 | L_mask: 0.0015
+[Epoch 11/20] Step 180/1000 | Loss: 0.3898 | L_point: 0.4044 | L_mask: 0.0248
+[Epoch 11/20] Step 190/1000 | Loss: 0.3767 | L_point: 0.4950 | L_mask: 0.0101
+[Epoch 11/20] Step 200/1000 | Loss: 0.4964 | L_point: 0.4469 | L_mask: 0.0564
+[Epoch 11/20] Step 210/1000 | Loss: 0.3188 | L_point: 0.3819 | L_mask: 0.0645
+[Epoch 11/20] Step 220/1000 | Loss: 0.3751 | L_point: 0.3227 | L_mask: 0.0707
+[Epoch 11/20] Step 230/1000 | Loss: 0.4083 | L_point: 0.2479 | L_mask: 0.0414
+[Epoch 11/20] Step 240/1000 | Loss: 0.3664 | L_point: 0.2377 | L_mask: 0.0552
+[Epoch 11/20] Step 250/1000 | Loss: 0.3821 | L_point: 0.2475 | L_mask: 0.0079
+[Epoch 11/20] Step 260/1000 | Loss: 0.3549 | L_point: 0.3140 | L_mask: 0.0496
+[Epoch 11/20] Step 270/1000 | Loss: 0.3148 | L_point: 0.2616 | L_mask: 0.0513
+[Epoch 11/20] Step 280/1000 | Loss: 0.3433 | L_point: 0.3810 | L_mask: 0.0609
+[Epoch 11/20] Step 290/1000 | Loss: 0.4155 | L_point: 0.3689 | L_mask: 0.0539
+[Epoch 11/20] Step 300/1000 | Loss: 0.3533 | L_point: 0.4582 | L_mask: 0.0142
+[Epoch 11/20] Step 310/1000 | Loss: 0.3413 | L_point: 0.4055 | L_mask: 0.0450
+[Epoch 11/20] Step 320/1000 | Loss: 0.4017 | L_point: 0.2156 | L_mask: 0.0327
+[Epoch 11/20] Step 330/1000 | Loss: 0.3322 | L_point: 0.2909 | L_mask: 0.0427
+[Epoch 11/20] Step 340/1000 | Loss: 0.4961 | L_point: 0.2157 | L_mask: 0.0101
+[Epoch 11/20] Step 350/1000 | Loss: 0.5102 | L_point: 0.2522 | L_mask: 0.0028
+[Epoch 11/20] Step 360/1000 | Loss: 0.3162 | L_point: 0.4694 | L_mask: 0.0962
+[Epoch 11/20] Step 370/1000 | Loss: 0.4224 | L_point: 0.4432 | L_mask: 0.0525
+[Epoch 11/20] Step 380/1000 | Loss: 0.3090 | L_point: 0.2721 | L_mask: 0.0241
+[Epoch 11/20] Step 390/1000 | Loss: 0.4726 | L_point: 0.4189 | L_mask: 0.0156
+[Epoch 11/20] Step 400/1000 | Loss: 0.3617 | L_point: 0.2243 | L_mask: 0.0204
+[Epoch 11/20] Step 410/1000 | Loss: 0.3886 | L_point: 0.1947 | L_mask: 0.0142
+[Epoch 11/20] Step 420/1000 | Loss: 0.3124 | L_point: 0.4409 | L_mask: 0.0597
+[Epoch 11/20] Step 430/1000 | Loss: 0.3855 | L_point: 0.2608 | L_mask: 0.0536
+[Epoch 11/20] Step 440/1000 | Loss: 0.3436 | L_point: 0.1938 | L_mask: 0.0712
+[Epoch 11/20] Step 450/1000 | Loss: 0.3145 | L_point: 0.4452 | L_mask: 0.0987
+[Epoch 11/20] Step 460/1000 | Loss: 0.2616 | L_point: 0.2581 | L_mask: 0.0516
+[Epoch 11/20] Step 470/1000 | Loss: 0.4891 | L_point: 0.2039 | L_mask: 0.0459
+[Epoch 11/20] Step 480/1000 | Loss: 0.3447 | L_point: 0.2766 | L_mask: 0.0549
+[Epoch 11/20] Step 490/1000 | Loss: 0.3284 | L_point: 0.3234 | L_mask: 0.0981
+[Epoch 11/20] Step 500/1000 | Loss: 0.2950 | L_point: 0.4009 | L_mask: 0.1472
+[Epoch 11/20] Step 510/1000 | Loss: 0.4972 | L_point: 0.3616 | L_mask: 0.0513
+[Epoch 11/20] Step 520/1000 | Loss: 0.4888 | L_point: 0.4331 | L_mask: 0.0449
+[Epoch 11/20] Step 530/1000 | Loss: 0.3370 | L_point: 0.2113 | L_mask: 0.0177
+[Epoch 11/20] Step 540/1000 | Loss: 0.2656 | L_point: 0.3655 | L_mask: 0.0427
+[Epoch 11/20] Step 550/1000 | Loss: 0.3033 | L_point: 0.2767 | L_mask: 0.0643
+[Epoch 11/20] Step 560/1000 | Loss: 0.2854 | L_point: 0.2502 | L_mask: 0.0556
+[Epoch 11/20] Step 570/1000 | Loss: 0.3722 | L_point: 0.2522 | L_mask: 0.0255
+[Epoch 11/20] Step 580/1000 | Loss: 0.3766 | L_point: 0.2695 | L_mask: 0.0271
+[Epoch 11/20] Step 590/1000 | Loss: 0.2896 | L_point: 0.2931 | L_mask: 0.0283
+[Epoch 11/20] Step 600/1000 | Loss: 0.3047 | L_point: 0.1818 | L_mask: 0.0013
+[Epoch 11/20] Step 610/1000 | Loss: 0.3499 | L_point: 0.4242 | L_mask: 0.0264
+[Epoch 11/20] Step 620/1000 | Loss: 0.2997 | L_point: 0.4209 | L_mask: 0.0098
+[Epoch 11/20] Step 630/1000 | Loss: 0.3214 | L_point: 0.2055 | L_mask: 0.0314
+[Epoch 11/20] Step 640/1000 | Loss: 0.2926 | L_point: 0.2092 | L_mask: 0.0410
+[Epoch 11/20] Step 650/1000 | Loss: 0.2741 | L_point: 0.2843 | L_mask: 0.0373
+[Epoch 11/20] Step 660/1000 | Loss: 0.3231 | L_point: 0.2407 | L_mask: 0.1469
+[Epoch 11/20] Step 670/1000 | Loss: 0.3185 | L_point: 0.2516 | L_mask: 0.0487
+[Epoch 11/20] Step 680/1000 | Loss: 0.3650 | L_point: 0.2833 | L_mask: 0.0246
+[Epoch 11/20] Step 690/1000 | Loss: 0.3095 | L_point: 0.1966 | L_mask: 0.0355
+[Epoch 11/20] Step 700/1000 | Loss: 0.3365 | L_point: 0.2694 | L_mask: 0.0410
+[Epoch 11/20] Step 710/1000 | Loss: 0.3113 | L_point: 0.1709 | L_mask: 0.0083
+[Epoch 11/20] Step 720/1000 | Loss: 0.4000 | L_point: 0.3192 | L_mask: 0.0409
+[Epoch 11/20] Step 730/1000 | Loss: 0.3066 | L_point: 0.4926 | L_mask: 0.0617
+[Epoch 11/20] Step 740/1000 | Loss: 0.3323 | L_point: 0.2729 | L_mask: 0.0705
+[Epoch 11/20] Step 750/1000 | Loss: 0.2839 | L_point: 0.3071 | L_mask: 0.0167
+[Epoch 11/20] Step 760/1000 | Loss: 0.3853 | L_point: 0.3487 | L_mask: 0.0635
+[Epoch 11/20] Step 770/1000 | Loss: 0.4009 | L_point: 0.2761 | L_mask: 0.0317
+[Epoch 11/20] Step 780/1000 | Loss: 0.3106 | L_point: 0.3268 | L_mask: 0.0386
+[Epoch 11/20] Step 790/1000 | Loss: 0.4019 | L_point: 0.9080 | L_mask: 0.1761
+[Epoch 11/20] Step 800/1000 | Loss: 0.4855 | L_point: 0.3497 | L_mask: 0.0873
+[Epoch 11/20] Step 810/1000 | Loss: 0.2987 | L_point: 0.2506 | L_mask: 0.1020
+[Epoch 11/20] Step 820/1000 | Loss: 0.3409 | L_point: 0.2489 | L_mask: 0.0319
+[Epoch 11/20] Step 830/1000 | Loss: 0.3005 | L_point: 0.3244 | L_mask: 0.0005
+[Epoch 11/20] Step 840/1000 | Loss: 0.3347 | L_point: 0.3698 | L_mask: 0.0069
+[Epoch 11/20] Step 850/1000 | Loss: 0.3388 | L_point: 0.3498 | L_mask: 0.0523
+[Epoch 11/20] Step 860/1000 | Loss: 0.3789 | L_point: 0.2753 | L_mask: 0.0757
+[Epoch 11/20] Step 870/1000 | Loss: 0.2757 | L_point: 0.2306 | L_mask: 0.0406
+[Epoch 11/20] Step 880/1000 | Loss: 0.3174 | L_point: 0.2625 | L_mask: 0.0526
+[Epoch 11/20] Step 890/1000 | Loss: 0.3799 | L_point: 0.2090 | L_mask: 0.0404
+[Epoch 11/20] Step 900/1000 | Loss: 0.2728 | L_point: 0.3753 | L_mask: 0.1482
+[Epoch 11/20] Step 910/1000 | Loss: 0.4295 | L_point: 0.6301 | L_mask: 0.0997
+[Epoch 11/20] Step 920/1000 | Loss: 0.3798 | L_point: 0.3138 | L_mask: 0.0630
+[Epoch 11/20] Step 930/1000 | Loss: 0.4233 | L_point: 0.7236 | L_mask: 0.0258
+[Epoch 11/20] Step 940/1000 | Loss: 0.3184 | L_point: 0.3263 | L_mask: 0.0351
+[Epoch 11/20] Step 950/1000 | Loss: 0.2993 | L_point: 0.2343 | L_mask: 0.0321
+[Epoch 11/20] Step 960/1000 | Loss: 0.3850 | L_point: 0.2093 | L_mask: 0.0471
+[Epoch 11/20] Step 970/1000 | Loss: 0.4351 | L_point: 0.2512 | L_mask: 0.0440
+[Epoch 11/20] Step 980/1000 | Loss: 0.3288 | L_point: 0.3395 | L_mask: 0.0479
+[Epoch 11/20] Step 990/1000 | Loss: 0.3035 | L_point: 0.2283 | L_mask: 0.0323
+[Epoch 11/20] Step 1000/1000 | Loss: 0.3207 | L_point: 0.3432 | L_mask: 0.0202
+Epoch 11 done in 2203s | Avg loss: 0.3630
+[Epoch 12/20] Step 10/1000 | Loss: 0.3341 | L_point: 0.3207 | L_mask: 0.0900
+[Epoch 12/20] Step 20/1000 | Loss: 0.3283 | L_point: 0.3389 | L_mask: 0.0491
+[Epoch 12/20] Step 30/1000 | Loss: 0.4659 | L_point: 0.3304 | L_mask: 0.0555
+[Epoch 12/20] Step 40/1000 | Loss: 0.3363 | L_point: 0.2632 | L_mask: 0.0402
+[Epoch 12/20] Step 50/1000 | Loss: 0.3174 | L_point: 0.2004 | L_mask: 0.0362
+[Epoch 12/20] Step 60/1000 | Loss: 0.3625 | L_point: 0.2708 | L_mask: 0.0301
+[Epoch 12/20] Step 70/1000 | Loss: 0.3241 | L_point: 0.3602 | L_mask: 0.0135
+[Epoch 12/20] Step 80/1000 | Loss: 0.4142 | L_point: 0.4311 | L_mask: 0.0880
+[Epoch 12/20] Step 90/1000 | Loss: 0.3388 | L_point: 0.5519 | L_mask: 0.0621
+[Epoch 12/20] Step 100/1000 | Loss: 0.2956 | L_point: 0.2849 | L_mask: 0.1085
+[Epoch 12/20] Step 110/1000 | Loss: 0.3911 | L_point: 0.5001 | L_mask: 0.1395
+[Epoch 12/20] Step 120/1000 | Loss: 0.3169 | L_point: 0.2900 | L_mask: 0.0506
+[Epoch 12/20] Step 130/1000 | Loss: 0.2950 | L_point: 0.2226 | L_mask: 0.0643
+[Epoch 12/20] Step 140/1000 | Loss: 0.4673 | L_point: 0.3337 | L_mask: 0.0741
+[Epoch 12/20] Step 150/1000 | Loss: 0.2990 | L_point: 0.1931 | L_mask: 0.0367
+[Epoch 12/20] Step 160/1000 | Loss: 0.4258 | L_point: 0.2011 | L_mask: 0.0511
+[Epoch 12/20] Step 170/1000 | Loss: 0.3806 | L_point: 0.4087 | L_mask: 0.0840
+[Epoch 12/20] Step 180/1000 | Loss: 0.3389 | L_point: 0.3202 | L_mask: 0.0492
+[Epoch 12/20] Step 190/1000 | Loss: 0.3024 | L_point: 0.2481 | L_mask: 0.0240
+[Epoch 12/20] Step 200/1000 | Loss: 0.5332 | L_point: 0.1627 | L_mask: 0.0077
+[Epoch 12/20] Step 210/1000 | Loss: 0.2297 | L_point: 0.2664 | L_mask: 0.0461
+[Epoch 12/20] Step 220/1000 | Loss: 0.4641 | L_point: 0.2848 | L_mask: 0.0627
+[Epoch 12/20] Step 230/1000 | Loss: 0.3012 | L_point: 0.3583 | L_mask: 0.0982
+[Epoch 12/20] Step 240/1000 | Loss: 0.3350 | L_point: 0.2693 | L_mask: 0.0251
+[Epoch 12/20] Step 250/1000 | Loss: 0.2669 | L_point: 0.2306 | L_mask: 0.0354
+[Epoch 12/20] Step 260/1000 | Loss: 0.3233 | L_point: 0.1884 | L_mask: 0.0199
+[Epoch 12/20] Step 270/1000 | Loss: 0.4502 | L_point: 0.3065 | L_mask: 0.0630
+[Epoch 12/20] Step 280/1000 | Loss: 0.3462 | L_point: 0.2340 | L_mask: 0.0361
+[Epoch 12/20] Step 290/1000 | Loss: 0.2450 | L_point: 0.1602 | L_mask: 0.0300
+[Epoch 12/20] Step 300/1000 | Loss: 0.3312 | L_point: 0.3434 | L_mask: 0.0596
+[Epoch 12/20] Step 310/1000 | Loss: 0.2999 | L_point: 0.2727 | L_mask: 0.0317
+[Epoch 12/20] Step 320/1000 | Loss: 0.4145 | L_point: 0.1993 | L_mask: 0.0001
+[Epoch 12/20] Step 330/1000 | Loss: 0.2972 | L_point: 0.2163 | L_mask: 0.0302
+[Epoch 12/20] Step 340/1000 | Loss: 0.3072 | L_point: 0.3368 | L_mask: 0.0532
+[Epoch 12/20] Step 350/1000 | Loss: 0.2994 | L_point: 0.3354 | L_mask: 0.0755
+[Epoch 12/20] Step 360/1000 | Loss: 0.2731 | L_point: 0.1905 | L_mask: 0.0170
+[Epoch 12/20] Step 370/1000 | Loss: 0.4259 | L_point: 0.3126 | L_mask: 0.0902
+[Epoch 12/20] Step 380/1000 | Loss: 0.3581 | L_point: 0.3033 | L_mask: 0.0788
+[Epoch 12/20] Step 390/1000 | Loss: 0.4086 | L_point: 1.0951 | L_mask: 0.0741
+[Epoch 12/20] Step 400/1000 | Loss: 0.3405 | L_point: 0.5552 | L_mask: 0.0789
+[Epoch 12/20] Step 410/1000 | Loss: 0.3582 | L_point: 0.4447 | L_mask: 0.1171
+[Epoch 12/20] Step 420/1000 | Loss: 0.2999 | L_point: 0.2414 | L_mask: 0.0256
+[Epoch 12/20] Step 430/1000 | Loss: 0.3257 | L_point: 0.2924 | L_mask: 0.0682
+[Epoch 12/20] Step 440/1000 | Loss: 0.3788 | L_point: 0.2360 | L_mask: 0.0469
+[Epoch 12/20] Step 450/1000 | Loss: 0.3652 | L_point: 0.1887 | L_mask: 0.0356
+[Epoch 12/20] Step 460/1000 | Loss: 0.3037 | L_point: 0.2824 | L_mask: 0.0496
+[Epoch 12/20] Step 470/1000 | Loss: 0.2847 | L_point: 0.2325 | L_mask: 0.0431
+[Epoch 12/20] Step 480/1000 | Loss: 0.3498 | L_point: 0.3613 | L_mask: 0.0385
+[Epoch 12/20] Step 490/1000 | Loss: 0.2913 | L_point: 0.5278 | L_mask: 0.0848
+[Epoch 12/20] Step 500/1000 | Loss: 0.2477 | L_point: 0.2191 | L_mask: 0.0120
+[Epoch 12/20] Step 510/1000 | Loss: 0.3794 | L_point: 0.1822 | L_mask: 0.0080
+[Epoch 12/20] Step 520/1000 | Loss: 0.2901 | L_point: 0.2490 | L_mask: 0.0354
+[Epoch 12/20] Step 530/1000 | Loss: 0.3729 | L_point: 0.1960 | L_mask: 0.0291
+[Epoch 12/20] Step 540/1000 | Loss: 0.2859 | L_point: 0.3029 | L_mask: 0.0353
+[Epoch 12/20] Step 550/1000 | Loss: 0.3679 | L_point: 0.6291 | L_mask: 0.1351
+[Epoch 12/20] Step 560/1000 | Loss: 0.5237 | L_point: 0.5176 | L_mask: 0.0646
+[Epoch 12/20] Step 570/1000 | Loss: 0.3192 | L_point: 0.1735 | L_mask: 0.0060
+[Epoch 12/20] Step 580/1000 | Loss: 0.3558 | L_point: 0.2588 | L_mask: 0.1043
+[Epoch 12/20] Step 590/1000 | Loss: 0.3091 | L_point: 0.2208 | L_mask: 0.0571
+[Epoch 12/20] Step 600/1000 | Loss: 0.2715 | L_point: 0.1925 | L_mask: 0.0229
+[Epoch 12/20] Step 610/1000 | Loss: 0.3430 | L_point: 0.3107 | L_mask: 0.0449
+[Epoch 12/20] Step 620/1000 | Loss: 0.3340 | L_point: 0.2407 | L_mask: 0.0121
+[Epoch 12/20] Step 630/1000 | Loss: 0.3124 | L_point: 0.1928 | L_mask: 0.0115
+[Epoch 12/20] Step 640/1000 | Loss: 0.3361 | L_point: 0.4430 | L_mask: 0.0791
+[Epoch 12/20] Step 650/1000 | Loss: 0.4085 | L_point: 0.2155 | L_mask: 0.0444
+[Epoch 12/20] Step 660/1000 | Loss: 0.2496 | L_point: 0.1902 | L_mask: 0.0105
+[Epoch 12/20] Step 670/1000 | Loss: 0.4329 | L_point: 0.3708 | L_mask: 0.0877
+[Epoch 12/20] Step 680/1000 | Loss: 0.2726 | L_point: 0.1983 | L_mask: 0.0493
+[Epoch 12/20] Step 690/1000 | Loss: 0.3144 | L_point: 0.3072 | L_mask: 0.0369
+[Epoch 12/20] Step 700/1000 | Loss: 0.3205 | L_point: 0.3598 | L_mask: 0.0293
+[Epoch 12/20] Step 710/1000 | Loss: 0.2926 | L_point: 0.2961 | L_mask: 0.0810
+[Epoch 12/20] Step 720/1000 | Loss: 0.3198 | L_point: 0.2606 | L_mask: 0.0343
+[Epoch 12/20] Step 730/1000 | Loss: 0.2921 | L_point: 0.3484 | L_mask: 0.0602
+[Epoch 12/20] Step 740/1000 | Loss: 0.3722 | L_point: 0.2343 | L_mask: 0.0701
+[Epoch 12/20] Step 750/1000 | Loss: 0.3896 | L_point: 0.7296 | L_mask: 0.1892
+[Epoch 12/20] Step 760/1000 | Loss: 0.3341 | L_point: 0.4421 | L_mask: 0.0994
+[Epoch 12/20] Step 770/1000 | Loss: 0.4780 | L_point: 1.0543 | L_mask: 0.1541
+[Epoch 12/20] Step 780/1000 | Loss: 0.4221 | L_point: 0.6959 | L_mask: 0.0662
+[Epoch 12/20] Step 790/1000 | Loss: 0.4495 | L_point: 0.2185 | L_mask: 0.0637
+[Epoch 12/20] Step 800/1000 | Loss: 0.2711 | L_point: 0.2637 | L_mask: 0.0630
+[Epoch 12/20] Step 810/1000 | Loss: 0.2321 | L_point: 0.2212 | L_mask: 0.0013
+[Epoch 12/20] Step 820/1000 | Loss: 0.3143 | L_point: 0.4160 | L_mask: 0.0751
+[Epoch 12/20] Step 830/1000 | Loss: 0.2773 | L_point: 0.4568 | L_mask: 0.0531
+[Epoch 12/20] Step 840/1000 | Loss: 0.3563 | L_point: 0.5704 | L_mask: 0.1041
+[Epoch 12/20] Step 850/1000 | Loss: 0.3324 | L_point: 0.2145 | L_mask: 0.0134
+[Epoch 12/20] Step 860/1000 | Loss: 0.2580 | L_point: 0.2660 | L_mask: 0.0460
+[Epoch 12/20] Step 870/1000 | Loss: 0.2435 | L_point: 0.2526 | L_mask: 0.0012
+[Epoch 12/20] Step 880/1000 | Loss: 0.2442 | L_point: 0.1941 | L_mask: 0.0271
+[Epoch 12/20] Step 890/1000 | Loss: 0.3220 | L_point: 0.2375 | L_mask: 0.0170
+[Epoch 12/20] Step 900/1000 | Loss: 0.4898 | L_point: 0.2912 | L_mask: 0.0351
+[Epoch 12/20] Step 910/1000 | Loss: 0.2729 | L_point: 0.3777 | L_mask: 0.0112
+[Epoch 12/20] Step 920/1000 | Loss: 0.3338 | L_point: 0.4514 | L_mask: 0.0358
+[Epoch 12/20] Step 930/1000 | Loss: 0.3148 | L_point: 0.1617 | L_mask: 0.0098
+[Epoch 12/20] Step 940/1000 | Loss: 0.3134 | L_point: 0.2139 | L_mask: 0.0051
+[Epoch 12/20] Step 950/1000 | Loss: 0.3475 | L_point: 0.4718 | L_mask: 0.0762
+[Epoch 12/20] Step 960/1000 | Loss: 0.3223 | L_point: 0.2436 | L_mask: 0.0301
+[Epoch 12/20] Step 970/1000 | Loss: 0.3183 | L_point: 0.2678 | L_mask: 0.0486
+[Epoch 12/20] Step 980/1000 | Loss: 0.4045 | L_point: 0.2158 | L_mask: 0.0425
+[Epoch 12/20] Step 990/1000 | Loss: 0.4806 | L_point: 0.2595 | L_mask: 0.0047
+[Epoch 12/20] Step 1000/1000 | Loss: 0.3510 | L_point: 0.2278 | L_mask: 0.0577
+Epoch 12 done in 2200s | Avg loss: 0.3414
+{
+  "epoch": 12,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6166733423385695,
+    "vggt_primary_vs_secondary_nl": 5.888888904070792,
+    "single_corrected_vs_first_l": 0.7617736950897858,
+    "single_corrected_vs_secondary_nl": 0.73332523424159,
+    "single_corrected_vs_first_nl": 1.508153189898801,
+    "single_mask_acc_valid_first": 0.9795037658003286
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59707907,
+    "vggt_primary_vs_secondary_nl": 252493590,
+    "single_corrected_vs_first_l": 59707907,
+    "single_corrected_vs_secondary_nl": 252493590,
+    "single_corrected_vs_first_nl": 252493590,
+    "single_mask_acc_valid_first": 312201497
+  }
+}
+[Epoch 13/20] Step 10/1000 | Loss: 0.2571 | L_point: 0.1908 | L_mask: 0.0126
+[Epoch 13/20] Step 20/1000 | Loss: 0.2980 | L_point: 0.1985 | L_mask: 0.0453
+[Epoch 13/20] Step 30/1000 | Loss: 0.3082 | L_point: 0.1946 | L_mask: 0.0323
+[Epoch 13/20] Step 40/1000 | Loss: 0.3375 | L_point: 0.7695 | L_mask: 0.2538
+[Epoch 13/20] Step 50/1000 | Loss: 0.3151 | L_point: 0.1940 | L_mask: 0.0482
+[Epoch 13/20] Step 60/1000 | Loss: 0.2409 | L_point: 0.1412 | L_mask: 0.0218
+[Epoch 13/20] Step 70/1000 | Loss: 0.2520 | L_point: 0.1742 | L_mask: 0.0265
+[Epoch 13/20] Step 80/1000 | Loss: 0.3509 | L_point: 0.2621 | L_mask: 0.0254
+[Epoch 13/20] Step 90/1000 | Loss: 0.2308 | L_point: 0.1963 | L_mask: 0.0896
+[Epoch 13/20] Step 100/1000 | Loss: 0.4061 | L_point: 0.2592 | L_mask: 0.0782
+[Epoch 13/20] Step 110/1000 | Loss: 0.3136 | L_point: 0.2695 | L_mask: 0.0620
+[Epoch 13/20] Step 120/1000 | Loss: 0.3356 | L_point: 0.7172 | L_mask: 0.0839
+[Epoch 13/20] Step 130/1000 | Loss: 0.2876 | L_point: 0.1934 | L_mask: 0.0183
+[Epoch 13/20] Step 140/1000 | Loss: 0.2443 | L_point: 0.1992 | L_mask: 0.0542
+[Epoch 13/20] Step 150/1000 | Loss: 0.2737 | L_point: 0.3688 | L_mask: 0.0823
+[Epoch 13/20] Step 160/1000 | Loss: 0.3125 | L_point: 0.2404 | L_mask: 0.0632
+[Epoch 13/20] Step 170/1000 | Loss: 0.2484 | L_point: 0.2198 | L_mask: 0.0394
+[Epoch 13/20] Step 180/1000 | Loss: 0.3062 | L_point: 0.2662 | L_mask: 0.0239
+[Epoch 13/20] Step 190/1000 | Loss: 0.3995 | L_point: 0.3584 | L_mask: 0.0631
+[Epoch 13/20] Step 200/1000 | Loss: 0.2283 | L_point: 0.1434 | L_mask: 0.0290
+[Epoch 13/20] Step 210/1000 | Loss: 0.2363 | L_point: 0.2633 | L_mask: 0.0393
+[Epoch 13/20] Step 220/1000 | Loss: 0.3339 | L_point: 0.2742 | L_mask: 0.0243
+[Epoch 13/20] Step 230/1000 | Loss: 0.3447 | L_point: 0.2544 | L_mask: 0.0215
+[Epoch 13/20] Step 240/1000 | Loss: 0.2895 | L_point: 0.1795 | L_mask: 0.0358
+[Epoch 13/20] Step 250/1000 | Loss: 0.2681 | L_point: 0.3227 | L_mask: 0.0827
+[Epoch 13/20] Step 260/1000 | Loss: 0.2715 | L_point: 0.2155 | L_mask: 0.0290
+[Epoch 13/20] Step 270/1000 | Loss: 0.3504 | L_point: 1.0880 | L_mask: 0.0549
+[Epoch 13/20] Step 280/1000 | Loss: 0.2735 | L_point: 0.2626 | L_mask: 0.0189
+[Epoch 13/20] Step 290/1000 | Loss: 0.3207 | L_point: 0.4222 | L_mask: 0.1417
+[Epoch 13/20] Step 300/1000 | Loss: 0.2930 | L_point: 0.2331 | L_mask: 0.0538
+[Epoch 13/20] Step 310/1000 | Loss: 0.3120 | L_point: 0.1780 | L_mask: 0.0091
+[Epoch 13/20] Step 320/1000 | Loss: 0.2409 | L_point: 0.3168 | L_mask: 0.0153
+[Epoch 13/20] Step 330/1000 | Loss: 0.2609 | L_point: 0.1648 | L_mask: 0.0087
+[Epoch 13/20] Step 340/1000 | Loss: 0.3078 | L_point: 0.1959 | L_mask: 0.0207
+[Epoch 13/20] Step 350/1000 | Loss: 0.3155 | L_point: 0.3370 | L_mask: 0.0246
+[Epoch 13/20] Step 360/1000 | Loss: 0.2418 | L_point: 0.2310 | L_mask: 0.0189
+[Epoch 13/20] Step 370/1000 | Loss: 0.3592 | L_point: 0.2022 | L_mask: 0.0402
+[Epoch 13/20] Step 380/1000 | Loss: 0.3683 | L_point: 0.2601 | L_mask: 0.0408
+[Epoch 13/20] Step 390/1000 | Loss: 0.2662 | L_point: 0.2070 | L_mask: 0.0392
+[Epoch 13/20] Step 400/1000 | Loss: 0.3031 | L_point: 0.1786 | L_mask: 0.0406
+[Epoch 13/20] Step 410/1000 | Loss: 0.3239 | L_point: 0.1845 | L_mask: 0.0394
+[Epoch 13/20] Step 420/1000 | Loss: 0.3064 | L_point: 0.2654 | L_mask: 0.0536
+[Epoch 13/20] Step 430/1000 | Loss: 0.3074 | L_point: 0.5962 | L_mask: 0.1064
+[Epoch 13/20] Step 440/1000 | Loss: 0.2756 | L_point: 0.1625 | L_mask: 0.0288
+[Epoch 13/20] Step 450/1000 | Loss: 0.2489 | L_point: 0.2319 | L_mask: 0.0444
+[Epoch 13/20] Step 460/1000 | Loss: 0.3027 | L_point: 0.1528 | L_mask: 0.0100
+[Epoch 13/20] Step 470/1000 | Loss: 0.2055 | L_point: 0.2415 | L_mask: 0.0375
+[Epoch 13/20] Step 480/1000 | Loss: 0.3291 | L_point: 0.2130 | L_mask: 0.0153
+[Epoch 13/20] Step 490/1000 | Loss: 0.2554 | L_point: 0.2744 | L_mask: 0.0155
+[Epoch 13/20] Step 500/1000 | Loss: 0.4752 | L_point: 0.8000 | L_mask: 0.1203
+[Epoch 13/20] Step 510/1000 | Loss: 0.2463 | L_point: 0.1847 | L_mask: 0.0036
+[Epoch 13/20] Step 520/1000 | Loss: 0.2650 | L_point: 0.2601 | L_mask: 0.0203
+[Epoch 13/20] Step 530/1000 | Loss: 0.2603 | L_point: 0.2150 | L_mask: 0.0359
+[Epoch 13/20] Step 540/1000 | Loss: 0.2276 | L_point: 0.3975 | L_mask: 0.0749
+[Epoch 13/20] Step 550/1000 | Loss: 0.3116 | L_point: 0.2218 | L_mask: 0.0569
+[Epoch 13/20] Step 560/1000 | Loss: 0.2552 | L_point: 0.2127 | L_mask: 0.0192
+[Epoch 13/20] Step 570/1000 | Loss: 0.3945 | L_point: 0.7602 | L_mask: 0.1528
+[Epoch 13/20] Step 580/1000 | Loss: 0.3280 | L_point: 0.1858 | L_mask: 0.0419
+[Epoch 13/20] Step 590/1000 | Loss: 0.4829 | L_point: 1.2507 | L_mask: 0.1688
+[Epoch 13/20] Step 600/1000 | Loss: 0.2964 | L_point: 0.1918 | L_mask: 0.0207
+[Epoch 13/20] Step 610/1000 | Loss: 0.3613 | L_point: 0.1918 | L_mask: 0.0472
+[Epoch 13/20] Step 620/1000 | Loss: 0.3197 | L_point: 0.3249 | L_mask: 0.0358
+[Epoch 13/20] Step 630/1000 | Loss: 0.2863 | L_point: 0.2221 | L_mask: 0.0214
+[Epoch 13/20] Step 640/1000 | Loss: 0.3459 | L_point: 0.2317 | L_mask: 0.0113
+[Epoch 13/20] Step 650/1000 | Loss: 0.2620 | L_point: 0.3021 | L_mask: 0.1082
+[Epoch 13/20] Step 660/1000 | Loss: 0.2202 | L_point: 0.1927 | L_mask: 0.0305
+[Epoch 13/20] Step 670/1000 | Loss: 0.2850 | L_point: 0.2584 | L_mask: 0.0770
+[Epoch 13/20] Step 680/1000 | Loss: 0.3328 | L_point: 0.2500 | L_mask: 0.0408
+[Epoch 13/20] Step 690/1000 | Loss: 0.2813 | L_point: 0.2132 | L_mask: 0.0875
+[Epoch 13/20] Step 700/1000 | Loss: 0.3009 | L_point: 0.2237 | L_mask: 0.0424
+[Epoch 13/20] Step 710/1000 | Loss: 0.2613 | L_point: 0.2448 | L_mask: 0.0655
+[Epoch 13/20] Step 720/1000 | Loss: 0.3350 | L_point: 0.2037 | L_mask: 0.0415
+[Epoch 13/20] Step 730/1000 | Loss: 0.2576 | L_point: 0.5378 | L_mask: 0.0950
+[Epoch 13/20] Step 740/1000 | Loss: 0.4709 | L_point: 0.2086 | L_mask: 0.0300
+[Epoch 13/20] Step 750/1000 | Loss: 0.3641 | L_point: 0.7091 | L_mask: 0.1832
+[Epoch 13/20] Step 760/1000 | Loss: 0.3315 | L_point: 0.3990 | L_mask: 0.0126
+[Epoch 13/20] Step 770/1000 | Loss: 0.3062 | L_point: 0.2047 | L_mask: 0.0524
+[Epoch 13/20] Step 780/1000 | Loss: 0.2131 | L_point: 0.1858 | L_mask: 0.0411
+[Epoch 13/20] Step 790/1000 | Loss: 0.2120 | L_point: 0.2361 | L_mask: 0.0410
+[Epoch 13/20] Step 800/1000 | Loss: 0.4287 | L_point: 0.6960 | L_mask: 0.0685
+[Epoch 13/20] Step 810/1000 | Loss: 0.3042 | L_point: 0.2895 | L_mask: 0.0069
+[Epoch 13/20] Step 820/1000 | Loss: 0.2357 | L_point: 0.1958 | L_mask: 0.0326
+[Epoch 13/20] Step 830/1000 | Loss: 0.3585 | L_point: 0.2668 | L_mask: 0.0503
+[Epoch 13/20] Step 840/1000 | Loss: 0.3528 | L_point: 0.2761 | L_mask: 0.0088
+[Epoch 13/20] Step 850/1000 | Loss: 0.2367 | L_point: 0.2894 | L_mask: 0.0373
+[Epoch 13/20] Step 860/1000 | Loss: 0.2389 | L_point: 0.2285 | L_mask: 0.0239
+[Epoch 13/20] Step 870/1000 | Loss: 0.2390 | L_point: 0.1829 | L_mask: 0.0230
+[Epoch 13/20] Step 880/1000 | Loss: 0.2889 | L_point: 0.1792 | L_mask: 0.0289
+[Epoch 13/20] Step 890/1000 | Loss: 0.2793 | L_point: 0.2747 | L_mask: 0.0231
+[Epoch 13/20] Step 900/1000 | Loss: 0.2492 | L_point: 0.2249 | L_mask: 0.0074
+[Epoch 13/20] Step 910/1000 | Loss: 0.2117 | L_point: 0.1978 | L_mask: 0.0233
+[Epoch 13/20] Step 920/1000 | Loss: 0.2997 | L_point: 0.2217 | L_mask: 0.0167
+[Epoch 13/20] Step 930/1000 | Loss: 0.3315 | L_point: 0.2254 | L_mask: 0.0418
+[Epoch 13/20] Step 940/1000 | Loss: 0.2618 | L_point: 0.2040 | L_mask: 0.0324
+[Epoch 13/20] Step 950/1000 | Loss: 0.4456 | L_point: 1.1454 | L_mask: 0.0804
+[Epoch 13/20] Step 960/1000 | Loss: 0.3074 | L_point: 0.2714 | L_mask: 0.0419
+[Epoch 13/20] Step 970/1000 | Loss: 0.1977 | L_point: 0.1519 | L_mask: 0.0092
+[Epoch 13/20] Step 980/1000 | Loss: 0.2810 | L_point: 0.2495 | L_mask: 0.0039
+[Epoch 13/20] Step 990/1000 | Loss: 0.2567 | L_point: 0.2307 | L_mask: 0.0436
+[Epoch 13/20] Step 1000/1000 | Loss: 0.2394 | L_point: 0.1824 | L_mask: 0.0312
+Epoch 13 done in 2194s | Avg loss: 0.2979
+[Epoch 14/20] Step 10/1000 | Loss: 0.2284 | L_point: 0.1605 | L_mask: 0.0058
+[Epoch 14/20] Step 20/1000 | Loss: 0.3113 | L_point: 0.7544 | L_mask: 0.1609
+[Epoch 14/20] Step 30/1000 | Loss: 0.2565 | L_point: 0.1745 | L_mask: 0.0219
+[Epoch 14/20] Step 40/1000 | Loss: 0.3806 | L_point: 0.2468 | L_mask: 0.0235
+[Epoch 14/20] Step 50/1000 | Loss: 0.2443 | L_point: 0.2786 | L_mask: 0.0527
+[Epoch 14/20] Step 60/1000 | Loss: 0.2372 | L_point: 0.2335 | L_mask: 0.0451
+[Epoch 14/20] Step 70/1000 | Loss: 0.2197 | L_point: 0.3680 | L_mask: 0.1211
+[Epoch 14/20] Step 80/1000 | Loss: 0.2881 | L_point: 0.2597 | L_mask: 0.0125
+[Epoch 14/20] Step 90/1000 | Loss: 0.2641 | L_point: 0.1727 | L_mask: 0.0028
+[Epoch 14/20] Step 100/1000 | Loss: 0.2442 | L_point: 0.4236 | L_mask: 0.1271
+[Epoch 14/20] Step 110/1000 | Loss: 0.2495 | L_point: 0.1923 | L_mask: 0.0347
+[Epoch 14/20] Step 120/1000 | Loss: 0.2910 | L_point: 0.1746 | L_mask: 0.0375
+[Epoch 14/20] Step 130/1000 | Loss: 0.2154 | L_point: 0.1429 | L_mask: 0.0132
+[Epoch 14/20] Step 140/1000 | Loss: 0.2595 | L_point: 0.3213 | L_mask: 0.0137
+[Epoch 14/20] Step 150/1000 | Loss: 0.2363 | L_point: 0.3655 | L_mask: 0.0044
+[Epoch 14/20] Step 160/1000 | Loss: 0.2816 | L_point: 0.2425 | L_mask: 0.0193
+[Epoch 14/20] Step 170/1000 | Loss: 0.2465 | L_point: 0.1708 | L_mask: 0.0111
+[Epoch 14/20] Step 180/1000 | Loss: 0.2684 | L_point: 0.2216 | L_mask: 0.0204
+[Epoch 14/20] Step 190/1000 | Loss: 0.2192 | L_point: 0.1638 | L_mask: 0.0518
+[Epoch 14/20] Step 200/1000 | Loss: 0.3593 | L_point: 0.1606 | L_mask: 0.0253
+[Epoch 14/20] Step 210/1000 | Loss: 0.2381 | L_point: 0.3967 | L_mask: 0.0687
+[Epoch 14/20] Step 220/1000 | Loss: 0.2309 | L_point: 0.1574 | L_mask: 0.0292
+[Epoch 14/20] Step 230/1000 | Loss: 0.3896 | L_point: 0.2403 | L_mask: 0.0320
+[Epoch 14/20] Step 240/1000 | Loss: 0.2178 | L_point: 0.1859 | L_mask: 0.0575
+[Epoch 14/20] Step 250/1000 | Loss: 0.3832 | L_point: 0.5397 | L_mask: 0.0733
+[Epoch 14/20] Step 260/1000 | Loss: 0.2475 | L_point: 0.2898 | L_mask: 0.0198
+[Epoch 14/20] Step 270/1000 | Loss: 0.2473 | L_point: 0.2421 | L_mask: 0.0161
+[Epoch 14/20] Step 280/1000 | Loss: 0.2615 | L_point: 0.2979 | L_mask: 0.0423
+[Epoch 14/20] Step 290/1000 | Loss: 0.2980 | L_point: 0.2237 | L_mask: 0.0108
+[Epoch 14/20] Step 300/1000 | Loss: 0.2110 | L_point: 0.2436 | L_mask: 0.0195
+[Epoch 14/20] Step 310/1000 | Loss: 0.2840 | L_point: 0.2415 | L_mask: 0.0206
+[Epoch 14/20] Step 320/1000 | Loss: 0.3269 | L_point: 0.2260 | L_mask: 0.0013
+[Epoch 14/20] Step 330/1000 | Loss: 0.2368 | L_point: 0.3945 | L_mask: 0.0967
+[Epoch 14/20] Step 340/1000 | Loss: 0.2266 | L_point: 0.1951 | L_mask: 0.0711
+[Epoch 14/20] Step 350/1000 | Loss: 0.3884 | L_point: 0.1672 | L_mask: 0.0552
+[Epoch 14/20] Step 360/1000 | Loss: 0.3016 | L_point: 0.2362 | L_mask: 0.0381
+[Epoch 14/20] Step 370/1000 | Loss: 0.2577 | L_point: 0.1698 | L_mask: 0.0165
+[Epoch 14/20] Step 380/1000 | Loss: 0.3650 | L_point: 0.3435 | L_mask: 0.0669
+[Epoch 14/20] Step 390/1000 | Loss: 0.3193 | L_point: 0.2144 | L_mask: 0.0140
+[Epoch 14/20] Step 400/1000 | Loss: 0.2371 | L_point: 0.1708 | L_mask: 0.0486
+[Epoch 14/20] Step 410/1000 | Loss: 0.2110 | L_point: 0.2069 | L_mask: 0.0484
+[Epoch 14/20] Step 420/1000 | Loss: 0.2211 | L_point: 0.2097 | L_mask: 0.0228
+[Epoch 14/20] Step 430/1000 | Loss: 0.2434 | L_point: 0.6102 | L_mask: 0.2330
+[Epoch 14/20] Step 440/1000 | Loss: 0.3885 | L_point: 0.2267 | L_mask: 0.0512
+[Epoch 14/20] Step 450/1000 | Loss: 0.2258 | L_point: 0.1753 | L_mask: 0.0182
+[Epoch 14/20] Step 460/1000 | Loss: 0.2285 | L_point: 0.2062 | L_mask: 0.0390
+[Epoch 14/20] Step 470/1000 | Loss: 0.3962 | L_point: 0.2427 | L_mask: 0.0098
+[Epoch 14/20] Step 480/1000 | Loss: 0.3828 | L_point: 0.1509 | L_mask: 0.0203
+[Epoch 14/20] Step 490/1000 | Loss: 0.3648 | L_point: 0.2076 | L_mask: 0.0187
+[Epoch 14/20] Step 500/1000 | Loss: 0.2342 | L_point: 0.1824 | L_mask: 0.0120
+[Epoch 14/20] Step 510/1000 | Loss: 0.2403 | L_point: 0.2246 | L_mask: 0.0303
+[Epoch 14/20] Step 520/1000 | Loss: 0.3197 | L_point: 0.1992 | L_mask: 0.0108
+[Epoch 14/20] Step 530/1000 | Loss: 0.2934 | L_point: 0.2970 | L_mask: 0.0493
+[Epoch 14/20] Step 540/1000 | Loss: 0.2087 | L_point: 0.2590 | L_mask: 0.0318
+[Epoch 14/20] Step 550/1000 | Loss: 0.2825 | L_point: 0.1890 | L_mask: 0.0321
+[Epoch 14/20] Step 560/1000 | Loss: 0.2628 | L_point: 0.2431 | L_mask: 0.0078
+[Epoch 14/20] Step 570/1000 | Loss: 0.3161 | L_point: 0.2434 | L_mask: 0.0085
+[Epoch 14/20] Step 580/1000 | Loss: 0.2885 | L_point: 0.2063 | L_mask: 0.0546
+[Epoch 14/20] Step 590/1000 | Loss: 0.2794 | L_point: 0.1872 | L_mask: 0.0518
+[Epoch 14/20] Step 600/1000 | Loss: 0.2443 | L_point: 0.1935 | L_mask: 0.0427
+[Epoch 14/20] Step 610/1000 | Loss: 0.2731 | L_point: 0.2523 | L_mask: 0.0402
+[Epoch 14/20] Step 620/1000 | Loss: 0.2138 | L_point: 0.1933 | L_mask: 0.0337
+[Epoch 14/20] Step 630/1000 | Loss: 0.3513 | L_point: 0.2353 | L_mask: 0.0458
+[Epoch 14/20] Step 640/1000 | Loss: 0.2930 | L_point: 0.2411 | L_mask: 0.0237
+[Epoch 14/20] Step 650/1000 | Loss: 0.3422 | L_point: 0.4448 | L_mask: 0.0714
+[Epoch 14/20] Step 660/1000 | Loss: 0.3202 | L_point: 0.3591 | L_mask: 0.0387
+[Epoch 14/20] Step 670/1000 | Loss: 0.2254 | L_point: 0.2533 | L_mask: 0.0355
+[Epoch 14/20] Step 680/1000 | Loss: 0.2364 | L_point: 0.3356 | L_mask: 0.0019
+[Epoch 14/20] Step 690/1000 | Loss: 0.2285 | L_point: 0.2294 | L_mask: 0.0141
+[Epoch 14/20] Step 700/1000 | Loss: 0.2575 | L_point: 0.1787 | L_mask: 0.0046
+[Epoch 14/20] Step 710/1000 | Loss: 0.2539 | L_point: 0.2153 | L_mask: 0.0231
+[Epoch 14/20] Step 720/1000 | Loss: 0.2384 | L_point: 0.1612 | L_mask: 0.0337
+[Epoch 14/20] Step 730/1000 | Loss: 0.3474 | L_point: 0.4802 | L_mask: 0.0548
+[Epoch 14/20] Step 740/1000 | Loss: 0.2817 | L_point: 0.6267 | L_mask: 0.1108
+[Epoch 14/20] Step 750/1000 | Loss: 0.2732 | L_point: 0.1926 | L_mask: 0.0419
+[Epoch 14/20] Step 760/1000 | Loss: 0.2667 | L_point: 0.4677 | L_mask: 0.0798
+[Epoch 14/20] Step 770/1000 | Loss: 0.2716 | L_point: 0.3015 | L_mask: 0.0828
+[Epoch 14/20] Step 780/1000 | Loss: 0.2145 | L_point: 0.1856 | L_mask: 0.0108
+[Epoch 14/20] Step 790/1000 | Loss: 0.2131 | L_point: 0.2176 | L_mask: 0.0093
+[Epoch 14/20] Step 800/1000 | Loss: 0.3233 | L_point: 0.2806 | L_mask: 0.0714
+[Epoch 14/20] Step 810/1000 | Loss: 0.3446 | L_point: 0.2428 | L_mask: 0.0390
+[Epoch 14/20] Step 820/1000 | Loss: 0.4381 | L_point: 0.3790 | L_mask: 0.0747
+[Epoch 14/20] Step 830/1000 | Loss: 0.2333 | L_point: 0.2653 | L_mask: 0.0342
+[Epoch 14/20] Step 840/1000 | Loss: 0.2258 | L_point: 0.1493 | L_mask: 0.0121
+[Epoch 14/20] Step 850/1000 | Loss: 0.2247 | L_point: 0.1841 | L_mask: 0.0235
+[Epoch 14/20] Step 860/1000 | Loss: 0.3328 | L_point: 0.2618 | L_mask: 0.0421
+[Epoch 14/20] Step 870/1000 | Loss: 0.2648 | L_point: 0.2078 | L_mask: 0.0155
+[Epoch 14/20] Step 880/1000 | Loss: 0.2712 | L_point: 0.2346 | L_mask: 0.0453
+[Epoch 14/20] Step 890/1000 | Loss: 0.1985 | L_point: 0.2337 | L_mask: 0.0500
+[Epoch 14/20] Step 900/1000 | Loss: 0.2891 | L_point: 0.1459 | L_mask: 0.0018
+[Epoch 14/20] Step 910/1000 | Loss: 0.3121 | L_point: 0.3022 | L_mask: 0.0436
+[Epoch 14/20] Step 920/1000 | Loss: 0.2827 | L_point: 0.1560 | L_mask: 0.0328
+[Epoch 14/20] Step 930/1000 | Loss: 0.2689 | L_point: 0.2225 | L_mask: 0.0368
+[Epoch 14/20] Step 940/1000 | Loss: 0.2932 | L_point: 0.1250 | L_mask: 0.0110
+[Epoch 14/20] Step 950/1000 | Loss: 0.2409 | L_point: 0.2126 | L_mask: 0.0735
+[Epoch 14/20] Step 960/1000 | Loss: 0.3502 | L_point: 0.5702 | L_mask: 0.1175
+[Epoch 14/20] Step 970/1000 | Loss: 0.2404 | L_point: 0.2347 | L_mask: 0.0200
+[Epoch 14/20] Step 980/1000 | Loss: 0.3245 | L_point: 0.1927 | L_mask: 0.0262
+[Epoch 14/20] Step 990/1000 | Loss: 0.2120 | L_point: 0.1895 | L_mask: 0.0036
+[Epoch 14/20] Step 1000/1000 | Loss: 0.3189 | L_point: 0.5344 | L_mask: 0.1041
+Epoch 14 done in 2197s | Avg loss: 0.2769
+{
+  "epoch": 14,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6208904120140675,
+    "vggt_primary_vs_secondary_nl": 5.886686005521611,
+    "single_corrected_vs_first_l": 0.7864261921347016,
+    "single_corrected_vs_secondary_nl": 0.43361274900483127,
+    "single_corrected_vs_first_nl": 1.4493539072853245,
+    "single_mask_acc_valid_first": 0.9822294412191561
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59727926,
+    "vggt_primary_vs_secondary_nl": 252530291,
+    "single_corrected_vs_first_l": 59727926,
+    "single_corrected_vs_secondary_nl": 252530291,
+    "single_corrected_vs_first_nl": 252530291,
+    "single_mask_acc_valid_first": 312258217
+  }
+}
+[Epoch 15/20] Step 10/1000 | Loss: 0.2577 | L_point: 0.1664 | L_mask: 0.0278
+[Epoch 15/20] Step 20/1000 | Loss: 0.2702 | L_point: 0.4360 | L_mask: 0.0446
+[Epoch 15/20] Step 30/1000 | Loss: 0.2293 | L_point: 0.1589 | L_mask: 0.0516
+[Epoch 15/20] Step 40/1000 | Loss: 0.2395 | L_point: 0.3659 | L_mask: 0.0533
+[Epoch 15/20] Step 50/1000 | Loss: 0.2509 | L_point: 0.3940 | L_mask: 0.0523
+[Epoch 15/20] Step 60/1000 | Loss: 0.1709 | L_point: 0.1508 | L_mask: 0.0419
+[Epoch 15/20] Step 70/1000 | Loss: 0.2011 | L_point: 0.1953 | L_mask: 0.0279
+[Epoch 15/20] Step 80/1000 | Loss: 0.2119 | L_point: 0.1449 | L_mask: 0.0180
+[Epoch 15/20] Step 90/1000 | Loss: 0.2223 | L_point: 0.2743 | L_mask: 0.0352
+[Epoch 15/20] Step 100/1000 | Loss: 0.2491 | L_point: 0.1932 | L_mask: 0.0355
+[Epoch 15/20] Step 110/1000 | Loss: 0.2932 | L_point: 0.2785 | L_mask: 0.0352
+[Epoch 15/20] Step 120/1000 | Loss: 0.2257 | L_point: 0.2294 | L_mask: 0.0474
+[Epoch 15/20] Step 130/1000 | Loss: 0.2561 | L_point: 0.3805 | L_mask: 0.0573
+[Epoch 15/20] Step 140/1000 | Loss: 0.2425 | L_point: 0.3599 | L_mask: 0.1237
+[Epoch 15/20] Step 150/1000 | Loss: 0.2259 | L_point: 0.1973 | L_mask: 0.0384
+[Epoch 15/20] Step 160/1000 | Loss: 0.2737 | L_point: 0.2180 | L_mask: 0.0462
+[Epoch 15/20] Step 170/1000 | Loss: 0.2535 | L_point: 0.2240 | L_mask: 0.0226
+[Epoch 15/20] Step 180/1000 | Loss: 0.2658 | L_point: 0.1444 | L_mask: 0.0099
+[Epoch 15/20] Step 190/1000 | Loss: 0.2892 | L_point: 0.1419 | L_mask: 0.0089
+[Epoch 15/20] Step 200/1000 | Loss: 0.3286 | L_point: 0.1270 | L_mask: 0.0078
+[Epoch 15/20] Step 210/1000 | Loss: 0.2127 | L_point: 0.1774 | L_mask: 0.0346
+[Epoch 15/20] Step 220/1000 | Loss: 0.3126 | L_point: 0.1551 | L_mask: 0.0294
+[Epoch 15/20] Step 230/1000 | Loss: 0.3629 | L_point: 0.1784 | L_mask: 0.0487
+[Epoch 15/20] Step 240/1000 | Loss: 0.3305 | L_point: 0.3780 | L_mask: 0.0645
+[Epoch 15/20] Step 250/1000 | Loss: 0.3194 | L_point: 0.1665 | L_mask: 0.0186
+[Epoch 15/20] Step 260/1000 | Loss: 0.1931 | L_point: 0.1754 | L_mask: 0.0579
+[Epoch 15/20] Step 270/1000 | Loss: 0.2271 | L_point: 0.1339 | L_mask: 0.0223
+[Epoch 15/20] Step 280/1000 | Loss: 0.2493 | L_point: 0.1724 | L_mask: 0.0021
+[Epoch 15/20] Step 290/1000 | Loss: 0.2918 | L_point: 0.1855 | L_mask: 0.0264
+[Epoch 15/20] Step 300/1000 | Loss: 0.2431 | L_point: 0.1857 | L_mask: 0.0407
+[Epoch 15/20] Step 310/1000 | Loss: 0.2091 | L_point: 0.2270 | L_mask: 0.0379
+[Epoch 15/20] Step 320/1000 | Loss: 0.2551 | L_point: 0.2736 | L_mask: 0.0466
+[Epoch 15/20] Step 330/1000 | Loss: 0.1989 | L_point: 0.1522 | L_mask: 0.0097
+[Epoch 15/20] Step 340/1000 | Loss: 0.2981 | L_point: 0.3448 | L_mask: 0.0503
+[Epoch 15/20] Step 350/1000 | Loss: 0.1982 | L_point: 0.2962 | L_mask: 0.1209
+[Epoch 15/20] Step 360/1000 | Loss: 0.1994 | L_point: 0.1507 | L_mask: 0.0095
+[Epoch 15/20] Step 370/1000 | Loss: 0.2997 | L_point: 0.1723 | L_mask: 0.0299
+[Epoch 15/20] Step 380/1000 | Loss: 0.2721 | L_point: 0.1990 | L_mask: 0.0459
+[Epoch 15/20] Step 390/1000 | Loss: 0.2068 | L_point: 0.1951 | L_mask: 0.0420
+[Epoch 15/20] Step 400/1000 | Loss: 0.2333 | L_point: 0.2165 | L_mask: 0.0124
+[Epoch 15/20] Step 410/1000 | Loss: 0.2363 | L_point: 0.1935 | L_mask: 0.0279
+[Epoch 15/20] Step 420/1000 | Loss: 0.2763 | L_point: 0.1596 | L_mask: 0.0349
+[Epoch 15/20] Step 430/1000 | Loss: 0.3594 | L_point: 0.5184 | L_mask: 0.1210
+[Epoch 15/20] Step 440/1000 | Loss: 0.2757 | L_point: 0.1665 | L_mask: 0.0215
+[Epoch 15/20] Step 450/1000 | Loss: 0.3050 | L_point: 0.7097 | L_mask: 0.1420
+[Epoch 15/20] Step 460/1000 | Loss: 0.2590 | L_point: 0.3086 | L_mask: 0.0134
+[Epoch 15/20] Step 470/1000 | Loss: 0.3029 | L_point: 0.2335 | L_mask: 0.0681
+[Epoch 15/20] Step 480/1000 | Loss: 0.2070 | L_point: 0.2585 | L_mask: 0.0170
+[Epoch 15/20] Step 490/1000 | Loss: 0.1927 | L_point: 0.1229 | L_mask: 0.0031
+[Epoch 15/20] Step 500/1000 | Loss: 0.3700 | L_point: 0.3042 | L_mask: 0.0575
+[Epoch 15/20] Step 510/1000 | Loss: 0.2453 | L_point: 0.6445 | L_mask: 0.0618
+[Epoch 15/20] Step 520/1000 | Loss: 0.3397 | L_point: 0.2466 | L_mask: 0.0380
+[Epoch 15/20] Step 530/1000 | Loss: 0.2653 | L_point: 0.2722 | L_mask: 0.0419
+[Epoch 15/20] Step 540/1000 | Loss: 0.2331 | L_point: 0.2290 | L_mask: 0.0395
+[Epoch 15/20] Step 550/1000 | Loss: 0.3223 | L_point: 0.2318 | L_mask: 0.0462
+[Epoch 15/20] Step 560/1000 | Loss: 0.2011 | L_point: 0.1192 | L_mask: 0.0095
+[Epoch 15/20] Step 570/1000 | Loss: 0.2647 | L_point: 0.1507 | L_mask: 0.0183
+[Epoch 15/20] Step 580/1000 | Loss: 0.2164 | L_point: 0.1583 | L_mask: 0.0294
+[Epoch 15/20] Step 590/1000 | Loss: 0.2817 | L_point: 0.1347 | L_mask: 0.0229
+[Epoch 15/20] Step 600/1000 | Loss: 0.1980 | L_point: 0.1669 | L_mask: 0.0190
+[Epoch 15/20] Step 610/1000 | Loss: 0.2455 | L_point: 0.1824 | L_mask: 0.0579
+[Epoch 15/20] Step 620/1000 | Loss: 0.2215 | L_point: 0.1799 | L_mask: 0.0367
+[Epoch 15/20] Step 630/1000 | Loss: 0.2718 | L_point: 0.1900 | L_mask: 0.0453
+[Epoch 15/20] Step 640/1000 | Loss: 0.1820 | L_point: 0.1990 | L_mask: 0.0526
+[Epoch 15/20] Step 650/1000 | Loss: 0.3097 | L_point: 0.3450 | L_mask: 0.0681
+[Epoch 15/20] Step 660/1000 | Loss: 0.3133 | L_point: 0.4594 | L_mask: 0.0793
+[Epoch 15/20] Step 670/1000 | Loss: 0.1817 | L_point: 0.1134 | L_mask: 0.0151
+[Epoch 15/20] Step 680/1000 | Loss: 0.2109 | L_point: 0.1425 | L_mask: 0.0173
+[Epoch 15/20] Step 690/1000 | Loss: 0.3911 | L_point: 0.2917 | L_mask: 0.0500
+[Epoch 15/20] Step 700/1000 | Loss: 0.2707 | L_point: 0.1998 | L_mask: 0.0443
+[Epoch 15/20] Step 710/1000 | Loss: 0.2652 | L_point: 0.1780 | L_mask: 0.0325
+[Epoch 15/20] Step 720/1000 | Loss: 0.2850 | L_point: 0.1982 | L_mask: 0.0115
+[Epoch 15/20] Step 730/1000 | Loss: 0.2623 | L_point: 0.2676 | L_mask: 0.0453
+[Epoch 15/20] Step 740/1000 | Loss: 0.2626 | L_point: 0.3213 | L_mask: 0.0770
+[Epoch 15/20] Step 750/1000 | Loss: 0.2112 | L_point: 0.1282 | L_mask: 0.0062
+[Epoch 15/20] Step 760/1000 | Loss: 0.2105 | L_point: 0.2154 | L_mask: 0.0349
+[Epoch 15/20] Step 770/1000 | Loss: 0.2427 | L_point: 0.1662 | L_mask: 0.0165
+[Epoch 15/20] Step 780/1000 | Loss: 0.2814 | L_point: 0.2284 | L_mask: 0.0211
+[Epoch 15/20] Step 790/1000 | Loss: 0.2393 | L_point: 0.3105 | L_mask: 0.0783
+[Epoch 15/20] Step 800/1000 | Loss: 0.1965 | L_point: 0.1398 | L_mask: 0.0345
+[Epoch 15/20] Step 810/1000 | Loss: 0.2483 | L_point: 0.1773 | L_mask: 0.0008
+[Epoch 15/20] Step 820/1000 | Loss: 0.2868 | L_point: 0.2880 | L_mask: 0.0247
+[Epoch 15/20] Step 830/1000 | Loss: 0.2235 | L_point: 0.1958 | L_mask: 0.0153
+[Epoch 15/20] Step 840/1000 | Loss: 0.1910 | L_point: 0.1653 | L_mask: 0.0102
+[Epoch 15/20] Step 850/1000 | Loss: 0.2736 | L_point: 0.1590 | L_mask: 0.0146
+[Epoch 15/20] Step 860/1000 | Loss: 0.2363 | L_point: 0.2031 | L_mask: 0.0106
+[Epoch 15/20] Step 870/1000 | Loss: 0.1973 | L_point: 0.1546 | L_mask: 0.0150
+[Epoch 15/20] Step 880/1000 | Loss: 0.3104 | L_point: 0.1644 | L_mask: 0.0138
+[Epoch 15/20] Step 890/1000 | Loss: 0.1942 | L_point: 0.1699 | L_mask: 0.0475
+[Epoch 15/20] Step 900/1000 | Loss: 0.2658 | L_point: 0.4160 | L_mask: 0.1203
+[Epoch 15/20] Step 910/1000 | Loss: 0.2104 | L_point: 0.1813 | L_mask: 0.0210
+[Epoch 15/20] Step 920/1000 | Loss: 0.1934 | L_point: 0.1541 | L_mask: 0.0136
+[Epoch 15/20] Step 930/1000 | Loss: 0.2720 | L_point: 0.2358 | L_mask: 0.0313
+[Epoch 15/20] Step 940/1000 | Loss: 0.2411 | L_point: 0.1434 | L_mask: 0.0025
+[Epoch 15/20] Step 950/1000 | Loss: 0.2272 | L_point: 0.2048 | L_mask: 0.0261
+[Epoch 15/20] Step 960/1000 | Loss: 0.2116 | L_point: 0.1791 | L_mask: 0.0361
+[Epoch 15/20] Step 970/1000 | Loss: 0.3217 | L_point: 0.1567 | L_mask: 0.0249
+[Epoch 15/20] Step 980/1000 | Loss: 0.1666 | L_point: 0.1239 | L_mask: 0.0230
+[Epoch 15/20] Step 990/1000 | Loss: 0.2546 | L_point: 0.2413 | L_mask: 0.0353
+[Epoch 15/20] Step 1000/1000 | Loss: 0.1890 | L_point: 0.2456 | L_mask: 0.0443
+Epoch 15 done in 2192s | Avg loss: 0.2519
+Saved checkpoint: checkpoints/phase05_single_head/single_head_epoch015.pt
+[Epoch 16/20] Step 10/1000 | Loss: 0.2084 | L_point: 0.3540 | L_mask: 0.0378
+[Epoch 16/20] Step 20/1000 | Loss: 0.2545 | L_point: 0.1449 | L_mask: 0.0528
+[Epoch 16/20] Step 30/1000 | Loss: 0.2567 | L_point: 0.5623 | L_mask: 0.0429
+[Epoch 16/20] Step 40/1000 | Loss: 0.2423 | L_point: 0.1493 | L_mask: 0.0300
+[Epoch 16/20] Step 50/1000 | Loss: 0.2495 | L_point: 0.1186 | L_mask: 0.0031
+[Epoch 16/20] Step 60/1000 | Loss: 0.2078 | L_point: 0.1262 | L_mask: 0.0297
+[Epoch 16/20] Step 70/1000 | Loss: 0.2181 | L_point: 0.1483 | L_mask: 0.0275
+[Epoch 16/20] Step 80/1000 | Loss: 0.2143 | L_point: 0.3181 | L_mask: 0.0856
+[Epoch 16/20] Step 90/1000 | Loss: 0.1990 | L_point: 0.3138 | L_mask: 0.0858
+[Epoch 16/20] Step 100/1000 | Loss: 0.2722 | L_point: 0.2560 | L_mask: 0.0259
+[Epoch 16/20] Step 110/1000 | Loss: 0.2206 | L_point: 0.2766 | L_mask: 0.0307
+[Epoch 16/20] Step 120/1000 | Loss: 0.2127 | L_point: 0.3442 | L_mask: 0.0728
+[Epoch 16/20] Step 130/1000 | Loss: 0.2335 | L_point: 0.2871 | L_mask: 0.0376
+[Epoch 16/20] Step 140/1000 | Loss: 0.2399 | L_point: 0.1887 | L_mask: 0.0483
+[Epoch 16/20] Step 150/1000 | Loss: 0.1771 | L_point: 0.1107 | L_mask: 0.0259
+[Epoch 16/20] Step 160/1000 | Loss: 0.2498 | L_point: 0.3895 | L_mask: 0.0603
+[Epoch 16/20] Step 170/1000 | Loss: 0.1917 | L_point: 0.2297 | L_mask: 0.0633
+[Epoch 16/20] Step 180/1000 | Loss: 0.1893 | L_point: 0.1820 | L_mask: 0.0328
+[Epoch 16/20] Step 190/1000 | Loss: 0.3302 | L_point: 0.6088 | L_mask: 0.0681
+[Epoch 16/20] Step 200/1000 | Loss: 0.2993 | L_point: 0.1932 | L_mask: 0.0279
+[Epoch 16/20] Step 210/1000 | Loss: 0.2771 | L_point: 0.1519 | L_mask: 0.0327
+[Epoch 16/20] Step 220/1000 | Loss: 0.3176 | L_point: 0.1445 | L_mask: 0.0334
+[Epoch 16/20] Step 230/1000 | Loss: 0.3183 | L_point: 0.3180 | L_mask: 0.0560
+[Epoch 16/20] Step 240/1000 | Loss: 0.3689 | L_point: 0.1538 | L_mask: 0.0394
+[Epoch 16/20] Step 250/1000 | Loss: 0.1968 | L_point: 0.2543 | L_mask: 0.0606
+[Epoch 16/20] Step 260/1000 | Loss: 0.2256 | L_point: 0.1948 | L_mask: 0.0361
+[Epoch 16/20] Step 270/1000 | Loss: 0.2941 | L_point: 0.1308 | L_mask: 0.0033
+[Epoch 16/20] Step 280/1000 | Loss: 0.2744 | L_point: 0.2111 | L_mask: 0.0343
+[Epoch 16/20] Step 290/1000 | Loss: 0.1997 | L_point: 0.1573 | L_mask: 0.0118
+[Epoch 16/20] Step 300/1000 | Loss: 0.2172 | L_point: 0.1141 | L_mask: 0.0069
+[Epoch 16/20] Step 310/1000 | Loss: 0.2449 | L_point: 0.2161 | L_mask: 0.0235
+[Epoch 16/20] Step 320/1000 | Loss: 0.2807 | L_point: 0.1658 | L_mask: 0.0398
+[Epoch 16/20] Step 330/1000 | Loss: 0.2613 | L_point: 0.2960 | L_mask: 0.0145
+[Epoch 16/20] Step 340/1000 | Loss: 0.1925 | L_point: 0.1641 | L_mask: 0.0320
+[Epoch 16/20] Step 350/1000 | Loss: 0.2746 | L_point: 0.1150 | L_mask: 0.0066
+[Epoch 16/20] Step 360/1000 | Loss: 0.2105 | L_point: 0.1664 | L_mask: 0.0334
+[Epoch 16/20] Step 370/1000 | Loss: 0.1781 | L_point: 0.1979 | L_mask: 0.0137
+[Epoch 16/20] Step 380/1000 | Loss: 0.2369 | L_point: 0.3708 | L_mask: 0.0499
+[Epoch 16/20] Step 390/1000 | Loss: 0.2067 | L_point: 0.3131 | L_mask: 0.0761
+[Epoch 16/20] Step 400/1000 | Loss: 0.2248 | L_point: 0.4315 | L_mask: 0.0453
+[Epoch 16/20] Step 410/1000 | Loss: 0.2136 | L_point: 0.3212 | L_mask: 0.0373
+[Epoch 16/20] Step 420/1000 | Loss: 0.2381 | L_point: 0.5312 | L_mask: 0.0526
+[Epoch 16/20] Step 430/1000 | Loss: 0.1571 | L_point: 0.1573 | L_mask: 0.0039
+[Epoch 16/20] Step 440/1000 | Loss: 0.2306 | L_point: 0.7052 | L_mask: 0.1348
+[Epoch 16/20] Step 450/1000 | Loss: 0.2066 | L_point: 0.1768 | L_mask: 0.0353
+[Epoch 16/20] Step 460/1000 | Loss: 0.2423 | L_point: 0.2319 | L_mask: 0.0308
+[Epoch 16/20] Step 470/1000 | Loss: 0.2415 | L_point: 0.1124 | L_mask: 0.0130
+[Epoch 16/20] Step 480/1000 | Loss: 0.2581 | L_point: 0.2165 | L_mask: 0.0030
+[Epoch 16/20] Step 490/1000 | Loss: 0.2459 | L_point: 0.4130 | L_mask: 0.0451
+[Epoch 16/20] Step 500/1000 | Loss: 0.2887 | L_point: 0.2004 | L_mask: 0.0161
+[Epoch 16/20] Step 510/1000 | Loss: 0.2279 | L_point: 0.1858 | L_mask: 0.0054
+[Epoch 16/20] Step 520/1000 | Loss: 0.2501 | L_point: 0.2456 | L_mask: 0.0349
+[Epoch 16/20] Step 530/1000 | Loss: 0.2049 | L_point: 0.1495 | L_mask: 0.0240
+[Epoch 16/20] Step 540/1000 | Loss: 0.2074 | L_point: 0.1090 | L_mask: 0.0078
+[Epoch 16/20] Step 550/1000 | Loss: 0.2156 | L_point: 0.1372 | L_mask: 0.0185
+[Epoch 16/20] Step 560/1000 | Loss: 0.1919 | L_point: 0.1564 | L_mask: 0.0151
+[Epoch 16/20] Step 570/1000 | Loss: 0.2161 | L_point: 0.2232 | L_mask: 0.0221
+[Epoch 16/20] Step 580/1000 | Loss: 0.1772 | L_point: 0.1596 | L_mask: 0.0258
+[Epoch 16/20] Step 590/1000 | Loss: 0.2216 | L_point: 0.2025 | L_mask: 0.0282
+[Epoch 16/20] Step 600/1000 | Loss: 0.2201 | L_point: 0.2342 | L_mask: 0.0244
+[Epoch 16/20] Step 610/1000 | Loss: 0.2123 | L_point: 0.2461 | L_mask: 0.0120
+[Epoch 16/20] Step 620/1000 | Loss: 0.2045 | L_point: 0.3586 | L_mask: 0.0983
+[Epoch 16/20] Step 630/1000 | Loss: 0.2444 | L_point: 0.2493 | L_mask: 0.0322
+[Epoch 16/20] Step 640/1000 | Loss: 0.4211 | L_point: 0.3061 | L_mask: 0.0012
+[Epoch 16/20] Step 650/1000 | Loss: 0.2040 | L_point: 0.1377 | L_mask: 0.0003
+[Epoch 16/20] Step 660/1000 | Loss: 0.2456 | L_point: 0.3207 | L_mask: 0.0843
+[Epoch 16/20] Step 670/1000 | Loss: 0.2573 | L_point: 0.1530 | L_mask: 0.0028
+[Epoch 16/20] Step 680/1000 | Loss: 0.3278 | L_point: 0.2080 | L_mask: 0.0440
+[Epoch 16/20] Step 690/1000 | Loss: 0.1789 | L_point: 0.1896 | L_mask: 0.0376
+[Epoch 16/20] Step 700/1000 | Loss: 0.2062 | L_point: 0.1470 | L_mask: 0.0291
+[Epoch 16/20] Step 710/1000 | Loss: 0.1777 | L_point: 0.1801 | L_mask: 0.0220
+[Epoch 16/20] Step 720/1000 | Loss: 0.2110 | L_point: 0.1752 | L_mask: 0.0013
+[Epoch 16/20] Step 730/1000 | Loss: 0.1810 | L_point: 0.1527 | L_mask: 0.0250
+[Epoch 16/20] Step 740/1000 | Loss: 0.2075 | L_point: 0.1783 | L_mask: 0.0360
+[Epoch 16/20] Step 750/1000 | Loss: 0.2674 | L_point: 0.1816 | L_mask: 0.0361
+[Epoch 16/20] Step 760/1000 | Loss: 0.2313 | L_point: 0.3553 | L_mask: 0.0697
+[Epoch 16/20] Step 770/1000 | Loss: 0.2236 | L_point: 0.2770 | L_mask: 0.0739
+[Epoch 16/20] Step 780/1000 | Loss: 0.2351 | L_point: 0.2101 | L_mask: 0.0041
+[Epoch 16/20] Step 790/1000 | Loss: 0.2312 | L_point: 0.2593 | L_mask: 0.0631
+[Epoch 16/20] Step 800/1000 | Loss: 0.1950 | L_point: 0.2858 | L_mask: 0.0722
+[Epoch 16/20] Step 810/1000 | Loss: 0.2749 | L_point: 0.1417 | L_mask: 0.0299
+[Epoch 16/20] Step 820/1000 | Loss: 0.2045 | L_point: 0.1167 | L_mask: 0.0223
+[Epoch 16/20] Step 830/1000 | Loss: 0.2343 | L_point: 0.1398 | L_mask: 0.0258
+[Epoch 16/20] Step 840/1000 | Loss: 0.2414 | L_point: 0.1705 | L_mask: 0.0331
+[Epoch 16/20] Step 850/1000 | Loss: 0.2202 | L_point: 0.1500 | L_mask: 0.0306
+[Epoch 16/20] Step 860/1000 | Loss: 0.2329 | L_point: 0.2182 | L_mask: 0.0303
+[Epoch 16/20] Step 870/1000 | Loss: 0.1900 | L_point: 0.1437 | L_mask: 0.0200
+[Epoch 16/20] Step 880/1000 | Loss: 0.2436 | L_point: 0.5921 | L_mask: 0.1300
+[Epoch 16/20] Step 890/1000 | Loss: 0.2067 | L_point: 0.2749 | L_mask: 0.0790
+[Epoch 16/20] Step 900/1000 | Loss: 0.2621 | L_point: 0.2203 | L_mask: 0.0524
+[Epoch 16/20] Step 910/1000 | Loss: 0.2672 | L_point: 0.3002 | L_mask: 0.0755
+[Epoch 16/20] Step 920/1000 | Loss: 0.2097 | L_point: 0.1423 | L_mask: 0.0256
+[Epoch 16/20] Step 930/1000 | Loss: 0.2493 | L_point: 0.2061 | L_mask: 0.0189
+[Epoch 16/20] Step 940/1000 | Loss: 0.1688 | L_point: 0.2297 | L_mask: 0.0033
+[Epoch 16/20] Step 950/1000 | Loss: 0.2031 | L_point: 0.1535 | L_mask: 0.0262
+[Epoch 16/20] Step 960/1000 | Loss: 0.2747 | L_point: 0.1671 | L_mask: 0.0339
+[Epoch 16/20] Step 970/1000 | Loss: 0.2619 | L_point: 0.2041 | L_mask: 0.0401
+[Epoch 16/20] Step 980/1000 | Loss: 0.2905 | L_point: 0.2745 | L_mask: 0.0246
+[Epoch 16/20] Step 990/1000 | Loss: 0.3292 | L_point: 0.6784 | L_mask: 0.1232
+[Epoch 16/20] Step 1000/1000 | Loss: 0.1751 | L_point: 0.1701 | L_mask: 0.0726
+Epoch 16 done in 2194s | Avg loss: 0.2353
+{
+  "epoch": 16,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.622919916928867,
+    "vggt_primary_vs_secondary_nl": 5.882341918734243,
+    "single_corrected_vs_first_l": 0.5549230563806808,
+    "single_corrected_vs_secondary_nl": 0.4577216509564445,
+    "single_corrected_vs_first_nl": 1.4370332618169976,
+    "single_mask_acc_valid_first": 0.9845571645004182
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59766933,
+    "vggt_primary_vs_secondary_nl": 252570267,
+    "single_corrected_vs_first_l": 59766933,
+    "single_corrected_vs_secondary_nl": 252570267,
+    "single_corrected_vs_first_nl": 252570267,
+    "single_mask_acc_valid_first": 312337200
+  }
+}
+[Epoch 17/20] Step 10/1000 | Loss: 0.2708 | L_point: 0.2389 | L_mask: 0.0382
+[Epoch 17/20] Step 20/1000 | Loss: 0.2479 | L_point: 0.1943 | L_mask: 0.0432
+[Epoch 17/20] Step 30/1000 | Loss: 0.2231 | L_point: 0.1763 | L_mask: 0.0503
+[Epoch 17/20] Step 40/1000 | Loss: 0.2557 | L_point: 0.6799 | L_mask: 0.0757
+[Epoch 17/20] Step 50/1000 | Loss: 0.1988 | L_point: 0.1627 | L_mask: 0.0089
+[Epoch 17/20] Step 60/1000 | Loss: 0.2124 | L_point: 0.1886 | L_mask: 0.0281
+[Epoch 17/20] Step 70/1000 | Loss: 0.2040 | L_point: 0.1359 | L_mask: 0.0411
+[Epoch 17/20] Step 80/1000 | Loss: 0.2627 | L_point: 0.1732 | L_mask: 0.0307
+[Epoch 17/20] Step 90/1000 | Loss: 0.2601 | L_point: 0.1743 | L_mask: 0.0364
+[Epoch 17/20] Step 100/1000 | Loss: 0.1757 | L_point: 0.1766 | L_mask: 0.0364
+[Epoch 17/20] Step 110/1000 | Loss: 0.1867 | L_point: 0.1374 | L_mask: 0.0358
+[Epoch 17/20] Step 120/1000 | Loss: 0.2028 | L_point: 0.1516 | L_mask: 0.0195
+[Epoch 17/20] Step 130/1000 | Loss: 0.2899 | L_point: 0.2067 | L_mask: 0.0388
+[Epoch 17/20] Step 140/1000 | Loss: 0.2227 | L_point: 0.1864 | L_mask: 0.0380
+[Epoch 17/20] Step 150/1000 | Loss: 0.2667 | L_point: 0.2643 | L_mask: 0.0393
+[Epoch 17/20] Step 160/1000 | Loss: 0.1825 | L_point: 0.1568 | L_mask: 0.0073
+[Epoch 17/20] Step 170/1000 | Loss: 0.2717 | L_point: 0.1649 | L_mask: 0.0071
+[Epoch 17/20] Step 180/1000 | Loss: 0.1599 | L_point: 0.1049 | L_mask: 0.0062
+[Epoch 17/20] Step 190/1000 | Loss: 0.2059 | L_point: 0.2088 | L_mask: 0.0402
+[Epoch 17/20] Step 200/1000 | Loss: 0.1793 | L_point: 0.1786 | L_mask: 0.0454
+[Epoch 17/20] Step 210/1000 | Loss: 0.2109 | L_point: 0.2424 | L_mask: 0.0467
+[Epoch 17/20] Step 220/1000 | Loss: 0.1945 | L_point: 0.1422 | L_mask: 0.0259
+[Epoch 17/20] Step 230/1000 | Loss: 0.2275 | L_point: 0.1316 | L_mask: 0.0314
+[Epoch 17/20] Step 240/1000 | Loss: 0.1968 | L_point: 0.1545 | L_mask: 0.0280
+[Epoch 17/20] Step 250/1000 | Loss: 0.2112 | L_point: 0.1283 | L_mask: 0.0082
+[Epoch 17/20] Step 260/1000 | Loss: 0.2417 | L_point: 0.1953 | L_mask: 0.0212
+[Epoch 17/20] Step 270/1000 | Loss: 0.3787 | L_point: 0.3034 | L_mask: 0.0523
+[Epoch 17/20] Step 280/1000 | Loss: 0.2719 | L_point: 0.2212 | L_mask: 0.0355
+[Epoch 17/20] Step 290/1000 | Loss: 0.2104 | L_point: 0.1480 | L_mask: 0.0345
+[Epoch 17/20] Step 300/1000 | Loss: 0.2150 | L_point: 0.1582 | L_mask: 0.0230
+[Epoch 17/20] Step 310/1000 | Loss: 0.2272 | L_point: 0.1833 | L_mask: 0.0376
+[Epoch 17/20] Step 320/1000 | Loss: 0.1613 | L_point: 0.2051 | L_mask: 0.0704
+[Epoch 17/20] Step 330/1000 | Loss: 0.2010 | L_point: 0.1328 | L_mask: 0.0244
+[Epoch 17/20] Step 340/1000 | Loss: 0.1739 | L_point: 0.1492 | L_mask: 0.0115
+[Epoch 17/20] Step 350/1000 | Loss: 0.2124 | L_point: 0.1186 | L_mask: 0.0035
+[Epoch 17/20] Step 360/1000 | Loss: 0.1811 | L_point: 0.1249 | L_mask: 0.0023
+[Epoch 17/20] Step 370/1000 | Loss: 0.2098 | L_point: 0.2693 | L_mask: 0.0615
+[Epoch 17/20] Step 380/1000 | Loss: 0.2042 | L_point: 0.5153 | L_mask: 0.1156
+[Epoch 17/20] Step 390/1000 | Loss: 0.1906 | L_point: 0.1874 | L_mask: 0.0439
+[Epoch 17/20] Step 400/1000 | Loss: 0.2737 | L_point: 0.1501 | L_mask: 0.0325
+[Epoch 17/20] Step 410/1000 | Loss: 0.2404 | L_point: 0.6237 | L_mask: 0.1646
+[Epoch 17/20] Step 420/1000 | Loss: 0.1536 | L_point: 0.1621 | L_mask: 0.0348
+[Epoch 17/20] Step 430/1000 | Loss: 0.1847 | L_point: 0.1740 | L_mask: 0.0345
+[Epoch 17/20] Step 440/1000 | Loss: 0.2561 | L_point: 0.3099 | L_mask: 0.0818
+[Epoch 17/20] Step 450/1000 | Loss: 0.2238 | L_point: 0.1063 | L_mask: 0.0055
+[Epoch 17/20] Step 460/1000 | Loss: 0.2899 | L_point: 0.1642 | L_mask: 0.0416
+[Epoch 17/20] Step 470/1000 | Loss: 0.1832 | L_point: 0.1554 | L_mask: 0.0110
+[Epoch 17/20] Step 480/1000 | Loss: 0.3065 | L_point: 0.5912 | L_mask: 0.0950
+[Epoch 17/20] Step 490/1000 | Loss: 0.2496 | L_point: 0.1490 | L_mask: 0.0258
+[Epoch 17/20] Step 500/1000 | Loss: 0.1996 | L_point: 0.1538 | L_mask: 0.0091
+[Epoch 17/20] Step 510/1000 | Loss: 0.1529 | L_point: 0.1312 | L_mask: 0.0320
+[Epoch 17/20] Step 520/1000 | Loss: 0.2011 | L_point: 0.1426 | L_mask: 0.0367
+[Epoch 17/20] Step 530/1000 | Loss: 0.2194 | L_point: 0.1341 | L_mask: 0.0369
+[Epoch 17/20] Step 540/1000 | Loss: 0.2145 | L_point: 0.1528 | L_mask: 0.0238
+[Epoch 17/20] Step 550/1000 | Loss: 0.2109 | L_point: 0.4708 | L_mask: 0.0745
+[Epoch 17/20] Step 560/1000 | Loss: 0.1987 | L_point: 0.1571 | L_mask: 0.0210
+[Epoch 17/20] Step 570/1000 | Loss: 0.1679 | L_point: 0.1731 | L_mask: 0.0245
+[Epoch 17/20] Step 580/1000 | Loss: 0.2169 | L_point: 0.1664 | L_mask: 0.0249
+[Epoch 17/20] Step 590/1000 | Loss: 0.1750 | L_point: 0.1251 | L_mask: 0.0197
+[Epoch 17/20] Step 600/1000 | Loss: 0.1882 | L_point: 0.2477 | L_mask: 0.0250
+[Epoch 17/20] Step 610/1000 | Loss: 0.2080 | L_point: 0.2313 | L_mask: 0.0185
+[Epoch 17/20] Step 620/1000 | Loss: 0.2485 | L_point: 0.2130 | L_mask: 0.0332
+[Epoch 17/20] Step 630/1000 | Loss: 0.1858 | L_point: 0.1652 | L_mask: 0.0273
+[Epoch 17/20] Step 640/1000 | Loss: 0.1990 | L_point: 0.1465 | L_mask: 0.0009
+[Epoch 17/20] Step 650/1000 | Loss: 0.1972 | L_point: 0.1627 | L_mask: 0.0341
+[Epoch 17/20] Step 660/1000 | Loss: 0.1878 | L_point: 0.2957 | L_mask: 0.0700
+[Epoch 17/20] Step 670/1000 | Loss: 0.1955 | L_point: 0.1623 | L_mask: 0.0353
+[Epoch 17/20] Step 680/1000 | Loss: 0.2299 | L_point: 0.1786 | L_mask: 0.0325
+[Epoch 17/20] Step 690/1000 | Loss: 0.2412 | L_point: 0.2102 | L_mask: 0.0271
+[Epoch 17/20] Step 700/1000 | Loss: 0.1841 | L_point: 0.1707 | L_mask: 0.0357
+[Epoch 17/20] Step 710/1000 | Loss: 0.1550 | L_point: 0.1848 | L_mask: 0.0328
+[Epoch 17/20] Step 720/1000 | Loss: 0.2389 | L_point: 0.2663 | L_mask: 0.0544
+[Epoch 17/20] Step 730/1000 | Loss: 0.1579 | L_point: 0.1281 | L_mask: 0.0061
+[Epoch 17/20] Step 740/1000 | Loss: 0.2318 | L_point: 0.1523 | L_mask: 0.0375
+[Epoch 17/20] Step 750/1000 | Loss: 0.2517 | L_point: 0.1644 | L_mask: 0.0122
+[Epoch 17/20] Step 760/1000 | Loss: 0.2250 | L_point: 0.1696 | L_mask: 0.0399
+[Epoch 17/20] Step 770/1000 | Loss: 0.1992 | L_point: 0.2183 | L_mask: 0.0373
+[Epoch 17/20] Step 780/1000 | Loss: 0.1859 | L_point: 0.1611 | L_mask: 0.0276
+[Epoch 17/20] Step 790/1000 | Loss: 0.2940 | L_point: 0.1620 | L_mask: 0.0214
+[Epoch 17/20] Step 800/1000 | Loss: 0.1732 | L_point: 0.2612 | L_mask: 0.0045
+[Epoch 17/20] Step 810/1000 | Loss: 0.1804 | L_point: 0.2365 | L_mask: 0.0426
+[Epoch 17/20] Step 820/1000 | Loss: 0.1779 | L_point: 0.1329 | L_mask: 0.0438
+[Epoch 17/20] Step 830/1000 | Loss: 0.2330 | L_point: 0.1646 | L_mask: 0.0252
+[Epoch 17/20] Step 840/1000 | Loss: 0.2855 | L_point: 1.1710 | L_mask: 0.1153
+[Epoch 17/20] Step 850/1000 | Loss: 0.2760 | L_point: 0.2762 | L_mask: 0.0418
+[Epoch 17/20] Step 860/1000 | Loss: 0.1649 | L_point: 0.1398 | L_mask: 0.0284
+[Epoch 17/20] Step 870/1000 | Loss: 0.1878 | L_point: 0.1591 | L_mask: 0.0343
+[Epoch 17/20] Step 880/1000 | Loss: 0.1929 | L_point: 0.0955 | L_mask: 0.0160
+[Epoch 17/20] Step 890/1000 | Loss: 0.2091 | L_point: 0.1946 | L_mask: 0.0237
+[Epoch 17/20] Step 900/1000 | Loss: 0.1960 | L_point: 0.2136 | L_mask: 0.0278
+[Epoch 17/20] Step 910/1000 | Loss: 0.2054 | L_point: 0.1173 | L_mask: 0.0139
+[Epoch 17/20] Step 920/1000 | Loss: 0.1730 | L_point: 0.1081 | L_mask: 0.0080
+[Epoch 17/20] Step 930/1000 | Loss: 0.1921 | L_point: 0.1211 | L_mask: 0.0179
+[Epoch 17/20] Step 940/1000 | Loss: 0.2165 | L_point: 0.4165 | L_mask: 0.0510
+[Epoch 17/20] Step 950/1000 | Loss: 0.2082 | L_point: 0.1547 | L_mask: 0.0258
+[Epoch 17/20] Step 960/1000 | Loss: 0.2271 | L_point: 0.1525 | L_mask: 0.0233
+[Epoch 17/20] Step 970/1000 | Loss: 0.1671 | L_point: 0.1109 | L_mask: 0.0186
+[Epoch 17/20] Step 980/1000 | Loss: 0.2446 | L_point: 0.1639 | L_mask: 0.0286
+[Epoch 17/20] Step 990/1000 | Loss: 0.1833 | L_point: 0.2995 | L_mask: 0.0950
+[Epoch 17/20] Step 1000/1000 | Loss: 0.2486 | L_point: 0.3905 | L_mask: 0.0613
+Epoch 17 done in 2196s | Avg loss: 0.2146
+[Epoch 18/20] Step 10/1000 | Loss: 0.1641 | L_point: 0.1672 | L_mask: 0.0338
+[Epoch 18/20] Step 20/1000 | Loss: 0.1826 | L_point: 0.1210 | L_mask: 0.0307
+[Epoch 18/20] Step 30/1000 | Loss: 0.2134 | L_point: 0.1471 | L_mask: 0.0331
+[Epoch 18/20] Step 40/1000 | Loss: 0.1996 | L_point: 0.2655 | L_mask: 0.0744
+[Epoch 18/20] Step 50/1000 | Loss: 0.1954 | L_point: 0.3509 | L_mask: 0.0116
+[Epoch 18/20] Step 60/1000 | Loss: 0.1987 | L_point: 0.1151 | L_mask: 0.0093
+[Epoch 18/20] Step 70/1000 | Loss: 0.1973 | L_point: 0.1646 | L_mask: 0.0258
+[Epoch 18/20] Step 80/1000 | Loss: 0.1920 | L_point: 0.3026 | L_mask: 0.0390
+[Epoch 18/20] Step 90/1000 | Loss: 0.1493 | L_point: 0.1425 | L_mask: 0.0285
+[Epoch 18/20] Step 100/1000 | Loss: 0.2196 | L_point: 0.2376 | L_mask: 0.0900
+[Epoch 18/20] Step 110/1000 | Loss: 0.2099 | L_point: 0.1739 | L_mask: 0.0477
+[Epoch 18/20] Step 120/1000 | Loss: 0.1560 | L_point: 0.1170 | L_mask: 0.0081
+[Epoch 18/20] Step 130/1000 | Loss: 0.2905 | L_point: 0.1869 | L_mask: 0.0264
+[Epoch 18/20] Step 140/1000 | Loss: 0.1937 | L_point: 0.2350 | L_mask: 0.0358
+[Epoch 18/20] Step 150/1000 | Loss: 0.2466 | L_point: 0.1870 | L_mask: 0.0040
+[Epoch 18/20] Step 160/1000 | Loss: 0.2224 | L_point: 0.1708 | L_mask: 0.0381
+[Epoch 18/20] Step 170/1000 | Loss: 0.1604 | L_point: 0.1635 | L_mask: 0.0299
+[Epoch 18/20] Step 180/1000 | Loss: 0.2066 | L_point: 0.1466 | L_mask: 0.0207
+[Epoch 18/20] Step 190/1000 | Loss: 0.2162 | L_point: 0.2130 | L_mask: 0.0386
+[Epoch 18/20] Step 200/1000 | Loss: 0.1868 | L_point: 0.1419 | L_mask: 0.0246
+[Epoch 18/20] Step 210/1000 | Loss: 0.2806 | L_point: 0.1503 | L_mask: 0.0314
+[Epoch 18/20] Step 220/1000 | Loss: 0.1797 | L_point: 0.1467 | L_mask: 0.0356
+[Epoch 18/20] Step 230/1000 | Loss: 0.1609 | L_point: 0.1551 | L_mask: 0.0104
+[Epoch 18/20] Step 240/1000 | Loss: 0.1749 | L_point: 0.1189 | L_mask: 0.0108
+[Epoch 18/20] Step 250/1000 | Loss: 0.2438 | L_point: 0.1237 | L_mask: 0.0294
+[Epoch 18/20] Step 260/1000 | Loss: 0.2444 | L_point: 0.1414 | L_mask: 0.0014
+[Epoch 18/20] Step 270/1000 | Loss: 0.2093 | L_point: 0.1496 | L_mask: 0.0194
+[Epoch 18/20] Step 280/1000 | Loss: 0.3294 | L_point: 0.1769 | L_mask: 0.0481
+[Epoch 18/20] Step 290/1000 | Loss: 0.1836 | L_point: 0.1515 | L_mask: 0.0059
+[Epoch 18/20] Step 300/1000 | Loss: 0.2927 | L_point: 0.1390 | L_mask: 0.0047
+[Epoch 18/20] Step 310/1000 | Loss: 0.2251 | L_point: 0.1997 | L_mask: 0.0403
+[Epoch 18/20] Step 320/1000 | Loss: 0.2268 | L_point: 0.2200 | L_mask: 0.0200
+[Epoch 18/20] Step 330/1000 | Loss: 0.1949 | L_point: 0.2524 | L_mask: 0.0641
+[Epoch 18/20] Step 340/1000 | Loss: 0.1633 | L_point: 0.1233 | L_mask: 0.0011
+[Epoch 18/20] Step 350/1000 | Loss: 0.2069 | L_point: 0.1518 | L_mask: 0.0220
+[Epoch 18/20] Step 360/1000 | Loss: 0.2148 | L_point: 0.1255 | L_mask: 0.0052
+[Epoch 18/20] Step 370/1000 | Loss: 0.2224 | L_point: 0.5308 | L_mask: 0.1149
+[Epoch 18/20] Step 380/1000 | Loss: 0.1919 | L_point: 0.1427 | L_mask: 0.0170
+[Epoch 18/20] Step 390/1000 | Loss: 0.1872 | L_point: 0.1506 | L_mask: 0.0265
+[Epoch 18/20] Step 400/1000 | Loss: 0.2460 | L_point: 0.1827 | L_mask: 0.0081
+[Epoch 18/20] Step 410/1000 | Loss: 0.1826 | L_point: 0.1732 | L_mask: 0.0335
+[Epoch 18/20] Step 420/1000 | Loss: 0.1862 | L_point: 0.1780 | L_mask: 0.0457
+[Epoch 18/20] Step 430/1000 | Loss: 0.1642 | L_point: 0.1103 | L_mask: 0.0198
+[Epoch 18/20] Step 440/1000 | Loss: 0.2387 | L_point: 0.1856 | L_mask: 0.0444
+[Epoch 18/20] Step 450/1000 | Loss: 0.1825 | L_point: 0.1649 | L_mask: 0.0401
+[Epoch 18/20] Step 460/1000 | Loss: 0.1874 | L_point: 0.1412 | L_mask: 0.0271
+[Epoch 18/20] Step 470/1000 | Loss: 0.1919 | L_point: 0.1125 | L_mask: 0.0085
+[Epoch 18/20] Step 480/1000 | Loss: 0.1874 | L_point: 0.3068 | L_mask: 0.0589
+[Epoch 18/20] Step 490/1000 | Loss: 0.2155 | L_point: 0.2799 | L_mask: 0.0688
+[Epoch 18/20] Step 500/1000 | Loss: 0.2149 | L_point: 0.1899 | L_mask: 0.0726
+[Epoch 18/20] Step 510/1000 | Loss: 0.1864 | L_point: 0.1997 | L_mask: 0.0209
+[Epoch 18/20] Step 520/1000 | Loss: 0.1512 | L_point: 0.1508 | L_mask: 0.0157
+[Epoch 18/20] Step 530/1000 | Loss: 0.2038 | L_point: 0.3325 | L_mask: 0.0599
+[Epoch 18/20] Step 540/1000 | Loss: 0.2451 | L_point: 0.1183 | L_mask: 0.0083
+[Epoch 18/20] Step 550/1000 | Loss: 0.2695 | L_point: 0.8607 | L_mask: 0.1419
+[Epoch 18/20] Step 560/1000 | Loss: 0.1957 | L_point: 0.1456 | L_mask: 0.0303
+[Epoch 18/20] Step 570/1000 | Loss: 0.2151 | L_point: 0.2627 | L_mask: 0.0320
+[Epoch 18/20] Step 580/1000 | Loss: 0.1864 | L_point: 0.1811 | L_mask: 0.0305
+[Epoch 18/20] Step 590/1000 | Loss: 0.2609 | L_point: 0.1510 | L_mask: 0.0116
+[Epoch 18/20] Step 600/1000 | Loss: 0.2297 | L_point: 0.1134 | L_mask: 0.0267
+[Epoch 18/20] Step 610/1000 | Loss: 0.2038 | L_point: 0.1355 | L_mask: 0.0229
+[Epoch 18/20] Step 620/1000 | Loss: 0.2422 | L_point: 0.3604 | L_mask: 0.0962
+[Epoch 18/20] Step 630/1000 | Loss: 0.1841 | L_point: 0.1235 | L_mask: 0.0144
+[Epoch 18/20] Step 640/1000 | Loss: 0.2288 | L_point: 0.1295 | L_mask: 0.0090
+[Epoch 18/20] Step 650/1000 | Loss: 0.1715 | L_point: 0.1393 | L_mask: 0.0258
+[Epoch 18/20] Step 660/1000 | Loss: 0.2239 | L_point: 0.1321 | L_mask: 0.0081
+[Epoch 18/20] Step 670/1000 | Loss: 0.1581 | L_point: 0.1164 | L_mask: 0.0107
+[Epoch 18/20] Step 680/1000 | Loss: 0.2333 | L_point: 0.2007 | L_mask: 0.0248
+[Epoch 18/20] Step 690/1000 | Loss: 0.1559 | L_point: 0.1204 | L_mask: 0.0141
+[Epoch 18/20] Step 700/1000 | Loss: 0.2233 | L_point: 0.1712 | L_mask: 0.0193
+[Epoch 18/20] Step 710/1000 | Loss: 0.2226 | L_point: 0.1881 | L_mask: 0.0313
+[Epoch 18/20] Step 720/1000 | Loss: 0.2344 | L_point: 0.2293 | L_mask: 0.0357
+[Epoch 18/20] Step 730/1000 | Loss: 0.2333 | L_point: 0.2363 | L_mask: 0.0212
+[Epoch 18/20] Step 740/1000 | Loss: 0.1828 | L_point: 0.1382 | L_mask: 0.0171
+[Epoch 18/20] Step 750/1000 | Loss: 0.1859 | L_point: 0.1151 | L_mask: 0.0085
+[Epoch 18/20] Step 760/1000 | Loss: 0.1288 | L_point: 0.1295 | L_mask: 0.0141
+[Epoch 18/20] Step 770/1000 | Loss: 0.2167 | L_point: 0.1331 | L_mask: 0.0074
+[Epoch 18/20] Step 780/1000 | Loss: 0.2232 | L_point: 0.3183 | L_mask: 0.0338
+[Epoch 18/20] Step 790/1000 | Loss: 0.2077 | L_point: 0.1616 | L_mask: 0.0358
+[Epoch 18/20] Step 800/1000 | Loss: 0.2145 | L_point: 0.1826 | L_mask: 0.0417
+[Epoch 18/20] Step 810/1000 | Loss: 0.2455 | L_point: 0.1187 | L_mask: 0.0181
+[Epoch 18/20] Step 820/1000 | Loss: 0.1789 | L_point: 0.1299 | L_mask: 0.0323
+[Epoch 18/20] Step 830/1000 | Loss: 0.2032 | L_point: 0.1885 | L_mask: 0.0206
+[Epoch 18/20] Step 840/1000 | Loss: 0.1533 | L_point: 0.1402 | L_mask: 0.0266
+[Epoch 18/20] Step 850/1000 | Loss: 0.2339 | L_point: 0.1238 | L_mask: 0.0270
+[Epoch 18/20] Step 860/1000 | Loss: 0.1756 | L_point: 0.1579 | L_mask: 0.0434
+[Epoch 18/20] Step 870/1000 | Loss: 0.2492 | L_point: 0.1273 | L_mask: 0.0329
+[Epoch 18/20] Step 880/1000 | Loss: 0.2013 | L_point: 0.2185 | L_mask: 0.0439
+[Epoch 18/20] Step 890/1000 | Loss: 0.2471 | L_point: 0.1529 | L_mask: 0.0419
+[Epoch 18/20] Step 900/1000 | Loss: 0.2321 | L_point: 0.5640 | L_mask: 0.0433
+[Epoch 18/20] Step 910/1000 | Loss: 0.1540 | L_point: 0.1517 | L_mask: 0.0335
+[Epoch 18/20] Step 920/1000 | Loss: 0.1940 | L_point: 0.3715 | L_mask: 0.0570
+[Epoch 18/20] Step 930/1000 | Loss: 0.1813 | L_point: 0.1524 | L_mask: 0.0315
+[Epoch 18/20] Step 940/1000 | Loss: 0.2687 | L_point: 0.2675 | L_mask: 0.0722
+[Epoch 18/20] Step 950/1000 | Loss: 0.2132 | L_point: 0.1656 | L_mask: 0.0176
+[Epoch 18/20] Step 960/1000 | Loss: 0.1821 | L_point: 0.1403 | L_mask: 0.0207
+[Epoch 18/20] Step 970/1000 | Loss: 0.2005 | L_point: 0.1900 | L_mask: 0.0535
+[Epoch 18/20] Step 980/1000 | Loss: 0.2190 | L_point: 0.3675 | L_mask: 0.0978
+[Epoch 18/20] Step 990/1000 | Loss: 0.2129 | L_point: 0.1808 | L_mask: 0.0036
+[Epoch 18/20] Step 1000/1000 | Loss: 0.1888 | L_point: 0.1151 | L_mask: 0.0211
+Epoch 18 done in 2198s | Avg loss: 0.2068
+{
+  "epoch": 18,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6278646261572804,
+    "vggt_primary_vs_secondary_nl": 5.888919039453598,
+    "single_corrected_vs_first_l": 0.5187502864675299,
+    "single_corrected_vs_secondary_nl": 0.37942491401687095,
+    "single_corrected_vs_first_nl": 1.4128281712174051,
+    "single_mask_acc_valid_first": 0.9854639105249666
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59950135,
+    "vggt_primary_vs_secondary_nl": 252223026,
+    "single_corrected_vs_first_l": 59950135,
+    "single_corrected_vs_secondary_nl": 252223026,
+    "single_corrected_vs_first_nl": 252223026,
+    "single_mask_acc_valid_first": 312173161
+  }
+}
+[Epoch 19/20] Step 10/1000 | Loss: 0.2127 | L_point: 0.2105 | L_mask: 0.0048
+[Epoch 19/20] Step 20/1000 | Loss: 0.2266 | L_point: 0.1827 | L_mask: 0.0330
+[Epoch 19/20] Step 30/1000 | Loss: 0.2213 | L_point: 0.3081 | L_mask: 0.0254
+[Epoch 19/20] Step 40/1000 | Loss: 0.1657 | L_point: 0.1468 | L_mask: 0.0379
+[Epoch 19/20] Step 50/1000 | Loss: 0.1789 | L_point: 0.1819 | L_mask: 0.0035
+[Epoch 19/20] Step 60/1000 | Loss: 0.2630 | L_point: 0.1582 | L_mask: 0.0333
+[Epoch 19/20] Step 70/1000 | Loss: 0.1855 | L_point: 0.2371 | L_mask: 0.0391
+[Epoch 19/20] Step 80/1000 | Loss: 0.1894 | L_point: 0.2137 | L_mask: 0.0118
+[Epoch 19/20] Step 90/1000 | Loss: 0.1897 | L_point: 0.1065 | L_mask: 0.0096
+[Epoch 19/20] Step 100/1000 | Loss: 0.2516 | L_point: 0.1855 | L_mask: 0.0015
+[Epoch 19/20] Step 110/1000 | Loss: 0.1729 | L_point: 0.1479 | L_mask: 0.0322
+[Epoch 19/20] Step 120/1000 | Loss: 0.2308 | L_point: 0.1580 | L_mask: 0.0308
+[Epoch 19/20] Step 130/1000 | Loss: 0.2278 | L_point: 0.8242 | L_mask: 0.1386
+[Epoch 19/20] Step 140/1000 | Loss: 0.2195 | L_point: 0.1744 | L_mask: 0.0360
+[Epoch 19/20] Step 150/1000 | Loss: 0.1976 | L_point: 0.1881 | L_mask: 0.0346
+[Epoch 19/20] Step 160/1000 | Loss: 0.2789 | L_point: 1.0630 | L_mask: 0.1059
+[Epoch 19/20] Step 170/1000 | Loss: 0.2060 | L_point: 0.1299 | L_mask: 0.0135
+[Epoch 19/20] Step 180/1000 | Loss: 0.2312 | L_point: 0.1617 | L_mask: 0.0374
+[Epoch 19/20] Step 190/1000 | Loss: 0.1740 | L_point: 0.1909 | L_mask: 0.0351
+[Epoch 19/20] Step 200/1000 | Loss: 0.1631 | L_point: 0.1175 | L_mask: 0.0066
+[Epoch 19/20] Step 210/1000 | Loss: 0.2006 | L_point: 0.1161 | L_mask: 0.0070
+[Epoch 19/20] Step 220/1000 | Loss: 0.2047 | L_point: 0.1517 | L_mask: 0.0008
+[Epoch 19/20] Step 230/1000 | Loss: 0.1567 | L_point: 0.1335 | L_mask: 0.0199
+[Epoch 19/20] Step 240/1000 | Loss: 0.1984 | L_point: 0.2179 | L_mask: 0.0415
+[Epoch 19/20] Step 250/1000 | Loss: 0.2252 | L_point: 0.1736 | L_mask: 0.0422
+[Epoch 19/20] Step 260/1000 | Loss: 0.1878 | L_point: 0.2209 | L_mask: 0.0394
+[Epoch 19/20] Step 270/1000 | Loss: 0.2428 | L_point: 0.1351 | L_mask: 0.0203
+[Epoch 19/20] Step 280/1000 | Loss: 0.1807 | L_point: 0.2631 | L_mask: 0.0730
+[Epoch 19/20] Step 290/1000 | Loss: 0.2035 | L_point: 0.0936 | L_mask: 0.0054
+[Epoch 19/20] Step 300/1000 | Loss: 0.1897 | L_point: 0.2758 | L_mask: 0.0448
+[Epoch 19/20] Step 310/1000 | Loss: 0.2103 | L_point: 0.3249 | L_mask: 0.0692
+[Epoch 19/20] Step 320/1000 | Loss: 0.2200 | L_point: 0.2740 | L_mask: 0.0651
+[Epoch 19/20] Step 330/1000 | Loss: 0.2412 | L_point: 0.4400 | L_mask: 0.1055
+[Epoch 19/20] Step 340/1000 | Loss: 0.1692 | L_point: 0.1818 | L_mask: 0.0340
+[Epoch 19/20] Step 350/1000 | Loss: 0.1643 | L_point: 0.1495 | L_mask: 0.0091
+[Epoch 19/20] Step 360/1000 | Loss: 0.1948 | L_point: 0.1172 | L_mask: 0.0063
+[Epoch 19/20] Step 370/1000 | Loss: 0.2493 | L_point: 0.2393 | L_mask: 0.0624
+[Epoch 19/20] Step 380/1000 | Loss: 0.1551 | L_point: 0.1314 | L_mask: 0.0285
+[Epoch 19/20] Step 390/1000 | Loss: 0.1825 | L_point: 0.1849 | L_mask: 0.0243
+[Epoch 19/20] Step 400/1000 | Loss: 0.2477 | L_point: 0.4176 | L_mask: 0.1021
+[Epoch 19/20] Step 410/1000 | Loss: 0.1519 | L_point: 0.1466 | L_mask: 0.0495
+[Epoch 19/20] Step 420/1000 | Loss: 0.2273 | L_point: 0.0974 | L_mask: 0.0190
+[Epoch 19/20] Step 430/1000 | Loss: 0.1735 | L_point: 0.1669 | L_mask: 0.0406
+[Epoch 19/20] Step 440/1000 | Loss: 0.1451 | L_point: 0.1405 | L_mask: 0.0044
+[Epoch 19/20] Step 450/1000 | Loss: 0.1701 | L_point: 0.1113 | L_mask: 0.0009
+[Epoch 19/20] Step 460/1000 | Loss: 0.2140 | L_point: 0.3124 | L_mask: 0.1083
+[Epoch 19/20] Step 470/1000 | Loss: 0.2903 | L_point: 0.1342 | L_mask: 0.0180
+[Epoch 19/20] Step 480/1000 | Loss: 0.1620 | L_point: 0.1490 | L_mask: 0.0327
+[Epoch 19/20] Step 490/1000 | Loss: 0.2090 | L_point: 0.5229 | L_mask: 0.0769
+[Epoch 19/20] Step 500/1000 | Loss: 0.2190 | L_point: 0.1389 | L_mask: 0.0233
+[Epoch 19/20] Step 510/1000 | Loss: 0.1675 | L_point: 0.1023 | L_mask: 0.0073
+[Epoch 19/20] Step 520/1000 | Loss: 0.1575 | L_point: 0.0953 | L_mask: 0.0133
+[Epoch 19/20] Step 530/1000 | Loss: 0.2615 | L_point: 0.1645 | L_mask: 0.0359
+[Epoch 19/20] Step 540/1000 | Loss: 0.1946 | L_point: 0.1871 | L_mask: 0.0165
+[Epoch 19/20] Step 550/1000 | Loss: 0.1603 | L_point: 0.1067 | L_mask: 0.0072
+[Epoch 19/20] Step 560/1000 | Loss: 0.1626 | L_point: 0.1098 | L_mask: 0.0285
+[Epoch 19/20] Step 570/1000 | Loss: 0.1907 | L_point: 0.1596 | L_mask: 0.0235
+[Epoch 19/20] Step 580/1000 | Loss: 0.2429 | L_point: 0.2105 | L_mask: 0.0056
+[Epoch 19/20] Step 590/1000 | Loss: 0.2494 | L_point: 0.2493 | L_mask: 0.0498
+[Epoch 19/20] Step 600/1000 | Loss: 0.1853 | L_point: 0.1629 | L_mask: 0.0360
+[Epoch 19/20] Step 610/1000 | Loss: 0.1877 | L_point: 0.1347 | L_mask: 0.0345
+[Epoch 19/20] Step 620/1000 | Loss: 0.1993 | L_point: 0.4482 | L_mask: 0.0997
+[Epoch 19/20] Step 630/1000 | Loss: 0.1961 | L_point: 0.1199 | L_mask: 0.0180
+[Epoch 19/20] Step 640/1000 | Loss: 0.1692 | L_point: 0.1284 | L_mask: 0.0275
+[Epoch 19/20] Step 650/1000 | Loss: 0.1959 | L_point: 0.2305 | L_mask: 0.0432
+[Epoch 19/20] Step 660/1000 | Loss: 0.2069 | L_point: 0.1031 | L_mask: 0.0093
+[Epoch 19/20] Step 670/1000 | Loss: 0.1654 | L_point: 0.1386 | L_mask: 0.0277
+[Epoch 19/20] Step 680/1000 | Loss: 0.2027 | L_point: 0.1522 | L_mask: 0.0318
+[Epoch 19/20] Step 690/1000 | Loss: 0.2215 | L_point: 0.1273 | L_mask: 0.0214
+[Epoch 19/20] Step 700/1000 | Loss: 0.1916 | L_point: 0.1882 | L_mask: 0.0065
+[Epoch 19/20] Step 710/1000 | Loss: 0.2131 | L_point: 0.1841 | L_mask: 0.0199
+[Epoch 19/20] Step 720/1000 | Loss: 0.2869 | L_point: 0.2327 | L_mask: 0.0337
+[Epoch 19/20] Step 730/1000 | Loss: 0.2079 | L_point: 0.2963 | L_mask: 0.0676
+[Epoch 19/20] Step 740/1000 | Loss: 0.1898 | L_point: 0.1296 | L_mask: 0.0255
+[Epoch 19/20] Step 750/1000 | Loss: 0.1860 | L_point: 0.1198 | L_mask: 0.0075
+[Epoch 19/20] Step 760/1000 | Loss: 0.1997 | L_point: 0.1255 | L_mask: 0.0094
+[Epoch 19/20] Step 770/1000 | Loss: 0.1898 | L_point: 0.2310 | L_mask: 0.0097
+[Epoch 19/20] Step 780/1000 | Loss: 0.1910 | L_point: 0.0948 | L_mask: 0.0035
+[Epoch 19/20] Step 790/1000 | Loss: 0.1914 | L_point: 0.1087 | L_mask: 0.0064
+[Epoch 19/20] Step 800/1000 | Loss: 0.1683 | L_point: 0.1164 | L_mask: 0.0171
+[Epoch 19/20] Step 810/1000 | Loss: 0.1869 | L_point: 0.1900 | L_mask: 0.0128
+[Epoch 19/20] Step 820/1000 | Loss: 0.2004 | L_point: 0.1720 | L_mask: 0.0272
+[Epoch 19/20] Step 830/1000 | Loss: 0.1592 | L_point: 0.1542 | L_mask: 0.0582
+[Epoch 19/20] Step 840/1000 | Loss: 0.3057 | L_point: 0.1863 | L_mask: 0.0013
+[Epoch 19/20] Step 850/1000 | Loss: 0.1781 | L_point: 0.1528 | L_mask: 0.0382
+[Epoch 19/20] Step 860/1000 | Loss: 0.1979 | L_point: 0.2011 | L_mask: 0.0440
+[Epoch 19/20] Step 870/1000 | Loss: 0.1553 | L_point: 0.1400 | L_mask: 0.0309
+[Epoch 19/20] Step 880/1000 | Loss: 0.1511 | L_point: 0.1628 | L_mask: 0.0140
+[Epoch 19/20] Step 890/1000 | Loss: 0.1682 | L_point: 0.1421 | L_mask: 0.0123
+[Epoch 19/20] Step 900/1000 | Loss: 0.2084 | L_point: 0.1916 | L_mask: 0.0139
+[Epoch 19/20] Step 910/1000 | Loss: 0.1739 | L_point: 0.1412 | L_mask: 0.0151
+[Epoch 19/20] Step 920/1000 | Loss: 0.2657 | L_point: 0.2450 | L_mask: 0.0387
+[Epoch 19/20] Step 930/1000 | Loss: 0.1911 | L_point: 0.3369 | L_mask: 0.0725
+[Epoch 19/20] Step 940/1000 | Loss: 0.1944 | L_point: 0.2687 | L_mask: 0.0116
+[Epoch 19/20] Step 950/1000 | Loss: 0.1594 | L_point: 0.1484 | L_mask: 0.0493
+[Epoch 19/20] Step 960/1000 | Loss: 0.1742 | L_point: 0.1374 | L_mask: 0.0132
+[Epoch 19/20] Step 970/1000 | Loss: 0.1922 | L_point: 0.2261 | L_mask: 0.0494
+[Epoch 19/20] Step 980/1000 | Loss: 0.1724 | L_point: 0.1374 | L_mask: 0.0381
+[Epoch 19/20] Step 990/1000 | Loss: 0.2080 | L_point: 0.2377 | L_mask: 0.0444
+[Epoch 19/20] Step 1000/1000 | Loss: 0.2536 | L_point: 0.1250 | L_mask: 0.0215
+Epoch 19 done in 2197s | Avg loss: 0.2000
+[Epoch 20/20] Step 10/1000 | Loss: 0.1946 | L_point: 0.1176 | L_mask: 0.0225
+[Epoch 20/20] Step 20/1000 | Loss: 0.1424 | L_point: 0.1243 | L_mask: 0.0080
+[Epoch 20/20] Step 30/1000 | Loss: 0.1943 | L_point: 0.3466 | L_mask: 0.0469
+[Epoch 20/20] Step 40/1000 | Loss: 0.2177 | L_point: 0.1927 | L_mask: 0.0359
+[Epoch 20/20] Step 50/1000 | Loss: 0.2265 | L_point: 0.2422 | L_mask: 0.0657
+[Epoch 20/20] Step 60/1000 | Loss: 0.1778 | L_point: 0.1459 | L_mask: 0.0068
+[Epoch 20/20] Step 70/1000 | Loss: 0.2367 | L_point: 0.1443 | L_mask: 0.0259
+[Epoch 20/20] Step 80/1000 | Loss: 0.1915 | L_point: 0.1913 | L_mask: 0.0202
+[Epoch 20/20] Step 90/1000 | Loss: 0.2250 | L_point: 0.1239 | L_mask: 0.0171
+[Epoch 20/20] Step 100/1000 | Loss: 0.2225 | L_point: 0.1455 | L_mask: 0.0361
+[Epoch 20/20] Step 110/1000 | Loss: 0.1860 | L_point: 0.1667 | L_mask: 0.0377
+[Epoch 20/20] Step 120/1000 | Loss: 0.1787 | L_point: 0.1280 | L_mask: 0.0040
+[Epoch 20/20] Step 130/1000 | Loss: 0.1822 | L_point: 0.1545 | L_mask: 0.0241
+[Epoch 20/20] Step 140/1000 | Loss: 0.2138 | L_point: 0.2040 | L_mask: 0.0139
+[Epoch 20/20] Step 150/1000 | Loss: 0.1918 | L_point: 0.1252 | L_mask: 0.0354
+[Epoch 20/20] Step 160/1000 | Loss: 0.2027 | L_point: 0.2342 | L_mask: 0.0237
+[Epoch 20/20] Step 170/1000 | Loss: 0.2082 | L_point: 0.6264 | L_mask: 0.1410
+[Epoch 20/20] Step 180/1000 | Loss: 0.1665 | L_point: 0.2413 | L_mask: 0.0803
+[Epoch 20/20] Step 190/1000 | Loss: 0.1774 | L_point: 0.1301 | L_mask: 0.0252
+[Epoch 20/20] Step 200/1000 | Loss: 0.2431 | L_point: 0.1658 | L_mask: 0.0403
+[Epoch 20/20] Step 210/1000 | Loss: 0.1553 | L_point: 0.1802 | L_mask: 0.0347
+[Epoch 20/20] Step 220/1000 | Loss: 0.1713 | L_point: 0.1788 | L_mask: 0.0030
+[Epoch 20/20] Step 230/1000 | Loss: 0.1605 | L_point: 0.1330 | L_mask: 0.0116
+[Epoch 20/20] Step 240/1000 | Loss: 0.1752 | L_point: 0.1068 | L_mask: 0.0041
+[Epoch 20/20] Step 250/1000 | Loss: 0.2191 | L_point: 0.1279 | L_mask: 0.0311
+[Epoch 20/20] Step 260/1000 | Loss: 0.1664 | L_point: 0.1387 | L_mask: 0.0289
+[Epoch 20/20] Step 270/1000 | Loss: 0.2315 | L_point: 0.3126 | L_mask: 0.0715
+[Epoch 20/20] Step 280/1000 | Loss: 0.2069 | L_point: 0.2063 | L_mask: 0.0061
+[Epoch 20/20] Step 290/1000 | Loss: 0.1691 | L_point: 0.1669 | L_mask: 0.0481
+[Epoch 20/20] Step 300/1000 | Loss: 0.2040 | L_point: 0.1205 | L_mask: 0.0057
+[Epoch 20/20] Step 310/1000 | Loss: 0.2033 | L_point: 0.1491 | L_mask: 0.0278
+[Epoch 20/20] Step 320/1000 | Loss: 0.1972 | L_point: 0.1385 | L_mask: 0.0016
+[Epoch 20/20] Step 330/1000 | Loss: 0.2379 | L_point: 0.4916 | L_mask: 0.1087
+[Epoch 20/20] Step 340/1000 | Loss: 0.1992 | L_point: 0.1841 | L_mask: 0.0261
+[Epoch 20/20] Step 350/1000 | Loss: 0.1843 | L_point: 0.2083 | L_mask: 0.0415
+[Epoch 20/20] Step 360/1000 | Loss: 0.1736 | L_point: 0.2073 | L_mask: 0.0301
+[Epoch 20/20] Step 370/1000 | Loss: 0.1931 | L_point: 0.1515 | L_mask: 0.0175
+[Epoch 20/20] Step 380/1000 | Loss: 0.1718 | L_point: 0.1756 | L_mask: 0.0390
+[Epoch 20/20] Step 390/1000 | Loss: 0.2494 | L_point: 0.2415 | L_mask: 0.0625
+[Epoch 20/20] Step 400/1000 | Loss: 0.2350 | L_point: 0.1234 | L_mask: 0.0087
+[Epoch 20/20] Step 410/1000 | Loss: 0.1695 | L_point: 0.1615 | L_mask: 0.0321
+[Epoch 20/20] Step 420/1000 | Loss: 0.2352 | L_point: 0.1630 | L_mask: 0.0355
+[Epoch 20/20] Step 430/1000 | Loss: 0.1932 | L_point: 0.1137 | L_mask: 0.0111
+[Epoch 20/20] Step 440/1000 | Loss: 0.2140 | L_point: 0.1519 | L_mask: 0.0363
+[Epoch 20/20] Step 450/1000 | Loss: 0.1700 | L_point: 0.1234 | L_mask: 0.0462
+[Epoch 20/20] Step 460/1000 | Loss: 0.2039 | L_point: 0.1669 | L_mask: 0.0069
+[Epoch 20/20] Step 470/1000 | Loss: 0.1711 | L_point: 0.2411 | L_mask: 0.0196
+[Epoch 20/20] Step 480/1000 | Loss: 0.1851 | L_point: 0.1565 | L_mask: 0.0273
+[Epoch 20/20] Step 490/1000 | Loss: 0.1922 | L_point: 0.1758 | L_mask: 0.0356
+[Epoch 20/20] Step 500/1000 | Loss: 0.1751 | L_point: 0.1315 | L_mask: 0.0282
+[Epoch 20/20] Step 510/1000 | Loss: 0.1922 | L_point: 0.1827 | L_mask: 0.0338
+[Epoch 20/20] Step 520/1000 | Loss: 0.1586 | L_point: 0.1565 | L_mask: 0.0315
+[Epoch 20/20] Step 530/1000 | Loss: 0.1789 | L_point: 0.1251 | L_mask: 0.0286
+[Epoch 20/20] Step 540/1000 | Loss: 0.1880 | L_point: 0.1404 | L_mask: 0.0273
+[Epoch 20/20] Step 550/1000 | Loss: 0.1490 | L_point: 0.1274 | L_mask: 0.0159
+[Epoch 20/20] Step 560/1000 | Loss: 0.1759 | L_point: 0.2459 | L_mask: 0.0562
+[Epoch 20/20] Step 570/1000 | Loss: 0.1594 | L_point: 0.1187 | L_mask: 0.0021
+[Epoch 20/20] Step 580/1000 | Loss: 0.1893 | L_point: 0.1709 | L_mask: 0.0216
+[Epoch 20/20] Step 590/1000 | Loss: 0.2595 | L_point: 0.2802 | L_mask: 0.0223
+[Epoch 20/20] Step 600/1000 | Loss: 0.2080 | L_point: 0.1441 | L_mask: 0.0307
+[Epoch 20/20] Step 610/1000 | Loss: 0.2315 | L_point: 0.3340 | L_mask: 0.0690
+[Epoch 20/20] Step 620/1000 | Loss: 0.1748 | L_point: 0.1760 | L_mask: 0.0222
+[Epoch 20/20] Step 630/1000 | Loss: 0.2546 | L_point: 0.5249 | L_mask: 0.0877
+[Epoch 20/20] Step 640/1000 | Loss: 0.1979 | L_point: 0.2070 | L_mask: 0.0037
+[Epoch 20/20] Step 650/1000 | Loss: 0.2108 | L_point: 0.2993 | L_mask: 0.0749
+[Epoch 20/20] Step 660/1000 | Loss: 0.1788 | L_point: 0.2116 | L_mask: 0.0013
+[Epoch 20/20] Step 670/1000 | Loss: 0.1890 | L_point: 0.1690 | L_mask: 0.0428
+[Epoch 20/20] Step 680/1000 | Loss: 0.2284 | L_point: 0.3020 | L_mask: 0.0700
+[Epoch 20/20] Step 690/1000 | Loss: 0.2229 | L_point: 0.1349 | L_mask: 0.0140
+[Epoch 20/20] Step 700/1000 | Loss: 0.2181 | L_point: 0.1997 | L_mask: 0.0462
+[Epoch 20/20] Step 710/1000 | Loss: 0.1689 | L_point: 0.1350 | L_mask: 0.0335
+[Epoch 20/20] Step 720/1000 | Loss: 0.2068 | L_point: 0.1543 | L_mask: 0.0154
+[Epoch 20/20] Step 730/1000 | Loss: 0.1695 | L_point: 0.1308 | L_mask: 0.0003
+[Epoch 20/20] Step 740/1000 | Loss: 0.1904 | L_point: 0.2267 | L_mask: 0.0254
+[Epoch 20/20] Step 750/1000 | Loss: 0.2119 | L_point: 0.1821 | L_mask: 0.0354
+[Epoch 20/20] Step 760/1000 | Loss: 0.1522 | L_point: 0.1618 | L_mask: 0.0304
+[Epoch 20/20] Step 770/1000 | Loss: 0.2358 | L_point: 0.1662 | L_mask: 0.0312
+[Epoch 20/20] Step 780/1000 | Loss: 0.2213 | L_point: 0.3734 | L_mask: 0.0935
+[Epoch 20/20] Step 790/1000 | Loss: 0.1609 | L_point: 0.2484 | L_mask: 0.0488
+[Epoch 20/20] Step 800/1000 | Loss: 0.1775 | L_point: 0.1271 | L_mask: 0.0244
+[Epoch 20/20] Step 810/1000 | Loss: 0.2533 | L_point: 0.1718 | L_mask: 0.0112
+[Epoch 20/20] Step 820/1000 | Loss: 0.1926 | L_point: 0.1866 | L_mask: 0.0296
+[Epoch 20/20] Step 830/1000 | Loss: 0.1666 | L_point: 0.1584 | L_mask: 0.0094
+[Epoch 20/20] Step 840/1000 | Loss: 0.2292 | L_point: 0.1445 | L_mask: 0.0027
+[Epoch 20/20] Step 850/1000 | Loss: 0.2800 | L_point: 0.2484 | L_mask: 0.0434
+[Epoch 20/20] Step 860/1000 | Loss: 0.2236 | L_point: 0.3184 | L_mask: 0.0687
+[Epoch 20/20] Step 870/1000 | Loss: 0.1783 | L_point: 0.2007 | L_mask: 0.0393
+[Epoch 20/20] Step 880/1000 | Loss: 0.1976 | L_point: 0.1736 | L_mask: 0.0129
+[Epoch 20/20] Step 890/1000 | Loss: 0.1821 | L_point: 0.3123 | L_mask: 0.0345
+[Epoch 20/20] Step 900/1000 | Loss: 0.1833 | L_point: 0.1114 | L_mask: 0.0076
+[Epoch 20/20] Step 910/1000 | Loss: 0.1664 | L_point: 0.1093 | L_mask: 0.0125
+[Epoch 20/20] Step 920/1000 | Loss: 0.1640 | L_point: 0.0926 | L_mask: 0.0109
+[Epoch 20/20] Step 930/1000 | Loss: 0.1986 | L_point: 0.1687 | L_mask: 0.0315
+[Epoch 20/20] Step 940/1000 | Loss: 0.2301 | L_point: 0.1009 | L_mask: 0.0024
+[Epoch 20/20] Step 950/1000 | Loss: 0.1926 | L_point: 0.1063 | L_mask: 0.0080
+[Epoch 20/20] Step 960/1000 | Loss: 0.1759 | L_point: 0.1025 | L_mask: 0.0060
+[Epoch 20/20] Step 970/1000 | Loss: 0.1915 | L_point: 0.2406 | L_mask: 0.0021
+[Epoch 20/20] Step 980/1000 | Loss: 0.1864 | L_point: 0.2583 | L_mask: 0.0651
+[Epoch 20/20] Step 990/1000 | Loss: 0.1782 | L_point: 0.1542 | L_mask: 0.0257
+[Epoch 20/20] Step 1000/1000 | Loss: 0.1791 | L_point: 0.1340 | L_mask: 0.0123
+Epoch 20 done in 2194s | Avg loss: 0.1960
+{
+  "epoch": 20,
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6149545269780265,
+    "vggt_primary_vs_secondary_nl": 5.884770962666642,
+    "single_corrected_vs_first_l": 0.5443836013279482,
+    "single_corrected_vs_secondary_nl": 0.3704574211216922,
+    "single_corrected_vs_first_nl": 1.4360615698200878,
+    "single_mask_acc_valid_first": 0.9854560268495209
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59860596,
+    "vggt_primary_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_l": 59860596,
+    "single_corrected_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_nl": 252326724,
+    "single_mask_acc_valid_first": 312187320
+  }
+}
+Saved checkpoint: checkpoints/phase05_single_head/single_head_epoch020.pt
+Saved checkpoint: checkpoints/phase05_single_head/single_head_final.pt
+{
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.6149545269780265,
+    "vggt_primary_vs_secondary_nl": 5.884770962666642,
+    "single_corrected_vs_first_l": 0.5443836013279482,
+    "single_corrected_vs_secondary_nl": 0.3704574211216922,
+    "single_corrected_vs_first_nl": 1.4360615698200878,
+    "single_mask_acc_valid_first": 0.9854560268495209
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 59860596,
+    "vggt_primary_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_l": 59860596,
+    "single_corrected_vs_secondary_nl": 252326724,
+    "single_corrected_vs_first_nl": 252326724,
+    "single_mask_acc_valid_first": 312187320
+  }
+}
