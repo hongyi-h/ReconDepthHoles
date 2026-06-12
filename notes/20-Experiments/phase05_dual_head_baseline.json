@@ -1,0 +1,35 @@
+{
+  "created": "2026-06-12T12:31:31",
+  "train_dir": "data/synthetic/train",
+  "val_dir": "data/synthetic/val",
+  "train_scenes": 1000,
+  "val_scenes": 200,
+  "num_views": 8,
+  "epochs": 20,
+  "device": "cuda",
+  "metrics": {
+    "vggt_primary_vs_first_l": 4.613590757804141,
+    "vggt_primary_vs_first_nl": 5.634894503702202,
+    "vggt_primary_vs_secondary_nl": 5.885385115916821,
+    "dual_primary_vs_first_l": 0.3117774518441619,
+    "dual_primary_vs_first_nl": 0.26887068168631356,
+    "dual_secondary_vs_secondary_nl": 0.338775249886142,
+    "dual_secondary_vs_first_nl": 1.4701800277553216,
+    "dual_mask_acc_valid_first": 0.9856523796023071,
+    "dual_two_layer_mean_nl": 0.3038229657862278
+  },
+  "counts": {
+    "vggt_primary_vs_first_l": 60025237,
+    "vggt_primary_vs_first_nl": 252186954,
+    "vggt_primary_vs_secondary_nl": 252186954,
+    "dual_primary_vs_first_l": 60025237,
+    "dual_primary_vs_first_nl": 252186954,
+    "dual_secondary_vs_secondary_nl": 252186954,
+    "dual_secondary_vs_first_nl": 252186954,
+    "dual_mask_acc_valid_first": 312212191,
+    "dual_two_layer_mean_nl": 252186954
+  },
+  "derived": {
+    "dual_secondary_reduction_vs_vggt_primary_to_secondary": 0.9424378790489112
+  }
+}
