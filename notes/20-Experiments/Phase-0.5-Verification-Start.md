@@ -183,3 +183,99 @@ Decision rule:
 - Compare `dual_secondary_vs_secondary_nl` against single-head `0.370457`.
 - Compare `dual_primary_vs_first_nl` against single-head `single_corrected_vs_first_nl = 1.436062`.
 - The layered route is justified only if the dual-head model recovers both layers: low primary first-surface NL error and low secondary-path NL error.
+
+## Gate 3 Result
+
+Gate 3 passed on C500:
+
+- Dual primary vs first GT on NL pixels: `0.268871`
+- Dual secondary vs secondary GT on NL pixels: `0.338775`
+- Dual two-layer mean on NL pixels: `0.303823`
+- Dual mask accuracy: `98.565%`
+
+Comparison against single-head:
+
+- Single-head secondary/corrected error on NL pixels: `0.370457`
+- Dual secondary error on NL pixels: `0.338775`
+- Single-head first-layer error on NL pixels: `1.436062`
+- Dual primary first-layer error on NL pixels: `0.268871`
+
+Decision:
+
+> The true dual-head model supports the narrowed layered claim on in-domain synthetic mirrors: it recovers both first-surface and secondary-path geometry at NL pixels, while the single-head baseline can only choose one layer.
+
+Next:
+
+> Run a cross-domain smoke test with the dual-head checkpoint before further synthetic optimization.
+
+## Gate 4: Dual-Head Cross-Domain Smoke Test
+
+Prepared script:
+
+- `scripts/evaluate_dual_head.py`
+
+Purpose:
+
+> Test whether the trained true dual-head checkpoint still recovers both first-surface and secondary-path geometry outside the in-domain synthetic validation split.
+
+This gate is evaluation-only. Do not retrain before it; otherwise the result no longer answers cross-domain survival of the current representation.
+
+Required data contract:
+
+- `scene_XXXXX/scene_meta.json`
+- `scene_XXXXX/rgb_000.png ... rgb_NNN.png`
+- `scene_XXXXX/depth_first_000.npy ... depth_first_NNN.npy`
+- `scene_XXXXX/depth_secondary_000_mirror00.npy ... depth_secondary_NNN_mirror00.npy`
+- `scene_XXXXX/camera_000.npz ... camera_NNN.npz` with `intrinsic` and `extrinsic` arrays
+
+If the cloud repo does not contain such a converted cross-domain split, this gate is blocked by data rather than by method failure. Do not count a missing split as evidence for or against the claim.
+
+C500 command:
+
+```bash
+cd /mnt/afs/zhengmingkai/hhy/ReconDepthHoles
+python scripts/evaluate_dual_head.py \
+  --data_dir data/synthetic/cross_domain_val \
+  --checkpoint checkpoints/phase05_dual_head/dual_head_final.pt \
+  --reference_json notes/20-Experiments/phase05_dual_head_baseline.json \
+  --num_views 8 \
+  --batch_size 1 \
+  --num_workers 4 \
+  --min_nl_pixels 1000 \
+  --min_pred_to_gt_nl_fraction_ratio 0.25 \
+  --output_json notes/20-Experiments/phase05_dual_head_cross_domain.json \
+  --output_note notes/20-Experiments/Phase-0.5-Dual-Head-Cross-Domain.md \
+  > logs/evaluate_dual_head_cross_domain.log 2>&1
+```
+
+Replace `data/synthetic/cross_domain_val` with the actual converted split path. If only a small split exists, add `--max_scenes 20` for a cheap smoke run first.
+
+Weak synthetic fallback:
+
+If no real or converted cross-domain split exists, generate a weak OOD synthetic split before evaluation. This is lower-value than real/converted cross-domain evidence, but it is still better than further optimizing the original synthetic validation distribution.
+
+```bash
+cd /mnt/afs/zhengmingkai/hhy/ReconDepthHoles
+bash scripts/batch_generate.sh \
+  --num_scenes 100 \
+  --num_views 8 \
+  --output_dir data/synthetic/cross_domain_val \
+  --jobs 8 \
+  --num_mirrors 2 \
+  --num_objects 9 \
+  --seed_offset 100000
+```
+
+Decision rule:
+
+- Required finite metrics:
+  - `dual_primary_vs_first_nl`
+  - `dual_secondary_vs_secondary_nl`
+  - `dual_two_layer_mean_nl`
+- Default smoke pass: all three are at most `2.0x` the in-domain reference values from `phase05_dual_head_baseline.json`.
+- Smoke fail: one or more required metrics exceed `2.0x`, or predicted NL coverage is below `0.25x` GT NL coverage.
+- Inconclusive: missing secondary GT, missing masks, zero NL pixels, incompatible scale, or no converted split.
+
+Stop condition:
+
+> If Gate 4 fails or is inconclusive, prioritize data/protocol diagnosis before additional in-domain synthetic optimization. The CVPR-level claim cannot move from "in-domain synthetic" to "robust layered reconstruction" without at least one cross-domain smoke result.

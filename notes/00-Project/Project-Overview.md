@@ -1,15 +1,17 @@
 ---
 tags: [project, overview, cvpr, non-lambertian, pointmap, layered-reconstruction]
 created: 2026-05-31
-updated: 2026-05-31
-status: phase-0-result-to-claim-no-paper-claims
+updated: 2026-06-12
+status: phase-0-5-dual-head-synthetic-claim-supported
 ambiguity: 0.098
 idea_evaluator_verdict: Strong Accept (conditional on pilot ≥15%)
 ---
 
 # 非朗伯 Layered Pointmap 重建 — 项目主入口
 
-> **One-liner (重定位后)**: Feed-forward pointmap 范式下，把场景中由 secondary light path（镜面、玻璃、抛光金属、湿地面）产生的"虚假几何"从单一 pointmap 中剥离为 **first-surface + secondary-path 多层 pointmap**，无需 test-time oracle，并以此为目标设计配套**诊断协议**。
+> **One-liner (Thesis-B, 2026-06-12 锁定)**: Feed-forward pointmap 范式下，把镜面/玻璃等非朗伯界面的反射当作**免费的第二视角**——用 surface-agnostic 的 layered pointmap (first-surface + secondary-path) **同时恢复**①相机直接可见的 first-surface 几何、②镜面揭示的隐藏真实几何、③无 oracle 自标定的镜面方程。表征不假设平面；平面性只在光路反演模块中作为最 robust 锚点，曲面镜为推广 demo，波纹/折射玻璃为诚实能力边界。详见 [[Thesis-Decision-2026-06-12]]。
+>
+> **(旧 Thesis-A 表述，已弃用)**: ~~把 secondary 光路产生的"虚假几何"从单一 pointmap 中剥离~~ — Gate 2 证明该目标 single-head 即可达成，secondary 层多余；新颖性不足且接近 Mirror3D。
 
 ## 关键决策（已锁定 + 重定位修正）
 
@@ -57,9 +59,13 @@ idea_evaluator_verdict: Strong Accept (conditional on pilot ≥15%)
 - [[../10-Literature/Novelty-Check-2026-05-31]] — Novelty-check 报告 + 重定位建议
 - [[../20-Experiments/Experiment-Plan]] — 实验计划
 
-## 当前阶段：Phase 0.5 Evidence Gate
+## 当前阶段：Phase 0.5 Cross-Domain Smoke Test
 
 `2026-06-09 result-to-claim` 判定：Phase 0 pilot **不能支撑 C1-C6 论文级 claim**，只能支撑 “frozen VGGT + layered heads 在 in-domain synthetic mirror 上可学习 secondary-path signal” 这个窄 feasibility claim。进入 Phase 1 full training 前，必须先补公平 VGGT NL baseline、single-head fine-tuned baseline、oracle-free vs oracle、以及一个 cross-domain smoke test。详见 `findings.md`。
+
+`2026-06-12 Gate 3` 更新：true dual-head layered baseline 在 in-domain synthetic mirror 上通过。当前可支撑的 claim 是：**dual-head layered pointmap 能在 NL 像素同时恢复 first-surface 与 secondary-path geometry；single-head corrected pointmap 只能选择一层**。下一步必须做 cross-domain smoke test，不能只继续优化 synthetic-val。
+
+`2026-06-12 Gate 4` 状态：cross-domain smoke evaluator 已准备好（`scripts/evaluate_dual_head.py`，见 [[../20-Experiments/Phase-0.5-Dual-Head-Cross-Domain]]），但还没有产生跨域证据。若 C500 上没有转换好的真实/跨域 split，先生成弱 OOD synthetic split，只能作为低价值 smoke，不可写成真实泛化结果。
 
 ### Phase 0: Pilot (1-2 周) — GATE
 - [ ] 从 3DReflecNet reflective subset 抽 1k-2k 场景

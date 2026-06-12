@@ -25,6 +25,9 @@ RESOLUTION="480 640"
 OUTPUT_DIR="$PROJECT_ROOT/data/synthetic/train"
 JOBS=8  # parallel jobs (set to num CPU cores or less)
 BLENDER_BIN="${BLENDER_BIN:-blender}"
+NUM_MIRRORS=1
+NUM_OBJECTS=5
+SEED_OFFSET=0
 
 # Parse args
 while [[ $# -gt 0 ]]; do
@@ -35,6 +38,9 @@ while [[ $# -gt 0 ]]; do
         --jobs) JOBS="$2"; shift 2 ;;
         --blender) BLENDER_BIN="$2"; shift 2 ;;
         --resolution) RESOLUTION="$2 $3"; shift 3 ;;
+        --num_mirrors) NUM_MIRRORS="$2"; shift 2 ;;
+        --num_objects) NUM_OBJECTS="$2"; shift 2 ;;
+        --seed_offset) SEED_OFFSET="$2"; shift 2 ;;
         *) echo "Unknown arg: $1"; exit 1 ;;
     esac
 done
@@ -47,6 +53,9 @@ echo "  Resolution: $RESOLUTION"
 echo "  Output: $OUTPUT_DIR"
 echo "  Parallel jobs: $JOBS"
 echo "  Blender: $BLENDER_BIN"
+echo "  Mirrors per scene: $NUM_MIRRORS"
+echo "  Objects per scene: $NUM_OBJECTS"
+echo "  Seed offset: $SEED_OFFSET"
 echo "============================================"
 
 # Verify Blender
@@ -61,7 +70,7 @@ mkdir -p "$OUTPUT_DIR"
 # Generate scene list
 generate_scene() {
     local scene_id=$1
-    local seed=$scene_id  # deterministic: scene_id = seed
+    local seed=$((SEED_OFFSET + scene_id))  # deterministic: scene_id + offset = seed
     local scene_dir="$OUTPUT_DIR/scene_$(printf '%05d' $scene_id)"
 
     # Skip if already generated
@@ -74,6 +83,8 @@ generate_scene() {
         --num_views "$NUM_VIEWS" \
         --resolution $RESOLUTION \
         --seed "$seed" \
+        --num_mirrors "$NUM_MIRRORS" \
+        --num_objects "$NUM_OBJECTS" \
         > "$scene_dir.log" 2>&1
 
     if [[ $? -eq 0 ]]; then
@@ -84,7 +95,7 @@ generate_scene() {
 }
 
 export -f generate_scene
-export OUTPUT_DIR BLENDER_BIN BLENDER_SCRIPT NUM_VIEWS RESOLUTION
+export OUTPUT_DIR BLENDER_BIN BLENDER_SCRIPT NUM_VIEWS RESOLUTION NUM_MIRRORS NUM_OBJECTS SEED_OFFSET
 
 # Run in parallel
 if command -v parallel &>/dev/null; then

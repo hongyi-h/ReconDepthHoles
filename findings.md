@@ -166,3 +166,101 @@ Train and evaluate a **true dual-head model**:
    - combined two-layer score.
 
 If the dual-head model cannot beat the single-head baseline on the two-layer objective, the method should pivot toward "material-aware corrected pointmap" rather than "layered pointmap."
+
+## 2026-06-12 — Phase 0.5 Gate 3: True Dual-Head Layered Baseline
+
+### Verdict
+
+**Gate 3 passed** for the in-domain synthetic layered claim.
+
+### Evidence
+
+Source files:
+
+- `notes/20-Experiments/Phase-0.5-Dual-Head-Baseline.md`
+- `notes/20-Experiments/phase05_dual_head_baseline.json`
+- `logs/train_dual_head_baseline.log`
+
+Setup:
+
+- Train data: `data/synthetic/train`
+- Val data: `data/synthetic/val`
+- Train scenes: `1000`
+- Val scenes: `200`
+- Views per scene: `8`
+- Epochs: `20`
+- Device: `cuda`
+
+Key metrics:
+
+- Dual primary vs first GT on NL pixels: `0.268871`
+- Dual secondary vs secondary GT on NL pixels: `0.338775`
+- Dual two-layer mean on NL pixels: `0.303823`
+- Dual primary vs first GT on Lambertian pixels: `0.311777`
+- Dual mask accuracy: `98.565%`
+
+Against the single-head composite baseline:
+
+- Single-head corrected vs secondary GT on NL pixels: `0.370457`
+- Dual secondary vs secondary GT on NL pixels: `0.338775`
+- Dual secondary improves by `8.55%`.
+- Single-head corrected vs first GT on NL pixels: `1.436062`
+- Dual primary vs first GT on NL pixels: `0.268871`
+- Dual primary improves first-layer recovery by `81.28%`.
+
+### Supported Claim After Gate 3
+
+> On in-domain synthetic mirror validation data, a true dual-head layered pointmap model can recover both first-surface and secondary-path geometry at non-Lambertian pixels. A single corrected pointmap can match secondary geometry but cannot represent both layers simultaneously.
+
+### Still Unsupported
+
+- Cross-domain / real-data generalization.
+- Oracle-free parity against oracle plane/mask variants.
+- Reflect3r comparison.
+- Glass, glossy metal, wet-floor generalization.
+- Multi-seed stability.
+
+### Next Gate
+
+Run a **cross-domain smoke test** with the dual-head checkpoint before investing in larger training. The next result should answer whether the dual-head separation survives outside the synthetic validation distribution.
+
+## 2026-06-12 — Phase 0.5 Gate 4 Prepared: Cross-Domain Smoke
+
+### Status
+
+**Prepared, not yet executed.**
+
+### Added Evaluation Entry
+
+Source files:
+
+- `scripts/evaluate_dual_head.py`
+- `notes/20-Experiments/Phase-0.5-Dual-Head-Cross-Domain.md`
+
+The evaluator loads `checkpoints/phase05_dual_head/dual_head_final.pt` and reports the same dual-head metrics on any `MirrorSceneDataset`-format split.
+
+Key decision metrics:
+
+- `dual_primary_vs_first_nl`
+- `dual_secondary_vs_secondary_nl`
+- `dual_two_layer_mean_nl`
+
+The default smoke rule compares these against `notes/20-Experiments/phase05_dual_head_baseline.json` and passes only if all ratios are at most `2.0x`. It also checks NL mask coverage: predicted NL coverage must be at least `0.25x` GT NL coverage.
+
+### Data Requirement
+
+This gate requires a converted cross-domain split with first-surface and secondary-path GT in the current synthetic scene layout:
+
+- `scene_XXXXX/scene_meta.json`
+- `rgb_*.png`
+- `depth_first_*.npy`
+- `depth_secondary_*_mirror00.npy`
+- `camera_*.npz`
+
+If no real or converted split exists, use the weak synthetic fallback command recorded in [[Phase-0.5-Dual-Head-Cross-Domain]]. That fallback is lower-value than real data and must not be described as real cross-domain generalization.
+
+### Claim Impact
+
+No new cross-domain evidence has been produced yet. The supported claim remains:
+
+> In-domain synthetic mirror dual-head separation works; cross-domain robustness is still unproven.
