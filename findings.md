@@ -264,3 +264,36 @@ If no real or converted split exists, use the weak synthetic fallback command re
 No new cross-domain evidence has been produced yet. The supported claim remains:
 
 > In-domain synthetic mirror dual-head separation works; cross-domain robustness is still unproven.
+
+## 2026-06-12 — Thesis-B Decision + First-Surface Clean Control
+
+### Thesis decision (locked)
+
+Selected **Thesis B (Capability)** over Thesis A (Robustness). secondary 层的价值不是"清除虚假几何"（Gate 2 已证 single-head 即可），而是 capability：揭示镜面反射出的隐藏真实几何 + 无 oracle 自标定镜面平面。v1 scope = 平面镜定量锚点 + 曲面镜推广 demo，波纹/折射玻璃列 future work。表征 surface-agnostic，平面性只在光路反演模块内。详见 `notes/00-Project/Thesis-Decision-2026-06-12.md`。
+
+### Root-cause finding on Gate 3's 81%
+
+The Gate 3 claim "dual primary improves first-layer recovery by 81.28% over single-head" is a **tautology**, not evidence for layering. The single-head was supervised on the composite target (secondary GT on NL pixels), so its NL output approximates secondary geometry and is necessarily far from first-surface GT. This comparison must not be cited as evidence that layering helps first-surface.
+
+### Added: First-Surface-Only Clean Control
+
+Source files:
+
+- `scripts/train_firstsurface_baseline.py`
+- (on run) `notes/20-Experiments/Phase-0.5-FirstSurface-Baseline.md`, `notes/20-Experiments/phase05_firstonly_baseline.json`
+
+This is the honest control `result-to-claim` originally flagged as missing. It predicts ONLY first-surface (+ NL mask) over all valid pixels, with everything else identical to the dual-head baseline (frozen encoder, same DPTHead config, optimizer, schedule, grad-clip, seed, data, epochs). Single variable: secondary head + secondary loss removed.
+
+Decision metric: compare `firstonly_vs_first_nl` against dual-head `dual_primary_vs_first_nl = 0.268871`.
+
+- `firstonly ≈ dual_primary` → secondary head is FREE on first-surface; layered model recovers first-surface as well as a dedicated model AND adds secondary geometry. Supports Thesis-B free-lunch framing.
+- `dual_primary` clearly worse → secondary head hurts first-surface via shared optimizer / global grad-clip; report as real cost.
+- `dual_primary` clearly better → secondary task regularizes first-surface; positive transfer.
+
+### Scope limit (root-cause honesty)
+
+With a **frozen encoder**, primary/secondary/mask are independent probes on frozen tokens and cannot interfere by construction. This control does NOT establish that the layered architecture is *necessary*. That question is only meaningful under an **unfrozen encoder (Phase 1)**, where the two tasks compete for shared representation. Until then, "layering necessary" stays unproven; the supportable claim is limited to "secondary recovery is free/cheap on top of first-surface."
+
+### Status
+
+Script ready and syntax-checked locally (no local torch/cuda; real training on C500). Awaiting C500 run.
